@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<span id="span"></span>
+<button id="addNewObserver">Add New Observer checkbox</button>
+<input id="mainCheckbox" type="checkbox">
+<div id="observersContainer"></div>
+<script type="text/javascript">
+    function ObserverList(){
+        this.observerList = [];
+    }
+
+    ObserverList.prototype.Add = function(obj){
+        return this.observerList.push(obj);
+    }
+
+    ObserverList.prototype.Empty = function(){
+        this.observerList = [];
+    }
+
+    ObserverList.prototype.Count = function(){
+        return this.observerList.length;
+    }
+
+    ObserverList.prototype.Get = function(index){
+        if(index > -1 && index < this.observerList.length){
+            return this.observerList[index];
+        }
+    }
+
+    ObserverList.prototype.Insert = function(obj , index){
+        var pointer = -1;
+        if(index === 0){
+            this.observerList.unshift(obj);
+            pointer = index;
+        }else if(index === this.observerList.length){
+            this.observerList.push(obj);
+            pointer = index;
+        }
+        return pointer;
+    }
+
+    ObserverList.prototype.IndexOf = function(obj, startIndex){
+        var i = startIndex, pointer = -1;
+
+        while(i < this.observerList.length){
+            if(this.observerList[i] === obj){
+                pointer = 1;
+            }
+            i++;
+        }
+        return pointer;
+    }
+
+    ObserverList.prototype.RemoveIndexAt = function(index){
+        if(index === 0){
+            this.observerList.shift();
+        }else if(index === this.observerList.length - 1){
+            this.observerList.pop();
+        }else{
+            //Tlmis observerList spLicecind
+        }
+    }
+
+    function extend(obj, extension){
+        for(var key in obj){
+            extension[key] = obj[key];
+        }
+    }
+    // ====================================
+    function Subject(){
+        this.observers = new ObserverList();
+    }
+
+    Subject.prototype.AddObserver = function(observer){
+        this.observers.Add(observer);
+    }
+
+    Subject.prototype.RemoveObserver = function(observer){
+        this.observers.RemoveIndexAt(this.observers.IndexOf(observer, 0));
+    }
+
+    Subject.prototype.Notify = function(context){
+        var observerCount = this.observers.Count();
+        for(var i = 0; i < observerCount; i++){
+            this.observers.Get(i).Update(context);
+        }
+    }
+
+    Subject.prototype.Counts = function(){
+        console.log(this.observers)
+        return this.observers.Count();
+
+    }
+
+
+    // ====================
+
+    function Observer(){
+        this.Update = function(){
+
+        }
+    }
+
+    //====================
+
+    var controlCheckbox = document.getElementById("mainCheckbox"),
+            addBtn = document.getElementById("addNewObserver"),
+            container = document.getElementById("observersContainer"),
+            span = document.getElementById("span");
+
+
+    extend(new Subject(), controlCheckbox);
+    extend(new Subject(), span);
+
+    controlCheckbox["onclick"] = new Function("controlCheckbox.Notify(controlCheckbox.checked)");
+    //addBtn["onclick"] = new Function("addBtn.Notify(controlCheckbox.checked)")
+
+    addBtn.onclick = AddNewObserver;
+
+    function AddNewObserver(){
+        var check = document.createElement("input");
+        check.type = "checkbox";
+        extend(new Observer(), check);
+
+        check.Update = function(value){
+            this.checked = value;
+        }
+
+        controlCheckbox.AddObserver(check);
+        span.AddObserver(check);
+
+        span.innerText = span.Counts();
+        container.appendChild(check);
+    }
+</script>
+</body>
+</html>
