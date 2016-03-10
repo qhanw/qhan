@@ -7,9 +7,68 @@
 <body>
 <script src="../js/client.js"></script>
 <script type="text/javascript">
-    window.onload =function(){
-        console.log(client)
+
+    var jsSort = {
+        systemSort: function (arr) {
+            return arr.sort(function (a, b) {
+                return a - b;
+            });
+        },
+        bubbleSort: function (arr) {
+            var i = arr.length, j, tempExchangVal;
+            while (i > 0) {
+                for (j = 0; j < i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        tempExchangVal = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = tempExchangVal;
+                    }
+                }
+                i--;
+            }
+            return arr;
+        },
+        quickSort: function (arr) {
+            function sort(prev, numsize) {
+                var nonius = prev;
+                var j = numsize - 1;
+                var flag = arr[prev];
+                if ((numsize - prev) > 1) {
+                    while (nonius < j) {
+                        for (; nonius < j; j--) {
+                            if (arr[j] < flag) {
+                                arr[nonius++] = arr[j];　//a[i] = a[j]; i += 1;
+                                break;
+                            }
+                            ;
+                        }
+                        for (; nonius < j; nonius++) {
+                            if (arr[nonius] > flag) {
+                                arr[j--] = arr[nonius];
+                                break;
+                            }
+                        }
+                    }
+                    arr[nonius] = flag;
+                    sort(0, nonius);
+                    sort(nonius + 1, numsize);
+                }
+            }
+
+            sort(0, arr.length);
+            return arr;
+        }
     }
+
+    window.onload = function () {
+        console.log(client);
+
+        /*var arr = [3, 2, 4, 9, 1, 5, 7, 6, 8];
+        var arrSorted = jsSort.bubbleSort(arr);
+        console.log(arrSorted);*/
+    }
+
+
 </script>
 </body>
 </html>
