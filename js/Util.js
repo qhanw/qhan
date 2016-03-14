@@ -17,8 +17,7 @@ function simulateClick(el) {
     var evt;
     if (document.createEvent) { // DOM Level 2 standard
         evt = document.createEvent("MouseEvents");
-        evt.initMouseEvent("mouseout", true, true, window,
-            0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        evt.initMouseEvent("mouseout", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
         el.dispatchEvent(evt);
     } else if (el.fireEvent) { // IE
         el.fireEvent('onmouseout');
