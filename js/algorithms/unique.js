@@ -35,7 +35,6 @@ Array.prototype.unique4 = function(){
     this.sort();
 
     var re  = [this[0]];
-
     for(var i = 1; i< this.length; i++){
         if(this[i] !== re[re.length-1]){
             re.push(this[i]);
