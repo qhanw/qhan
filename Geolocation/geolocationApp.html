@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Geolocation App</title>
+</head>
+<body>
+	<script type="text/javascript">
+		Number.prototype.toRadians = function(){
+			return this * Math.PI /180;
+		}
+
+		function distance(latitude1, longitude1, latitude2,longitude2){
+			var R = 6371; // 地球半径 单位KM
+
+			var deltaLatitude = (latitude2 - latitude1).toRadians();
+			var deltaLongitude = (longitude2 - longitude1).toRadians();
+
+			latitude1 = latitude1.toRadians();
+			latitude2 = latitude2.toRadians();
+
+			var a = Math.sin(deltaLatitude/2) * Math.sin(deltaLatitude/2) + Math.cos(latitude1) * Math.cos(latitude2) * Math.sin(deltaLongitude/2) * Math.sin(deltaLongitude/2);
+			var c = Math.atan2(Math.sqrt(a), Math.sqrt(1-a)) * 2;
+			var d = R * c;
+
+			return d;
+		}
+	</script>
+</body>
+</html>

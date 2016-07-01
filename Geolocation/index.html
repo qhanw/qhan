@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Geolocation</title>
+</head>
+<body>
+	<div id="support"></div>
+	<div id="latitude"></div>
+	<div id="longitude"></div>
+	<div id="accuracy"></div>
+	<div id="timestamp"></div>
+	<script type="text/javascript">
+		/*function loadDemo(){
+			if(navigator.geolocation){
+				document.getElementById('support').innerHTML = 'Geolocation supported.'
+			}else{
+				document.getElementById('support').innerHTML = 'Geolocation is not supported in your bowser.'
+			}
+		}
+
+		window.addEventListener('load', loadDemo, true);*/
+
+		navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError);
+
+		function updateLocation(position){
+			var latitude = position.coords.latitude;
+			var longitude = position.coords.longitude;
+			var accuracy = position.coords.accuracy;
+			var timestamp = position.timestamp;
+
+			document.getElementById('latitude').innerHTML = latitude;
+			document.getElementById('longitude').innerHTML = longitude;
+			document.getElementById('accuracy').innerHTML = accuracy;
+			document.getElementById('timestamp').innerHTML = timestamp;
+		}
+
+		function handleLocationError(error){
+			switch(error.code){
+				case 0:
+					updateStatus('There was an error while relrieving your location: ' + error.message);
+					break;
+				case 1:
+					updateStatus('The user prevented this page from retrieving a location.');
+					break;
+				case 2:
+					updateStatus('The browser was unabel to determine your location:' + error.message);
+					break;
+				case 3:
+					updateStatus('The browser timed out before retrieving the location.');
+					break;
+			}
+		}
+
+		function updateStatus(text){
+			console.log(text);
+		}
+	</script>
+</body>
+</html>
