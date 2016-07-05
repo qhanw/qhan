@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cross Origin Upload</title>
+</head>
+<body>
+<h1>XMLHttpRequest Level 2</h1>
+<h4>Geolocation Data to Upload:</h4>
+<p id="support"></p>
+<textarea id="geodata"></textarea>
+<button id="sendButton">upload</button>
+<p><b>Status: </b><span id="progress">ready</span></p>
+    <script>
+        geoData = [[39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003,39.0800180000003]];
+    </script>
+    <script>
+        function loadDemo() {
+            var dataElement = document.getElementById('geodata');
+            dataElement.textContent = JSON.stringify(geoData).replace(',',', ', 'g');
+
+            var xhr =  new XMLHttpRequest();
+            if(typeof xhr.withCredentials === undefined){
+                document.getElementById('support').innerHTML = 'Your browser <strong>does not</strong> support cross-origin XMLHttpRequest';
+            }else {
+                document.getElementById('support').innerHTML = 'Your browser <strong>does</strong> support cross-origin XMLHttpRequest';
+            }
+            var targetLocation = 'http://geodata.example.net:8888/upload';
+
+            function setProgress(s) {
+                document.getElementById('progress').innerHTML = s;
+            }
+
+            document.getElementById('sendButton').addEventListener('click',function(){
+                xhr.upload.onprogress = function (e) {
+                    var ratio = e.loaded / e.total;
+                    setProgress(ratio + '% upload');
+                }
+                xhr.onprogress = function (e) {
+                    var ratio = e.loaded / e.total;
+                    setProgress(ratio + '% download');
+                }
+                xhr.onload = function (e) {
+                    setProgress('finished');
+                }
+                xhr.error = function (e) {
+                    setProgress('error');
+                }
+                xhr.open('POST', targetLocation, true);
+                geoDataString = dataElement.textContent;
+                xhr.send(geoDataString);
+            },true);
+        }
+        window.addEventListener('load', loadDemo, true);
+    </script>
+</body>
+</html>
