@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" manifest="test.manifest">
+<head>
+    <meta charset="UTF-8">
+    <title>AppCache</title>
+</head>
+<body>
+<h1>This AppCache</h1>
+<script>
+    function loadDemo() {
+        if(navigator.onLine){
+            console.log('Online');
+        }else{
+            console.log('Offline');
+        }
+    }
+    window.addEventListener('load', loadDemo, true);
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+doctype html
+html(manifest='tracker.manifest')
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/html5.css')
+    script(src='javascripts/jquery-3.1.0.min.js')
+    script(src='javascripts/log.js')
+    script(src='javascripts/offline.js')
+    script(src='javascripts/tracker.js')
+  body
+    block content

@@ -1,0 +1,18 @@
+CACHE MANIFEST
+#v.0.0.10
+# 要缓存的文件
+CACHE:
+# html
+#views/tracker.html
+# JavaScript
+javascripts/jquery-3.1.0.min.js
+javascripts/offline.js
+javascripts/tracker.js
+javascripts/log.js
+# Stylesheets
+stylesheets/html5.css
+stylesheets/style.css
+
+# Images-pic
+
+NETWORK:
