@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Racer Broadcast</title>
+</head>
+<body onload="loadDemo()">
+<h1>Racer Broadcast</h1>
+Racer name: <input type="text" id="racerName" value="Racer X">
+<button onclick="startSendingLocation()">Start</button>
+<div><strong>Geolocation</strong>:
+    <p id="geoSataus">HTML5 Geolocation not started.</p>
+</div>
+<div><strong>WebSocket</strong>:<p id="socketStatus">HTML5 Web Sockets are<strong>not</strong>supported in your browser.</p></div>
+<script>
+    var socket;
+    var lastLocation;
+    function updateSocketStatus(message) {
+        document.getElementById('socketStatus').innerHTML = message;
+    }
+    function updateGeolocationStatus(message) {
+        document.getElementById('geoStatus').innerHTML = message;
+    }
+    function handleLocationError(error){
+        switch(error.code){
+            case 0:
+                updateStatus('There was an error while relrieving your location: ' + error.message);
+                break;
+            case 1:
+                updateStatus('The user prevented this page from retrieving a location.');
+                break;
+            case 2:
+                updateStatus('The browser was unabel to determine your location:' + error.message);
+                break;
+            case 3:
+                updateStatus('The browser timed out before retrieving the location.');
+                break;
+        }
+    }
+</script>
+</body>
+</html>

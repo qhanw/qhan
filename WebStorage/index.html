@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Storage</title>
+</head>
+<body>
+<script>
+    function checkStorageSupport() {
+        // sessionStorage
+        if(window.sessionStorage){
+            console.log('This browser supports sessionStorage.');
+        }else{
+            console.log('This browser does not support sessionStorage.')
+        }
+
+        // localStorage
+        if(window.localStorage){
+            console.log('This browser supports localStorage.');
+        }else{
+            console.log('This does not support localStorage.')
+        }
+    }
+
+    window.addEventListener('load', checkStorageSupport, true);
+</script>
+</body>
+</html>
