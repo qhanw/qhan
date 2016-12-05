@@ -1,0 +1,62 @@
+.tab-menu{
+  z-index: $tab-menu-index;
+
+  &.top,
+  &.bottom{
+    position: fixed;
+    width: 100%;
+    left: 0;
+  }
+
+  &.top{
+    height: $tab-menu-top-height;
+    top:0;
+    padding: 0 $root-rem*5;
+    background-color: #55aded;
+    color: #fff;
+
+    > h2{
+      margin: 0;
+      height: inherit;
+      line-height: $root-rem*3;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    > .tab-menu-prev,
+    > .tab-menu-next{
+      position: absolute;
+      top:0;
+      height: inherit;
+      line-height: $root-rem*3;
+      width: $root-rem*5;
+    }
+
+    > .tab-menu-prev{
+      left: 0;
+      padding-left: .5em;
+      text-align: left;
+    }
+
+    > .tab-menu-next{
+      right: 0;
+      padding-right: .5em;
+      text-align: right;
+    }
+
+  }
+  &.bottom{
+    height: $tab-menu-bottom-height;
+    bottom:0;
+    background-color: #f7f7f7;
+  }
+}
+
+.tab-menu{
+  > [class*='-column']{
+    height: inherit;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

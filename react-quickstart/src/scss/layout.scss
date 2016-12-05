@@ -1,0 +1,19 @@
+html, body{
+  height: 100%;
+}
+*,
+*:after,
+*:before{
+  box-sizing: border-box;
+}
+#root,
+.container{
+  height: inherit;
+}
+
+.container{
+  padding-bottom: $layout-padding-bottom;
+  padding-top: $layout-padding-top;
+  overflow: hidden;
+  overflow-y: auto;
+}

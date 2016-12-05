@@ -1,0 +1,13 @@
+.#{$ui-name}-flex{
+  display: flex;
+  width:100%;
+  align-items: center;
+
+  .#{$ui-name}-column,
+  .#{$ui-name}-column-space{
+    flex:1;
+  }
+  .#{$ui-name}-column-space:not(:first-child){
+    margin-left: 8px;
+  }
+}

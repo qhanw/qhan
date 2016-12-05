@@ -1,0 +1,14 @@
+$ui-name : su;  // 框架名称定义
+
+$html-font-size: 1rem;
+$root-rem: $html-font-size;
+$init-height : $root-rem;
+
+
+// 底部菜单
+$tab-menu-bottom-height: $init-height*4;
+$tab-menu-top-height: $init-height*3;
+$tab-menu-index : 1001;
+
+$layout-padding-bottom: $init-height*4;
+$layout-padding-top : $init-height*3;

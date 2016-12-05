@@ -1,0 +1,27 @@
+.portlet{
+  background-color: #fff;
+
+  &-title{
+    padding: .5em;
+
+    .caption{
+      margin: 0;
+      font-size: 1rem;
+      float: left;
+    }
+    .actions{
+      font-size: .85rem;
+      float: right;
+    }
+
+    &:after{
+      display: table;
+      content: '';
+      clear: both;
+    }
+
+  }
+  &-body{
+    padding:.5em;
+  }
+}

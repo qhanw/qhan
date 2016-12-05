@@ -1,0 +1,53 @@
+.icon{
+  display: inline-block;
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  vertical-align: text-bottom;
+
+  &:after,
+  &:before{
+    display: table;
+    content: '';
+  }
+
+  // 子元素样式
+  &-arrow{
+    position: relative;
+    &:after,
+    &:before{
+      background-color: #fff;
+      position: absolute;
+      left: 0;
+      top:0
+    }
+
+    &:before{
+      width: inherit;
+      height: .2em;
+
+    }
+
+    &:after{
+      width: .2em;
+      height: inherit;
+    }
+
+    &.left{
+      transform: scale(.65,.65) rotate(-45deg);
+      left: .2em;
+    }
+    &.top{
+      transform: scale(.65,.65) rotate(45deg);
+      top:.2em
+    }
+    &.right{
+      transform: scale(.65,.65) rotate(135deg);
+      right: .2em;
+    }
+    &.bottom{
+      transform: scale(.65,.65) rotate(-135deg);
+      top:-.2em
+    }
+  }
+}
