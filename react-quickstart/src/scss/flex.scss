@@ -2,6 +2,15 @@
   display: flex;
   width:100%;
   align-items: center;
+  flex-wrap:wrap;
+
+  .#{$ui-name}-tab-main{
+    flex:2
+  }
+
+  .#{$ui-name}-tab-side{
+    flex:1
+  }
 
   .#{$ui-name}-column,
   .#{$ui-name}-column-space{
@@ -10,4 +19,8 @@
   .#{$ui-name}-column-space:not(:first-child){
     margin-left: 8px;
   }
+  .#{$ui-name}-col-1{
+    width: 4.16666667%;
+  }
+
 }

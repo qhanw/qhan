@@ -16,17 +16,17 @@ export const VisibilityFilters = {
 
 // action 函数
 export function computerAdd(num1, num2) {
-  return { type: COMPUTER_ADD, arr: [num1, num2]}
+  return {type: COMPUTER_ADD, arr: [num1, num2]}
 }
 
 export function addTodo(text) {
-  return {type:ADD_TODO, text}
+  return {type: ADD_TODO, text}
 }
 
 export function completedTodo(index) {
-  return { type: COMPLETED_TODO, index}
+  return {type: COMPLETED_TODO, index}
 }
 
 export function setVisibilityFilter(filter) {
-  return{type:SET_VISIBILITY_FILTER, filter}
+  return {type: SET_VISIBILITY_FILTER, filter}
 }
