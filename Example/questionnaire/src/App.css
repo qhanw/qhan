@@ -3,22 +3,59 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Custom Style */
+.page {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top:0;
+}
+
+.animate-right-in{
+    animation: rightIn .2s ease-out;
+}
+
+@keyframes rightIn{
+    0%{
+        opacity: .35;
+        left: 100%;
+    }
+    100%{
+        opacity: 1;
+        left:0;
+    }
+}
+@keyframes leftOut{
+    0%{
+        opacity: 1;
+        left: 0;
+    }
+    100%{
+        opacity: 1;
+        left:-100%;
+    }
 }
