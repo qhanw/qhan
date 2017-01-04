@@ -11,7 +11,7 @@ export const data = [
         "score": "1"
       },
       {
-          "id":"1",
+        "id":"1",
         "mark": "B",
         "content": "适中",
         "score": "2"

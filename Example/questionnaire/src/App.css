@@ -28,11 +28,40 @@
 }
 
 /* Custom Style */
+
+
+.test-list{
+    background-color: #f2f2f2;
+}
+
+.test-list .weui-media-box .weui-media-box__hd{
+    width: auto;
+    height: auto;
+    order:3;
+    margin-right:0;
+    margin-left: .8em;
+}
+
 .page {
     position: absolute;
     width: 100%;
     left: 0;
     top:0;
+}
+
+/*  */
+.progress-bar{
+    display: flex;
+    margin-bottom: .8em;
+}
+.progress-bar .weui-progress{
+    display: inline-flex;
+    width: 100%;
+    margin-right: 15px;
+}
+
+.progress-bar .weui-progress__inner-bar{
+    transition: ease-out .2s;
 }
 
 .animate-right-in{

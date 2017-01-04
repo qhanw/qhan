@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Date2} from "./utils/Date2";
 import {data} from "./utils/questions";
 import "./App.css";
+import { Link } from 'react-router'
 import {
   Article,
   ButtonArea,
@@ -9,18 +10,18 @@ import {
   Panel,
   PanelHeader,
   PanelBody,
-  PanelFooter,
-  Cell,
+  //PanelFooter,
+  //Cell,
   CellHeader,
   CellBody,
-  CellFooter,
+  //CellFooter,
   Form,
   FormCell,
   Input,
   Label,
   Checkbox,
   Footer,
-  FooterText,
+  //FooterText,
   Picker,
   Progress,
 
@@ -82,6 +83,7 @@ class App extends Component {
     sexPickerShow: false,
     sexPickerValue: '',
     sexPickerGroup: [{items: [{label: '男'}, {label: '女'}]}],
+
     datetimePickerShow: false,
     datetimePickerValue: currentDay,
     datetimePickerSelected: getDatetimeSelected(currentDay),
@@ -114,7 +116,7 @@ class App extends Component {
   }
 
   start() {
-    if(!this.state.sexPickerValue){
+   /* if(!this.state.sexPickerValue){
       return;
     }
 
@@ -127,7 +129,7 @@ class App extends Component {
     }
     if(!this.state.submitData.weight){
       return;
-    }
+    }*/
 
     this.setState({
         step: 1,
@@ -162,16 +164,13 @@ class App extends Component {
     this.setState({step: 2})
   }
 
-  back() {
-
-  }
-
   render() {
-    let index = this.state.index; // 当前题索引
+    let index = this.state.index; // 当前题索引;
+
+
     switch (this.state.step) {
       case 0:
-
-
+      default:
         return (
           <div className='App page' ref='page'>
             <Toptips type="warn" show={true}> Oops, something is wrong! </Toptips>
@@ -280,7 +279,6 @@ class App extends Component {
             </Footer>
           </div>
         );
-        break;
       case 1:
         return (
           <div className='App page' ref='page'>
@@ -288,22 +286,22 @@ class App extends Component {
               <PanelHeader>营养调查问卷</PanelHeader>
               <PanelBody>
                 <Article>
-                  <Progress value={(index + 1) * 100 / data.length}/>
-                  {(index + 1) + '/' + data.length}
-                  <p>{data[index].name}</p>
+                  <div className="progress-bar">
+                    <Progress value={(index + 1) * 100 / data.length} showCancel={false}/>
+                    <span>{(index + 1) + '/' + data.length}</span>
+                  </div>
+                  <p>{++index}、{data[index].name}</p>
                 </Article>
                 <Form checkbox data-key={data[index].range.join('-')} data-qid={data[index].id}>
                   {
-                    data[index].answer.map((item, i) => {
-                      return (
-                        <FormCell checkbox key={i} data-aid={item.id}>
-                          <CellHeader>
-                            <Checkbox name="checkbox1" value={item.id}/>
-                          </CellHeader>
-                          <CellBody>{item.content}</CellBody>
-                        </FormCell>
-                      )
-                    })
+                    data[index].answer.map((item, i) =>
+                      <FormCell checkbox key={i} data-aid={item.id}>
+                        <CellHeader>
+                          <Checkbox name="checkbox1" value={item.id}/>
+                        </CellHeader>
+                        <CellBody>{item.content}</CellBody>
+                      </FormCell>
+                    )
                   }
                 </Form>
               </PanelBody>
@@ -317,7 +315,6 @@ class App extends Component {
             </Footer>
           </div>
         );
-        break;
       case 2:
         return (
           <div className='App page' ref='page'>
@@ -332,12 +329,11 @@ class App extends Component {
             </Panel>
             <Footer>
               <ButtonArea className="button-sp-area" direction="horizontal">
-                <Button type="primary" onClick={this.back.bind(this)}>返回首页</Button>
+                <Link to="/" className="weui-btn weui-btn_primary">返回首页</Link>
               </ButtonArea>
             </Footer>
           </div>
         );
-        break;
     }
   }
 }
