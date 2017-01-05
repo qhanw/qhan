@@ -29,19 +29,6 @@
 
 /* Custom Style */
 
-
-.test-list{
-    background-color: #f2f2f2;
-}
-
-.test-list .weui-media-box .weui-media-box__hd{
-    width: auto;
-    height: auto;
-    order:3;
-    margin-right:0;
-    margin-left: .8em;
-}
-
 .page {
     position: absolute;
     width: 100%;

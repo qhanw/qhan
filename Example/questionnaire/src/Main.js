@@ -16,24 +16,21 @@ import {
 } from 'react-weui';
 import "weui";
 
-import {ListData} from './utils/listData';
-import './App.css';
+import {ListData} from './utils/listData'; // 列表数据
 
-
-export default class Entity extends Component {
+export default class Main extends Component {
   render() {
     return (
       <div className="test-list">
         {
-          ListData.map((item, i) =>
-            <Panel key={i}>
+          ListData.map(item =>
+            <Panel key={item.id}>
               <PanelHeader>{item.title}</PanelHeader>
               <PanelBody>
                 <MediaBox type="appmsg">
                   <MediaBoxHeader>
-                    <Link to={'/'+item.id}>
-                      <Button type="primary" size="small" disabled={item.isTest}>{item.isTest ? '已测试' : '开始测试'}</Button>
-                    </Link>
+                    {item.isTest ? <Button type="primary" size="small" disabled={true}>已测试</Button> :
+                      <Link to={'/' + item.id} className="weui-btn weui-btn_mini weui-btn_primary">开始测试</Link>}
                   </MediaBoxHeader>
                   <MediaBoxBody>
                     <MediaBoxTitle>{item.name}</MediaBoxTitle>
