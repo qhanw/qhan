@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>示例-单例模式</title>
+</head>
+<body>
+<div>
+    <button id="loginBtn">Login</button>
+    <button id="openIframe">Iframe</button>
+    <div id="div1">事件绑定</div>
+</div>
+<script src="./index.js"></script>
+<script>
+    // 场景一 登录窗口
+    const createLoginLayer = function () {
+        let div = document.createElement('div');
+        div.innerHTML = '我是登录浮窗';
+        div.style.display = 'none';
+        document.body.appendChild(div);
+        return div;
+    };
+
+    const createSingleLoginLayer = getSingle(createLoginLayer);
+    document.getElementById('loginBtn').onclick = function () {
+        const loginLayer = createSingleLoginLayer();
+        loginLayer.style.display = 'block';
+    };
+
+    // 场景二 创建唯一iframe加载第三方面
+    const createSingleIframe = getSingle(function () {
+        const iframe = document.createElement('iframe');
+        document.body.appendChild(iframe);
+        return iframe
+    });
+
+    document.getElementById('openIframe').onclick = function () {
+        const iframeLayer = createSingleIframe();
+        iframeLayer.src = 'https://baidu.com';
+    }
+
+    // 场景三 给目标元素绑定事件，页面多次渲染事件仅只绑定一次
+    const bindEvent = getSingle(function () {
+        document.getElementById('div1').onclick = function () {
+            alert('click');
+        };
+        return true;
+    });
+
+    const render = function () {
+        console.log('开始渲染列表');
+        bindEvent();
+    };
+    render();
+    render();
+    render();
+</script>
+</body>
+</html>
