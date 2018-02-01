@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>示例-策略模式-奖金计算</title>
+</head>
+<body>
+<div>请打开控制台查看</div>
+<script>
+    const strategies = {
+        "S": salary => salary * 4,
+        "A": salary => salary * 3,
+        "B": salary => salary * 2
+    };
+
+    const calculateBouns = (level, salary) => strategies[level](salary);
+    console.log('等级为S的奖金:', calculateBouns('S', 20000));
+    console.log('等级为B的奖金:', calculateBouns('B', 10000));
+</script>
+</body>
+</html>
