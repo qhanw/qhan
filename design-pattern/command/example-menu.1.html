@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>命令模式-菜单程序</title>
+</head>
+
+<body>
+  <button id="button1">'点击按钮 1'</button>
+  <button id="button2">'点击按钮 2'</button>
+  <button id="button3">'点击按钮 3'</button>
+  <script>
+    const button1 = document.getElementById('button1');
+    const button2 = document.getElementById('button2');
+    const button3 = document.getElementById('button3');
+
+    const setCommand = function (button, func) {
+      button.onclick = function () {
+        func()
+      };
+    };
+
+    const MenuBar = {
+      refresh: function () {
+        console.log('刷新菜单界面');
+      }
+    };
+
+    const RefreshMenuBarCommand = function (receiver) {
+      return {
+        execute: function () {
+          receiver.refresh();
+        }
+      }
+    };
+
+    const refreshMenuBarCommand = RefreshMenuBarCommand(MenuBar);
+    setCommand(button1, refreshMenuBarCommand);
+
+  </script>
+</body>
+
+</html>

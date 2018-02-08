@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>命令模式-菜单程序</title>
+</head>
+
+<body>
+  <button id="button1">'点击按钮 1'</button>
+  <button id="button2">'点击按钮 2'</button>
+  <button id="button3">'点击按钮 3'</button>
+  <script>
+    const button1 = document.getElementById('button1');
+    const button2 = document.getElementById('button2');
+    const button3 = document.getElementById('button3');
+
+    const setCommand = function (button, command) {
+      button.onclick = function () {
+        command.execute();
+      }
+    };
+
+    const MenuBar = {
+      refresh: () => console.log('刷新菜单目录')
+    };
+    const SubMenu = {
+      add: () => console.log('增加子菜单'),
+      del: () => console.log('删除子菜单')
+    };
+
+    const RefreshMenuBarCommand = function (receiver) {
+      this.receiver = receiver;
+    };
+    RefreshMenuBarCommand.prototype.execute = function () {
+      this.receiver.refresh();
+    };
+    const AddSubMenuCommand = function (receiver) {
+      this.receiver = receiver;
+    };
+
+    AddSubMenuCommand.prototype.execute = function () {
+      this.receiver.add();
+    };
+    const DelSubMenuCommand = function (receiver) {
+      this.receiver = receiver;
+    };
+    DelSubMenuCommand.prototype.execute = function () {
+      //console.log('删除子菜单');
+      this.receiver.del();
+    };
+
+    var refreshMenuBarCommand = new RefreshMenuBarCommand(MenuBar);
+    var addSubMenuCommand = new AddSubMenuCommand(SubMenu);
+    var delSubMenuCommand = new DelSubMenuCommand(SubMenu);
+
+    setCommand(button1, refreshMenuBarCommand);
+    setCommand(button2, addSubMenuCommand);
+    setCommand(button3, delSubMenuCommand);
+
+  </script>
+</body>
+
+</html>

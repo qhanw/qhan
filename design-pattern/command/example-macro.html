@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>命令模式-宏命令</title>
+</head>
+
+<body>
+
+  <script>
+    const closeDoorCommand = {
+      execute: function () {
+        console.log('关门');
+      }
+    };
+    const openPcCommand = {
+      execute: function () {
+        console.log('开电脑');
+      }
+    };
+    const openQQCommand = {
+      execute: function () {
+        console.log('登录QQ');
+      }
+    };
+
+    const MacroCommand = function () {
+      return {
+        commandsList: [],
+        add: function (command) {
+          this.commandsList.push(command);
+        },
+        execute: function () {
+          for (let i = 0, command; command = this.commandsList[i++];) {
+            command.execute();
+          }
+        }
+      }
+    };
+
+    const macroCommand = MacroCommand();
+    macroCommand.add(closeDoorCommand);
+    macroCommand.add(openPcCommand);
+    macroCommand.add(openQQCommand);
+
+    macroCommand.execute();
+
+  </script>
+</body>
+
+</html>
