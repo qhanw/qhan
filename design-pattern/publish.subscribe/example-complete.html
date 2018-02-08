@@ -15,7 +15,7 @@
   const namespace1 = Event.create('namespace1');
   namespace1.listen('click', a => console.log(a));
   namespace1.trigger('click', 2);
-  console.log(namespace1)
+  console.log(namespace1);
 
   Event.create('namespace2').listen('click', a => console.log(a));
   Event.create('namespace2').trigger('click', 3);
