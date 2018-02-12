@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>模板方法模式</title>
+</head>
+
+<body>
+  <script>
+    const Beverage = function () {};
+    Beverage.prototype.boilWater = () => console.log('把水煮沸');
+    Beverage.prototype.brew = () => {
+      throw new Error('子类必须重写brew方法');
+    };
+    Beverage.prototype.poUrInCup = () => {
+      throw new Error('子类必须重写poUrInCup方法');
+    };
+    Beverage.prototype.addCondiments = () => {
+      throw new Error('子类必须重写addCondiments 方法');
+    };
+    Beverage.prototype.customerWantsCondiments = () => true; // 默认需要调料
+    Beverage.prototype.init = function () {
+      this.boilWater();
+      this.brew();
+      this.poUrInCup();
+      if (this.customerWantsCondiments()) { // 如果挂钩返回true，则需要调料
+        this.addCondiments();
+      }
+
+    }
+
+    // Coffee
+    const Coffee = function () {};
+    Coffee.prototype = new Beverage();
+    Coffee.prototype.brew = () => console.log('用沸水冲泡咖啡');
+    Coffee.prototype.poUrInCup = () => console.log('把咖啡倒进杯子');
+    Coffee.prototype.addCondiments = () => console.log('加糖和牛奶');
+
+    const coffee = new Coffee();
+    coffee.init();
+
+    console.log('------------------------------------------------------');
+
+    //Tea
+    const Tea = function () {};
+    Tea.prototype = new Beverage();
+    Tea.prototype.brew = () => console.log('用沸水浸泡茶叶');
+    Tea.prototype.poUrInCup = () => console.log('把茶倒进杯子');
+    Tea.prototype.addCondiments = () => console.log('加柠檬');
+
+    const tea = new Tea();
+    tea.init();
+
+
+    console.log('Hook -------------------------------------------------');
+
+    const CoffeeWithHook = function () {};
+    CoffeeWithHook.prototype = new Beverage();
+    CoffeeWithHook.prototype.brew = () => console.log('用沸水冲泡咖啡');
+    CoffeeWithHook.prototype.poUrInCup = () => console.log('把咖啡倒进杯子');
+    CoffeeWithHook.prototype.addCondiments = () => console.log('加糖和牛奶');
+    CoffeeWithHook.prototype.customerWantsCondiments = () => window.confirm('请问需要调料吗？');
+    const coffeeWithHook = new CoffeeWithHook();
+    coffeeWithHook.init();
+
+  </script>
+</body>
+
+</html>
