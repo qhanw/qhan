@@ -126,12 +126,13 @@
       }, 1000);
     });
 
-    const  fn3 = new Chain(function(){
+    const fn3 = new Chain(function () {
       console.log(3);
     });
 
     fn1.setNextSuccessor(fn2).setNextSuccessor(fn3);
     fn1.passRequest();
+
   </script>
 </body>
 
