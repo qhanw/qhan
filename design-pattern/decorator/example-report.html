@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>装饰器模式-数据统计上报</title>
+</head>
+
+<body>
+  <button id="button" tag="login">点击打开登录浮层</button>
+  <script>
+    Function.prototype.after = function (afterFn) {
+      const _self = this;
+      return function () {
+        const ret = _self.apply(this, arguments);
+        afterFn.apply(this, arguments);
+        return ret;
+      }
+    };
+
+    let showLogin = function () {
+      console.log('打开登录浮层');
+    };
+
+    const log = function () {
+      console.log(`上报标签为：${this.getAttribute('tag')}`);
+      // (new Image).src = 'http://xxx.com/report?tag='+tag; //真正的上报代码
+    };
+
+    showLogin = showLogin.after(log);
+    document.getElementById('button').onclick = showLogin;
+
+  </script>
+</body>
+
+</html>
