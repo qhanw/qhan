@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>状态模式-电灯程序</title>
+</head>
+
+<body>
+  <script>
+    // const Light = function () {
+    //   this.state = 'off';
+    //   this.button = null;
+    // };
+
+    // Light.prototype.init = function () {
+    //   const button = document.createElement('button'),
+    //     self = this;
+    //   button.innerHTML = '开关';
+    //   this.button = document.body.appendChild(button);
+    //   this.button.onclick = function () {
+    //     self.buttonWasPressed();
+    //   };
+    // };
+
+    // Light.prototype.buttonWasPressed = function () {
+    //   if (this.state === 'off') {
+    //     console.log('开灯');
+    //     this.state = 'on';
+    //   } else if (this.state === 'on') {
+    //     console.log('关灯');
+    //     this.state = 'off';
+    //   }
+    // };
+
+    // const light = new Light();
+    // light.init();
+
+    // OffLightState:
+
+    const OffLightState = function (light) {
+      this.light = light;
+    };
+
+    OffLightState.prototype.buttonWasPressed = function () {
+      console.log('弱光');
+      this.light.setState(this.light.weakLightState)
+    };
+
+    // WeakLightState
+    const WeakLightState = function (light) {
+      this.light = light;
+    };
+    WeakLightState.prototype.buttonWasPressed = function () {
+      console.log('强光');
+      this.light.setState(this.light.strongLightState);
+    };
+
+    // StrongLightState
+    const StrongLightState = function (light) {
+      this.light = light;
+    };
+    StrongLightState.prototype.buttonWasPressed = function () {
+      console.log('关灯');
+      this.light.setState(this.light.offLightState);
+    };
+
+    const Light = function () {
+      this.offLightState = new OffLightState(this);
+      this.weakLightState = new WeakLightState(this);
+      this.strongLightState = new StrongLightState(this);
+      this.button = null;
+    }
+
+    Light.prototype.init = function () {
+      const button = document.createElement('button'),
+        self = this;
+      this.button = document.body.appendChild(button);
+      this.button.innerHTML = '开关';
+      this.currState = this.offLightState;
+      this.button.onclick = function () {
+        self.currState.buttonWasPressed();
+      }
+    };
+
+    Light.prototype.setState = function (newState) {
+      this.currState = newState;
+    };
+
+    const light = new Light();
+    light.init();
+
+  </script>
+</body>
+
+</html>
