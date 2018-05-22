@@ -1,0 +1,55 @@
+$xx: #fd6c6c;
+.header {
+  background: #23a5c3; //rebeccapurple;
+  margin-bottom: 1.45rem;
+}
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1.45rem 1.0875rem;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  margin: 0 15px 0 0;
+  > a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+.sakura {
+  margin-right: 8px;
+  animation: sakuraRotate infinite 3s linear;
+}
+.nav {
+  list-style: none;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  > li {
+    display: inline;
+    > a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.2s;
+      &:hover {
+        color: #f0ff7d;
+      }
+    }
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+}
+
+@keyframes sakuraRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
