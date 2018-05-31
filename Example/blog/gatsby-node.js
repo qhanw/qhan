@@ -28,9 +28,25 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
+              fields {
+                slug
+              }
+            }
+            next {
+              frontmatter {
+                title
+              }
+              fields {
+                slug
+              }
+            }
+            prev: previous {
+              frontmatter {
+                title
+              }
               fields {
                 slug
               }
@@ -39,13 +55,15 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
       }
     `).then(result => {
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      result.data.allMarkdownRemark.edges.forEach(({ node, next, prev }) => {
         createPage({
           path: node.fields.slug,
           component: path.resolve(`./src/templates/post.js`),
           context: {
             // Data passed to context is available in page queries as GraphQL variables.
-            slug: node.fields.slug
+            slug: node.fields.slug,
+            next: next, // See NOTE
+            prev: prev
           }
         });
       });
