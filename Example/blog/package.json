@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
@@ -14,9 +15,12 @@
     "gatsby-source-filesystem": "^1.5.35",
     "gatsby-transformer-remark": "^1.7.41",
     "prismjs": "^1.14.0",
+    "purecss": "^1.0.0",
+    "ramda": "^0.25.0",
     "react-helmet": "^5.2.0",
     "react-icon-base": "^2.1.2",
-    "typography-theme-bootstrap": "^0.16.7"
+    "typography-theme-bootstrap": "^0.16.7",
+    "typography-theme-github": "^0.15.10"
   },
   "keywords": [
     "gatsby"
