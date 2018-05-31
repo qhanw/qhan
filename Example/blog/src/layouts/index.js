@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import Header from "../components/Header";
+import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
 import "purecss/build/pure.css";
 import "purecss/build/grids-responsive.css";
@@ -19,7 +19,10 @@ const Layout = ({ children, data }) => (
     />
     <SideBar siteMetadata={data.site.siteMetadata} />
     {/* <Header siteMetadata={data.site.siteMetadata} /> */}
-    <div className="content pure-u-1 pure-u-md-3-4">{children()}</div>
+    <div className="content pure-u-1 pure-u-md-3-4">
+      {children()}
+      <Footer />
+    </div>
   </div>
 );
 
