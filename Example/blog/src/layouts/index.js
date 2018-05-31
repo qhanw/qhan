@@ -2,12 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import Header from "../components/Header";
+import SideBar from "../components/SideBar";
 import "purecss/build/pure.css";
+import "purecss/build/grids-responsive.css";
 import "./index.scss";
 import "./common.scss";
 
 const Layout = ({ children, data }) => (
-  <div>
+  <div id="layout" className="pure-g">
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
@@ -15,17 +17,9 @@ const Layout = ({ children, data }) => (
         { name: "keywords", content: "sample, something" }
       ]}
     />
-    <Header siteMetadata={data.site.siteMetadata} />
-    <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 960,
-        padding: "0px 1.0875rem 1.45rem",
-        paddingTop: 0
-      }}
-    >
-      {children()}
-    </div>
+    <SideBar siteMetadata={data.site.siteMetadata} />
+    {/* <Header siteMetadata={data.site.siteMetadata} /> */}
+    <div className="content pure-u-1 pure-u-md-3-4">{children()}</div>
   </div>
 );
 
