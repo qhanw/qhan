@@ -18,9 +18,9 @@ const Footer = ({ siteMetadata }) => (
           </a>
         </li>
         <li className="pure-menu-item">
-          <Link className="pure-menu-link" to="http://github.com/evkylin">
+          <a className="pure-menu-link" href="http://github.com/evkylin">
             Github
-          </Link>
+          </a>
         </li>
       </ul>
     </div>
