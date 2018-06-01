@@ -1,4 +1,4 @@
-:global{
+:global {
   .gatsby-highlight-code-line {
     background-color: #feb;
     display: block;
@@ -13,7 +13,8 @@
   * and overflow that we removed from <pre>.
   */
   .gatsby-highlight {
-    background-color: #f7f7f7;
+    //background-color: #f7f7f7;
+    background-color: #e9f4fd;
     //border-radius: 0.3em;
     margin: 0.5em 0;
     padding: 1em;
@@ -35,14 +36,26 @@
     min-width: 100%; /* 2 */
   }
 
+  :not(pre) > code[class*="language-"] {
+    border-radius: 2px;
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: #e9f4fd;
+  }
+
+  .article-header {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+  }
 }
 
 .post-nav {
   display: flex;
-  > a{
+  > a {
     &:first-child,
-    &:last-child{
-      flex: 0 0 50%
+    &:last-child {
+      flex: 0 0 50%;
     }
   }
 }

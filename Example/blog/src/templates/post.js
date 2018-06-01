@@ -20,8 +20,11 @@ export default props => {
   const { next, prev } = getContext(props); // Not to be confused with react context...
   return (
     <div>
-      <h1>{post.frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <header className="article-header">
+        <h1>{post.frontmatter.title}</h1>
+      </header>
+
+      <div className="article-content" dangerouslySetInnerHTML={{ __html: post.html }} />
       <PostNav prev={prev} next={next} />
     </div>
   );
