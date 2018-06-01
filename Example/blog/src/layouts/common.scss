@@ -1,4 +1,3 @@
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -94,7 +93,7 @@ h3 {
   padding-bottom: 2em;
 }
 .post-title {
-  font-size: 2em;
+  font-size: 1.5em;
   color: #222;
   margin-bottom: 0.2em;
 }
@@ -104,7 +103,6 @@ h3 {
   margin-left: 1em;
 }
 .post-description {
-  font-family: Georgia, "Cambria", serif;
   color: #444;
   line-height: 1.8em;
 }
@@ -112,27 +110,51 @@ h3 {
   color: #999;
   font-size: 90%;
   margin: 0;
-}
 
-.post-category {
-  margin: 0 0.1em;
-  padding: 0.3em 1em;
-  color: #fff;
-  background: #999;
-  font-size: 80%;
-}
-  .post-category-design {
-      background: #5aba59;
+  .post-label {
+    display: inline-flex;
+    align-items: center;
+    color: #999;
+    padding: 0.3em 0;
+    font-size: 80%;
+    > svg {
+      margin-right: 5px;
+      // color: #b0c323;
+      font-size: 14px;
+    }
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  .post-time {
+    > svg {
+      color: #f1af38;
+    }
+  }
+
+  .post-category {
+    margin: 0 0.1em;
+    padding: 0.3em 1em;
+    color: #fff;
+    background: #999;
+
+    border-radius: 2px;
+  }
+
+  .post-category-css {
+    background: #5aba59;
   }
   .post-category-pure {
-      background: #4d85d1;
+    background: #4d85d1;
   }
   .post-category-yui {
-      background: #8156a7;
+    background: #8156a7;
   }
   .post-category-js {
-      background: #df2d4f;
+    background: #df2d4f;
   }
+}
 
 .post-images {
   margin: 1em 0;
@@ -143,86 +165,75 @@ h3 {
   color: #fff;
   text-shadow: 0 1px 1px #333;
 }
+.post-footer {
+  margin-top: 8px;
+}
 
 .footer {
   padding: 1em 0;
-}
-.footer a {
-  color: #ccc;
-  font-size: 80%;
-}
-.footer .pure-menu a:hover,
-.footer .pure-menu a:focus {
-  background: none;
+  text-align: center;
+
+  a {
+    color: #ccc;
+    font-size: 80%;
+  }
+
+  .pure-menu {
+    a:hover,
+    a:focus {
+      background: none;
+    }
+
+    ul {
+      margin-left: 0;
+    }
+  }
 }
 
 @media (min-width: 48em) {
   .content {
-      padding: 2em 3em 0;
-      margin-left: 25%;
+    padding: 2em 3em 0;
+    margin-left: 25%;
   }
 
   .header {
-      margin: 80% 2em 0;
-      text-align: right;
+    margin: 80% 2em 0;
+    text-align: right;
   }
 
   .sidebar {
-      position: fixed;
-      top: 0;
-      bottom: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
   }
 
   .footer {
-      text-align: center;
+    // text-align: center;
   }
 }
 
 // =============================
 
 a {
-  color: #23a5c3;
+  //color: #23a5c3;
+  //color: #00a9d0;
+  color: #006b84;
   text-decoration: none;
 }
 
-.article-box {
-  .article-header {
-    > h3 {
-      line-height: 1.6;
-      margin: 0;
-      > a {
-        color: #23a5c3;
-        text-decoration: none;
-      }
-    }
-  }
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #eee;
+}
 
-  .article-meta {
-    color: #999;
-    font-style: italic;
-    .label {
-      display: inline-flex;
-      align-items: center;
-      > svg {
-        margin-right: 5px;
-        color: #b0c323;
-      }
-      &:not(:last-child) {
-        margin-right: 10px;
-      }
-    }
-    a {
-      font-style: normal;
-      color: #999;
-      text-decoration: none;
-      &:hover {
-        color: #23a5c3;
-      }
-    }
-    .time {
-    }
-  }
-  &:not(:last-child) {
-    margin-bottom: 2rem;
-  }
+/*定义滚动条轨道 */
+::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+
+/*定义滑块 */
+::-webkit-scrollbar-thumb {
+  background-color: #ddd;
 }
