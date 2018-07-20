@@ -1,28 +1,28 @@
 ---
 title: 正则表达式
 date: 2015-05-05 10:50:58
-tags: 
-- 正则 
+tags:
+- 正则
 - RegExp
 category: Javascript
 ---
 
-以下正则表达式均从各博客收集整理得来，目前还未作测试，请谨慎使用，若有错误麻烦各位及时反馈给我！  
+以下正则表达式均从各博客收集整理得来，目前还未作测试，请谨慎使用，若有错误麻烦各位及时反馈给我！
 联系方式：[whenhan@foxmail.com](mailto:whenhan@foxmail.com)
 
-# 正则工具
+### 正则工具
 
 * [regexbuddy](//www.regexbuddy.com/)
 * [WEB 前端助手（FeHelper）](//www.baidufe.com/fehelper) --- 一个非常不错的工具，包含了大部分前端开发所需要用到的小工具,可在线使用，也可安装[谷歌浏览器插件](//chrome.google.com/webstore/search/FEhelper?hl=zh-CN)
 
-# 参考资料
+### 参考资料
 
 * [ECAMScript2015 正则的扩展](//es6.ruanyifeng.com/#docs/regex)
 * [元字符速查表](//hemin.cn/jq/regexp.html)
 
 ---
 
-# 常用规则
+### 常用规则
 
 用户名/帐号(自定义)：
 

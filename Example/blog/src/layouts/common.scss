@@ -110,6 +110,7 @@ h3 {
   color: #999;
   font-size: 90%;
   margin: 0;
+  line-height: 1;
 
   .post-label {
     display: inline-flex;
@@ -135,7 +136,7 @@ h3 {
 
   .post-category {
     margin: 0 0.1em;
-    padding: 0.3em 1em;
+    padding: 0.5em 1em;
     color: #fff;
     background: #999;
 
@@ -153,6 +154,9 @@ h3 {
   }
   .post-category-js {
     background: #df2d4f;
+  }
+  .post-category-jsx {
+    background: #61dafb;
   }
 }
 
@@ -236,4 +240,134 @@ a {
 /*定义滑块 */
 ::-webkit-scrollbar-thumb {
   background-color: #ddd;
+}
+
+// About
+.about {
+}
+.series {
+  position: relative;
+  list-style: none;
+  margin-left: 240px;
+  padding-left: 30px;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    overflow: hidden;
+    background-color: #00bec6;
+    left: 0;
+    top: 0;
+  }
+
+  > li {
+    position: relative;
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
+    &:last-child {
+      &::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 2px;
+        background: #fff;
+        position: absolute;
+        left: -30px;
+        bottom: 0;
+      }
+    }
+    .icon-square {
+      position: absolute;
+      left: -41px;
+    }
+
+    > time {
+      position: absolute;
+      color: #999;
+      left: -270px;
+      display: inline-block;
+      width: 200px;
+      text-align: right;
+    }
+
+    &:hover {
+      .icon-square {
+        &::after {
+          background-color: #dcb900;
+        }
+        &::before {
+          border-color: #dcb900;
+        }
+      }
+    }
+  }
+}
+
+.icon-square {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  &::before,
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+
+    transform: rotateZ(45deg);
+    border-radius: 2px;
+  }
+
+  &::before {
+    width: inherit;
+    height: inherit;
+    border: 2px solid #00bec6;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+  }
+  &::after {
+    width: 10px;
+    height: 10px;
+    background-color: #00bec6;
+    left: 7px;
+    top: 7px;
+  }
+}
+
+.series-project {
+  .icon-square {
+    transform: scale(0.5);
+  }
+
+  > time {
+    font-size: 14px;
+    font-style: italic;
+    left: -260px !important;
+  }
+}
+.series-content {
+  max-width: 60%;
+  .title {
+    color: #999;
+    font-size: 80%;
+  }
+  .duty {
+    font-size: 85%;
+  }
+
+  > h4 {
+    font-weight: normal;
+  }
+
+  .post-meta {
+    margin: 5px 0;
+
+    .post-label {
+      color: #00bec6;
+    }
+  }
 }

@@ -9,7 +9,8 @@ const filterCategory = name => {
   const types = {
     css: ["css", "css3", "scss", "less"],
     js: ["javascript", "ecmaScript", "js", "jsx", "ts", "typescript", "node"],
-    md: ["md", "markdown"]
+    md: ["md", "markdown"],
+    jsx: ['jsx', 'tsx', 'react']
   };
 
   for (let [key, value] of Object.entries(types)) {
