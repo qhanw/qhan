@@ -26,6 +26,7 @@
     "react-helmet": "^5.2.0",
     "react-icon-base": "^2.1.2",
     "react-typography": "^0.16.13",
+    "scrollreveal": "^4.0.4",
     "typography": "^0.16.17",
     "typography-theme-bootstrap": "^0.16.7",
     "typography-theme-github": "^0.15.10"

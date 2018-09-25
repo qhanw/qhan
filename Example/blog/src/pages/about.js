@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
 import IconTag from "../components/Icons/tag";
 //import Chart from "chart.js";
@@ -60,9 +61,28 @@ class About extends React.PureComponent {
     //     }
     //   }
     // });
+    ScrollReveal().reveal(".series>li>.series-content", {
+      delay: 500,
+      useDelay: "onload",
+      reset: true,
+      origin: 'right',
+      distance: '120px'
+    });
+    ScrollReveal().reveal(".series>li>time", {
+      delay: 500,
+      useDelay: "onload",
+      reset: true,
+      origin: 'left',
+      distance: '120px'
+    });
+    // ScrollReveal().reveal(".series>li:first-child", {
+    //   delay: 0,
+    //   interval: 80
+    // });
   }
   componentWillUnmount() {
     //this.c.destroy();
+    ScrollReveal().destroy();
   }
   render() {
     return (

@@ -87,8 +87,8 @@ h3 {
 
 .content {
   padding: 2em 1em 0;
+  overflow: hidden;
 }
-
 .post {
   padding-bottom: 2em;
 }
@@ -286,23 +286,24 @@ a {
 
     > time {
       position: absolute;
-      color: #999;
-      left: -270px;
+
+      color: #00bec6;
+      left: -265px;
       display: inline-block;
       width: 200px;
       text-align: right;
     }
 
-    &:hover {
-      .icon-square {
-        &::after {
-          background-color: #dcb900;
-        }
-        &::before {
-          border-color: #dcb900;
-        }
-      }
-    }
+    // &:hover {
+    //   .icon-square {
+    //     &::after {
+    //       background-color: #dcb900;
+    //     }
+    //     &::before {
+    //       border-color: #dcb900;
+    //     }
+    //   }
+    // }
   }
 }
 
@@ -346,7 +347,9 @@ a {
   > time {
     font-size: 14px;
     font-style: italic;
-    left: -260px !important;
+    left: -255px !important;
+    padding-right: 5px;
+    color: #999 !important;
   }
 }
 .series-content {
