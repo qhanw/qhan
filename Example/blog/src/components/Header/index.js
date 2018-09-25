@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "gatsby-link";
-import logo from "../../static/logo.svg";
 import IconSakura from "../Icons/sakura";
 import styles from "./styles.module.scss";
 

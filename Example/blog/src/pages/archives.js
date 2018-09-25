@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "gatsby-link";
+import { StaticQuery, graphql } from "gatsby";
+import Layout from "../components/Layout";
 
 const ArchivesPage = ({ data }) => {
-  console.log(data)
   const {
     allMarkdownRemark: { edges }
   } = data;
@@ -23,7 +24,7 @@ const ArchivesPage = ({ data }) => {
   });
 
   return (
-    <div>
+    <Layout>
       {nextData.map(({ year, edges }) => (
         <div key={year}>
           <h2>{year}</h2>
@@ -37,7 +38,7 @@ const ArchivesPage = ({ data }) => {
           </ul>
         </div>
       ))}
-    </div>
+    </Layout>
   );
 };
 

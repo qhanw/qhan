@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "gatsby-link";
-import logo from "../../static/logo.svg";
-import IconSakura from "../Icons/sakura";
 
 const SideBar = ({ siteMetadata }) => (
   <div className="sidebar pure-u-1 pure-u-md-1-4">

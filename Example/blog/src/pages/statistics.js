@@ -1,10 +1,9 @@
 import React from "react";
-import Link from "gatsby-link";
+import Layout from "../components/Layout";
 
 const SecondPage = ({ data }) => {
-  console.log(data);
   return (
-    <div>
+    <Layout>
       <h1>My Site's Files</h1>
       <table>
         <thead>
@@ -26,7 +25,7 @@ const SecondPage = ({ data }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </Layout>
   );
 };
 

@@ -1,8 +1,5 @@
 import React from "react";
 import Link from "gatsby-link";
-import logo from "../../static/logo.svg";
-import IconSakura from "../Icons/sakura";
-
 const Footer = ({ siteMetadata }) => (
   <div className="footer">
     <div className="pure-menu pure-menu-horizontal">
