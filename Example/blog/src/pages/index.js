@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { graphql } from "gatsby";
 import Link from "gatsby-link";
 import ScrollReveal from "scrollreveal";
 import IconCalendar from "../components/Icons/calendar";
@@ -31,13 +32,15 @@ class IndexPage extends PureComponent {
       origin: "right",
       distance: "120px"
     });
-    // ScrollReveal().reveal(".post:first-child", {
-    //   delay: 0,
-    //   interval: 80
-    // });
+    ScrollReveal().reveal(".post", {
+      delay: 500,
+      useDelay: "onload",
+      reset: true,
+      origin: "right",
+      distance: "120px"
+    });
   }
   componentWillUnmount() {
-    //this.c.destroy();
     ScrollReveal().destroy();
   }
   render() {
@@ -73,7 +76,7 @@ class IndexPage extends PureComponent {
               <footer className="post-footer">
                 <p className="post-meta">
                   <a
-                    href="#"
+                    href="/"
                     className={`post-label post-category post-category-${filterCategory(
                       node.frontmatter.category
                     )}`}
@@ -82,7 +85,7 @@ class IndexPage extends PureComponent {
                     {node.frontmatter.category}
                   </a>
                   {node.frontmatter.tags.map(tag => (
-                    <a href="#" key={tag} className="post-label">
+                    <a href="/" key={tag} className="post-label">
                       <IconTag />
                       {tag}
                     </a>

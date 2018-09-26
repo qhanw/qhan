@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { graphql } from 'gatsby'
 import Link from "gatsby-link";
 import path from "ramda/src/path";
 import ScrollReveal from "scrollreveal";
@@ -45,7 +46,6 @@ export default class Post extends PureComponent {
     });
   }
   componentWillUnmount() {
-    //this.c.destroy();
     ScrollReveal().destroy();
   }
   render() {

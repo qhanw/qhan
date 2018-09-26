@@ -75,10 +75,7 @@ class About extends React.PureComponent {
       origin: 'left',
       distance: '120px'
     });
-    // ScrollReveal().reveal(".series>li:first-child", {
-    //   delay: 0,
-    //   interval: 80
-    // });
+
   }
   componentWillUnmount() {
     //this.c.destroy();

@@ -22,7 +22,6 @@ class SideBar extends PureComponent {
 
   }
   componentWillUnmount() {
-    //this.c.destroy();
     ScrollReveal().destroy();
   }
   render() {

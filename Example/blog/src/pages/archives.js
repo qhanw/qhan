@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from "react";
 import Link from "gatsby-link";
 import ScrollReveal from "scrollreveal";
-import { StaticQuery, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 
 class ArchivesPage extends PureComponent {
@@ -15,7 +15,6 @@ class ArchivesPage extends PureComponent {
     });
   }
   componentWillUnmount() {
-    //this.c.destroy();
     ScrollReveal().destroy();
   }
   render() {
