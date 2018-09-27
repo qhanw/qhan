@@ -1,0 +1,48 @@
+extends layout.pug
+block append scripts
+  script(type='text/javascript').
+      $(function(){
+          $('#submit').on('click', function(){
+              const dataString = $('#form').serialize();
+              const data = dataString.split('&').reduce((a, v) => (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a), {});
+              console.log(data)
+
+              $.ajax({
+                  url: '/sign/in',
+                  method: "POST",
+                  data,
+
+              }).done(function(res){
+                if(res.data.token) sessionStorage.token = res.data.token
+                  console.log(res)
+                  if(res.data.token){
+                      $.ajax({
+                          url: '/user/single/2',
+                          method: "GET",
+                          headers:{
+                              "Authorization": `Bearer ${res.data.token}`
+                          }
+                      }).done(function(res){
+                          console.log(res)
+                      })
+                  }
+              })
+              return false;
+          })
+      })
+block content
+  h1 Sign In
+  p.
+    Pug is a terse and simple templating language with a
+    strong focus on performance and powerful features.
+  form(id="form")
+    div.form-group
+      label(for="name") Email address
+      input(type="text", name="name" id="name", class="form-control", placeholder="Enter email", aria-describedby="emailHelp")
+      small#emailHelp(class="form-text text-muted") We'll never share your email with anyone else.
+    div.form-group
+      label(for="pwd") Password
+      input(type="password", name="pwd" id="pwd", class="form-control", placeholder="Password")
+    button(type="button", class="btn btn-primary", id="submit") Submit
+  <form>
+
