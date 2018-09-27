@@ -96,6 +96,11 @@ h3 {
   font-size: 1.5em;
   color: #222;
   margin-bottom: 0.2em;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
 }
 .post-avatar {
   border-radius: 50px;
@@ -245,11 +250,12 @@ a {
 // About
 .about {
 }
+
 .series {
   position: relative;
   list-style: none;
-  margin-left: 240px;
   padding-left: 30px;
+  margin-left: 18px;
   &::before {
     content: "";
     display: block;
@@ -285,12 +291,8 @@ a {
     }
 
     > time {
-      position: absolute;
-
       color: #00bec6;
-      left: -265px;
       display: inline-block;
-      width: 200px;
       text-align: right;
     }
 
@@ -304,6 +306,42 @@ a {
     //     }
     //   }
     // }
+  }
+}
+
+.series-content {
+  .title {
+    color: #999;
+    font-size: 80%;
+  }
+  .duty {
+    font-size: 85%;
+  }
+
+  > h4 {
+    font-weight: normal;
+  }
+
+  .post-meta {
+    margin: 5px 0;
+
+    .post-label {
+      color: #00bec6;
+    }
+  }
+}
+
+.series-project {
+  .icon-square {
+    transform: scale(0.5);
+  }
+
+  > time {
+    font-size: 14px;
+    font-style: italic;
+    left: -205px !important;
+    padding-right: 5px;
+    color: #999 !important;
   }
 }
 
@@ -338,39 +376,36 @@ a {
     top: 7px;
   }
 }
-
-.series-project {
-  .icon-square {
-    transform: scale(0.5);
-  }
-
-  > time {
-    font-size: 14px;
-    font-style: italic;
-    left: -255px !important;
-    padding-right: 5px;
-    color: #999 !important;
+@media only screen and (min-width: 992px) {
+  .series {
+    margin-left: 150px;
+    > li {
+      > time {
+        position: absolute;
+        left: -210px;
+        width: 150px;
+      }
+    }
   }
 }
-.series-content {
-  max-width: 60%;
-  .title {
-    color: #999;
-    font-size: 80%;
-  }
-  .duty {
-    font-size: 85%;
-  }
 
-  > h4 {
-    font-weight: normal;
+@media only screen and (min-width: 1200px) {
+  .series {
+    margin-left: 240px;
   }
+  .series-content {
+    max-width: 640px;
+  }
+}
 
-  .post-meta {
-    margin: 5px 0;
+// archive-content
 
-    .post-label {
-      color: #00bec6;
-    }
+.archive-content {
+  > li {
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
   }
 }

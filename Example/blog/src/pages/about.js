@@ -4,6 +4,13 @@ import Layout from "../components/Layout";
 import IconTag from "../components/Icons/tag";
 //import Chart from "chart.js";
 
+const PostLabel = ({ title }) => (
+  <span className="post-label">
+    <IconTag />
+    {title}
+  </span>
+);
+
 class About extends React.PureComponent {
   //c = null;
   componentDidMount() {
@@ -65,17 +72,16 @@ class About extends React.PureComponent {
       delay: 500,
       useDelay: "onload",
       reset: true,
-      origin: 'right',
-      distance: '120px'
+      origin: "right",
+      distance: "120px"
     });
     ScrollReveal().reveal(".series>li>time", {
       delay: 500,
       useDelay: "onload",
       reset: true,
-      origin: 'left',
-      distance: '120px'
+      origin: "left",
+      distance: "120px"
     });
-
   }
   componentWillUnmount() {
     //this.c.destroy();
@@ -95,22 +101,17 @@ class About extends React.PureComponent {
                 <i className="icon-square" />
                 <time>2018-04</time>
                 <div className="series-content">
-                  <div className="organization">
-                    加入成都柠檬时光科技有限公司
-                  </div>
+                  <div className="organization">成都柠檬时光科技有限公司</div>
                   <div className="title">WEB前端工程师</div>
+                  <div className="post-meta">
+                    <PostLabel title="React" />
+                    <PostLabel title="Mobx" />
+                    <PostLabel title="AntDesign" />
+                    <PostLabel title="ES6" />
+                    <PostLabel title="Webpack" />
+                  </div>
                   <div className="duty">
-                    有一美人兮，见之不忘。 一日不见兮，思之如狂。
-                    凤飞翱翔兮，四海求凰。 无奈佳人兮，不在东墙。
-                    将琴代语兮，聊写衷肠。 何日见许兮，慰我彷徨。
-                    愿言配德兮，携手相将。 不得於飞兮，使我沦亡。
-                    凤兮凤兮归故乡，遨游四海求其凰。
-                    时未遇兮无所将，何悟今兮升斯堂！
-                    有艳淑女在闺房，室迩人遐毒我肠。
-                    何缘交颈为鸳鸯，胡颉颃兮共翱翔！
-                    凰兮凰兮从我栖，得托孳尾永为妃。
-                    交情通意心和谐，中夜相从知者谁？
-                    双翼俱起翻高飞，无感我思使余悲。
+                    参与小萌钱包后台管理系统开发，该项目以React技术体系作为前端开发技术栈，其功能主要为小萌钱包APP提供数据内容管理以及其它内容管理平台权限管理。
                   </div>
                 </div>
               </li>
@@ -121,38 +122,12 @@ class About extends React.PureComponent {
                   <div className="organization">大诺科学</div>
                   <div className="title">前端负责人</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      React
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      antd-mobile
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      SCSS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2015
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2017
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Webpack
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      react-router
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      redux
-                    </span>
+                    <PostLabel title="React" />
+                    <PostLabel title="Redux" />
+                    <PostLabel title="AntdMobile" />
+                    <PostLabel title="ES6" />
+                    <PostLabel title="SCSS" />
+                    <PostLabel title="Webpack" />
                   </div>
                   <div className="duty">
                     该项目为用于对幼儿教师管理及幼儿成长管理，主要功能包括了资源管理（课程及素材管理）、社区社交互动、任务管理（任务树，大小任务创建维护）等功能。项目由react+redux搭建而成，并最终作为优课优信APP内嵌H5应用。
@@ -166,38 +141,12 @@ class About extends React.PureComponent {
                   <div className="organization">优信直播管理平台</div>
                   <div className="title">前端负责人</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      React
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      AntDesign
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      SCSS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2015
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2017
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Webpack
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      react-router
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      redux
-                    </span>
+                    <PostLabel title="React" />
+                    <PostLabel title="Redux" />
+                    <PostLabel title="AntDesign" />
+                    <PostLabel title="ES6" />
+                    <PostLabel title="SCSS" />
+                    <PostLabel title="Webpack" />
                   </div>
                   <div className="duty">
                     该平台采用creact-react-app生成并集成scss，AntDesign一系列私有配置。该项目主要用于维护管理平台视频直播与录播，涉及校园活动事件管理与相关视频关联，以及发布视频人员、直播视频人员及各个组织个人对视频的观看操作等信息统计与维护。
@@ -212,38 +161,12 @@ class About extends React.PureComponent {
                   <div className="organization">幼学空间</div>
                   <div className="title">前端负责人</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      React
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      AntDesign
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      SCSS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2015
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2017
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Webpack
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      react-router
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      redux
-                    </span>
+                    <PostLabel title="React" />
+                    <PostLabel title="Redux" />
+                    <PostLabel title="AntDesign" />
+                    <PostLabel title="SCSS" />
+                    <PostLabel title="ES6" />
+                    <PostLabel title="Webpack" />
                   </div>
                   <div className="duty">
                     幼学空间是一个集资源组织、专家、园长、后台管理及移动H5五个端所组成的中大型项目。主要用于管理幼儿教师资格认证、培训。涉及各类资源整合如：视频、图片、各类文本文件、测试试题题库、培训课程管理等。项目所用技术React、ES2015、antdesign、echarts、SASS、webpack。
@@ -261,30 +184,12 @@ class About extends React.PureComponent {
                   </div>
                   <div className="title">前端负责人</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      JQuery
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      RequireJS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      artTemplate
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      pug
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      scss
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      gulp
-                    </span>
+                    <PostLabel title="JQuery" />
+                    <PostLabel title="RequireJS" />
+                    <PostLabel title="ArtTemplate" />
+                    <PostLabel title="Pug" />
+                    <PostLabel title="SCSS" />
+                    <PostLabel title="Gulp" />
                   </div>
                   <div className="duty">
                     江西省青少年毒品预防教育平台官网站如其名称是一个对青少年毒品预防教育的平台，平台主要用于对毒品知识的宣传，其方式有文章、视频、及毒品知识测试。且包括了对个人测试的统计与评价。该官网实现方式也是采用前后端分离的方式完成，主要是利用RequireJS、artTemplate、SCSS、JQuery及其它插件完成。
@@ -301,38 +206,12 @@ class About extends React.PureComponent {
                   </div>
                   <div className="title">前端负责人</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      React
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      WeUI
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      SCSS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2015
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      ES2017
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Webpack
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      react-router
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      redux
-                    </span>
+                    <PostLabel title="React" />
+                    <PostLabel title="Redux" />
+                    <PostLabel title="WeUI" />
+                    <PostLabel title="SCSS" />
+                    <PostLabel title="ES6" />
+                    <PostLabel title="Webpack" />
                   </div>
                   <div className="duty">
                     项目利用Webpack2所构建，主要采有ES6标准进行开发，运用React+WeUI搭建项目，并采用react-router与redux分别作为路由与状态管理。该项目主要包括的功能有：
@@ -355,22 +234,10 @@ class About extends React.PureComponent {
                   <div className="organization">应用平台管理系统</div>
                   <div className="title">模块功能开发</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      Angular1x
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Jquery
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      UEditor
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Echarts
-                    </span>
+                    <PostLabel title="Angular1x" />
+                    <PostLabel title="JQuery" />
+                    <PostLabel title="UEditor" />
+                    <PostLabel title="Echarts" />
                   </div>
                   <div className="duty">
                     该平台主要用于对优课优信APP各类内嵌应用管理，应用主要使用对象为学校及其它合作商。该平台实现技术主要是AngularJs以及各类插件所构建，目前所包含功能已非常之多，但根据不同权限所开放的功能也各有不同。目前本人所主涉及功能主要有：
@@ -406,26 +273,11 @@ class About extends React.PureComponent {
                   <div className="organization">信息统计平台</div>
                   <div className="title">前端开发</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      AngularJS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      JQuery
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      RequireJS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      BootStrap
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Echarts
-                    </span>
+                    <PostLabel title="Angular1x" />
+                    <PostLabel title="JQuery" />
+                    <PostLabel title="RequireJS" />
+                    <PostLabel title="BootStrap" />
+                    <PostLabel title="Echarts" />
                   </div>
                   <div className="duty">
                     该平台为DSP广告平台的子系统，主要用于广告投放平台的订单、趋势、来源、页面、访客等信息分析，利用报表及图表的形式进行形象展示，利于平台使用者更轻松和便捷的掌握当前广告投放的成效，从而优化广告投放方式。
@@ -441,26 +293,11 @@ class About extends React.PureComponent {
                   </div>
                   <div className="title">前端开发</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      AngularJS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      JQuery
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      RequireJS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      BootStrap
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Echarts
-                    </span>
+                    <PostLabel title="Angular1x" />
+                    <PostLabel title="JQuery" />
+                    <PostLabel title="RequireJS" />
+                    <PostLabel title="BootStrap" />
+                    <PostLabel title="Echarts" />
                   </div>
                   <div className="duty">
                     平台采用AngularJs作为项目框架实现视图与数据分离，达成前端组件化。系统集成JQuery、Bootstrap与RequireJS，并使用HTML5与CSS3完成页面制作，利用Select2、zTree、Bootstrap-Switch、eCharts、ionRangeSlider等插件构建平台功能。平台系统主要用于广告投放管理包括了分时、资源、媒体、受众等报表以及创意、订单、用户等管理等子系统，容括了广告投放等系列功能，便于使用者全面掌握当前自己的所有情况。
@@ -474,26 +311,12 @@ class About extends React.PureComponent {
                   <div className="organization">DSP广告平台系统</div>
                   <div className="title">前端开发</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      JQuery
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      RequireJS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      BootStrap
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      Echarts
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      EasyUI
-                    </span>
+                    <PostLabel title="Angular1x" />
+                    <PostLabel title="JQuery" />
+                    <PostLabel title="RequireJS" />
+                    <PostLabel title="BootStrap" />
+                    <PostLabel title="Echarts" />
+                    <PostLabel title="EasyUI" />
                   </div>
                   <div className="duty">
                     规划设计DSP广告平台，使用Bootstrap框架与RequireJS构建平台系统，使用HTML5与CSS3完成页面制作，利用EasyUI、Select2、Bootstrap-Switch、Amcharts、echarts等插件构建平台功能，运用JQUERY编写平台交互功能与效果。平台系统主要用于广告投放管理包括了分时、资源、媒体、受众等报表以及创意、订单、用户等管理等子系统，容括了广告投放等系列功能，便于使用者全面掌握当前自己的所有情况。
@@ -523,22 +346,10 @@ class About extends React.PureComponent {
                   <div className="organization">IREAD网站开发</div>
                   <div className="title">前端设计</div>
                   <div className="post-meta">
-                    <span className="post-label">
-                      <IconTag />
-                      JQuery
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      BootStrap
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      PS
-                    </span>
-                    <span className="post-label">
-                      <IconTag />
-                      HTML5
-                    </span>
+                    <PostLabel title="JQuery" />
+                    <PostLabel title="BootStrap" />
+                    <PostLabel title="PS" />
+                    <PostLabel title="HTML5" />
                   </div>
                   <div className="duty">
                     使用PS进行网站页面设计，并运用HTML5、CSS3、JS根据设计稿进行切片布局，最大化还原页面效果。制定网站前端HTML、CSS规范，调试网站兼容性问题并更正，优化并维护网站性能及前端代码，运用JQUERY编写网站交互所用功能及效果。网站用于图书推广、与图书资源整合，实现书友摘抄记录，并作为公司旗下阅读APP的数据支持。

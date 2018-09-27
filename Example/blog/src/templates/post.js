@@ -30,7 +30,7 @@ const PostNav = ({ prev, next }) => (
 
 export default class Post extends PureComponent {
   componentDidMount() {
-    ScrollReveal().reveal(".article-header", {
+    ScrollReveal().reveal(".article-header>h1", {
       delay: 500,
       useDelay: "onload",
       reset: true,
