@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import remarkPrism from "remark-prism";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -21,11 +22,9 @@ export function getSortedPostsData() {
     const matterResult = matter(fileContents);
 
     // Combine the data with the id
-    return {
-      id,
-      ...matterResult.data,
-    };
+    return { id, ...matterResult.data };
   });
+
   // Sort posts by date
   return allPostsData.sort(({ date: a }: any, { date: b }: any) => {
     if (a < b) {
@@ -55,7 +54,9 @@ export async function getPostData(id: string) {
 
   // Use remark to convert markdown into HTML string
   const processedContent = await remark()
-    .use(html)
+    .use(remarkPrism, { transformInlineCode: true })
+    .use(html, { sanitize: false })
+
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 

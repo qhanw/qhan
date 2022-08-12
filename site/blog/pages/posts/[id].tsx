@@ -1,4 +1,7 @@
 import Head from "next/head";
+import "prismjs/themes/prism-tomorrow.css";
+
+// https://css-tricks.com/syntax-highlighting-prism-on-a-next-js-site/
 
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
