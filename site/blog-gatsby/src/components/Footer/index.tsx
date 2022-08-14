@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "gatsby-link";
-const Footer = ({ siteMetadata }) => (
+import { Link } from "gatsby";
+const Footer = ({ siteMetadata }: any) => (
   <div className="footer">
     <div className="pure-menu pure-menu-horizontal">
       <ul>
@@ -15,7 +15,7 @@ const Footer = ({ siteMetadata }) => (
           </a>
         </li>
         <li className="pure-menu-item">
-          <a className="pure-menu-link" href="http://github.com/evkylin">
+          <a className="pure-menu-link" href="http://github.com/qhanw">
             Github
           </a>
         </li>

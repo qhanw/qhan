@@ -18,7 +18,7 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Layout>
         <h1>My Site's Files</h1>
         <div style={{ overflow: "auto" }}>
@@ -32,8 +32,8 @@ export default () => (
               </tr>
             </thead>
             <tbody>
-              {data.allFile.edges.map(({ node }, index) => (
-                <tr key={index}>
+              {data.allFile.edges.map(({ node }: any, idx: number) => (
+                <tr key={idx}>
                   <td>{node.relativePath}</td>
                   <td>{node.prettySize}</td>
                   <td>{node.extension}</td>

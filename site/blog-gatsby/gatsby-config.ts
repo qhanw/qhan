@@ -1,41 +1,52 @@
-module.exports = {
+import type { GatsbyConfig } from "gatsby";
+
+const config: GatsbyConfig = {
   siteMetadata: {
-    title: "ELVIS",
-    subtitle: "麒丶沐之涵"
+    title: "Qhan W",
+    subtitle: "麒丶沐之涵",
+    siteUrl: `https://www.yourdomain.tld`,
   },
+  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
+  // If you use VSCode you can also use the GraphQL plugin
+  // Learn more at: https://gatsby.dev/graphql-typegen
+  graphqlTypegen: true,
   plugins: [
+    "gatsby-plugin-pnpm",
+    "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sitemap",
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-plugin-manifest",
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/static/kylin-icon.png', // This path is relative to the root of the site.
+        icon: "src/images/icon.png",
       },
     },
-    'gatsby-plugin-offline',
+    "gatsby-plugin-mdx",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-offline",
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`
-      }
-    },
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        precision: 8
-      }
+        pathToConfigModule: `src/utils/typography`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`,
-        path: `${__dirname}/src/`
-      }
+        path: `${__dirname}/src/sources`,
+        name: `sources`,
+      },
+      __key: "sources",
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+      __key: "images",
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -63,11 +74,13 @@ module.exports = {
               // setting this to '{ sh: "bash" }' will let you use
               // the language "sh" which will highlight using the
               // bash highlighter.
-              aliases: {}
-            }
-          }
-        ]
-      }
-    }
-  ]
+              aliases: {},
+            },
+          },
+        ],
+      },
+    },
+  ],
 };
+
+export default config;

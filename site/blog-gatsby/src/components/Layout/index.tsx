@@ -8,7 +8,7 @@ import "purecss/build/grids-responsive.css";
 import "./index.scss";
 import "./common.scss";
 
-export default ({ children }) => (
+export default ({ children }: any) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -20,13 +20,13 @@ export default ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <div id="layout" className="pure-g">
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
             { name: "description", content: "Sample" },
-            { name: "keywords", content: "sample, something" }
+            { name: "keywords", content: "sample, something" },
           ]}
         />
         <SideBar siteMetadata={data.site.siteMetadata} />
