@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: "Qhan W",
     subtitle: "麒丶沐之涵",
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `qhan.wang`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -13,7 +13,6 @@ const config: GatsbyConfig = {
   plugins: [
     "gatsby-plugin-pnpm",
     "gatsby-plugin-sass",
-    "gatsby-plugin-react-helmet",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     {

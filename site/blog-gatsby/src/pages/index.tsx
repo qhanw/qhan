@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import ScrollReveal from "scrollreveal";
 
+import Seo from "../components/Seo";
 import Layout from "../components/Layout";
 import IconTag from "../components/Icons/tag";
 import IconFolder from "../components/Icons/folder";
@@ -99,6 +100,8 @@ const Index = ({ data }: any) => {
 };
 
 export default Index;
+
+export const Head = () => <Seo title="主页" />;
 
 export const query = graphql`
   query IndexQuery {

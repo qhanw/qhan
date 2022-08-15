@@ -1,8 +1,22 @@
 import React, { useEffect } from "react";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import ScrollReveal from "scrollreveal";
 
-const SideBar = ({ siteMetadata }: any) => {
+const SideBar = () => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  );
+
   useEffect(() => {
     ScrollReveal().reveal(".brand-title, .brand-tagline", {
       delay: 0,

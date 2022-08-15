@@ -4,6 +4,8 @@ import Layout from "../components/Layout";
 import IconTag from "../components/Icons/tag";
 //import Chart from "chart.js";
 
+import Seo from "../components/Seo";
+
 const PostLabel = ({ title }: any) => (
   <span className="post-label">
     <IconTag />
@@ -391,3 +393,5 @@ export default () => {
     </Layout>
   );
 };
+
+export const Head = () => <Seo title="关于" />;

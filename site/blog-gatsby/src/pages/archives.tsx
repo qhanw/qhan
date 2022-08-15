@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 
 import ScrollReveal from "scrollreveal";
 import { graphql, Link } from "gatsby";
+import Seo from "../components/Seo";
 import Layout from "../components/Layout";
 
 export default ({
@@ -57,6 +58,8 @@ export default ({
     </Layout>
   );
 };
+
+export const Head = () => <Seo title="归档" />;
 
 export const query = graphql`
   query ArchivesQuery {
