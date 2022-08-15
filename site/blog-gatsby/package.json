@@ -27,7 +27,6 @@
     "gatsby-plugin-sass": "^5.20.0",
     "gatsby-plugin-sharp": "^4.20.0",
     "gatsby-plugin-sitemap": "^5.20.0",
-    "gatsby-plugin-typography": "^4.20.0",
     "gatsby-remark-prismjs": "^6.20.0",
     "gatsby-source-filesystem": "^4.20.0",
     "gatsby-transformer-remark": "^5.20.0",
@@ -37,12 +36,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icon-base": "^2.1.2",
-    "react-typography": "^0.16.20",
     "sass": "^1.54.4",
-    "scrollreveal": "^4.0.9",
-    "typography": "^0.16.21",
-    "typography-theme-bootstrap": "^0.16.19",
-    "typography-theme-github": "^0.16.19"
+    "scrollreveal": "^4.0.9"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",

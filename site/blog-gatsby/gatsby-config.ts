@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: "Qhan W",
     subtitle: "麒丶沐之涵",
-    siteUrl: `qhan.wang`,
+    siteUrl: `http://qhan.wang`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -25,12 +25,6 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-offline",
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
