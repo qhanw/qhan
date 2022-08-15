@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import ScrollReveal from "scrollreveal";
+import "./side-bar.scss";
 
 const SideBar = () => {
   const {
@@ -40,8 +41,8 @@ const SideBar = () => {
   }, []);
 
   return (
-    <div className="sidebar pure-u-1 pure-u-md-1-4">
-      <div className="header">
+    <div className="sidebar w-full md:w-1/4 md:h-screen md:float-left md:fixed">
+      <div className="text-center md:text-right p-12 md:mt-[80%]">
         <h1 className="brand-title">{siteMetadata.title}</h1>
         <h2 className="brand-tagline">
           Fear can hold you prisoner. Hope cna set you free.
