@@ -73,7 +73,7 @@ const Index = ({ data }: any) => {
               </p>
             </header>
             <div className="post-description">{node.excerpt}</div>
-            <footer className="post-footer">
+            <footer className="mt-2">
               <p className="post-meta">
                 <a
                   href="/"

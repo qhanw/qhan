@@ -6,9 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      marginTop: {
-        '80%': '80%',
-      },
       marginLeft: {
         '25%': '25%'
       }

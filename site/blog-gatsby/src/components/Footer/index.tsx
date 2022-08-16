@@ -1,27 +1,28 @@
 import React from "react";
 import { Link } from "gatsby";
-const Footer = ({ siteMetadata }: any) => (
-  <div className="footer">
-    <div className="pure-menu pure-menu-horizontal">
-      <ul>
-        <li className="pure-menu-item">
-          <Link className="pure-menu-link" to="/about">
-            About
-          </Link>
-        </li>
-        <li className="pure-menu-item">
-          <a href="http://twitter.com/yuilibrary/" className="pure-menu-link">
-            Twitter
-          </a>
-        </li>
-        <li className="pure-menu-item">
-          <a className="pure-menu-link" href="http://github.com/qhanw">
-            Github
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-);
 
-export default Footer;
+const classnames =
+  "inline-block text-gray-300 px-4 py-2 text-sm hover:text-red-500";
+export default ({ siteMetadata }: any) => (
+  <footer className="pt-4 text-center pb-12">
+    {[
+      { title: "About", type: "link", url: "/about" },
+      { title: "Github", url: "http://github.com/qhanw",target:'_blank' },
+      { title: "YuQue", url: "https://www.yuque.com/qhan", target:'_blank' },
+      { title: "JunJin", url: "https://juejin.cn/user/342703357833255", target:'_blank' },
+
+    
+      
+    ].map(({ type, url, title, ...rest }) =>
+      type === "link" ? (
+        <Link className={classnames} to={url}>
+          {title}
+        </Link>
+      ) : (
+        <a className={classnames} href={url}>
+          {title}
+        </a>
+      )
+    )}
+  </footer>
+);
