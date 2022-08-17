@@ -8,8 +8,11 @@ module.exports = {
     extend: {
       marginLeft: {
         '25%': '25%'
+      },
+      colors: {
+        '#006b84': '#006b84'
       }
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

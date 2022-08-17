@@ -17,7 +17,7 @@ export default ({ data }: any) => {
       origin: "top",
       distance: "120px",
     });
-    ScrollReveal().reveal(".article-content", {
+    ScrollReveal().reveal("#article-content", {
       delay: 500,
       useDelay: "onload",
       reset: true,
@@ -30,16 +30,15 @@ export default ({ data }: any) => {
     };
   }, []);
 
-  console.log('styles====',styles)
-
   return (
     <Layout>
       <header className="article-header">
         <h1>{post.frontmatter.title}</h1>
       </header>
 
-      <div
-        className="article-content"
+      <article
+        id="article-content"
+        className="prose prose-slate max-w-max"
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
       <div className={styles.postNav}>

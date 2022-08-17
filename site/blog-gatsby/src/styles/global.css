@@ -30,6 +30,6 @@
     @apply text-lg;
   } */
   a {
-    @apply transition ease-in-out duration-300 text-teal-700 hover:text-teal-700/75;
+    @apply transition ease-in-out duration-300 text-[#006b84] hover:text-[#006b84]/75;
   }
 }
