@@ -1,4 +1,3 @@
-
 /* LAYOUT CSS */
 .pure-img-responsive {
   max-width: 100%;
@@ -15,10 +14,6 @@
   letter-spacing: 0.1em;
 }
 
-.content {
-  padding: 2em 1em 0;
-  overflow: hidden;
-}
 .post {
   padding-bottom: 2em;
 }
@@ -106,30 +101,6 @@
 }
 
 // =============================
-
-a {
-  //color: #23a5c3;
-  //color: #00a9d0;
-  color: #006b84;
-  text-decoration: none;
-}
-
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-  background-color: #eee;
-}
-
-/*定义滚动条轨道 */
-::-webkit-scrollbar-track {
-  background-color: #eee;
-}
-
-/*定义滑块 */
-::-webkit-scrollbar-thumb {
-  background-color: #ddd;
-}
 
 // About
 .about {
@@ -279,17 +250,5 @@ a {
   }
   .series-content {
     max-width: 640px;
-  }
-}
-
-// archive-content
-
-.archive-content {
-  > li {
-    height: 24px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-all;
-    white-space: nowrap;
   }
 }

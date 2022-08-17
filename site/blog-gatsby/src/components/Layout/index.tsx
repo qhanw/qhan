@@ -11,7 +11,7 @@ export default ({ children }: any) => (
   <>
     <SideBar />
     {/* <Header siteMetadata={data.site.siteMetadata} /> */}
-    <div className="content w-full md:w-3/4 md:ml-[25%]">
+    <div className="pt-8 px-4 overflow-hidden w-full md:w-3/4 md:px-12 md:ml-[25%]">
       {children}
       <Footer />
     </div>

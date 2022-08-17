@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 
 const classnames =
-  "inline-block text-gray-300 px-4 py-2 text-sm hover:text-red-500";
+  "inline-block text-gray-300 px-4 py-2 text-sm";
 export default ({ siteMetadata }: any) => (
   <footer className="pt-4 text-center pb-12">
     {[
@@ -11,8 +11,8 @@ export default ({ siteMetadata }: any) => (
       { title: "YuQue", url: "https://www.yuque.com/qhan", target:'_blank' },
       { title: "JunJin", url: "https://juejin.cn/user/342703357833255", target:'_blank' },
 
-    
-      
+
+
     ].map(({ type, url, title, ...rest }) =>
       type === "link" ? (
         <Link className={classnames} to={url}>

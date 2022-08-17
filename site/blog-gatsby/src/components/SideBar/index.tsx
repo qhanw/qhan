@@ -57,7 +57,7 @@ const SideBar = () => {
             { title: "About", path: "/about" },
           ].map(({ title, path }) => (
             <Link
-              className="transition ease-in-out duration-300 ml-2 mb-6 leading-tight inline-block uppercase tracking-wider text-white px-4 py-2 border-2 rounded-sm border-slate-400 hover:border-sky-500 hover:text-sky-500"
+              className="ml-2 mb-6 leading-tight inline-block uppercase tracking-wider text-white px-4 py-2 border-2 rounded-sm border-slate-400 hover:border-sky-500 hover:text-sky-500"
               to={path}
             >
               {title}

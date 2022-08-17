@@ -11,7 +11,7 @@ export default ({
   },
 }: any) => {
   useEffect(() => {
-    ScrollReveal().reveal(".archive-caption, .archive-content>li", {
+    ScrollReveal().reveal("#archive-item", {
       delay: 500,
       useDelay: "onload",
       reset: true,
@@ -44,15 +44,15 @@ export default ({
     <Layout>
       {nextData.map(({ year, edges }: any) => (
         <Fragment key={year}>
-          <h2 className="archive-caption">{year}</h2>
-          <ul className="archive-content">
+          <dl id="archive-item" className="mb-8">
+            <dt className="text-3xl mb-4">{year}</dt>
             {edges.map(({ node }: any) => (
-              <li key={node.id}>
+              <dd key={node.id} className="ml-8 mb-4">
                 <span style={{ marginRight: 8 }}>{node.frontmatter.date}</span>
                 <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-              </li>
+              </dd>
             ))}
-          </ul>
+          </dl>
         </Fragment>
       ))}
     </Layout>
