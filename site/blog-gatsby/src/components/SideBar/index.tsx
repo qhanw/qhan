@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import ScrollReveal from "scrollreveal";
 import "./sidebar.scss";

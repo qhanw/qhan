@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import ScrollReveal from "scrollreveal";
 
 import Seo from "../components/Seo";
 import Layout from "../components/Layout";
-import IconFolder from "../components/Icons/folder";
 import IconCalendar from "../components/Icons/calendar";
 import PostLabel from "../components/PostLabel";
 import Category from "../components/Category";

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
 
 import ScrollReveal from "scrollreveal";
@@ -31,7 +31,10 @@ export default ({ data }: any) => {
 
   return (
     <Layout>
-      <header id="article-header" className="text-3xl pb-6 mb-6 border-b border-gray-200">
+      <header
+        id="article-header"
+        className="text-3xl pb-6 mb-6 border-b border-gray-200"
+      >
         {post.frontmatter.title}
       </header>
 

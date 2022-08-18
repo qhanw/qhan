@@ -1,4 +1,3 @@
-import React from "react";
 import IconBase from "react-icon-base";
 
 export default (props: any) => (

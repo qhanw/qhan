@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "gatsby";
 import IconSakura from "../Icons/sakura";
 import * as styles from "./styles.module.scss";

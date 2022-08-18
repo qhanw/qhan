@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 
 import ScrollReveal from "scrollreveal";
 import { graphql, Link } from "gatsby";
