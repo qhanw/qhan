@@ -3,14 +3,13 @@ import { graphql, Link } from "gatsby";
 
 import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
-import * as styles from "./post.module.scss";
 
 import "prismjs/themes/prism.css";
 
 export default ({ data }: any) => {
   const { previous: prev, next, site, markdownRemark: post } = data;
   useEffect(() => {
-    ScrollReveal().reveal(".article-header>h1", {
+    ScrollReveal().reveal("#article-header", {
       delay: 500,
       useDelay: "onload",
       reset: true,
@@ -32,8 +31,8 @@ export default ({ data }: any) => {
 
   return (
     <Layout>
-      <header className="article-header">
-        <h1>{post.frontmatter.title}</h1>
+      <header id="article-header" className="text-3xl pb-6 mb-6 border-b border-gray-200">
+        {post.frontmatter.title}
       </header>
 
       <article
@@ -41,7 +40,7 @@ export default ({ data }: any) => {
         className="prose prose-slate max-w-max"
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
-      <div className={styles.postNav}>
+      <div className="flex justify-between my-12">
         {prev && (
           <Link to={`/${prev.fields.slug}`}>
             上一篇：

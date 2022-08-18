@@ -4,9 +4,10 @@ import ScrollReveal from "scrollreveal";
 
 import Seo from "../components/Seo";
 import Layout from "../components/Layout";
-import IconTag from "../components/Icons/tag";
 import IconFolder from "../components/Icons/folder";
 import IconCalendar from "../components/Icons/calendar";
+import PostLabel from "../components/PostLabel";
+import Category from "../components/Category";
 
 const filterCategory = (name: string) => {
   const types = {
@@ -66,8 +67,8 @@ const Index = ({ data }: any) => {
                 <Link to={node.fields.slug}> {node.frontmatter.title}</Link>
               </h2>
               <p className="post-meta">
-                <time className="post-time post-label">
-                  <IconCalendar />
+                <time className="post-time inline-flex items-center my-2">
+                  <IconCalendar className="mr-1" />
                   {node.frontmatter.date}
                 </time>
               </p>
@@ -75,20 +76,13 @@ const Index = ({ data }: any) => {
             <div className="post-description">{node.excerpt}</div>
             <footer className="mt-2">
               <p className="post-meta">
-                <a
-                  href="/"
-                  className={`post-label post-category post-category-${filterCategory(
-                    node.frontmatter.category
-                  )}`}
-                >
-                  <IconFolder />
-                  {node.frontmatter.category}
-                </a>
+                <Category
+                  type={filterCategory(node.frontmatter.category)}
+                  title={node.frontmatter.category}
+                />
+
                 {node.frontmatter.tags.map((tag: string) => (
-                  <a href="/" key={tag} className="post-label">
-                    <IconTag />
-                    {tag}
-                  </a>
+                  <PostLabel title={tag} key={tag} />
                 ))}
               </p>
             </footer>

@@ -39,6 +39,8 @@
     "scrollreveal": "^4.0.9"
   },
   "devDependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
     "@tailwindcss/typography": "^0.5.4",
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.16",
@@ -46,6 +48,7 @@
     "@types/react-icon-base": "^2.1.4",
     "@types/scrollreveal": "^0.0.8",
     "autoprefixer": "^10.4.8",
+    "gatsby-plugin-emotion": "^7.21.0",
     "gatsby-plugin-postcss": "^5.20.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",

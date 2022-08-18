@@ -42,51 +42,10 @@
   margin: 0;
   line-height: 1;
 
-  .post-label {
-    display: inline-flex;
-    align-items: center;
-    color: #999;
-    padding: 0.3em 0;
-    font-size: 80%;
-    > svg {
-      margin-right: 5px;
-      // color: #b0c323;
-      font-size: 14px;
-    }
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
-  }
-
   .post-time {
     > svg {
       color: #f1af38;
     }
-  }
-
-  .post-category {
-    margin: 0 0.1em;
-    padding: 0.5em 1em;
-    color: #fff;
-    background: #999;
-
-    border-radius: 2px;
-  }
-
-  .post-category-css {
-    background: #5aba59;
-  }
-  .post-category-pure {
-    background: #4d85d1;
-  }
-  .post-category-yui {
-    background: #8156a7;
-  }
-  .post-category-js {
-    background: #df2d4f;
-  }
-  .post-category-jsx {
-    background: #61dafb;
   }
 }
 
@@ -103,8 +62,6 @@
 // =============================
 
 // About
-.about {
-}
 
 .series {
   position: relative;
@@ -179,10 +136,6 @@
 
   .post-meta {
     margin: 5px 0;
-
-    .post-label {
-      color: #00bec6;
-    }
   }
 }
 

@@ -1,0 +1,35 @@
+.post-category {
+  display: inline-flex;
+  align-items: center;
+  font-size: 80%;
+  > svg {
+    margin-right: 5px;
+    // color: #b0c323;
+    font-size: 14px;
+  }
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  margin: 0 0.1em;
+  padding: 0.5em 1em;
+  color: #fff;
+  background: #999;
+  border-radius: 2px;
+}
+
+.post-category-css {
+  background: #5aba59;
+}
+.post-category-pure {
+  background: #4d85d1;
+}
+.post-category-yui {
+  background: #8156a7;
+}
+.post-category-js {
+  background: #df2d4f;
+}
+.post-category-jsx {
+  background: #61dafb;
+}

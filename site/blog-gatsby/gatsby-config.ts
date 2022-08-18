@@ -12,6 +12,7 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-pnpm",
+    "gatsby-plugin-emotion",
     "gatsby-plugin-postcss",
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
