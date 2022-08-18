@@ -26,12 +26,12 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: cd site/blog && pnpm install && pnpm build
+        run: cd site/blog-gatsby && pnpm install && pnpm build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site/blog/out
+          publish_dir: ./site/blog-gatsby/public
           cname: blog.qhan.wang
