@@ -115,3 +115,22 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
     }
   `);
   };
+
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
+  stage,
+  loaders,
+  actions,
+}) => {
+  if (stage === "build-html" || stage === "develop-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /scrollreveal/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
+};
