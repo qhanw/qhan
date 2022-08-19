@@ -5,7 +5,7 @@ import PosLabel from "../components/PostLabel";
 //import Chart from "chart.js";
 
 import Seo from "../components/Seo";
-import data from "./data/about";
+import data from "../resource/about";
 
 const PostLabel = (props: { title: string }) => (
   <PosLabel {...props} color="#00bec6" />
