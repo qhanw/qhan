@@ -43,12 +43,12 @@ const SideBar = () => {
   return (
     <div
       id="sidebar"
-      className="bg-slate-700 text-white flex items-center w-full md:w-1/4 md:h-screen md:float-left md:fixed"
+      className="bg-slate-700 text-white flex items-center justify-center w-full md:w-1/4 md:h-screen md:float-left md:fixed"
     >
-      <div className="text-center md:text-right px-12">
+      <div className="text-center md:text-right p-12 pt-16 md:-mt-24">
         <h1 className="brand-title text-4xl">{siteMetadata.title}</h1>
         <h2 className="brand-tagline text-2xl">
-          Fear can hold you prisoner. Hope cna set you free.
+          Fear can hold you prisoner. Hope can set you free.
         </h2>
         <nav id="nav" className="mt-4">
           {[

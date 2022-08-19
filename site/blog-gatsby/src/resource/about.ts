@@ -137,7 +137,7 @@ const data: AboutData[] = [
     ],
   },
   {
-    type: "project",
+    type: "company",
     organization: "毕业于成功理工大学",
     position: "大专",
     date: "2012.07",

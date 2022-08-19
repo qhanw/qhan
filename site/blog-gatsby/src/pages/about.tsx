@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { css } from "@emotion/react";
 import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
 import PosLabel from "../components/PostLabel";
@@ -7,20 +8,22 @@ import PosLabel from "../components/PostLabel";
 import Seo from "../components/Seo";
 import data from "../resource/about";
 
+import { cssSeries, cssProject } from "../emotion/about";
+
 const PostLabel = (props: { title: string }) => (
   <PosLabel {...props} color="#00bec6" />
 );
 
 export default () => {
   useEffect(() => {
-    ScrollReveal().reveal(".series>li>.series-content", {
+    ScrollReveal().reveal("#series-content", {
       delay: 500,
       useDelay: "onload",
       reset: true,
       origin: "right",
       distance: "120px",
     });
-    ScrollReveal().reveal(".series>li>time", {
+    ScrollReveal().reveal("#series>li>time", {
       delay: 500,
       useDelay: "onload",
       reset: true,
@@ -38,17 +41,17 @@ export default () => {
         About Us
       </header>
 
-      <main className="article-content">
-        <ul className="series">
+      <main>
+        <ul id="series" css={cssSeries}>
           {data.map((c) => (
             <li
               key={c.date}
-              {...(c.type === "company" ? {} : { className: "series-project" })}
+              {...(c.type === "company" ? {} : { css: cssProject })}
             >
               <i className="icon-square" />
               <time>{c.date}</time>
-              <div className="series-content">
-                <div className="organization">
+              <div id="series-content" className="series-content">
+                <div className="text-xl">
                   {c.url ? (
                     <a href="http://www.jxjd627.com/index.html" target="_blank">
                       {c.organization}
@@ -57,16 +60,16 @@ export default () => {
                     c.organization
                   )}
                 </div>
-                <div className="title">{c.position}</div>
+                <div className="mt-1 text-sm text-gray-400">{c.position}</div>
                 {c.tags ? (
-                  <div className="post-meta">
+                  <div className="my-1">
                     {c.tags.map((t) => (
                       <PostLabel title={t} key={t} />
                     ))}
                   </div>
                 ) : null}
 
-                <div className="duty">
+                <div className="text-base text-gray-600">
                   {c.desc}
                   {c.duty ? (
                     <ul>
@@ -80,9 +83,6 @@ export default () => {
             </li>
           ))}
         </ul>
-        {/* <div id="chart">
-          <canvas id="canvas" />
-        </div> */}
       </main>
     </Layout>
   );
