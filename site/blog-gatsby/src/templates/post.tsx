@@ -4,7 +4,7 @@ import { graphql, Link } from "gatsby";
 import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
 
-import "prismjs/themes/prism.css";
+import "prism-themes/themes/prism-one-light.css";
 
 export default ({ data }: any) => {
   const { previous: prev, next, site, markdownRemark: post } = data;

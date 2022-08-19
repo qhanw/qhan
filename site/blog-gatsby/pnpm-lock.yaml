@@ -28,6 +28,7 @@ specifiers:
   gatsby-transformer-remark: ^5.20.0
   gatsby-transformer-sharp: ^4.20.0
   postcss: ^8.4.16
+  prism-themes: ^1.9.0
   prismjs: ^1.28.0
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -53,6 +54,7 @@ dependencies:
   gatsby-source-filesystem: 4.20.0_gatsby@4.20.0
   gatsby-transformer-remark: 5.20.0_gatsby@4.20.0
   gatsby-transformer-sharp: 4.20.0_si33cbqs2tr4ff6z335qn22vpm
+  prism-themes: 1.9.0
   prismjs: 1.28.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -10158,6 +10160,10 @@ packages:
     dependencies:
       lodash: 4.17.21
       renderkid: 2.0.7
+
+  /prism-themes/1.9.0:
+    resolution: {integrity: sha512-tX2AYsehKDw1EORwBps+WhBFKc2kxfoFpQAjxBndbZKr4fRmMkv47XN0BghC/K1qwodB1otbe4oF23vUTFDokw==}
+    dev: false
 
   /prismjs/1.28.0:
     resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
