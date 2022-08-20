@@ -1,13 +1,8 @@
 import React from "react";
-// import Header from "../Header";
 import Footer from "../Footer";
 import SideBar from "../SideBar";
-// import "purecss/build/pure.css";
-// import "purecss/build/grids-responsive.css";
 
-import "./common.scss";
-
-export default ({ children }: any) => (
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <>
     <SideBar />
     {/* <Header siteMetadata={data.site.siteMetadata} /> */}
@@ -17,3 +12,5 @@ export default ({ children }: any) => (
     </div>
   </>
 );
+
+export default Layout;

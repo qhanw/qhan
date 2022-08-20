@@ -37,7 +37,7 @@ export default () => {
   }, []);
   return (
     <Layout>
-      <header className="text-3xl pb-6 mb-6 border-b border-gray-200">
+      <header className="text-3xl pb-4 mb-8 border-b border-gray-200 text-black/80">
         About Us
       </header>
 
@@ -51,7 +51,7 @@ export default () => {
               <i className="icon-square" />
               <time>{c.date}</time>
               <div id="series-content" className="series-content">
-                <div className="text-xl">
+                <div className="text-xl text-black/80">
                   {c.url ? (
                     <a href="http://www.jxjd627.com/index.html" target="_blank">
                       {c.organization}

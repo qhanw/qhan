@@ -26,14 +26,14 @@ const filterCategory = (name: string) => {
 
 const Index = ({ data }: any) => {
   useEffect(() => {
-    ScrollReveal().reveal(".post", {
+    ScrollReveal().reveal(".posts>section", {
       delay: 500,
       useDelay: "onload",
       reset: true,
       origin: "right",
       distance: "120px",
     });
-    ScrollReveal().reveal(".post", {
+    ScrollReveal().reveal(".posts>section", {
       delay: 500,
       useDelay: "onload",
       reset: true,
@@ -48,33 +48,26 @@ const Index = ({ data }: any) => {
   return (
     <Layout>
       <div className="posts">
-        <h1 className="content-subhead">
+        <div className="uppercase py-1 mb-4 text-sm border-b border-gray-200 font-medium tracking-widest text-gray-400">
           Total {data.allMarkdownRemark.totalCount} Posts
-        </h1>
+        </div>
 
         {data.allMarkdownRemark.edges.map(({ node }: any) => (
-          <section className="post" key={node.id}>
+          <section className="mb-8" key={node.id}>
             <header className="post-header">
-              {/* <img
-            width="48"
-            height="48"
-            alt="Tilo Mitra&#x27;s avatar"
-            className="post-avatar"
-            src="img/common/tilo-avatar.png"
-           /> */}
-              <h2 className="post-title">
+              <h2 className="text-2xl overflow-hidden overflow-ellipsis break-all whitespace-nowrap">
                 <Link to={node.fields.slug}> {node.frontmatter.title}</Link>
               </h2>
-              <p className="post-meta">
+              <p className="text-gray-400 text-sm leading-none">
                 <time className="post-time inline-flex items-center my-2">
-                  <IconCalendar className="mr-1" />
+                  <IconCalendar className="mr-1" style={{ color: "#f1af38" }} />
                   {node.frontmatter.date}
                 </time>
               </p>
             </header>
-            <div className="post-description">{node.excerpt}</div>
+            <div className="text-gray-600 leading-7">{node.excerpt}</div>
             <footer className="mt-2">
-              <p className="post-meta">
+              <p className="text-gray-400">
                 <Category
                   type={filterCategory(node.frontmatter.category)}
                   title={node.frontmatter.category}
