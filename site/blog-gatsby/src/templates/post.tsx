@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 
 import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 
 import "prism-themes/themes/prism-one-light.css";
 
@@ -45,19 +46,28 @@ export default ({ data }: any) => {
       />
       <div className="flex justify-between my-12">
         {prev && (
-          <Link to={`/${prev.fields.slug}`}>
+          <Link to={prev.fields.slug}>
             上一篇：
             {prev.frontmatter.title}
           </Link>
         )}
         {next && (
-          <Link to={`/${next.fields.slug}`}>
+          <Link to={next.fields.slug}>
             下一篇：
             {next.frontmatter.title}
           </Link>
         )}
       </div>
     </Layout>
+  );
+};
+
+export const Head = ({ data: { markdownRemark: post } }: any) => {
+  return (
+    <Seo
+      title={post.frontmatter.title}
+      description={post.frontmatter.description || post.excerpt}
+    />
   );
 };
 

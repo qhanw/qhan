@@ -31,7 +31,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     `
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
+          sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
           nodes {
@@ -59,7 +59,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
+  if (posts?.length > 0) {
     posts.forEach((post: any, index: number) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
       const nextPostId =
