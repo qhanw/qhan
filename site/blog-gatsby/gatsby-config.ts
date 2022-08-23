@@ -20,7 +20,10 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        // name: "Qhan W",
+        // short_name: "Qhan",
+        // start_url: "/",
+        icon: "src/static/icon.png", // This path is relative to the root of the site.
       },
     },
     "gatsby-plugin-mdx",
