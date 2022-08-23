@@ -3,13 +3,14 @@ lockfileVersion: 5.4
 specifiers:
   '@emotion/react': ^11.10.0
   '@emotion/styled': ^11.10.0
+  '@headlessui/react': ^1.6.6
+  '@heroicons/react': ^1.0.6
   '@mdx-js/mdx': ^1.6.22
   '@mdx-js/react': ^1.6.22
   '@tailwindcss/typography': ^0.5.4
   '@types/node': ^17.0.45
   '@types/react': ^18.0.16
   '@types/react-dom': ^18.0.6
-  '@types/react-icon-base': ^2.1.4
   '@types/scrollreveal': ^0.0.8
   autoprefixer: ^10.4.8
   gatsby: ^4.20.0
@@ -32,13 +33,14 @@ specifiers:
   prismjs: ^1.28.0
   react: ^18.2.0
   react-dom: ^18.2.0
-  react-icon-base: ^2.1.2
   sass: ^1.54.4
   scrollreveal: ^4.0.9
   tailwindcss: ^3.1.8
   typescript: ^4.7.4
 
 dependencies:
+  '@headlessui/react': 1.6.6_biqbaboplfbrettd7655fr4n2y
+  '@heroicons/react': 1.0.6_react@18.2.0
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22_react@18.2.0
   gatsby: 4.20.0_3o4eqhxxwetjrnr45xkuibp32m
@@ -58,7 +60,6 @@ dependencies:
   prismjs: 1.28.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-icon-base: 2.1.2_react@18.2.0
   sass: 1.54.4
   scrollreveal: 4.0.9
 
@@ -69,7 +70,6 @@ devDependencies:
   '@types/node': 17.0.45
   '@types/react': 18.0.17
   '@types/react-dom': 18.0.6
-  '@types/react-icon-base': 2.1.4
   '@types/scrollreveal': 0.0.8
   autoprefixer: 10.4.8_postcss@8.4.16
   gatsby-plugin-emotion: 7.21.0_o24posugh7a7xykzhdzulbpdbi
@@ -1974,6 +1974,25 @@ packages:
     dependencies:
       '@hapi/hoek': 9.3.0
 
+  /@headlessui/react/1.6.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-MFJtmj9Xh/hhBMhLccGbBoSk+sk61BlP6sJe4uQcVMtXZhCgGqd2GyIQzzmsdPdTEWGSF434CBi8mnhR6um46Q==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@heroicons/react/1.0.6_react@18.2.0:
+    resolution: {integrity: sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /@humanwhocodes/config-array/0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
     engines: {node: '>=10.10.0'}
@@ -3185,12 +3204,6 @@ packages:
 
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
-    dependencies:
-      '@types/react': 18.0.17
-    dev: true
-
-  /@types/react-icon-base/2.1.4:
-    resolution: {integrity: sha512-aL6T93bw5hFvwkcLH12PrOFryMjRWFeMxt8MeKkb+kaFjohqIwmfdyTvloAS7QXDNzSHfmcpIiwLbTikcypBiw==}
     dependencies:
       '@types/react': 18.0.17
     dev: true
@@ -10389,15 +10402,6 @@ packages:
 
   /react-error-overlay/6.0.9:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
-
-  /react-icon-base/2.1.2_react@18.2.0:
-    resolution: {integrity: sha512-NRlRo0RPxWRMQT7osj8UCBSSXsGOxhF1pre84ildhuft5S2U382NOs7tg29osWSjbO90L2a3VTCqadA/LnAzHQ==}
-    peerDependencies:
-      prop-types: '*'
-      react: '*'
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}

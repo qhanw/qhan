@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import ScrollReveal from "scrollreveal";
+import { CalendarIcon } from "@heroicons/react/outline";
 
 import Seo from "../components/Seo";
 import Layout from "../components/Layout";
-import IconCalendar from "../components/Icons/calendar";
 import PostLabel from "../components/PostLabel";
 import Category from "../components/Category";
 
@@ -21,7 +21,7 @@ const filterCategory = (name: string) => {
       return key;
     }
   }
-  return "other";
+  return "jsx";
 };
 
 const Index = ({ data }: any) => {
@@ -60,7 +60,10 @@ const Index = ({ data }: any) => {
               </h2>
               <p className="text-gray-400 text-sm leading-none">
                 <time className="post-time inline-flex items-center my-2">
-                  <IconCalendar className="mr-1" style={{ color: "#f1af38" }} />
+                  <CalendarIcon
+                    className="mr-1 w-3.5 h-3.5"
+                    style={{ color: "#f1af38" }}
+                  />
                   {node.frontmatter.date}
                 </time>
               </p>
@@ -69,7 +72,7 @@ const Index = ({ data }: any) => {
             <footer className="mt-2">
               <p className="text-gray-400">
                 <Category
-                  type={filterCategory(node.frontmatter.category)}
+                  type={filterCategory(node.frontmatter.category) as any}
                   title={node.frontmatter.category}
                 />
 

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import IconFolder from "../Icons/folder";
+import { FolderIcon } from "@heroicons/react/outline";
 
 const colors = {
   css: "#5aba59",
@@ -21,23 +21,19 @@ export default ({
       display: inline-flex;
       align-items: center;
       font-size: 80%;
-      > svg {
-        margin-right: 5px;
-        // color: #b0c323;
-        font-size: 14px;
-      }
+
       &:not(:last-child) {
         margin-right: 10px;
       }
 
       margin: 0 0.1em;
-      padding: 0.5em 1em;
+      padding: 0.25em 0.8em;
       color: #fff;
       background: ${colors[type] || "#fff"};
       border-radius: 2px;
     `}
   >
-    <IconFolder />
+    <FolderIcon className="mr-1 w-4 h-4" />
     {title}
   </span>
 );

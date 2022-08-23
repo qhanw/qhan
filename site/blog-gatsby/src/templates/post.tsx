@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 
 import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
@@ -41,20 +42,20 @@ export default ({ data }: any) => {
 
       <article
         id="article-content"
-        className="prose prose-slate max-w-max"
+        className="prose prose-slate max-w-full"
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
       <div className="flex justify-between my-12">
         {prev && (
-          <Link to={prev.fields.slug}>
-            上一篇：
+          <Link to={prev.fields.slug} className="inline-flex items-center">
+            <ChevronLeftIcon className=" mr-2 h-5 w-5 group-hover:text-gray-500" />
             {prev.frontmatter.title}
           </Link>
         )}
         {next && (
-          <Link to={next.fields.slug}>
-            下一篇：
+          <Link to={next.fields.slug} className="inline-flex items-center">
             {next.frontmatter.title}
+            <ChevronRightIcon className=" ml-2 h-5 w-5 group-hover:text-gray-500" />
           </Link>
         )}
       </div>
