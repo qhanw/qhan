@@ -12,6 +12,9 @@ module.exports = {
       },
       colors: {
         '#006b84': '#006b84'
+      },
+      width: {
+        fill: 'fill-available'
       }
     },
   },
