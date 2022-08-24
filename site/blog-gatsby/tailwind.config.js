@@ -15,6 +15,10 @@ module.exports = {
       },
       width: {
         fill: 'fill-available'
+      },
+      paddingTop: {
+        '82px': '82px',
+        '120px': '120px'
       }
     },
   },

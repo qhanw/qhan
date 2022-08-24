@@ -1,75 +1,61 @@
-import { useEffect } from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import ScrollReveal from "scrollreveal";
+import { css } from "@emotion/react";
+import IconSakura from "../Icons/sakura";
+import IconJueJin from "../Icons/juejin";
+import IconGithub from "../Icons/github";
+import IconYuQue from "../Icons/yuque";
+import { Link } from "gatsby";
 
-const SideBar = () => {
-  const {
-    site: { siteMetadata },
-  } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `
-  );
+const sakura = css`
+  animation: sakuraRotate infinite 6s linear;
+  @keyframes sakuraRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+`;
 
-  useEffect(() => {
-    ScrollReveal().reveal("#brand-title, #brand-tagline", {
-      delay: 0,
-      origin: "top",
-      distance: "120px",
-      useDelay: "once",
-      container: "#sidebar",
-    });
+const social = [
+  { name: "GitHub", href: "http://github.com/qhanw", icon: IconGithub },
+  {
+    name: "JueJin",
+    href: "https://juejin.cn/user/342703357833255",
+    icon: IconJueJin,
+  },
+  { name: "YuQue", href: "https://www.yuque.com/qhan", icon: IconYuQue },
+];
 
-    ScrollReveal().reveal("#nav", {
-      delay: 0,
-      origin: "bottom",
-      distance: "120px",
-      useDelay: "once",
-      container: "#sidebar",
-    });
-
-    return () => {
-      ScrollReveal().destroy();
-    };
-  }, []);
-
+const SideBar = ({ siteMetadata }: any) => {
   return (
-    <div
-      id="sidebar"
-      className="bg-slate-700 text-white flex items-center justify-center w-full md:w-1/4 md:h-screen md:float-left md:fixed"
-    >
-      <div className="text-center md:text-right p-12 pt-16 md:-mt-24">
-        <h1 id="brand-title" className="text-4xl uppercase">
+    <div className="bg-slate-700 flex items-center justify-center w-full mt-[82px] md:mt-auto md:w-1/4 md:h-screen md:float-left md:fixed">
+      <div className="absolute top-6 left-4 inline-flex text-white/80 items-center">
+        <IconSakura css={css(sakura)} className="w-8 h-8" />
+        <span className="text-xl inline-block ml-3">
           {siteMetadata.title}
-        </h1>
+        </span>
+      </div>
+      <div className="text-center md:text-right p-12 pt-16 md:-mt-24">
         <h2
-          id="brand-tagline"
           className="text-2xl font-light"
           style={{ color: "rgb(176, 202, 219)" }}
         >
           Fear can hold you prisoner. Hope can set you free.
         </h2>
-        <nav id="nav" className="mt-4">
-          {[
-            { title: "Home", path: "/" },
-            { title: "Archives", path: "/archives" },
-            { title: "About", path: "/about" },
-          ].map(({ title, path }) => (
-            <Link
-              key={path}
-              className="ml-2 mb-6 leading-tight inline-block uppercase tracking-wider text-white px-4 py-2 border-2 rounded-sm border-slate-400 hover:border-sky-500 hover:text-sky-500"
-              to={path}
-            >
-              {title}
-            </Link>
-          ))}
-        </nav>
+      </div>
+      <div className="absolute bottom-4 left-4 inline-flex">
+        {social.map((c) => (
+          <Link
+            key={c.href}
+            className="border border-white border-solid rounded p-2 mr-2 opacity-50 hover:opacity-80"
+            to={c.href}
+            title={c.name}
+            target="_blank"
+          >
+            <c.icon className="w-4 h-4 text-white" />
+          </Link>
+        ))}
       </div>
     </div>
   );

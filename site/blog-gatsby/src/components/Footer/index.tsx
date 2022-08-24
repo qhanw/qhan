@@ -1,6 +1,5 @@
 import { Link } from "gatsby";
 
-const classnames = "inline-block text-gray-300 px-4 py-2 text-sm";
 export default ({ siteMetadata }: any) => (
   <footer className="pt-4 text-center pb-12">
     {[
@@ -12,7 +11,12 @@ export default ({ siteMetadata }: any) => (
         target: "_blank",
       },
     ].map(({ url, title, ...rest }) => (
-      <Link className={classnames} to={url} key={title}>
+      <Link
+        className="inline-block text-gray-300 px-4 py-2 text-sm"
+        to={url}
+        key={title}
+        {...rest}
+      >
         {title}
       </Link>
     ))}
