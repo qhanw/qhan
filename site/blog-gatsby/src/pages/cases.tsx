@@ -54,7 +54,7 @@ const Cases = ({ data }: any) => {
 
         {data.allMarkdownRemark.edges.map(({ node }: any) => (
           <section
-            className="mb-8 section rounded-lg overflow-hidden shadow-lg"
+            className="section rounded-lg overflow-hidden shadow-lg"
             key={node.id}
           >
             <div className="w-full aspect-video bg-gradient-to-r from-cyan-500 to-blue-500"></div>
