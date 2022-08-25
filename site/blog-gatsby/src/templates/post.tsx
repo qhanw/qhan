@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { FolderIcon } from "@heroicons/react/outline";
+import { FolderIcon } from "@heroicons/react/24/outline";
 
 const colors = {
   css: "#5aba59",

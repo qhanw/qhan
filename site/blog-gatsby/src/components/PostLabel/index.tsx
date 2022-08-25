@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { TagIcon } from "@heroicons/react/outline";
+import { TagIcon } from "@heroicons/react/24/outline";
 
 export default ({
   title,
