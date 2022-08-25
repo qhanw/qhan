@@ -9,15 +9,9 @@ export default ({
   color?: string;
 }) => (
   <span
+    className="inline-flex items-center py-1 mr-2.5 text-xs"
     css={css`
-      display: inline-flex;
-      align-items: center;
       color: ${color};
-      padding: 0.3em 0;
-      font-size: 80%;
-      &:not(:last-child) {
-        margin-right: 10px;
-      }
     `}
   >
     <TagIcon className="mr-1 w-4 h-4" />

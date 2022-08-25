@@ -23,7 +23,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <>
       <SideBar siteMetadata={siteMetadata} />
 
-      <div className="pt-8 px-4 overflow-hidden w-full md:pt-[120px] md:w-3/4 md:px-12 md:ml-[25%]">
+      <div className="pt-8 px-4 overflow-hidden w-full mt-[82px] md:mt-auto md:pt-[120px] md:w-3/4 md:px-12 md:ml-[25%] ">
         <Header siteMetadata={siteMetadata} />
         {children}
         <Footer />

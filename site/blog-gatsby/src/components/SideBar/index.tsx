@@ -29,7 +29,7 @@ const social = [
 
 const SideBar = ({ siteMetadata }: any) => {
   return (
-    <div className="bg-slate-700 flex items-center justify-center w-full mt-[82px] md:mt-auto md:w-1/4 md:h-screen md:float-left md:fixed">
+    <div className="bg-slate-700 items-center justify-center w-full mt-[82px] hidden md:flex md:mt-auto md:w-1/4 md:h-screen md:float-left md:fixed">
       <div className="absolute top-6 left-4 inline-flex text-white/80 items-center">
         <IconSakura css={css(sakura)} className="w-8 h-8" />
         <span className="text-xl inline-block ml-3">

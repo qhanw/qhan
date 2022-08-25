@@ -24,7 +24,7 @@ const filterCategory = (name: string) => {
   return "jsx";
 };
 
-const Index = ({ data }: any) => {
+const Cases = ({ data }: any) => {
   useEffect(() => {
     ScrollReveal().reveal(".section", {
       delay: 500,
@@ -101,12 +101,12 @@ const Index = ({ data }: any) => {
   );
 };
 
-export default Index;
+export default Cases;
 
 export const Head = () => <Seo title="主页" />;
 
 export const query = graphql`
-  query IndexQuery {
+  query CasesQuery {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {

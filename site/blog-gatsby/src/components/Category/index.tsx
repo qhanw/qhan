@@ -17,20 +17,9 @@ export default ({
   type: keyof typeof colors;
 }) => (
   <span
+    className="inline-flex items-center text-xs mr-2.5 rounded-sm px-2 py-1 text-white"
     css={css`
-      display: inline-flex;
-      align-items: center;
-      font-size: 80%;
-
-      &:not(:last-child) {
-        margin-right: 10px;
-      }
-
-      margin: 0 0.1em;
-      padding: 0.25em 0.8em;
-      color: #fff;
       background: ${colors[type] || "#fff"};
-      border-radius: 2px;
     `}
   >
     <FolderIcon className="mr-1 w-4 h-4" />
