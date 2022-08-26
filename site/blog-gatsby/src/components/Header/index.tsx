@@ -39,16 +39,17 @@ const nav = [
 const Header = ({ siteMetadata }: any) => {
   return (
     <>
-      <Popover className="fixed w-fill top-0 left-0 bg-white z-10 md:left-auto md:-ml-12">
+      <Popover className="fixed w-fill top-0 left-0 bg-white z-10">
         <div className="px-4 sm:px-6">
           <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start md:w-0 md:flex-1">
-              <Link to="/">
+              <Link to="/" className="inline-flex items-center">
                 <span className="sr-only">Workflow</span>
                 <IconSakura
                   css={css(sakura)}
                   className="w-8 h-8 text-indigo-600 sm:w-10 sm:h-10"
                 />
+                <span className="text-xl ml-2 font-medium">Qhan W</span>
               </Link>
               {/* {siteMetadata.title} */}
             </div>

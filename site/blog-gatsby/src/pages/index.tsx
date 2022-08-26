@@ -30,14 +30,7 @@ const Index = ({ data }: any) => {
       delay: 500,
       useDelay: "onload",
       reset: true,
-      origin: "right",
-      distance: "120px",
-    });
-    ScrollReveal().reveal(".section", {
-      delay: 500,
-      useDelay: "onload",
-      reset: true,
-      origin: "right",
+      // origin: "right",
       distance: "120px",
     });
     return () => {
@@ -47,23 +40,29 @@ const Index = ({ data }: any) => {
 
   return (
     <Layout>
-      <div className="posts grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
         {/* <div className="uppercase py-1 mb-4 text-sm border-b border-gray-200 font-medium tracking-widest text-gray-400">
           Total {data.allMarkdownRemark.totalCount} Posts
         </div> */}
 
         {data.allMarkdownRemark.edges.map(({ node }: any) => (
-          <section
-            className="section rounded-lg overflow-hidden shadow-lg"
+          <figure
+            className="section rounded-lg overflow-hidden bg-slate-50 text-sm hover:shadow-xl"
             key={node.id}
           >
-            <div className="w-full aspect-video bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-            <div className="p-6">
-              <header className="post-header">
-                <h2 className="text-xl overflow-hidden overflow-ellipsis break-all whitespace-nowrap">
+            <figcaption className="flex items-center space-x-4 p-6 pb-0">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex-none object-cover overflow-hidden inline-flex items-center justify-center text-white">
+                {node.frontmatter.category}
+                {/* <Category
+                  type={filterCategory(node.frontmatter.category) as any}
+                  title={node.frontmatter.category}
+                /> */}
+              </div>
+              <div className="flex-auto min-w-0">
+                <h2 className="text-xl break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
                   <Link
                     to={node.fields.slug}
-                    className="inline-flex items-center text-gray-700 hover:text-gray-900"
+                    className="text-gray-700 hover:text-gray-900"
                   >
                     {node.frontmatter.title}
                   </Link>
@@ -71,30 +70,24 @@ const Index = ({ data }: any) => {
                 <p className="text-gray-400 text-sm leading-none">
                   <time className="post-time inline-flex items-center my-2">
                     <CalendarIcon
-                      className="mr-1 w-3.5 h-3.5"
+                      className="mr-1 w-4 h-4"
                       style={{ color: "#f1af38" }}
                     />
                     {node.frontmatter.date}
                   </time>
                 </p>
-              </header>
-              <div className="text-gray-600 leading-7 line-clamp-3">
-                {node.excerpt}
-              </div>
-              <footer className="mt-2">
-                <p className="text-gray-400">
-                  <Category
-                    type={filterCategory(node.frontmatter.category) as any}
-                    title={node.frontmatter.category}
-                  />
-
+                {/* <p className="text-slate-700 leading-none">
                   {node.frontmatter.tags.map((tag: string) => (
                     <PostLabel title={tag} key={tag} />
                   ))}
-                </p>
-              </footer>
-            </div>
-          </section>
+                </p> */}
+              </div>
+            </figcaption>
+
+            <blockquote className="p-6 pt-6 text-slate-700">
+              <p className="text-gray-600 line-clamp-3">{node.excerpt}</p>
+            </blockquote>
+          </figure>
         ))}
       </div>
     </Layout>

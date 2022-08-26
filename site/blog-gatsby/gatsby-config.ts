@@ -3,6 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "Qhan",
+    fullTitle: "Qhan W",
     subtitle: "麒丶沐之涵",
     siteUrl: `http://qhan.wang`,
   },
