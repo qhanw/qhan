@@ -1,8 +1,5 @@
-import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-
-import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 
@@ -10,54 +7,38 @@ import "prism-themes/themes/prism-one-light.css";
 
 export default ({ data }: any) => {
   const { previous: prev, next, site, markdownRemark: post } = data;
-  useEffect(() => {
-    ScrollReveal().reveal("#article-header", {
-      delay: 500,
-      useDelay: "onload",
-      reset: true,
-      origin: "top",
-      distance: "120px",
-    });
-    ScrollReveal().reveal("#article-content", {
-      delay: 500,
-      useDelay: "onload",
-      reset: true,
-      origin: "bottom",
-      distance: "120px",
-    });
-
-    return () => {
-      ScrollReveal().destroy();
-    };
-  }, []);
 
   return (
     <Layout>
-      <header
-        id="article-header"
-        className="text-3xl pb-6 mb-6 border-b border-gray-200"
-      >
-        {post.frontmatter.title}
-      </header>
+      <div className="prose prose-slate mx-auto">
+        <header className="text-3xl pb-6">{post.frontmatter.title}</header>
 
-      <article
-        id="article-content"
-        className="prose prose-slate max-w-full"
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
-      <div className="flex justify-between my-12">
-        {prev && (
-          <Link to={prev.fields.slug} className="inline-flex items-center">
-            <ChevronLeftIcon className=" mr-2 h-5 w-5 group-hover:text-gray-500" />
-            {prev.frontmatter.title}
-          </Link>
-        )}
-        {next && (
-          <Link to={next.fields.slug} className="inline-flex items-center">
-            {next.frontmatter.title}
-            <ChevronRightIcon className=" ml-2 h-5 w-5 group-hover:text-gray-500" />
-          </Link>
-        )}
+        <article dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className="flex justify-between my-12 text-sm">
+          {prev && (
+            <Link
+              to={prev.fields.slug}
+              className="inline-flex items-center min-w-0"
+            >
+              <ChevronLeftIcon className="mr-1 h-4 w-4 group-hover:text-gray-500" />
+              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+                {prev.frontmatter.title}
+              </span>
+            </Link>
+          )}
+          {next && (
+            <Link
+              to={next.fields.slug}
+              className="inline-flex items-center min-w-0"
+            >
+              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+                {next.frontmatter.title}
+              </span>
+
+              <ChevronRightIcon className=" ml-1 h-4 w-4 group-hover:text-gray-500" />
+            </Link>
+          )}
+        </div>
       </div>
     </Layout>
   );

@@ -32,4 +32,10 @@
   /* a {
     @apply transition ease-in-out duration-300 text-[#006b84] hover:text-[#006b84]/75;
   } */
+
+  /* body {
+    background-image:url("../images/bg.png");
+    background-size: cover;
+    background-attachment: fixed;
+  } */
 }
