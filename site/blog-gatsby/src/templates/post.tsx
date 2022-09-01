@@ -11,8 +11,9 @@ export default ({ data }: any) => {
   return (
     <Layout>
       <div className="prose prose-slate mx-auto">
-        <header className="text-3xl pb-6">{post.frontmatter.title}</header>
-
+        <header className="text-3xl pb-6 font-extrabold">
+          {post.frontmatter.title}
+        </header>
         <article dangerouslySetInnerHTML={{ __html: post.html }} />
         <div className="flex justify-between my-12 text-sm">
           {prev && (

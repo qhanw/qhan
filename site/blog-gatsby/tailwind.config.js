@@ -7,18 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      marginLeft: {
-        '25%': '25%'
-      },
       colors: {
         '#006b84': '#006b84'
       },
       width: {
         fill: 'fill-available'
-      },
-      paddingTop: {
-        '82px': '82px',
-        '120px': '120px'
       }
     },
   },

@@ -28,6 +28,22 @@ const sakura = css`
   }
 `;
 
+const shadow = css`
+  &::before {
+    content: "";
+    box-shadow: 0 0 4px 1px #ddd;
+    position: fixed;
+    width: 100%;
+  }
+  &::after {
+    content: "";
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, #fff 50%, transparent);
+    position: absolute;
+  }
+`;
+
 const nav = [
   { name: "Cases", href: "/cases", icon: RectangleGroupIcon },
   { name: "Stories", href: "/", icon: PencilIcon },
@@ -39,9 +55,9 @@ const nav = [
 const Header = ({ siteMetadata }: any) => {
   return (
     <>
-      <Popover className="fixed w-fill top-0 left-0 bg-white z-10">
+      <Popover className="sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60 ">
         <div className="px-4 sm:px-6">
-          <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+          <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start md:w-0 md:flex-1">
               <Link to="/" className="inline-flex items-center">
                 <span className="sr-only">Workflow</span>
@@ -134,6 +150,7 @@ const Header = ({ siteMetadata }: any) => {
           </div>
         </Popover.Panel>
       </Popover>
+      <div css={shadow} />
     </>
   );
 };
