@@ -63,7 +63,7 @@ export const Head = () => <Seo title="归档" />;
 
 export const query = graphql`
   query ArchivesQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       edges {
         node {
           id

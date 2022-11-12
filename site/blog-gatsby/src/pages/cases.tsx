@@ -107,7 +107,7 @@ export const Head = () => <Seo title="主页" />;
 
 export const query = graphql`
   query CasesQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       totalCount
       edges {
         node {
