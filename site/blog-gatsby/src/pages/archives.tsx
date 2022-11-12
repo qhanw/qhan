@@ -2,6 +2,7 @@ import { Fragment, useEffect } from "react";
 
 import ScrollReveal from "scrollreveal";
 import { graphql, Link } from "gatsby";
+import type { PageProps } from "gatsby";
 import Seo from "../components/Seo";
 import Layout from "../components/Layout";
 
@@ -9,7 +10,7 @@ export default ({
   data: {
     allMarkdownRemark: { edges },
   },
-}: any) => {
+}: PageProps<Queries.ArchivesPageQuery>) => {
   useEffect(() => {
     ScrollReveal().reveal("#archive-item", {
       delay: 500,
@@ -62,7 +63,7 @@ export default ({
 export const Head = () => <Seo title="归档" />;
 
 export const query = graphql`
-  query ArchivesQuery {
+  query ArchivesPage {
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       edges {
         node {

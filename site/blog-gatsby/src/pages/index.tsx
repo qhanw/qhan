@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { graphql, Link, PageProps } from "gatsby";
+import { graphql, Link } from "gatsby";
+import type { PageProps } from "gatsby";
 import ScrollReveal from "scrollreveal";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
@@ -24,7 +25,7 @@ const filterCategory = (name: string) => {
   return "jsx";
 };
 
-const Index = ({ data }: PageProps<any>) => {
+const Index = ({ data }: PageProps<Queries.IndexPageQuery>) => {
   useEffect(() => {
     ScrollReveal().reveal(".section", {
       delay: 500,

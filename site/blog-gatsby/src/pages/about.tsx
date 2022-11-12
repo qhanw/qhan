@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { css } from "@emotion/react";
 import ScrollReveal from "scrollreveal";
 import Layout from "../components/Layout";
 import PosLabel from "../components/PostLabel";

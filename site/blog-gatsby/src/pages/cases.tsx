@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
+import type { PageProps } from "gatsby";
 import ScrollReveal from "scrollreveal";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
@@ -24,7 +25,7 @@ const filterCategory = (name: string) => {
   return "jsx";
 };
 
-const Cases = ({ data }: any) => {
+const Cases = ({ data }: PageProps<Queries.CasesPageQuery>) => {
   useEffect(() => {
     ScrollReveal().reveal(".section", {
       delay: 500,
@@ -106,7 +107,7 @@ export default Cases;
 export const Head = () => <Seo title="主页" />;
 
 export const query = graphql`
-  query CasesQuery {
+  query CasesPage {
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       totalCount
       edges {

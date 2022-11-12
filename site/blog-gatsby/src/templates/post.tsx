@@ -1,4 +1,5 @@
 import { graphql, Link } from "gatsby";
+import type { PageProps } from "gatsby";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
@@ -45,11 +46,13 @@ export default ({ data }: any) => {
   );
 };
 
-export const Head = ({ data: { markdownRemark: post } }: any) => {
+export const Head = ({
+  data: { markdownRemark: post },
+}: PageProps<Queries.BlogPostBySlugQuery>) => {
   return (
     <Seo
-      title={post.frontmatter.title}
-      description={post.frontmatter.description || post.excerpt}
+      title={post?.frontmatter?.title || ""}
+      description={post?.frontmatter?.description || post?.excerpt || ""}
     />
   );
 };
