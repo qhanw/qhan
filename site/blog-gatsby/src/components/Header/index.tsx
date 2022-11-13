@@ -30,6 +30,8 @@ const sakura = css`
 `;
 
 const shadow = css`
+  position: relative;
+  z-index: 10;
   &::before {
     content: "";
     box-shadow: 0 0 4px 1px #ddd;
