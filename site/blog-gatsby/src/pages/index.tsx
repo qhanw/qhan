@@ -6,90 +6,165 @@ import { CalendarIcon } from "@heroicons/react/24/outline";
 
 import Seo from "../components/Seo";
 import Layout from "../components/Layout";
-import PostLabel from "../components/PostLabel";
-import Category from "../components/Category";
 
-const filterCategory = (name: string) => {
-  const types = {
-    css: ["css", "css3", "scss", "less"],
-    js: ["javascript", "ecmaScript", "js", "jsx", "ts", "typescript", "node"],
-    md: ["md", "markdown"],
-    jsx: ["jsx", "tsx", "react"],
-  };
-
-  for (let [key, value] of Object.entries(types)) {
-    if (value.find((type) => type.toUpperCase() === name.toUpperCase())) {
-      return key;
-    }
-  }
-  return "jsx";
-};
-
-const Index = ({ data }: PageProps<Queries.IndexPageQuery>) => {
-  useEffect(() => {
-    ScrollReveal().reveal(".section", {
-      delay: 500,
-      useDelay: "onload",
-      reset: true,
-      // origin: "right",
-      distance: "120px",
-    });
-    return () => {
-      ScrollReveal().destroy();
-    };
-  }, []);
-
+const Index = () => {
   return (
     <Layout>
-      <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-        {/* <div className="uppercase py-1 mb-4 text-sm border-b border-gray-200 font-medium tracking-widest text-gray-400">
-          Total {data.allMarkdownRemark.totalCount} Posts
-        </div> */}
-
-        {data.allMarkdownRemark.edges.map(({ node }: any) => (
-          <figure
-            className="section rounded-lg overflow-hidden bg-slate-50 text-sm hover:shadow-xl"
-            key={node.id}
-          >
-            <figcaption className="flex items-center space-x-4 p-6 pb-0">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex-none object-cover overflow-hidden inline-flex items-center justify-center text-white">
-                {node.frontmatter.category}
-                {/* <Category
-                  type={filterCategory(node.frontmatter.category) as any}
-                  title={node.frontmatter.category}
-                /> */}
-              </div>
-              <div className="flex-auto min-w-0">
-                <h2 className="text-xl break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  <Link
-                    to={node.fields.slug}
-                    className="text-gray-700 hover:text-gray-900"
-                  >
-                    {node.frontmatter.title}
-                  </Link>
-                </h2>
-                <p className="text-gray-400 text-sm leading-none">
-                  <time className="post-time inline-flex items-center my-2">
-                    <CalendarIcon
-                      className="mr-1 w-4 h-4"
-                      style={{ color: "#f1af38" }}
-                    />
-                    {node.frontmatter.date}
-                  </time>
-                </p>
-                {/* <p className="text-slate-700 leading-none">
-                  {node.frontmatter.tags.map((tag: string) => (
-                    <PostLabel title={tag} key={tag} />
-                  ))}
-                </p> */}
-              </div>
-            </figcaption>
-
-            <blockquote className="p-6 pt-6 text-slate-700">
-              <p className="text-gray-600 line-clamp-3">{node.excerpt}</p>
-            </blockquote>
-          </figure>
-        ))}
+      <h1 className="mt-4 text-xl text-slate-900 tracking-tight max-w-5xl">
+        前端开发工程师一枚，早年从事UI设计工作，现以前端开发为主，有丰富的ToB系统开发架构经验。喜欢工程化方面领域，喜欢交互设计。
+      </h1>
+      <ul className="mt-4 text-slate-500 font-light">
+        <li>
+          🎉 技术栈包括:
+          NodeJs、React、Typescript、Electron、Antd、Sass、NextJs等。
+        </li>
+        <li>🌱 目前正在学习前端自动化测试方面知识。</li>
+        <li>
+          💬 如何联系我: 微信搜索 AsQhan 或邮箱：
+          <a className="text-sky-500" href="mailto:whenhan@foxmail.com">
+            whenhan@foxmail.com
+          </a>
+        </li>
+      </ul>
+      <h2 className="mb-8 mt-12 pb-2 text-xl text-slate-500 tracking-tight border-b border-slate-100">
+        项目经历
+      </h2>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">鲁班系统</span>
+              <span className="hidden text-slate-400 lg:block">
+                React, Electron, NodeJs
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            包含桌面端与WEB端，定位于关注精细化运营、高效运营支撑。主要支撑课程顾问、班主任老师对客户转化、社群运营的诉求，协助一线老师完成销售、运营目标。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">工单系统</span>
+              <span className="hidden text-slate-400 lg:block">
+                React, Antd
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            包含WEB端、H5（微信客户端、钉钉管理端）。主要为解决公司内部业务上需要通过工单的方式进行流转的工作流程，降低在使用三方记录工具与人力占用的成本。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">权限平台</span>
+              <span className="hidden text-slate-400 lg:block">
+                React, Antd
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            微前端架构，内部中台系统、三方应用、员工部门及权限相关管理系统。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">仿真镜像平台</span>
+              <span className="hidden text-slate-400 lg:block">
+                React, Antd
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            克隆线上产品（如淘宝、天猫）环境的真实数据后，在镜像环境中能引流更多流量做更多真实的验证，包括核对监控等。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">
+                倍事达管理系统
+              </span>
+              <span className="hidden text-slate-400 lg:block">
+                React, Antd
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            一个PCO有害生物防治行业SaaS软件系统，主要服务于食品行业、连锁餐厅等PCO虫控企业用户。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">幼学空间</span>
+              <span className="hidden text-slate-400 lg:block">
+                React, Antd
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            一个集资源组织、专家、园长、后台管理及移动H5五个端所组成的中大型项目。主要用于管理幼儿教师资格认证、培训、幼儿教育、教育资源维护等功能。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">
+                青少年毒品预防教育平台
+                {/* http://www.jxjd627.com/ */}
+              </span>
+              <span className="hidden text-slate-400 lg:block">
+                Jquery, RequireJS
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            针对青少年毒品知识的宣传与教育，加强青少年对毒品危害的认识。其方式有文章、视频、及毒品知识测试。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">
+                营养健康专家端管理应用
+              </span>
+              <span className="hidden text-slate-400 lg:block">
+                React, Redux, Sass, WeUI
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            用于营养专家对客户咨询支持以前专家对营养资讯及食谱和关注者的管理。
+          </p>
+        </div>
+        <div className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100">
+          <h2>
+            <button className="flex gap-2 transition">
+              <span className="absolute inset-0 rounded-xl"></span>
+              <span className="font-semibold text-slate-900">
+                DSP广告投放平台
+              </span>
+              <span className="hidden text-slate-400 lg:block">
+                Angular, Mui, echarts
+              </span>
+            </button>
+          </h2>
+          <p className="mt-1 text-slate-500">
+            用于广告投放管理包括了分时、资源、媒体、受众等报表以及创意、订单、用户等子系统，容括了广告投放等系列功能，便于使用者全面掌握当前自己的所有情况。
+          </p>
+        </div>
       </div>
     </Layout>
   );
@@ -98,26 +173,3 @@ const Index = ({ data }: PageProps<Queries.IndexPageQuery>) => {
 export default Index;
 
 export const Head = () => <Seo title="主页" />;
-
-export const query = graphql`
-  query IndexPage {
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY-MM-DD")
-            category
-            tags
-          }
-          fields {
-            slug
-          }
-          excerpt
-        }
-      }
-    }
-  }
-`;

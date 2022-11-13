@@ -11,6 +11,7 @@ import {
   PencilIcon,
   ArchiveBoxIcon,
   UserCircleIcon,
+  ClockIcon,
   ChartBarSquareIcon,
 } from "@heroicons/react/24/outline";
 
@@ -45,11 +46,11 @@ const shadow = css`
 `;
 
 const nav = [
-  { name: "Cases", href: "/cases", icon: RectangleGroupIcon },
-  { name: "Stories", href: "/", icon: PencilIcon },
-  { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },
-  { name: "About", href: "/about", icon: UserCircleIcon },
-  { name: "Statistics", href: "/statistics", icon: ChartBarSquareIcon },
+  { name: "Stories", href: "/stories", icon: PencilIcon },
+  // { name: "Cases", href: "/cases", icon: RectangleGroupIcon },
+  { name: "Timeline", href: "/timeline", icon: ClockIcon },
+  // { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },
+  // { name: "Statistics", href: "/statistics", icon: ChartBarSquareIcon },
 ];
 
 const Header = ({ siteMetadata }: any) => {
