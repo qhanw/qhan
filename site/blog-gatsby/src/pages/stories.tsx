@@ -41,54 +41,36 @@ const Index = ({ data }: PageProps<Queries.IndexPageQuery>) => {
 
   return (
     <Layout>
-      <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-        {/* <div className="uppercase py-1 mb-4 text-sm border-b border-gray-200 font-medium tracking-widest text-gray-400">
-          Total {data.allMarkdownRemark.totalCount} Posts
-        </div> */}
-
+      <div className="uppercase py-1 mb-4 -mt-8 text-sm text-center font-medium tracking-widest text-slate-400">
+        Total {data.allMarkdownRemark.totalCount} Posts
+      </div>
+      <div className="grid gap-8 max-w-screen-lg m-auto">
         {data.allMarkdownRemark.edges.map(({ node }: any) => (
-          <figure
-            className="section rounded-lg overflow-hidden bg-slate-50 text-sm hover:shadow-xl"
+          <Link
+            to={node.fields.slug}
+            className="p-6 section rounded-lg overflow-hidden cursor-pointer bg-slate-50 text-sm transition hover:shadow-lg hover:transition"
             key={node.id}
           >
-            <figcaption className="flex items-center space-x-4 p-6 pb-0">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex-none object-cover overflow-hidden inline-flex items-center justify-center text-white">
-                {node.frontmatter.category}
-                {/* <Category
-                  type={filterCategory(node.frontmatter.category) as any}
-                  title={node.frontmatter.category}
-                /> */}
-              </div>
-              <div className="flex-auto min-w-0">
-                <h2 className="text-xl break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  <Link
-                    to={node.fields.slug}
-                    className="text-gray-700 hover:text-gray-900"
-                  >
-                    {node.frontmatter.title}
-                  </Link>
-                </h2>
-                <p className="text-gray-400 text-sm leading-none">
-                  <time className="post-time inline-flex items-center my-2">
-                    <CalendarIcon
-                      className="mr-1 w-4 h-4"
-                      style={{ color: "#f1af38" }}
-                    />
-                    {node.frontmatter.date}
-                  </time>
-                </p>
-                {/* <p className="text-slate-700 leading-none">
-                  {node.frontmatter.tags.map((tag: string) => (
-                    <PostLabel title={tag} key={tag} />
-                  ))}
-                </p> */}
-              </div>
-            </figcaption>
+            <div className="text-slate-400 text-sm leading-none flex items-center">
+              <time className="post-time inline-flex items-center my-2">
+                <CalendarIcon
+                  className="mr-1 w-4 h-4"
+                  style={{ color: "#f1af38" }}
+                />
+                {node.frontmatter.date}
+              </time>
+              <span className="mx-2 w-0.5 h-0.5 rounded-full bg-slate-400" />
+              {/* {node.frontmatter.category} */}
+              {node.frontmatter.tags.map((tag: string) => (
+                <PostLabel title={tag} key={tag} />
+              ))}
+            </div>
+            <h2 className="pt-1 pb-2 text-xl text-slate-700 hover:text-indigo-800 break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+              {node.frontmatter.title}
+            </h2>
 
-            <blockquote className="p-6 pt-6 text-slate-700">
-              <p className="text-gray-600 line-clamp-3">{node.excerpt}</p>
-            </blockquote>
-          </figure>
+            <p className="text-slate-500 line-clamp-3">{node.excerpt}</p>
+          </Link>
         ))}
       </div>
     </Layout>

@@ -3,7 +3,7 @@ import { TagIcon } from "@heroicons/react/24/outline";
 
 export default ({
   title,
-  color = "#999",
+  color = "rgb(148 163 184 / var(--tw-text-opacity))",
 }: {
   title: string;
   color?: string;
