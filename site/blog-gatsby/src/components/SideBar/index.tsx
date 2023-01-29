@@ -1,21 +1,8 @@
-import { css } from "@emotion/react";
 import IconSakura from "../Icons/sakura";
 import IconJueJin from "../Icons/juejin";
 import IconGithub from "../Icons/github";
 import IconYuQue from "../Icons/yuque";
 import { Link } from "gatsby";
-
-const sakura = css`
-  animation: sakuraRotate infinite 6s linear;
-  @keyframes sakuraRotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(-360deg);
-    }
-  }
-`;
 
 const social = [
   { name: "GitHub", href: "http://github.com/qhanw", icon: IconGithub },
@@ -31,10 +18,8 @@ const SideBar = ({ siteMetadata }: any) => {
   return (
     <div className="bg-slate-700 items-center justify-center w-full mt-[82px] hidden md:flex md:mt-auto md:w-1/4 md:h-screen md:float-left md:fixed">
       <div className="absolute top-6 left-4 inline-flex text-white/80 items-center">
-        <IconSakura css={css(sakura)} className="w-8 h-8" />
-        <span className="text-xl inline-block ml-3">
-          {siteMetadata.title}
-        </span>
+        <IconSakura className="w-8 h-8 logo-rotate" />
+        <span className="text-xl inline-block ml-3">{siteMetadata.title}</span>
       </div>
       <div className="text-center md:text-right p-12 pt-16 md:-mt-24">
         <h2

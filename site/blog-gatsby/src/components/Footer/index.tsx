@@ -1,22 +1,9 @@
 import { Link } from "gatsby";
-import { css } from "@emotion/react";
 
 import IconSakura from "../Icons/sakura";
 import IconJueJin from "../Icons/juejin";
 import IconGithub from "../Icons/github";
 import IconYuQue from "../Icons/yuque";
-
-const sakura = css`
-  animation: sakuraRotate infinite 6s linear;
-  @keyframes sakuraRotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(-360deg);
-    }
-  }
-`;
 
 const social = [
   { name: "GitHub", href: "http://github.com/qhanw", icon: IconGithub },
@@ -33,7 +20,7 @@ export default ({ siteMetadata }: any) => (
     <div className="flex">
       <Link to="/" className="inline-flex items-center">
         <span className="sr-only">Workflow</span>
-        <IconSakura css={css(sakura)} className="w-8 h-8 text-indigo-600" />
+        <IconSakura className="w-8 h-8 text-indigo-600 logo-rotate" />
         <span className="text-lg ml-2 font-medium">Qhan W</span>
       </Link>
 

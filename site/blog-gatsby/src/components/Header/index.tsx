@@ -17,18 +17,6 @@ import {
 
 import IconSakura from "../Icons/sakura";
 
-const sakura = css`
-  animation: sakuraRotate infinite 6s linear;
-  @keyframes sakuraRotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(-360deg);
-    }
-  }
-`;
-
 const shadow = css`
   position: relative;
   z-index: 10;
@@ -64,10 +52,7 @@ const Header = ({ siteMetadata }: any) => {
             <div className="flex justify-start md:w-0 md:flex-1">
               <Link to="/" className="inline-flex items-center">
                 <span className="sr-only">Workflow</span>
-                <IconSakura
-                  css={css(sakura)}
-                  className="w-8 h-8 text-indigo-600 sm:w-10 sm:h-10"
-                />
+                <IconSakura className="w-8 h-8 text-indigo-600 sm:w-10 sm:h-10 logo-rotate" />
                 <span className="text-xl ml-2 font-medium">Qhan W</span>
               </Link>
               {/* {siteMetadata.title} */}
@@ -118,10 +103,7 @@ const Header = ({ siteMetadata }: any) => {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <Link to="/">
-                  <IconSakura
-                    css={css(sakura)}
-                    className="w-8 h-8 text-indigo-600"
-                  />
+                  <IconSakura className="w-8 h-8 text-indigo-600 logo-rotate" />
                 </Link>
                 <div className="-mr-2">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

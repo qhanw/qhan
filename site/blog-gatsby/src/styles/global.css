@@ -39,3 +39,18 @@
     background-attachment: fixed;
   } */
 }
+
+@layer utilities {
+  .logo-rotate {
+    animation: rotate infinite 6s linear;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+}

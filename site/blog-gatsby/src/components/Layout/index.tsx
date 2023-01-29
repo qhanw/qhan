@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import { css } from "@emotion/react";
 import Footer from "../Footer";
 import SideBar from "../SideBar";
 import Header from "../Header";
