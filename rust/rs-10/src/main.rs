@@ -1,13 +1,21 @@
-mod aggregator;
-use aggregator::{Summary, Tweet};
-
+// lifetime syntax
 fn main() {
-    let tweet = Tweet {
-        username: String::from("horse_ebooks"),
-        content: String::from("of course, as you probably already know, people"),
-        reply: false,
-        retweet: false,
-    };
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
 
-    println!("1 new tweet: {}", tweet.summarize());
+    let result = longest(string1.as_str(), string2);
+
+    println!("The longest string is {}", result);
 }
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+// fn longest<'a>(x: &str, y: &str) -> String {
+//     let result = String::from("really long string");
+//     return result;
+// }
