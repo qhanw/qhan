@@ -1,0 +1,5 @@
+[workspace]
+members = [
+  "rust/rs-10",
+  "rust/rs-11",
+]
