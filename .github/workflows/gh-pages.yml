@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: gh-pages
 on:
   push:
     branches:
@@ -6,6 +6,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: gh-pages
     strategy:
       matrix:
         node-version: [18]
@@ -15,7 +16,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.2
+      - uses: pnpm/action-setup@v2
         with:
           version: 7
 
@@ -25,13 +26,16 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Install dependencies && run build
         run: cd site/blog-gatsby && pnpm install && pnpm build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          external_repository: gh-static-websites/blog
+          publish_branch: main
           publish_dir: ./site/blog-gatsby/public
           cname: blog.qhan.wang
