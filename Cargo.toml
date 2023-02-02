@@ -2,5 +2,6 @@
 members = [
   "rust/rs-10",
   "rust/rs-11",
+  "rust/rs-13",
   "rust/minigrep"
 ]
