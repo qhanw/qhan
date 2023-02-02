@@ -1,2 +1,4 @@
 With text: Are you nobody, too?
 With text: How dreary to be somebody!
+With text: To tell your name the livelong day
+With text: To an admiring bog!
