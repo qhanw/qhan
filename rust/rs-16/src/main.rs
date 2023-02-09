@@ -1,14 +1,27 @@
-use std::sync::mpsc;
-use std::thread;
+// Mutex
+use std::{
+    sync::{Arc, Mutex},
+    thread,
+};
 
 fn main() {
-    let (tx, rx) = mpsc::channel();
-    thread::spawn(move || {
-        let val = String::from("Hi");
-        tx.send(val).unwrap();
-    });
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
 
-    let received = rx.recv().unwrap();
+    for _ in 0..10 {
+        let counter = Arc::clone(&counter);
 
-    println!("Got: {}", received);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+            *num += 1;
+        });
+
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap())
 }
