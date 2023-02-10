@@ -1,6 +1,7 @@
-const router = require("koa-router")();
 const jwt = require("jsonwebtoken");
 //const fs = require("fs");
+
+const router = require("./instance");
 const { user } = require("../mock/data");
 
 //const cert = fs.readFileSync("/private.key");

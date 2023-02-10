@@ -1,4 +1,4 @@
-const router = require("koa-router")();
+const router = require("./instance");
 
 const home = require("./home");
 const user = require("./user");

@@ -15,9 +15,9 @@ const app = new Koa();
 
 app.use(logger());
 app.use(bodyParser());
-app.use(views(path.join(__dirname, "./src/views"), { extension: "pug" }));
+app.use(views(path.join(__dirname, "./src/views"), { extension: "ejs" }));
 // Custom 401 handling (first middleware)
-app.use(function(ctx, next) {
+app.use(function (ctx, next) {
   return next().catch(err => {
     if (err.status === 401) {
       ctx.status = 401;
@@ -38,7 +38,7 @@ app.use(
     router: "/v1/api/"
   })
 );
-app.use(static());
+app.use(static("."));
 app.use(routers.routes()).use(routers.allowedMethods());
 
 app.listen(8000);

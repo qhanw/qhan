@@ -1,4 +1,4 @@
-const router = require("koa-router")();
+const router = require("./instance");
 
 const routers = router
   .get("/404", async ctx => {

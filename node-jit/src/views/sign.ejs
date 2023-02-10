@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('head'); -%>
+  <body>
+    <div class="container">
+      <h1>Sign In</h1>
+      <p>
+        Pug is a terse and simple templating language with a strong focus on
+        performance and powerful features.
+      </p>
+      <form id="form">
+        <div class="form-group">
+          <label for="name">Email address</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            placeholder="Enter email"
+            aria-describedby="emailHelp"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password</label>
+          <input
+            type="password"
+            name="pwd"
+            id="pwd"
+            class="form-control"
+            placeholder="Password"
+          />
+        </div>
+        <button type="button" class="btn btn-primary" id="submit">
+          Submit
+        </button>
+      </form>
+      <p>some footer content</p>
+    </div>
+    <%- include('footer'); -%>
+    <script type="text/javascript">
+      $(function () {
+        $("#submit").on("click", function () {
+          const dataString = $("#form").serialize();
+          const data = dataString
+            .split("&")
+            .reduce(
+              (a, v) => (
+                (a[v.slice(0, v.indexOf("="))] = v.slice(v.indexOf("=") + 1)), a
+              ),
+              {}
+            );
+          console.log(data);
+
+          $.ajax({
+            url: "/sign/in",
+            method: "POST",
+            data,
+          }).done(function (res) {
+            if (res.data.token) sessionStorage.token = res.data.token;
+            console.log(res);
+            if (res.data.token) {
+              $.ajax({
+                url: "/user/single/2",
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${res.data.token}`,
+                },
+              }).done(function (res) {
+                console.log(res);
+              });
+            }
+          });
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
