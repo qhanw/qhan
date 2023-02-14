@@ -9,5 +9,7 @@ members = [
   "rust/rs-18",
   "rust/rs-19",
   "rust/blog",
-  "rust/minigrep"
+  "rust/minigrep",
+  "rust/hello_macro",
+  "rust/pancakes",
 ]
