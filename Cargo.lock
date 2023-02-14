@@ -7,6 +7,10 @@ name = "blog"
 version = "0.1.0"
 
 [[package]]
+name = "hello"
+version = "0.1.0"
+
+[[package]]
 name = "hello_macro"
 version = "0.1.0"
 

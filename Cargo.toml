@@ -12,4 +12,5 @@ members = [
   "rust/minigrep",
   "rust/hello_macro",
   "rust/pancakes",
+  "rust/hello",
 ]
