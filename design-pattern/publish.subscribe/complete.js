@@ -1,3 +1,5 @@
+// 发布订阅模式-完整示例
+
 const Event = (function () {
   let global = this,
     Event,
@@ -112,3 +114,17 @@ const Event = (function () {
   }();
   return Event;
 })();
+
+
+/************** 先发布后订阅 ********************/
+Event.trigger('click', 1);
+Event.listen('click', a => console.log(a));
+
+/************** 使用命名空间 ********************/
+const namespace1 = Event.create('namespace1');
+namespace1.listen('click', a => console.log(a));
+namespace1.trigger('click', 2);
+console.log(namespace1);
+
+Event.create('namespace2').listen('click', a => console.log(a));
+Event.create('namespace2').trigger('click', 3);

@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>迭代器模式-简单迭代器</title>
-</head>
-<body>
-<script>
+// 迭代器模式-简单迭代器
   const Iterator = function (obj) {
     let current = 0;
     const next = function () {
@@ -38,9 +31,6 @@
   };
 
   const iterator1 = Iterator([1, 2, 3, 4]);
-  const iterator2 = Iterator([1, 2, 3, 5]);
+  const iterator2 = Iterator([1, 2, 3, 4]);
 
   compare(iterator1, iterator2);
-</script>
-</body>
-</html>

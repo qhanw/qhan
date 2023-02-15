@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>示例-代理模式-计算乘积（缓存代理）</title>
-</head>
-<body>
-<script>
+// 示例-代理模式-计算乘积（缓存代理）
   // 计算乘积
   const mult = function () {
     console.log('开始计算乘积！');
@@ -43,6 +36,3 @@
   console.log(proxyMult(1, 2, 3, 4)); // 输出：24
   console.log(proxyPlus(1, 2, 3, 4)); // 输出：10
   console.log(proxyPlus(1, 2, 3, 4)); // 输出：10
-</script>
-</body>
-</html>

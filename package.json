@@ -17,9 +17,6 @@
   },
   "homepage": "https://github.com/EvKylin/kylin#readme",
   "devDependencies": {
-    "eslint-config-airbnb": "^19.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.0",
-    "eslint-plugin-react": "^7.30.0"
+    "typescript": "^4.9.5"
   }
 }
