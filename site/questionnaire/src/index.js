@@ -1,14 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Router, Route, browserHistory} from 'react-router'
+import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom'
 import App from './App';
 import Main from './Main'
 import './index.css';
 
-ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={Main}/>
-    <Route path="/:id" component={App}/>
-  </Router>,
-  document.getElementById('root')
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main />,
+  },
+  {
+    path: "/:id",
+    element: <App />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
