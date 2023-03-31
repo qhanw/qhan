@@ -1,27 +1,20 @@
-// @ts-nocheck
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { NoticeBar, Button, AutoCenter, Space } from "antd-mobile";
 
-import { data } from "./utils/questions";
-import "./App.scss";
-import { Link } from "react-router-dom";
+import Entry from "./components/Entry";
+import Result from "./components/Result";
+import QuestionList from "./components/Questions";
 
-import { ButtonArea, Button, Toptips, Footer } from "react-weui";
-import "weui";
-
-import Entry from "./components/entry";
-import Result from "./components/result";
-import QuestionList from "./components/questions";
-
-const sexPickerValue = "1";
-const datetimePickerValue = "2";
+import { data } from "./constant";
 
 export default () => {
-  const ref = useRef();
+  const navigate = useNavigate();
   const [tip, setTip] = useState(false);
   const [index, setIndex] = useState(0);
   const [step, setStep] = useState(0);
   const [submitData, setSubmitData] = useState({
-    sex: "男",
+    sex: "1",
     date: "",
     height: "33",
     weight: "23",
@@ -29,12 +22,7 @@ export default () => {
 
   const start = () => {
     setStep(1);
-    setSubmitData(
-      Object.assign(submitData, {
-        sex: sexPickerValue,
-        date: datetimePickerValue,
-      })
-    );
+    setSubmitData(Object.assign(submitData, { sex: "1", date: new Date() }));
   };
 
   const next = () => {
@@ -58,66 +46,64 @@ export default () => {
 
   const save = () => setStep(2);
 
-  const updateHandler = (event) => {
-    setSubmitData({
-      submitData: Object.assign(submitData, { height: event.target.value }),
-    });
+  const updateHandler = (event: any) => {
+    setSubmitData(Object.assign(submitData, { height: event?.target?.value }));
 
     console.log(event.target);
   };
 
-  let { Template, FooterOption } = { Template: null, FooterOption: null };
+  const { Template, Footer } = (() => {
+    switch (step) {
+      case 0:
+      default:
+        return {
+          Template: () => (
+            <Entry data={submitData} updateHandler={updateHandler} />
+          ),
+          Footer: () => (
+            <Button color="success" onClick={start}>
+              开始测试
+            </Button>
+          ),
+        };
 
-  switch (step) {
-    case 0:
-    default:
-      Template = () => (
-        <Entry data={submitData} updateHandler={updateHandler} />
-      );
-      FooterOption = () => (
-        <ButtonArea>
-          <Button onClick={start}>开始测试</Button>
-        </ButtonArea>
-      );
-      break;
-    case 1:
-      Template = () => <QuestionList index={index} data={data} />;
-      FooterOption = () => (
-        <ButtonArea className="button-sp-area" direction="horizontal">
-          <Button type="default" onClick={prev}>
-            {index <= 0 ? "上一步" : "上一题"}
-          </Button>
-          <Button
-            type="default"
-            onClick={index >= data.length - 1 ? save : next}
-          >
-            {index >= data.length - 1 ? "提交" : "下一题"}
-          </Button>
-        </ButtonArea>
-      );
-      break;
-    case 2:
-      Template = () => <Result take={598} />;
-      FooterOption = () => (
-        <ButtonArea className="button-sp-area" direction="horizontal">
-          <Link to="/" className="weui-btn weui-btn_primary">
-            返回首页
-          </Link>
-        </ButtonArea>
-      );
-      break;
-  }
+      case 1:
+        return {
+          Template: () => <QuestionList index={index} data={data} />,
+          Footer: () => (
+            <Space>
+              <Button onClick={prev}>{index <= 0 ? "上一步" : "上一题"}</Button>
+              <Button onClick={index >= data.length - 1 ? save : next}>
+                {index >= data.length - 1 ? "提交" : "下一题"}
+              </Button>
+            </Space>
+          ),
+        };
+
+      case 2:
+        return {
+          Template: () => <Result take={598} />,
+          Footer: () => <Button onClick={() => navigate("/")}>返回首页</Button>,
+        };
+    }
+  })();
 
   return (
-    <div className="App page" ref={ref}>
-      <Toptips type="warn" show={tip}>
-        {" "}
-        Oops, something is wrong!{" "}
-      </Toptips>
+    <div className="page">
+      {!tip ? (
+        <NoticeBar
+          content="Oops, something is wrong!"
+          color="alert"
+          closeable
+        />
+      ) : null}
+
       <Template />
-      <Footer>
-        <FooterOption />
-      </Footer>
+      <footer style={{ margin: "48px 16px 8px" }}>
+        <AutoCenter>
+          <Footer />
+        </AutoCenter>
+      </footer>
     </div>
   );
 };

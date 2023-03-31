@@ -1,53 +1,35 @@
-// @ts-nocheck
-import {
-  Article,
-  Panel,
-  PanelHeader,
-  PanelBody,
-  //PanelFooter,
-  //Cell,
-  CellHeader,
-  CellBody,
-  //CellFooter,
-  Form,
-  FormCell,
-  Checkbox,
-  Progress,
-} from "react-weui";
-import "weui";
+import { Card, Form, Space, Checkbox, ProgressBar } from "antd-mobile";
 
-export default ({ index, data }) => {
+export default ({ index, data }: any) => {
   return (
-    <Panel>
-      <PanelHeader>营养调查问卷</PanelHeader>
-      <PanelBody>
-        <Article>
-          <div className="progress-bar">
-            <Progress
-              value={((index + 1) * 100) / data.length}
-              showCancel={false}
-            />
-            <span>{index + 1 + "/" + data.length}</span>
-          </div>
-          <p>
-            {index + 1}、{data[index].name}
-          </p>
-        </Article>
-        <Form
-          checkbox
-          data-key={data[index].range.join("-")}
-          data-qid={data[index].id}
-        >
-          {data[index].answer.map((item, i) => (
-            <FormCell checkbox key={i} data-aid={item.id}>
-              <CellHeader>
-                <Checkbox name="checkbox1" value={item.id} />
-              </CellHeader>
-              <CellBody>{item.content}</CellBody>
-            </FormCell>
-          ))}
-        </Form>
-      </PanelBody>
-    </Panel>
+    <Card title="营养调查问卷">
+      <article className="article">
+        <ProgressBar
+          percent={((index + 1) * 100) / data.length}
+          text={index + 1 + "/" + data.length}
+          style={{
+            "--text-width": "auto",
+            "--fill-color": "var(--adm-color-success)",
+            "--track-width": "3px",
+          }}
+        />
+
+        <p>
+          {index + 1}、{data[index].name}
+        </p>
+      </article>
+
+      <Form.Item name={data[index].id} required>
+        <Checkbox.Group>
+          <Space direction="vertical" block>
+            {data[index].answer.map((item: any) => (
+              <Checkbox value={item.id} key={item.id} block>
+                {item.content}
+              </Checkbox>
+            ))}
+          </Space>
+        </Checkbox.Group>
+      </Form.Item>
+    </Card>
   );
 };

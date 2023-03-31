@@ -1,3 +1,6 @@
+:root:root {
+  --adm-color-primary: #00b578;
+}
 body {
   margin: 0;
   padding: 0;
@@ -6,16 +9,58 @@ body {
     Microsoft YaHei, Source Han Sans CN, sans-serif;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
 /* Custom Style */
-
-.test-list {
-  background-color: #f2f2f2;
+.page {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
-.test-list .weui-media-box .weui-media-box__hd {
+.article {
+  padding: 12px 0px;
+  padding: 12px calc(0px + constant(safe-area-inset-right))
+    calc(12px + constant(safe-area-inset-bottom))
+    calc(0px + constant(safe-area-inset-left));
+  padding: 12px calc(0px + env(safe-area-inset-right))
+    calc(12px + env(safe-area-inset-bottom))
+    calc(0px + env(safe-area-inset-left));
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 17px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.weui-media-box__title {
+  display: block;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.9);
   width: auto;
-  height: auto;
-  order: 3;
-  margin-right: 0;
-  margin-left: 0.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.weui-media-box__desc {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.4;
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+  hyphens: auto;
 }

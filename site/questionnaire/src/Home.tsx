@@ -1,51 +1,39 @@
-// @ts-nocheck
-import { Link } from "react-router-dom";
-import {
-  Panel,
-  PanelHeader,
-  PanelBody,
-  MediaBox,
-  MediaBoxHeader,
-  MediaBoxBody,
-  MediaBoxTitle,
-  MediaBoxDescription,
-  Button,
-} from "react-weui";
-import "weui";
+import { useNavigate } from "react-router-dom";
 
-import { ListData } from "./utils/listData"; // 列表数据
+import { Card, Button, Grid } from "antd-mobile";
+
+import { list } from "./constant"; // 列表数据
 
 export default () => {
+  const navigate = useNavigate();
   return (
-    <div className="test-list">
-      {ListData.map((item) => (
-        <Panel key={item.id}>
-          <PanelHeader>{item.title}</PanelHeader>
-          <PanelBody>
-            <MediaBox type="appmsg">
-              <MediaBoxHeader>
-                {item.isTest ? (
-                  <Button type="primary" size="small" disabled={true}>
-                    已测试
-                  </Button>
-                ) : (
-                  <Link
-                    to={"/" + item.id}
-                    className="weui-btn weui-btn_mini weui-btn_primary"
-                  >
-                    开始测试
-                  </Link>
-                )}
-              </MediaBoxHeader>
-              <MediaBoxBody>
-                <MediaBoxTitle>{item.name}</MediaBoxTitle>
-                <MediaBoxDescription>
-                  {item.bDate}-{item.eDate}
-                </MediaBoxDescription>
-              </MediaBoxBody>
-            </MediaBox>
-          </PanelBody>
-        </Panel>
+    <div style={{ backgroundColor: "#f2f2f2" }}>
+      {list.map((item) => (
+        <Card
+          key={item.id}
+          title={item.title}
+          style={{ marginBottom: 12, borderRadius: 0 }}
+        >
+          <Grid columns={3} gap={8}>
+            <Grid.Item span={2}>
+              <h4 className="weui-media-box__title">{item.name}</h4>
+              <p className="weui-media-box__desc">
+                {item.bDate}-{item.eDate}
+              </p>
+            </Grid.Item>
+            <Grid.Item style={{ textAlign: "right" }}>
+              {item.isTest ? (
+                <Button size="small" disabled>
+                  已测试
+                </Button>
+              ) : (
+                <Button color="success" onClick={() => navigate(`/${item.id}`)}>
+                  开始测试
+                </Button>
+              )}
+            </Grid.Item>
+          </Grid>
+        </Card>
       ))}
     </div>
   );
