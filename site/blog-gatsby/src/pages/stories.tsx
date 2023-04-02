@@ -7,23 +7,22 @@ import { CalendarIcon } from "@heroicons/react/24/outline";
 import Seo from "../components/Seo";
 import Layout from "../components/Layout";
 import PostLabel from "../components/PostLabel";
-import Category from "../components/Category";
 
-const filterCategory = (name: string) => {
-  const types = {
-    css: ["css", "css3", "scss", "less"],
-    js: ["javascript", "ecmaScript", "js", "jsx", "ts", "typescript", "node"],
-    md: ["md", "markdown"],
-    jsx: ["jsx", "tsx", "react"],
-  };
+// const filterCategory = (name: string) => {
+//   const types = {
+//     css: ["css", "css3", "scss", "less"],
+//     js: ["javascript", "ecmaScript", "js", "jsx", "ts", "typescript", "node"],
+//     md: ["md", "markdown"],
+//     jsx: ["jsx", "tsx", "react"],
+//   };
 
-  for (let [key, value] of Object.entries(types)) {
-    if (value.find((type) => type.toUpperCase() === name.toUpperCase())) {
-      return key;
-    }
-  }
-  return "jsx";
-};
+//   for (let [key, value] of Object.entries(types)) {
+//     if (value.find((type) => type.toUpperCase() === name.toUpperCase())) {
+//       return key;
+//     }
+//   }
+//   return "jsx";
+// };
 
 const Index = ({ data }: PageProps<Queries.IndexPageQuery>) => {
   useEffect(() => {
@@ -53,10 +52,7 @@ const Index = ({ data }: PageProps<Queries.IndexPageQuery>) => {
           >
             <div className="text-slate-400 text-sm leading-none flex items-center">
               <time className="post-time inline-flex items-center my-2">
-                <CalendarIcon
-                  className="mr-1 w-4 h-4"
-                  style={{ color: "#f1af38" }}
-                />
+                <CalendarIcon className="mr-1 w-4 h-4 text-indigo-600" />
                 {node.frontmatter.date}
               </time>
               <span className="mx-2 w-0.5 h-0.5 rounded-full bg-slate-400" />

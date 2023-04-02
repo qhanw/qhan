@@ -12,7 +12,7 @@ module.exports = {
       },
       width: {
         fill: 'fill-available'
-      }
+      },
     },
   },
   plugins: [

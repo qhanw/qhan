@@ -1,4 +1,4 @@
-import React from "react";
+import {Fragment} from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import Footer from "../Footer";
 import SideBar from "../SideBar";
@@ -19,14 +19,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     `
   );
   return (
-    <>
+    <Fragment>
       {/* <SideBar siteMetadata={siteMetadata} /> */}
       <Header siteMetadata={siteMetadata} />
       <main className="container mx-auto px-4 pt-10">
         {children}
         <Footer />
       </main>
-    </>
+    </Fragment>
   );
 };
 

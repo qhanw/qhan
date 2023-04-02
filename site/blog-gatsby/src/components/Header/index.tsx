@@ -1,6 +1,5 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { Link } from "gatsby";
-import { css } from "@emotion/react";
 import { Popover, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -17,35 +16,16 @@ import {
 
 import IconSakura from "../Icons/sakura";
 
-const shadow = css`
-  position: relative;
-  z-index: 10;
-  &::before {
-    content: "";
-    box-shadow: 0 0 4px 1px #ddd;
-    position: fixed;
-    width: 100%;
-  }
-  &::after {
-    content: "";
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(to bottom, #fff 50%, transparent);
-    position: absolute;
-  }
-`;
-
 const nav = [
   { name: "Stories", href: "/stories", icon: PencilIcon },
-  // { name: "Cases", href: "/cases", icon: RectangleGroupIcon },
   { name: "Timeline", href: "/timeline", icon: ClockIcon },
   // { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },
   // { name: "Statistics", href: "/statistics", icon: ChartBarSquareIcon },
 ];
 
-const Header = ({ siteMetadata }: any) => {
+export default ({ siteMetadata }: any) => {
   return (
-    <>
+    <Fragment>
       <Popover className="sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60 ">
         <div className="px-4 sm:px-6">
           <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
@@ -135,9 +115,7 @@ const Header = ({ siteMetadata }: any) => {
           </div>
         </Popover.Panel>
       </Popover>
-      <div css={shadow} />
-    </>
+      <div className="header-line-shadow" />
+    </Fragment>
   );
 };
-
-export default Header;

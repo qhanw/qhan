@@ -17,7 +17,7 @@ const Index = () => {
         <li>🌱 目前正在学习前端自动化测试方面知识。</li>
         <li>
           💬 如何联系我: 微信搜索 AsQhan 或邮箱：
-          <a className="text-sky-500" href="mailto:whenhan@foxmail.com">
+          <a className="text-indigo-600" href="mailto:whenhan@foxmail.com">
             whenhan@foxmail.com
           </a>
         </li>
