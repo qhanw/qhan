@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { remark } from "remark";
 import html from "remark-html";
-import remarkGfm from 'remark-gfm'
+import remarkGfm from "remark-gfm";
 import ShikiRemarkPlugin from "remark-shiki-plugin";
 import { getPostBySlug, getAllPosts } from "@/../lib/posts";
 import Layout from "../components/Layout";
@@ -23,23 +23,33 @@ export default (props: any) => {
         </header>
         <article dangerouslySetInnerHTML={{ __html: post.html }} />
         <div className="flex justify-between my-12 text-sm">
-          {prev && (
-            <Link href={prev.slug} className="inline-flex items-center min-w-0">
-              <ChevronLeftIcon className="mr-1 h-4 w-4 group-hover:text-gray-500" />
-              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                {prev.title}
-              </span>
-            </Link>
-          )}
-          {next && (
-            <Link href={next.slug} className="inline-flex items-center min-w-0">
-              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                {next.title}
-              </span>
+          <span>
+            {prev && (
+              <Link
+                href={prev.slug}
+                className="inline-flex items-center min-w-0"
+              >
+                <ChevronLeftIcon className="mr-1 h-4 w-4 group-hover:text-gray-500" />
+                <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+                  {prev.title}
+                </span>
+              </Link>
+            )}
+          </span>
+          <span>
+            {next && (
+              <Link
+                href={next.slug}
+                className="inline-flex items-center min-w-0"
+              >
+                <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+                  {next.title}
+                </span>
 
-              <ChevronRightIcon className=" ml-1 h-4 w-4 group-hover:text-gray-500" />
-            </Link>
-          )}
+                <ChevronRightIcon className=" ml-1 h-4 w-4 group-hover:text-gray-500" />
+              </Link>
+            )}
+          </span>
         </div>
       </div>
     </Layout>
@@ -58,11 +68,20 @@ export async function getStaticProps({ params }: any) {
     })
     .process(post.content || "");
 
+  //
+
+  const posts = getAllPosts();
+
+  const idx = posts.findIndex((c) => c.slug === params.slug);
+
+  const next = posts[idx + 1];
+  const prev = posts[idx - 1];
+
   return {
     props: {
       post: { ...post, html: markdown.toString() },
-      prev: { title: "xxx", slug: "xxx" },
-      next: { title: "zzz", slug: "zzz" },
+      prev: prev ? { title: prev.frontmatter.title, slug: prev.slug } : null,
+      next: next ? { title: next.frontmatter.title, slug: next.slug } : null,
     },
   };
 }
@@ -75,43 +94,3 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-
-// export const pageQuery = graphql`
-//   query BlogPostBySlug(
-//     $id: String!
-//     $previousPostId: String
-//     $nextPostId: String
-//   ) {
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//     markdownRemark(id: { eq: $id }) {
-//       id
-//       excerpt(pruneLength: 160)
-//       html
-//       frontmatter {
-//         title
-//         date(formatString: "MMMM DD, YYYY")
-//         description
-//       }
-//     }
-//     previous: markdownRemark(id: { eq: $previousPostId }) {
-//       fields {
-//         slug
-//       }
-//       frontmatter {
-//         title
-//       }
-//     }
-//     next: markdownRemark(id: { eq: $nextPostId }) {
-//       fields {
-//         slug
-//       }
-//       frontmatter {
-//         title
-//       }
-//     }
-//   }
-// `;

@@ -7,6 +7,8 @@ tags:
 - HTML5
 - Canvas
 ---
+利用CANVAS生成缩略图方法总结
+---
 
 **HTML**
 

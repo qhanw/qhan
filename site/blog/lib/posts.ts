@@ -15,7 +15,12 @@ export function getPostBySlug(slug: string) {
 
   const date = dayjs(data.date).format("YYYY-MM-DD");
 
-  return { slug: realSlug, frontmatter: { ...data, date }, content, excerpt };
+  return {
+    slug: realSlug,
+    frontmatter: { ...data, title: data.title, date },
+    content,
+    excerpt,
+  };
 }
 
 export function getAllPosts() {
