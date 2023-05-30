@@ -1,15 +1,10 @@
 import { Fragment, useEffect } from "react";
 
-import ScrollReveal from "scrollreveal";
 import Link from "next/link";
 import Seo from "../components/Seo";
 import Layout from "../components/Layout";
 
-export default ({
-  data: {
-    allMarkdownRemark: { edges },
-  },
-}: any) => {
+const Archives = () => {
   // useEffect(() => {
   //   ScrollReveal().reveal("#archive-item", {
   //     delay: 500,
@@ -24,26 +19,26 @@ export default ({
   // }, []);
 
   // 计算出年段区间
-  const years = Array.from(
-    new Set(
-      edges.map(({ node }: any) => {
-        return node.frontmatter.date.split("-")[0];
-      })
-    )
-  );
-  const nextData = years.map((year) => {
-    return {
-      year,
-      edges: edges.filter(({ node }: any) =>
-        node.frontmatter.date.includes(year)
-      ),
-    };
-  });
+  // const years = Array.from(
+  //   new Set(
+  //     edges.map(({ node }: any) => {
+  //       return node.frontmatter.date.split("-")[0];
+  //     })
+  //   )
+  // );
+  // const nextData = years.map((year) => {
+  //   return {
+  //     year,
+  //     edges: edges.filter(({ node }: any) =>
+  //       node.frontmatter.date.includes(year)
+  //     ),
+  //   };
+  // });
 
   return (
     <Layout>
       <Seo title="归档" />
-      {nextData.map(({ year, edges }: any) => (
+      {/* {nextData.map(({ year, edges }: any) => (
         <Fragment key={year}>
           <dl id="archive-item" className="mb-8">
             <dt className="text-3xl mb-4">{year}</dt>
@@ -55,10 +50,18 @@ export default ({
             ))}
           </dl>
         </Fragment>
-      ))}
+      ))} */}
     </Layout>
   );
 };
+
+export default Archives;
+
+export async function getStaticProps() {
+  // const data = getAllPosts();
+
+  return { props: { data: [] } };
+}
 
 // export const query = graphql`
 //   query ArchivesPage {

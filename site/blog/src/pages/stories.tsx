@@ -3,8 +3,10 @@ import Link from "next/link";
 import Head from "next/head";
 // import { graphql, Link } from "gatsby";
 // import type { PageProps } from "gatsby";
-import ScrollReveal from "scrollreveal";
 import { CalendarIcon } from "@heroicons/react/24/outline";
+
+import { remark } from "remark";
+import html from "remark-html";
 
 import { getAllPosts } from "../../lib/posts";
 
@@ -58,19 +60,19 @@ const Index = ({ data }: any) => {
             <div className="text-slate-400 text-sm leading-none flex items-center">
               <time className="post-time inline-flex items-center my-2">
                 <CalendarIcon className="mr-1 w-4 h-4 text-indigo-600" />
-                {node.frontmatter.date}
+                {node.frontmatter?.date}
               </time>
               <span className="mx-2 w-0.5 h-0.5 rounded-full bg-slate-400" />
               {/* {node.frontmatter.category} */}
-              {node.frontmatter.tags.map((tag: string) => (
+              {node.frontmatter?.tags.map((tag: string) => (
                 <PostLabel title={tag} key={tag} />
               ))}
             </div>
             <h2 className="pt-1 pb-2 text-xl text-slate-700 hover:text-indigo-800 break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-              {node.frontmatter.title}
+              {node.frontmatter?.title}
             </h2>
 
-            <p className="text-slate-500 line-clamp-3">{node.excerpt}</p>
+            <div className="text-slate-500 line-clamp-3">{node.excerpt}</div>
           </Link>
         ))}
       </div>
@@ -80,9 +82,16 @@ const Index = ({ data }: any) => {
 
 export default Index;
 
+// async function formatExcerpt(content: string) {
+//   const excerpt = await remark()
+//     .use(html, { sanitize: false })
+//     .process(content || "");
+
+//   return excerpt.toString();
+// }
+
 export async function getStaticProps() {
   const data = getAllPosts();
-  return {
-    props: { data },
-  };
+
+  return { props: { data } };
 }

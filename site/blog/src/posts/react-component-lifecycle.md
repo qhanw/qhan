@@ -8,6 +8,11 @@ tags:
 - javascript
 ---
 
+每个组件都有几个“生命周期方法”，您可以覆盖这些方法以在流程中的特定时间运行代码。您可以将此生命周期图用作备忘单。在下面的列表中，常用的生命周期方法被标记为粗体。它们中的其余部分存在于相对罕见的用例中。
+
+---
+
+
 - 装载<small>(首次实例化)</small>
   - [constructor()](#constructor)
   - [static getDerivedStateFromProps()](#getDerivedStateFromProps)
@@ -33,7 +38,6 @@ tags:
   - [props](#props)
   - [state](#state)
 
----
 
 <h3 id="constructor">constructor()</h3>
 

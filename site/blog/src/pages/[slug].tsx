@@ -2,12 +2,11 @@ import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { remark } from "remark";
 import html from "remark-html";
-import prism from "remark-prism";
+import remarkGfm from 'remark-gfm'
+import ShikiRemarkPlugin from "remark-shiki-plugin";
 import { getPostBySlug, getAllPosts } from "@/../lib/posts";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
-
-import "prism-themes/themes/prism-one-light.css";
 
 export default (props: any) => {
   const { post, prev, next } = props;
@@ -51,7 +50,12 @@ export async function getStaticProps({ params }: any) {
   const post = getPostBySlug(params.slug);
   const markdown = await remark()
     .use(html, { sanitize: false })
-    .use(prism)
+    .use(remarkGfm)
+    .use(ShikiRemarkPlugin, {
+      theme: "nord",
+      themes: ["nord", "nord"],
+      generateMultiCode: true,
+    })
     .process(post.content || "");
 
   return {
