@@ -38,7 +38,7 @@ export default () => {
       <main>
         <ul
           id="series"
-          className="relative pl-8 ml-5 before:content-[''] before:block before:w-0.5 before:h-full before:bg-indigo-600 before:absolute before:left-0 before:top-0 before:overflow-hidden lg:ml-36 xl:60"
+          className="relative pl-8 ml-5 before:content-[''] before:block before:w-0.5 before:h-full before:bg-brand before:absolute before:left-0 before:top-0 before:overflow-hidden lg:ml-36 xl:60"
         >
           {data.map((c) => {
             const isProj = c.type !== "company";
@@ -52,14 +52,14 @@ export default () => {
                   icon-square
                   ${isProj ? " scale-50" : ""}
                   absolute inline-block w-5 h-5
-                  before:absolute before:content-[""] before:inline-block before:rotate-45 before:rounded-sm before:w-full before:h-full before:bg-white  before:border-indigo-600 before:border-solid before:border-2 before:left-0 before:top-0
-                  after:absolute after:content-[""] after:inline-block after:rotate-45 after:rounded-sm after:w-2 after:h-2 after:bg-indigo-600 after:left-1.5 after:top-1.5
+                  before:absolute before:content-[""] before:inline-block before:rotate-45 before:rounded-sm before:w-full before:h-full before:bg-white  before:border-brand before:border-solid before:border-2 before:left-0 before:top-0
+                  after:absolute after:content-[""] after:inline-block after:rotate-45 after:rounded-sm after:w-2 after:h-2 after:bg-brand after:left-1.5 after:top-1.5
                   `}
                   style={{ left: -41 }}
                 />
                 <time
                   className={`text-sm italic inline-block text-right ${
-                    isProj ? "text-gray-400" : "text-indigo-600"
+                    isProj ? "text-gray-400" : "text-brand"
                   } -left-52 lg:absolute lg:w-36`}
                 >
                   {c.date}

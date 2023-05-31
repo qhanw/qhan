@@ -1,24 +1,21 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  XMarkIcon,
-  HomeIcon,
-  // rectangle-group
-  RectangleGroupIcon,
-  PencilIcon,
-  ArchiveBoxIcon,
-  UserCircleIcon,
-  ClockIcon,
-  ChartBarSquareIcon,
-} from "@heroicons/react/24/outline";
+import { Icon } from "@iconify/react";
 
 import IconSakura from "./Icons/sakura";
 
 const nav = [
-  { name: "Stories", href: "/stories", icon: PencilIcon },
-  { name: "Timeline", href: "/timeline", icon: ClockIcon },
+  {
+    name: "Stories",
+    href: "/stories",
+    icon: (props: any) => <Icon {...props} icon="heroicons:pencil" />,
+  },
+  {
+    name: "Timeline",
+    href: "/timeline",
+    icon: (props: any) => <Icon {...props} icon="heroicons:clock" />,
+  },
   // { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },
   // { name: "Statistics", href: "/statistics", icon: ChartBarSquareIcon },
 ];
@@ -31,14 +28,18 @@ export default () => (
           <div className="flex justify-start md:w-0 md:flex-1">
             <Link href="/" className="inline-flex items-center">
               <span className="sr-only">Workflow</span>
-              <IconSakura className="w-8 h-8 text-indigo-600 sm:w-10 sm:h-10 logo-rotate" />
+              <IconSakura className="w-8 h-8 sm:w-10 sm:h-10 logo-rotate text-brand" />
               <span className="text-xl ml-2 font-medium">Qhan W</span>
             </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span className="sr-only">Open menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              <Icon
+                icon="heroicons:bars-3"
+                className="h-6 w-6"
+                aria-hidden="true"
+              />
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
@@ -49,7 +50,7 @@ export default () => (
                 className="text-base font-medium inline-flex items-center text-gray-500 hover:text-gray-900"
               >
                 <item.icon
-                  className="flex-shrink-0 h-4 w-4 text-indigo-600 mr-3"
+                  className="flex-shrink-0 h-4 w-4 mr-3 text-brand"
                   aria-hidden="true"
                 />
                 {item.name}
@@ -81,12 +82,16 @@ export default () => (
           <div className="pt-5 pb-6 px-5">
             <div className="flex items-center justify-between">
               <Link href="/">
-                <IconSakura className="w-8 h-8 text-indigo-600 logo-rotate" />
+                <IconSakura className="w-8 h-8 logo-rotate text-brand" />
               </Link>
               <div className="-mr-2">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Close menu</span>
-                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                  <Icon
+                    icon="heroicons:x-mark"
+                    className="h-6 w-6"
+                    aria-hidden="true"
+                  />
                 </Popover.Button>
               </div>
             </div>
@@ -99,7 +104,7 @@ export default () => (
                     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                   >
                     <item.icon
-                      className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                      className="flex-shrink-0 h-6 w-6 text-brand"
                       aria-hidden="true"
                     />
                     <span className="ml-3 text-base font-medium text-gray-900">

@@ -20,7 +20,7 @@ export default () => (
     <div className="flex">
       <Link href="/" className="inline-flex items-center">
         <span className="sr-only">Workflow</span>
-        <IconSakura className="w-8 h-8 text-indigo-600 logo-rotate" />
+        <IconSakura className="w-8 h-8 logo-rotate text-brand" />
         <span className="text-lg ml-2 font-medium">Qhan W</span>
       </Link>
 
@@ -31,12 +31,12 @@ export default () => (
       {social.map((c) => (
         <Link
           key={c.href}
-          className="border border-indigo-600 border-solid rounded p-2 mr-2 opacity-50 hover:opacity-80"
+          className="border border-solid rounded p-2 mr-2 opacity-50 hover:opacity-80 border-brand" 
           href={c.href}
           title={c.name}
           target="_blank"
         >
-          <c.icon className="w-4 h-4 text-indigo-600" />
+          <c.icon className="w-4 h-4 text-brand" />
         </Link>
       ))}
     </div>

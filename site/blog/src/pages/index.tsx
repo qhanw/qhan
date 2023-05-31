@@ -66,7 +66,7 @@ const Index = () => {
         <li>🌱 目前正在学习前端自动化测试方面知识。</li>
         <li>
           💬 如何联系我: 微信搜索 AsQhan 或邮箱：
-          <a className="text-indigo-600" href="mailto:whenhan@foxmail.com">
+          <a className="text-brand" href="mailto:whenhan@foxmail.com">
             whenhan@foxmail.com
           </a>
         </li>
@@ -86,15 +86,14 @@ const Index = () => {
                 <span className="font-semibold text-slate-900">
                   {proj.name}
                 </span>
-                {/* <span className="text-slate-400">{proj.labels.join(", ")}</span> */}
-
-                <span className="text-slate-400 flex gap-1">
+                <span className="text-slate-400 flex gap-1 items-center grayscale">
                   {proj.icons?.map((c) => (
                     <Icon
                       key={c}
                       icon={c}
-                      fontSize={18}
-                      {...(c.includes("echarts") ? { color: "#e33861" } : {})}
+                      {...(c.includes("echarts")
+                        ? { fontSize: 16 }
+                        : { fontSize: 18 })}
                     />
                   ))}
                 </span>

@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,7 +10,19 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        brand: "var(--vp-c-brand)"
+      },
+      borderColor: {
+        brand: "var(--vp-c-brand)"
+      },
+      textColor: {
+        brand: "var(--vp-c-brand)"
+      }
+
+    },
+
   },
   plugins: [
     require('@tailwindcss/typography'),

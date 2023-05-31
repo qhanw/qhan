@@ -1,9 +1,7 @@
 import { useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
-// import { graphql, Link } from "gatsby";
-// import type { PageProps } from "gatsby";
-import { CalendarIcon } from "@heroicons/react/24/outline";
+import { Icon } from "@iconify/react";
 
 import { remark } from "remark";
 import html from "remark-html";
@@ -59,7 +57,7 @@ const Index = ({ data }: any) => {
           >
             <div className="text-slate-400 text-sm leading-none flex items-center">
               <time className="post-time inline-flex items-center my-2">
-                <CalendarIcon className="mr-1 w-4 h-4 text-indigo-600" />
+                <Icon icon="heroicons:calendar" className="mr-1 w-4 h-4 text-brand" />
                 {node.frontmatter?.date}
               </time>
               <span className="mx-2 w-0.5 h-0.5 rounded-full bg-slate-400" />

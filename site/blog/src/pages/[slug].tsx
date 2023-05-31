@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { Icon } from "@iconify/react";
 import { remark } from "remark";
 import html from "remark-html";
 import remarkGfm from "remark-gfm";
@@ -7,6 +7,7 @@ import ShikiRemarkPlugin from "remark-shiki-plugin";
 import { getPostBySlug, getAllPosts } from "@/../lib/posts";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
+
 
 export default (props: any) => {
   const { post, prev, next } = props;
@@ -29,7 +30,7 @@ export default (props: any) => {
                 href={prev.slug}
                 className="inline-flex items-center min-w-0"
               >
-                <ChevronLeftIcon className="mr-1 h-4 w-4 group-hover:text-gray-500" />
+                <Icon icon="heroicons:chevron-left" className="mr-1 h-4 w-4 group-hover:text-gray-500" />
                 <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
                   {prev.title}
                 </span>
@@ -46,7 +47,7 @@ export default (props: any) => {
                   {next.title}
                 </span>
 
-                <ChevronRightIcon className=" ml-1 h-4 w-4 group-hover:text-gray-500" />
+                <Icon icon="heroicons:chevron-right" className=" ml-1 h-4 w-4 group-hover:text-gray-500" />
               </Link>
             )}
           </span>
