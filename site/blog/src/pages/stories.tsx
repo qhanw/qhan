@@ -52,7 +52,7 @@ const Index = ({ data }: any) => {
         {data.map((node: any) => (
           <Link
             href={node.slug}
-            className="p-6 section rounded-lg overflow-hidden cursor-pointer bg-slate-50 text-sm transition hover:shadow-lg hover:transition"
+            className="p-6 section rounded-lg overflow-hidden cursor-pointer bg-slate-50 text-sm transition hover:shadow"
             key={node.slug}
           >
             <div className="text-slate-400 text-sm leading-none flex items-center">
@@ -66,7 +66,7 @@ const Index = ({ data }: any) => {
                 <PostLabel title={tag} key={tag} />
               ))}
             </div>
-            <h2 className="pt-1 pb-2 text-xl text-slate-700 hover:text-indigo-800 break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+            <h2 className="pt-1 pb-2 text-xl text-slate-700 hover:text-brand break-all whitespace-nowrap overflow-hidden overflow-ellipsis ease-in duration-300">
               {node.frontmatter?.title}
             </h2>
 

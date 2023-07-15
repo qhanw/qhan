@@ -18,7 +18,7 @@ export default (props: any) => {
         title={post?.frontmatter?.title || ""}
         description={post?.frontmatter?.description || post?.excerpt || ""}
       />
-      <div className="prose prose-slate mx-auto">
+      <div className="prose prose-default mx-auto">
         <header className="text-3xl pb-6 font-extrabold">
           {post.frontmatter.title}
         </header>

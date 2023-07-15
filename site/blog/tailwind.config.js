@@ -19,6 +19,14 @@ module.exports = {
       },
       textColor: {
         brand: "var(--vp-c-brand)"
+      },
+
+      typography: {
+        default: {
+          css: {
+            '--tw-prose-links': 'var(--vp-c-brand)'
+          }
+        }
       }
 
     },

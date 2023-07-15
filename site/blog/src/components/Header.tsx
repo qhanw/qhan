@@ -11,11 +11,16 @@ const nav = [
     href: "/stories",
     icon: (props: any) => <Icon {...props} icon="heroicons:pencil" />,
   },
-  {
-    name: "Timeline",
-    href: "/timeline",
-    icon: (props: any) => <Icon {...props} icon="heroicons:clock" />,
-  },
+  // {
+  //   name: "Projects",
+  //   href: "/projects",
+  //   icon: (props: any) => <Icon {...props} icon="ant-design:project-outlined" />,
+  // },
+  // {
+  //   name: "Life",
+  //   href: "/life",
+  //   icon: (props: any) => <Icon {...props} icon="heroicons-outline:photograph" />,
+  // },
   // { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },
   // { name: "Statistics", href: "/statistics", icon: ChartBarSquareIcon },
 ];

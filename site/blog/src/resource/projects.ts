@@ -1,17 +1,25 @@
 export default [
   {
+    key: "202306",
+    name: "MEET48",
+    labels: ["react", "wagmi"],
+    icons: ["ri:reactjs-fill", "wagmi"],
+    desc: "海外偶像总选网站应用，基于WEB3.0实现。包钱包登录、投票、积分赚取、兑换等功能。",
+    href: "https://gipr.meet48.xyz/",
+  },
+  {
     key: "202201",
     name: "智能制度解析",
     labels: ["react", "antd", "antv"],
     icons: ["ri:reactjs-fill", "ant-design:ant-design-outlined", "antv"],
-    desc: "包含桌面端与WEB端，定位于关注精细化运营、高效运营支撑。主要支撑课程顾问、班主任老师对客户转化、社群运营的诉求，协助一线老师完成销售、运营目标。",
+    desc: "关注于银行金融方面规章制度的自动解析与分析，便于相关人员快速掌握规章制度。提供对制度的导入、解析、分词、标注、核对、图谱生成、对比等方面的支持。",
   },
   {
     key: "202201",
     name: "事中监控平台",
     labels: ["react", "antd", "antv"],
     icons: ["ri:reactjs-fill", "ant-design:ant-design-outlined", "antv"],
-    desc: "包含桌面端与WEB端，定位于关注精细化运营、高效运营支撑。主要支撑课程顾问、班主任老师对客户转化、社群运营的诉求，协助一线老师完成销售、运营目标。",
+    desc: "针对金融机构提供对各类金融活动产生的的事件进行监控管理降低业务风险。提供针对事件的预警管理、案件管理，以及黑白名单、规则引挚、策略包、数据看盘等方面功能。",
   },
   {
     key: "1",
@@ -31,21 +39,25 @@ export default [
     key: "3",
     name: "基础权限平台",
     labels: ["react", "antd", "qiankun"],
-    icons: ["ri:reactjs-fill", "ant-design:ant-design-outlined", "ant-design:ant-design-outlined"],
+    icons: [
+      "ri:reactjs-fill",
+      "ant-design:ant-design-outlined",
+      "ant-design:ant-design-outlined",
+    ],
     desc: "微前端架构，内部中台系统、三方应用、员工部门及权限相关管理系统。",
   },
   {
     key: "4",
     name: "仿真镜像平台",
     labels: ["react", "antd"],
-    icons: ["ri:reactjs-fill", "ant-design:ant-design-outlined",],
+    icons: ["ri:reactjs-fill", "ant-design:ant-design-outlined"],
     desc: "用于克隆线上产品（如淘宝、天猫）环境的真实数据后，在镜像环境中能引流更多流量做更多真实的验证，包括核对监控等。",
   },
   {
     key: "5",
     name: "倍事达管理系统",
     labels: ["react", "antd"],
-    icons: ["ri:reactjs-fill", "ant-design:ant-design-outlined",],
+    icons: ["ri:reactjs-fill", "ant-design:ant-design-outlined"],
     desc: "一个PCO有害生物防治行业SaaS软件系统，主要服务于食品行业、连锁餐厅等PCO虫控企业用户。",
   },
   {
