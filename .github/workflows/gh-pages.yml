@@ -38,4 +38,4 @@ jobs:
           external_repository: gh-static-websites/blog
           publish_branch: main
           publish_dir: ./site/blog-gatsby/public
-          cname: qhan.wang
+          cname: me.qhan.wang
