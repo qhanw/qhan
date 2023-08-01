@@ -5,7 +5,7 @@ export default [
     labels: ["react", "wagmi"],
     icons: ["ri:reactjs-fill", "wagmi"],
     desc: "海外偶像总选网站应用，基于WEB3.0实现。包钱包登录、投票、积分赚取、兑换等功能。",
-    href: "https://gipr.meet48.xyz/",
+    href: "https://meet.qhan.wang",
   },
   {
     key: "202201",

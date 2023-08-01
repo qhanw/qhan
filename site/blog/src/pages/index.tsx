@@ -5,6 +5,8 @@ import Layout from "../components/Layout";
 import Seo from "@/components/Seo";
 
 import projects from "../resource/projects";
+import React, { ReactNode } from "react";
+import clsx from "clsx";
 
 addIcon("antdmobile", {
   body: `<defs>
@@ -80,6 +82,26 @@ addIcon("antv", {
   height: 28,
 });
 
+const ProjWrapper: React.FC<{
+  className?: string;
+  children?: ReactNode;
+  href?: string;
+}> = ({ href, ...props }) => {
+  if (href)
+    return (
+      <a
+        href={href}
+        target="_blank"
+        {...props}
+        className={clsx(
+          props.className,
+          "border border-slate-50 hover:border-brand group"
+        )}
+      />
+    );
+  return <div {...props} />;
+};
+
 const Index = () => {
   return (
     <Layout>
@@ -106,18 +128,18 @@ const Index = () => {
       </h2>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
         {projects.map((proj) => (
-          <div
+          <ProjWrapper
             key={proj.key}
             className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100"
+            href={proj.href}
           >
-            
             <h2>
               <button className="flex gap-2 transition items-center">
                 <span className="absolute inset-0 rounded-xl"></span>
-                <span className="font-semibold text-slate-900">
+                <span className="font-semibold text-slate-900 group-hover:text-brand">
                   {proj.name}
                 </span>
-                <span className="text-slate-400 flex gap-1 items-center grayscale">
+                <span className="text-slate-400 flex gap-1 items-center grayscale group-hover:grayscale-0">
                   {proj.icons?.map((c) => (
                     <Icon
                       key={c}
@@ -135,7 +157,13 @@ const Index = () => {
               </button>
             </h2>
             <p className="mt-1 text-slate-500">{proj.desc}</p>
-          </div>
+            {proj.href ? (
+              <a href={proj.href} target="_blank" className="inline-flex items-center mt-2 text-brand font-semibold">
+                Preview
+                <Icon icon="heroicons:arrow-right" className="ml-1"/>
+              </a>
+            ) : null}
+          </ProjWrapper>
         ))}
       </div>
     </Layout>
