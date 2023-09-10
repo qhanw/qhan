@@ -1,4 +1,3 @@
-// import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout";
 
 export default () => {

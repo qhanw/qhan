@@ -1,16 +1,14 @@
-import { useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
-import Head from "next/head";
-import { Icon } from "@iconify/react";
+import { Icon } from "@/app/components/Icons";
 
-import { remark } from "remark";
-import html from "remark-html";
+// import { remark } from "remark";
+// import html from "remark-html";
 
-import { getAllPosts } from "../../lib/posts";
-
-import Seo from "../components/Seo";
 import Layout from "../components/Layout";
 import PostLabel from "../components/PostLabel";
+
+import { getAllPosts } from "@/lib/posts";
+import seo from "@/app/utils/seo";
 
 // const filterCategory = (name: string) => {
 //   const types = {
@@ -28,28 +26,32 @@ import PostLabel from "../components/PostLabel";
 //   return "jsx";
 // };
 
-const Index = ({ data }: any) => {
-  // useLayoutEffect(() => {
-  //   ScrollReveal().reveal(".section", {
-  //     delay: 500,
-  //     useDelay: "onload",
-  //     reset: true,
-  //     // origin: "right",
-  //     distance: "120px",
-  //   });
-  //   return () => {
-  //     ScrollReveal().destroy();
-  //   };
-  // }, []);
+// async function formatExcerpt(content: string) {
+//   const excerpt = await remark()
+//     .use(html, { sanitize: false })
+//     .process(content || "");
+
+//   return excerpt.toString();
+// }
+
+// export async function getPosts() {
+//   return getAllPosts();
+// }
+
+export async function generateMetadata() {
+  return seo({ title: "Stories" });
+}
+
+export default async function Stories() {
+  const posts = await getAllPosts();
 
   return (
     <Layout>
-      <Seo title="Stories" />
       <div className="uppercase py-1 mb-4 -mt-8 text-sm text-center font-medium tracking-widest text-slate-400">
-        Total {data.length} Posts
+        Total {posts?.length} Posts
       </div>
       <div className="grid gap-8 max-w-screen-lg m-auto">
-        {data.map((node: any) => (
+        {posts?.map((node: any) => (
           <Link
             href={node.slug}
             className="p-6 section rounded-lg overflow-hidden cursor-pointer bg-slate-50 text-sm transition hover:shadow"
@@ -57,7 +59,10 @@ const Index = ({ data }: any) => {
           >
             <div className="text-slate-400 text-sm leading-none flex items-center">
               <time className="post-time inline-flex items-center my-2">
-                <Icon icon="heroicons:calendar" className="mr-1 w-4 h-4 text-brand" />
+                <Icon
+                  icon="heroicons:calendar"
+                  className="mr-1 w-4 h-4 text-brand"
+                />
                 {node.frontmatter?.date}
               </time>
               <span className="mx-2 w-0.5 h-0.5 rounded-full bg-slate-400" />
@@ -76,20 +81,4 @@ const Index = ({ data }: any) => {
       </div>
     </Layout>
   );
-};
-
-export default Index;
-
-// async function formatExcerpt(content: string) {
-//   const excerpt = await remark()
-//     .use(html, { sanitize: false })
-//     .process(content || "");
-
-//   return excerpt.toString();
-// }
-
-export async function getStaticProps() {
-  const data = getAllPosts();
-
-  return { props: { data } };
 }

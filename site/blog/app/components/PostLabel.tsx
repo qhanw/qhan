@@ -1,3 +1,4 @@
+"use client";
 import { Icon } from "@iconify/react";
 
 const colors = {

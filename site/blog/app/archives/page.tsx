@@ -1,22 +1,12 @@
-import { Fragment, useEffect } from "react";
-
-import Link from "next/link";
-import Seo from "../components/Seo";
 import Layout from "../components/Layout";
+import seo from "@/app/utils/seo";
 
-const Archives = () => {
-  // useEffect(() => {
-  //   ScrollReveal().reveal("#archive-item", {
-  //     delay: 500,
-  //     useDelay: "onload",
-  //     reset: true,
-  //     origin: "right",
-  //     distance: "120px",
-  //   });
-  //   return () => {
-  //     ScrollReveal().destroy();
-  //   };
-  // }, []);
+export async function generateMetadata() {
+  return seo({ title: "归档" });
+}
+
+export default async function Archives() {
+  // const data = await getAllPosts();
 
   // 计算出年段区间
   // const years = Array.from(
@@ -37,7 +27,6 @@ const Archives = () => {
 
   return (
     <Layout>
-      <Seo title="归档" />
       {/* {nextData.map(({ year, edges }: any) => (
         <Fragment key={year}>
           <dl id="archive-item" className="mb-8">
@@ -53,14 +42,6 @@ const Archives = () => {
       ))} */}
     </Layout>
   );
-};
-
-export default Archives;
-
-export async function getStaticProps() {
-  // const data = getAllPosts();
-
-  return { props: { data: [] } };
 }
 
 // export const query = graphql`

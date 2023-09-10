@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import fs from "fs";
 import { join } from "path";
 
-const postsDir = join(process.cwd(), "src", "posts");
+const postsDir = join(process.cwd(), "posts");
 
 export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, "");
@@ -17,7 +17,12 @@ export function getPostBySlug(slug: string) {
 
   return {
     slug: realSlug,
-    frontmatter: { ...data, title: data.title, date },
+    frontmatter: {
+      ...data,
+      title: data.title,
+      description: data.description,
+      date,
+    },
     content,
     excerpt,
   };
