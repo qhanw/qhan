@@ -95,7 +95,7 @@ const ProjWrapper: React.FC<{
         {...props}
         className={clsx(
           props.className,
-          "border border-slate-50 hover:border-brand group"
+          "block border border-slate-50 hover:border-brand group"
         )}
       />
     );
@@ -157,12 +157,28 @@ const Index = () => {
               </button>
             </h2>
             <p className="mt-1 text-slate-500">{proj.desc}</p>
-            {proj.href ? (
-              <a href={proj.href} target="_blank" className="inline-flex items-center mt-2 text-brand font-semibold">
-                Preview
-                <Icon icon="heroicons:arrow-right" className="ml-1"/>
-              </a>
-            ) : null}
+            <div className="flex items-center relative z-10">
+              {proj.sub_href ? (
+                <a
+                  href={proj.sub_href}
+                  target="_blank"
+                  className="inline-flex items-center mt-2 text-brand font-semibold mr-1"
+                >
+                  <Icon icon="heroicons:globe-alt" className="ml-1" />
+                </a>
+              ) : null}
+
+              {proj.href ? (
+                <a
+                  href={proj.href}
+                  target="_blank"
+                  className="inline-flex items-center mt-2 text-brand font-semibold"
+                >
+                  Preview
+                  <Icon icon="heroicons:arrow-right" className="ml-1" />
+                </a>
+              ) : null}
+            </div>
           </ProjWrapper>
         ))}
       </div>

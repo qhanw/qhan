@@ -30,6 +30,7 @@ export default [
     desc: "四川省应对重大突发公共卫生事件公众认知及行为调查问卷。",
     href: "https://health.qhan.wang",
     date: "202102",
+    sub_href: "https://health.qhan.wang/adm",
   },
   {
     key: "1",
