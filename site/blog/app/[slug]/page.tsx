@@ -18,7 +18,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function getPost(params: Props["params"]) {
+async function getPost(params: Props["params"]) {
   const post = getPostBySlug(params.slug);
   const markdown = await remark()
     .use(html, { sanitize: false })

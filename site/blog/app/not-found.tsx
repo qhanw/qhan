@@ -5,7 +5,7 @@ export async function generateMetadata() {
   return seo({ title: "Not found" });
 }
 
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
     <main className="p-24">
       <h1 className="mb-16 max-w-xs">Page not found</h1>
