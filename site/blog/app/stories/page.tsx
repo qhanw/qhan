@@ -4,7 +4,6 @@ import { Icon } from "@/app/components/Icons";
 // import { remark } from "remark";
 // import html from "remark-html";
 
-import Layout from "../components/Layout";
 import PostLabel from "../components/PostLabel";
 
 import { getAllPosts } from "@/lib/posts";
@@ -46,7 +45,7 @@ export default async function Stories() {
   const posts = await getAllPosts();
 
   return (
-    <Layout>
+    <>
       <div className="uppercase py-1 mb-4 -mt-8 text-sm text-center font-medium tracking-widest text-slate-400">
         Total {posts?.length} Posts
       </div>
@@ -79,6 +78,6 @@ export default async function Stories() {
           </Link>
         ))}
       </div>
-    </Layout>
+    </>
   );
 }

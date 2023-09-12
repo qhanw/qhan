@@ -1,5 +1,3 @@
-import Layout from "../components/Layout";
-
 export default () => {
   // const data = useStaticQuery(graphql`
   //   query MyFilesPage {
@@ -17,7 +15,7 @@ export default () => {
   // `);
 
   return (
-    <Layout>
+    <>
       <h1 className="text-2xl mb-6">My Site Files</h1>
       <div style={{ overflow: "auto" }}>
         <table className="w-full table-auto border border-solid border-gray-200 rounded-md overflow-hidden">
@@ -50,6 +48,6 @@ export default () => {
           </tbody>
         </table>
       </div>
-    </Layout>
+    </>
   );
 };

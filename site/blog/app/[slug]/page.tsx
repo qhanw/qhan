@@ -8,7 +8,6 @@ import ShikiRemarkPlugin from "remark-shiki-plugin";
 
 import { Icon } from "@/app/components/Icons";
 
-import Layout from "@/app/components/Layout";
 import seo from "@/app/utils/seo";
 
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
@@ -69,48 +68,40 @@ export default async ({ params }: Props) => {
   const { post, prev, next } = await getPost(params);
 
   return (
-    <Layout>
-      <div className="prose prose-default mx-auto">
-        <header className="text-3xl pb-6 font-extrabold">
-          {post.frontmatter.title}
-        </header>
-        <article dangerouslySetInnerHTML={{ __html: post.html }} />
-        <div className="flex justify-between my-12 text-sm">
-          <span>
-            {prev && (
-              <Link
-                href={prev.slug}
-                className="inline-flex items-center min-w-0"
-              >
-                <Icon
-                  icon="heroicons:chevron-left"
-                  className="mr-1 h-4 w-4 group-hover:text-gray-500"
-                />
-                <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  {prev.title}
-                </span>
-              </Link>
-            )}
-          </span>
-          <span>
-            {next && (
-              <Link
-                href={next.slug}
-                className="inline-flex items-center min-w-0"
-              >
-                <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  {next.title}
-                </span>
+    <>
+      <header className="text-3xl pb-6 font-extrabold">
+        {post.frontmatter.title}
+      </header>
+      <article dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div className="flex justify-between my-12 text-sm">
+        <span>
+          {prev && (
+            <Link href={prev.slug} className="inline-flex items-center min-w-0">
+              <Icon
+                icon="heroicons:chevron-left"
+                className="mr-1 h-4 w-4 group-hover:text-gray-500"
+              />
+              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+                {prev.title}
+              </span>
+            </Link>
+          )}
+        </span>
+        <span>
+          {next && (
+            <Link href={next.slug} className="inline-flex items-center min-w-0">
+              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
+                {next.title}
+              </span>
 
-                <Icon
-                  icon="heroicons:chevron-right"
-                  className=" ml-1 h-4 w-4 group-hover:text-gray-500"
-                />
-              </Link>
-            )}
-          </span>
-        </div>
+              <Icon
+                icon="heroicons:chevron-right"
+                className=" ml-1 h-4 w-4 group-hover:text-gray-500"
+              />
+            </Link>
+          )}
+        </span>
       </div>
-    </Layout>
+    </>
   );
 };

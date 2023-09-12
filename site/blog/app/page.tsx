@@ -1,5 +1,4 @@
 import { Icon } from "@/app/components/Icons";
-import Layout from "./components/Layout";
 
 import AdmLink from "./Home/AdmLink";
 import ProjWrapper from "./Home/ProjWrapper";
@@ -14,7 +13,7 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <h1 className="mt-4 text-xl text-slate-900 tracking-tight max-w-5xl">
         前端开发工程师一枚，早年从事UI设计工作，现以前端开发为主，有丰富的ToB系统开发架构经验。喜欢工程化方面领域，喜欢交互设计。
       </h1>
@@ -78,6 +77,6 @@ export default function Home() {
           </ProjWrapper>
         ))}
       </div>
-    </Layout>
+    </>
   );
 }

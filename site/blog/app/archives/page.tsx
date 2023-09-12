@@ -1,4 +1,3 @@
-import Layout from "../components/Layout";
 import seo from "@/app/utils/seo";
 
 export async function generateMetadata() {
@@ -26,7 +25,7 @@ export default async function Archives() {
   // });
 
   return (
-    <Layout>
+    <>
       {/* {nextData.map(({ year, edges }: any) => (
         <Fragment key={year}>
           <dl id="archive-item" className="mb-8">
@@ -40,7 +39,7 @@ export default async function Archives() {
           </dl>
         </Fragment>
       ))} */}
-    </Layout>
+    </>
   );
 }
 
