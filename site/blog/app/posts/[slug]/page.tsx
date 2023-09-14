@@ -68,6 +68,11 @@ export async function generateMetadata(
 export default async ({ params }: Props) => {
   const { post, prev, next } = await getPost(params);
 
+  // const message = await new Promise<string>((resolve) => {
+  //   console.log("in executing sleep!");
+  //   setTimeout(() => resolve("after 3000 ms!"), 300000);
+  // });
+
   return (
     <>
       <header className="mb-8">
