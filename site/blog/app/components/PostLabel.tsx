@@ -13,7 +13,7 @@ export default ({
   color?: keyof typeof colors;
 }) => (
   <span
-    className={`${colors[color]} inline-flex items-center py-1 mr-2.5 text-xs`}
+    className={`${colors[color]} inline-flex items-center py-1 mr-2.5 text-sm`}
   >
     <Icon icon="heroicons:tag" className="mr-1 w-4 h-4" />
     {title}

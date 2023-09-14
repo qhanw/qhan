@@ -21,6 +21,7 @@ export function getPostBySlug(slug: string) {
       ...data,
       title: data.title,
       description: data.description,
+      tags: data.tags,
       date,
     },
     content,

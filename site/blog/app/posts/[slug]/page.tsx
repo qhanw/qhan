@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import ShikiRemarkPlugin from "remark-shiki-plugin";
 
 import { Icon } from "@/app/components/Icons";
+import PostLabel from "@/app/components/PostLabel";
 
 import seo from "@/app/utils/seo";
 
@@ -69,14 +70,31 @@ export default async ({ params }: Props) => {
 
   return (
     <>
-      <header className="text-3xl pb-6 font-extrabold">
-        {post.frontmatter.title}
+      <header className="mb-8">
+        <h1 className="slide-enter-50">{post.frontmatter.title}</h1>
+
+        <div className="opacity-50 -mt-6 flex items-center">
+          <time className="inline-flex items-center">
+            <Icon
+              icon="heroicons:calendar"
+              className="mr-1 w-4 h-4 text-brand"
+            />
+            {post.frontmatter?.date}
+          </time>
+          <span className="mx-2 w-0.5 h-0.5 bg-gray-500" />
+          {post.frontmatter?.tags.map((tag: string) => (
+            <PostLabel title={tag} key={tag} />
+          ))}
+        </div>
       </header>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
       <div className="flex justify-between my-12 text-sm">
         <span>
           {prev && (
-            <Link href={prev.slug} className="inline-flex items-center min-w-0">
+            <Link
+              href={prev.slug}
+              className="inline-flex items-center min-w-0 no-underline"
+            >
               <Icon
                 icon="heroicons:chevron-left"
                 className="mr-1 h-4 w-4 group-hover:text-gray-500"
@@ -89,7 +107,10 @@ export default async ({ params }: Props) => {
         </span>
         <span>
           {next && (
-            <Link href={next.slug} className="inline-flex items-center min-w-0">
+            <Link
+              href={next.slug}
+              className="inline-flex items-center min-w-0 no-underline"
+            >
               <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
                 {next.title}
               </span>

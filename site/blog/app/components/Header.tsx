@@ -8,8 +8,8 @@ import IconSakura from "./Icons/sakura";
 
 const nav = [
   {
-    name: "Stories",
-    href: "/stories",
+    name: "Blog",
+    href: "/posts",
     icon: (props: any) => <Icon {...props} icon="heroicons:pencil" />,
   },
   // {
@@ -34,7 +34,7 @@ export default () => (
           <div className="flex justify-start md:w-0 md:flex-1">
             <Link href="/" className="inline-flex items-center">
               <span className="sr-only">Workflow</span>
-              <IconSakura className="w-8 h-8 sm:w-10 sm:h-10 logo-rotate text-brand" />
+              <IconSakura className="w-8 h-8 logo-rotate text-brand" />
               <span className="text-xl ml-2 font-medium">Qhan W</span>
             </Link>
           </div>

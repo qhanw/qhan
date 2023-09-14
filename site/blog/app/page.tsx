@@ -1,4 +1,5 @@
 import { Icon } from "@/app/components/Icons";
+import Footer from "@/app/components/Footer";
 
 import AdmLink from "./Home/AdmLink";
 import ProjWrapper from "./Home/ProjWrapper";
@@ -14,13 +15,15 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
-      <h1 className="mt-4 text-xl text-slate-900 tracking-tight max-w-5xl">
-        前端开发工程师一枚，早年从事UI设计工作，现以前端开发为主，有丰富的ToB系统开发架构经验。喜欢工程化方面领域，喜欢交互设计。
+      <div className="text-xl">👉 Hi, here</div>
+      <h1 className="mt-4 text-slate-900 tracking-tight max-w-5xl">
+        我是一名软件开发工程师参与工作距今已经有十多年，有着丰富的2B系统开发及架构经验。早年从事UI设计工作，因此对用户体验交互上也具有一定的理解，现以前端开发为主，擅长以React为核心的各类技术栈进行软件开发。喜欢工程化方面领域，喜欢交互设计。
       </h1>
       <ul className="mt-4 text-slate-500 font-light">
         <li>
           🎉 技术栈包括:
-          NodeJs、React、Typescript、Electron、Antd、Sass、NextJs等。
+          React、NextJs、NodeJs、Typescript、Electron、Antd、Sass、Tailwind
+          CSS等。
         </li>
         <li>🌱 目前正在学习前端自动化测试方面知识。</li>
         <li>
@@ -77,6 +80,7 @@ export default function Home() {
           </ProjWrapper>
         ))}
       </div>
+      <Footer />
     </>
   );
 }
