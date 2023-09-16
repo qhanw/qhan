@@ -75,7 +75,7 @@ export default async ({ params }: Props) => {
 
   return (
     <>
-      <header className="mb-8">
+      <header className="mb-8 fade-in-up">
         <h1 className="slide-enter-50">{post.frontmatter.title}</h1>
 
         <div className="opacity-50 -mt-6 flex items-center">
@@ -92,7 +92,7 @@ export default async ({ params }: Props) => {
           ))}
         </div>
       </header>
-      <article dangerouslySetInnerHTML={{ __html: post.html }} />
+      <article className="fade-in-up-content" dangerouslySetInnerHTML={{ __html: post.html }} />
       <div className="flex justify-between my-12 text-sm">
         <span>
           {prev && (

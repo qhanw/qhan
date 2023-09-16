@@ -53,7 +53,7 @@ export default async function Posts() {
         {posts?.map((node: any) => (
           <Link
             href={`/posts/${node.slug}`}
-            className="group font-normal overflow-hidden cursor-pointer no-underline transition"
+            className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up"
             key={node.slug}
           >
             <div className="text-2xl text-slate-600 group-hover:text-brand break-all whitespace-nowrap overflow-hidden overflow-ellipsis ease-in duration-300">
@@ -81,3 +81,6 @@ export default async function Posts() {
     </>
   );
 }
+
+
+
