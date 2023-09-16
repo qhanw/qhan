@@ -6,6 +6,8 @@ import {
   presetTypography,
 } from "unocss";
 
+import icons from "./uno.config.icons";
+
 export default defineConfig({
   presets: [
     presetAttributify(),
@@ -15,6 +17,7 @@ export default defineConfig({
         display: "inline-block",
         "vertical-align": "-.125em",
       },
+      collections: icons,
     }),
     presetTypography({
       cssExtend: {

@@ -1,4 +1,3 @@
-import { Icon } from "@/app/components/Icons";
 import Footer from "@/app/components/Footer";
 
 import AdmLink from "./Home/AdmLink";
@@ -51,16 +50,16 @@ export default function Home() {
                 </span>
                 <span className="text-slate-400 flex gap-1 items-center grayscale group-hover:grayscale-0 group-hover/show:grayscale-0">
                   {proj.icons?.map((c, i) => (
-                    <Icon
+                    <span
                       key={c + i}
-                      icon={c}
-                      {...(c.includes("echarts")
-                        ? { fontSize: 15 }
-                        : c.includes("wagmi")
-                        ? { fontSize: 12 }
-                        : c.includes("antv")
-                        ? { fontSize: 13 }
-                        : { fontSize: 18 })}
+                      className={c}
+                      style={{
+                        ...(c.includes("echarts")
+                          ? { fontSize: 15 }
+                          : c.includes("antv")
+                          ? { fontSize: 14 }
+                          : { fontSize: 18 }),
+                      }}
                     />
                   ))}
                 </span>
