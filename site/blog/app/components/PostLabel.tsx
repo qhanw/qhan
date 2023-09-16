@@ -1,9 +1,4 @@
-"use client";
-import { Icon } from "@iconify/react";
-
-const colors = {
-  indigo: "brand-color",
-};
+const colors = { indigo: "brand-color" };
 
 export default ({
   title,
@@ -15,7 +10,7 @@ export default ({
   <span
     className={`${colors[color]} inline-flex items-center py-1 mr-2.5 text-sm`}
   >
-    <Icon icon="heroicons:tag" className="mr-1 w-4 h-4" />
+    <span className="i-heroicons:tag mr-1 w-4 h-4" />
     {title}
   </span>
 );

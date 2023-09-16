@@ -1,8 +1,8 @@
 "use client";
 import { Fragment } from "react";
 import Link from "next/link";
+import clsx from "clsx";
 import { Popover, Transition } from "@headlessui/react";
-import { Icon } from "@iconify/react";
 
 import IconSakura from "./Icons/sakura";
 
@@ -10,7 +10,12 @@ const nav = [
   {
     name: "Blog",
     href: "/posts",
-    icon: (props: any) => <Icon {...props} icon="heroicons:pencil" />,
+    icon: (props: any) => (
+      <span
+        {...props}
+        className={clsx("i-heroicons:pencil", props.className)}
+      />
+    ),
   },
   // {
   //   name: "Projects",
@@ -41,11 +46,7 @@ export default () => (
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span className="sr-only">Open menu</span>
-              <Icon
-                icon="heroicons:bars-3"
-                className="h-6 w-6"
-                aria-hidden="true"
-              />
+              <span className="i-heroicons:bars-3 h-6 w-6" aria-hidden="true" />
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
@@ -93,9 +94,8 @@ export default () => (
               <div className="-mr-2">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Close menu</span>
-                  <Icon
-                    icon="heroicons:x-mark"
-                    className="h-6 w-6"
+                  <span
+                    className="i-heroicons:x-mark h-6 w-6"
                     aria-hidden="true"
                   />
                 </Popover.Button>

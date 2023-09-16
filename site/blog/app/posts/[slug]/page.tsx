@@ -6,7 +6,6 @@ import html from "remark-html";
 import remarkGfm from "remark-gfm";
 import ShikiRemarkPlugin from "remark-shiki-plugin";
 
-import { Icon } from "@/app/components/Icons";
 import PostLabel from "@/app/components/PostLabel";
 
 import seo from "@/app/utils/seo";
@@ -75,15 +74,12 @@ export default async ({ params }: Props) => {
 
   return (
     <>
-      <header className="mb-8 fade-in-up">
+      <header className="mb-8">
         <h1 className="slide-enter-50">{post.frontmatter.title}</h1>
 
-        <div className="opacity-50 -mt-6 flex items-center">
+        <div className="slide-enter-50 opacity-50 -mt-4 flex items-center">
           <time className="inline-flex items-center">
-            <Icon
-              icon="heroicons:calendar"
-              className="mr-1 w-4 h-4 text-brand"
-            />
+            <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
             {post.frontmatter?.date}
           </time>
           <span className="mx-2 w-0.5 h-0.5 bg-gray-500" />
@@ -92,7 +88,10 @@ export default async ({ params }: Props) => {
           ))}
         </div>
       </header>
-      <article className="fade-in-up-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <article
+        className="fade-in-up-content"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
       <div className="flex justify-between my-12 text-sm">
         <span>
           {prev && (
@@ -100,10 +99,7 @@ export default async ({ params }: Props) => {
               href={prev.slug}
               className="inline-flex items-center min-w-0 no-underline"
             >
-              <Icon
-                icon="heroicons:chevron-left"
-                className="mr-1 h-4 w-4 group-hover:text-gray-500"
-              />
+              <span className="i-heroicons:chevron-left mr-1 h-4 w-4 group-hover:text-gray-500" />
               <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
                 {prev.title}
               </span>
@@ -120,10 +116,7 @@ export default async ({ params }: Props) => {
                 {next.title}
               </span>
 
-              <Icon
-                icon="heroicons:chevron-right"
-                className=" ml-1 h-4 w-4 group-hover:text-gray-500"
-              />
+              <span className="i-heroicons:chevron-right ml-1 h-4 w-4 group-hover:text-gray-500" />
             </Link>
           )}
         </span>

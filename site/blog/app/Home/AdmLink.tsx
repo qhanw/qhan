@@ -1,5 +1,4 @@
 "use client";
-import { Icon } from "../components/Icons";
 
 export default function AdmLink({ href }: { href: string }) {
   return (
@@ -8,7 +7,7 @@ export default function AdmLink({ href }: { href: string }) {
       onClick={() => window.open(href, "_blank")}
       title={href}
     >
-      <Icon icon="heroicons:globe-alt" className="mr-1" />
+      <span className="i-heroicons:globe-alt mr-1" />
     </span>
   );
 }

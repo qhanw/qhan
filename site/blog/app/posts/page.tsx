@@ -1,13 +1,12 @@
 import Link from "next/link";
-import { Icon } from "@/app/components/Icons";
 
 // import { remark } from "remark";
 // import html from "remark-html";
 
-import PostLabel from "../components/PostLabel";
+import PostLabel from "@/app/components/PostLabel";
+import seo from "@/app/utils/seo";
 
 import { getAllPosts } from "@/lib/posts";
-import seo from "@/app/utils/seo";
 
 // const filterCategory = (name: string) => {
 //   const types = {
@@ -61,10 +60,7 @@ export default async function Posts() {
             </div>
             <div className="text-slate-400 text-sm leading-none flex items-center">
               <time className="my-3 inline-flex items-center">
-                <Icon
-                  icon="heroicons:calendar"
-                  className="mr-1 w-4 h-4 text-brand"
-                />
+                <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
                 {node.frontmatter?.date}
               </time>
               <span className="mx-2 w-0.5 h-0.5 bg-slate-400" />
@@ -81,6 +77,3 @@ export default async function Posts() {
     </>
   );
 }
-
-
-

@@ -73,7 +73,7 @@ export default function Home() {
               {proj.href ? (
                 <span className="inline-flex items-center">
                   Preview
-                  <Icon icon="heroicons:arrow-right" className="ml-1" />
+                  <span className="i-heroicons:arrow-right ml-1" />
                 </span>
               ) : null}
             </div>
