@@ -20,7 +20,7 @@ export default function ProjWrapper({
         {...props}
         className={clsx(
           props.className,
-          "block border border-slate-50 hover:border-brand group"
+          "block border border-transparent hover:border-brand group no-underline font-normal"
         )}
       />
     );

@@ -1,11 +1,11 @@
 import Footer from "@/app/components/Footer";
 
-import AdmLink from "./Home/AdmLink";
-import ProjWrapper from "./Home/ProjWrapper";
+// import AdmLink from "./Home/AdmLink";
+// import ProjWrapper from "./Home/ProjWrapper";
 
 import seo from "@/app/utils/seo";
 
-import projects from "./constant/projects";
+// import projects from "./projects/constant/projects";
 
 export async function generateMetadata() {
   return seo({ title: "主页" });
@@ -13,11 +13,11 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <>
-      <div className="text-xl">👉 Hi, here</div>
-      <h1 className="mt-4 text-slate-900 tracking-tight max-w-5xl">
+    <div className="prose mx-auto">
+      <div className="text-xl">Hi, here</div>
+      <div className="mt-4 text-slate-900 tracking-tight max-w-5xl">
         我是一名软件开发工程师参与工作距今已经有十多年，有着丰富的2B系统开发及架构经验。早年从事UI设计工作，因此对用户体验交互上也具有一定的理解，现以前端开发为主，擅长以React为核心的各类技术栈进行软件开发。喜欢工程化方面领域，喜欢交互设计。
-      </h1>
+      </div>
       <ul className="mt-4 text-slate-500 font-light">
         <li>
           🎉 技术栈包括:
@@ -32,7 +32,7 @@ export default function Home() {
           </a>
         </li>
       </ul>
-      <h2 className="mb-8 mt-12 pb-2 text-xl text-slate-500 tracking-tight border-b border-slate-100">
+      {/* <h2 className="mb-8 mt-12 pb-2 text-xl text-slate-500 tracking-tight border-b border-slate-100">
         项目经历
       </h2>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
@@ -78,8 +78,8 @@ export default function Home() {
             </div>
           </ProjWrapper>
         ))}
-      </div>
+      </div> */}
       <Footer />
-    </>
+    </div>
   );
 }

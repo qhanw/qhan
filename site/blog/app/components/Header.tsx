@@ -13,15 +13,22 @@ const nav = [
     icon: (props: any) => (
       <span
         {...props}
-        className={clsx("i-heroicons:pencil", props.className)}
+        className={clsx("i-heroicons:newspaper", props.className)}
       />
     ),
   },
-  // {
-  //   name: "Projects",
-  //   href: "/projects",
-  //   icon: (props: any) => <Icon {...props} icon="ant-design:project-outlined" />,
-  // },
+  {
+    name: "Projects",
+    href: "/projects",
+    // icon: (props: any) => <Icon {...props} icon="ant-design:project-outlined" />,
+
+    icon: (props: any) => (
+      <span
+        {...props}
+        className={clsx("i-heroicons:rectangle-stack", props.className)}
+      />
+    ),
+  },
   // {
   //   name: "Life",
   //   href: "/life",

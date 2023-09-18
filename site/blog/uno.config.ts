@@ -40,4 +40,19 @@ export default defineConfig({
       brand: "var(--vp-c-brand)",
     },
   },
+
+  rules: [
+    [
+      /^text-stroke-(\d+)$/,
+      (match) => ({ "-webkit-text-stroke-width": `${match[1]}px` }),
+    ],
+    [
+      "text-stroke-hex-aaa",
+      {
+        "--un-text-stroke-opacity": 1,
+        "-webkit-text-stroke-color":
+          "rgba(170,170,170,var(--un-text-stroke-opacity))",
+      },
+    ],
+  ],
 });
