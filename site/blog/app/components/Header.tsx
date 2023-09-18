@@ -4,8 +4,6 @@ import Link from "next/link";
 import clsx from "clsx";
 import { Popover, Transition } from "@headlessui/react";
 
-import IconSakura from "./Icons/sakura";
-
 const nav = [
   {
     name: "Blog",
@@ -46,7 +44,7 @@ export default () => (
           <div className="flex justify-start md:w-0 md:flex-1">
             <Link href="/" className="inline-flex items-center">
               <span className="sr-only">Workflow</span>
-              <IconSakura className="w-8 h-8 logo-rotate text-brand" />
+              <span className="i-logos-sakura w-8 h-8 logo-rotate text-brand" />
               <span className="text-xl ml-2 font-medium">Qhan W</span>
             </Link>
           </div>
@@ -96,7 +94,7 @@ export default () => (
           <div className="pt-5 pb-6 px-5">
             <div className="flex items-center justify-between">
               <Link href="/">
-                <IconSakura className="w-8 h-8 logo-rotate text-brand" />
+                <span className="i-logos-sakura w-8 h-8 logo-rotate text-brand" />
               </Link>
               <div className="-mr-2">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

@@ -1,4 +1,5 @@
 import Footer from "@/app/components/Footer";
+import Social from "@/app/components/Social";
 
 // import AdmLink from "./Home/AdmLink";
 // import ProjWrapper from "./Home/ProjWrapper";
@@ -32,54 +33,10 @@ export default function Home() {
           </a>
         </li>
       </ul>
-      {/* <h2 className="mb-8 mt-12 pb-2 text-xl text-slate-500 tracking-tight border-b border-slate-100">
-        项目经历
-      </h2>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
-        {projects.map((proj) => (
-          <ProjWrapper
-            key={proj.key}
-            className="relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 hover:bg-slate-100"
-            href={proj.href}
-          >
-            <h2>
-              <button className="flex gap-2 transition items-center">
-                <span className="absolute inset-0 rounded-xl"></span>
-                <span className="font-semibold text-slate-900 group-hover:text-brand">
-                  {proj.name}
-                </span>
-                <span className="text-slate-400 flex gap-1 items-center grayscale group-hover:grayscale-0 group-hover/show:grayscale-0">
-                  {proj.icons?.map((c, i) => (
-                    <span
-                      key={c + i}
-                      className={c}
-                      style={{
-                        ...(c.includes("echarts")
-                          ? { fontSize: 15 }
-                          : c.includes("antv")
-                          ? { fontSize: 14 }
-                          : { fontSize: 18 }),
-                      }}
-                    />
-                  ))}
-                </span>
-              </button>
-            </h2>
-            <p className="mt-1 text-slate-500">{proj.desc}</p>
-            <div className="flex items-center mt-2 text-brand font-semibold">
-              {proj.sub_href ? <AdmLink href={proj.sub_href} /> : null}
 
-              {proj.href ? (
-                <span className="inline-flex items-center">
-                  Preview
-                  <span className="i-heroicons:arrow-right ml-1" />
-                </span>
-              ) : null}
-            </div>
-          </ProjWrapper>
-        ))}
-      </div> */}
-      <Footer />
+      <Social />
+
+      <Footer className="mt-6 pt-6" />
     </div>
   );
 }
