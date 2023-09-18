@@ -1,5 +1,6 @@
 import Footer from "@/app/components/Footer";
 import Social from "@/app/components/Social";
+import Bizk from "@/app/components/Bizk";
 
 // import AdmLink from "./Home/AdmLink";
 // import ProjWrapper from "./Home/ProjWrapper";
@@ -34,6 +35,7 @@ export default function Home() {
         </li>
       </ul>
 
+      <Bizk />
       <Social />
 
       <Footer className="mt-6 pt-6" />

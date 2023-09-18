@@ -27,11 +27,13 @@ const nav = [
       />
     ),
   },
-  // {
-  //   name: "Life",
-  //   href: "/life",
-  //   icon: (props: any) => <Icon {...props} icon="heroicons-outline:photograph" />,
-  // },
+  {
+    name: "Bizk",
+    href: "http://bizk.qhan.wang/",
+    icon: (props: any) => (
+      <span {...props} className={clsx("i-ri:tools-line", props.className)} />
+    ),
+  },
   // { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },
   // { name: "Statistics", href: "/statistics", icon: ChartBarSquareIcon },
 ];

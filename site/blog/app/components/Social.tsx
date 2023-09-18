@@ -12,7 +12,7 @@ const social = [
 
 export default function Social() {
   return (
-    <div className="flex flex-wrap gap-3 mt-24">
+    <div className="flex flex-wrap gap-3 mt-2">
       {social.map((c) => (
         <Link
           key={c.href}
