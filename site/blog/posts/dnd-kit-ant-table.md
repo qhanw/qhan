@@ -2,16 +2,22 @@
 title: 基于dnd-kit实现Antd Table组件拖拽排序
 date: 2022-11-05 10:58:55
 tags: 
-- React
-- Ant Design
-category: JS
+- react
+- antd
+category: js
 ---
 
+### 背景
 最近业务需求上要求对表格加入拖拽排序功能，由于我们UI组件库基于[antd][1]，根据组件库官方文档给出的基于[react-dnd][3]、[react-sortable-hoc][4]示例，与我们自身业务需求的调研，最后选择[react-sortable-hoc][4]库作为接入拖拽排序接入。在查阅该库相关文档的过程中其作者明确定不再积极维护，并强烈建议采用[dnd-kit][2]替换。本着~~学习的态度~~一步到位想法（偷懒)，因此最终决定直接使用[dnd-kit][2]库来实现拖拽排序功能。
 
 ---
+
 ### 如何使用
 要了解如何开始使用**dnd kit**，请访问[官方文档][5]网站。您会找到深入的 API 文档、提示和指南，以帮助您构建拖放界面。在本文档中，我们只针对**antd**的**table**组件如何成功接入**dnd-kit**排序功能说明。本文档也不会对各类拖拽组件作对比说明，若有需要请参阅: [React拖拽排序组件库对比研究][6]。
+
+### 演示示例
+
+![dnd-kit.gif](https://s2.loli.net/2023/09/19/RSNthKPCmHif5bD.webp)
 
 ### 开始
 > dnd-kit 预置了专用于排序操作的sortable组件，因此接下来我们也仅针对antd table组件排序方面的流程做 详细说明。在这里我们也认为你当前环境已经基于antd的开发环境
@@ -486,5 +492,3 @@ export function SortableItem(props: any) {
 [4]: https://github.com/clauderic/react-sortable-hoc
 [5]: https://dndkit.com/
 [6]: https://zhuanlan.zhihu.com/p/430177180
-
-

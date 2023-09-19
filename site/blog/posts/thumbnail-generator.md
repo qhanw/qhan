@@ -1,11 +1,10 @@
 ---
 title: "利用CANVAS生成缩略图"
 date: "2018-05-10"
-category: Javascript
+category: js
 tags:
-- Javascript
-- HTML5
-- Canvas
+- js
+- canvas
 ---
 利用CANVAS生成缩略图方法总结
 ---

@@ -31,7 +31,7 @@ const nav = [
     name: "Bizk",
     href: "http://bizk.qhan.wang/",
     icon: (props: any) => (
-      <span {...props} className={clsx("i-ri:tools-line", props.className)} />
+      <span {...props} className={clsx("i-heroicons:wrench-screwdriver", props.className)} />
     ),
   },
   // { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },

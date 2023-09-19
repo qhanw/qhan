@@ -1,9 +1,9 @@
 ---
-title: CSS3选择器之nth-child
+title: CSS选择器之nth-child
 date: 2016-05-05 10:58:55
 tags: 
-- CSS
-category: CSS
+- css
+category: css
 ---
 
 在我们对一组相同元素作不同表现形式的操作时，在还没有选择器`:nth-child`与`:nth-of-type`时，我们常用到的方法可能是利用 JS 来控制表现形式，或者采用 CSS 选择器类处理这类问题。
