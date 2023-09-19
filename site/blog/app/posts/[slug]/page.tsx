@@ -75,9 +75,9 @@ export default async ({ params }: Props) => {
   return (
     <>
       <header className="mb-8">
-        <h1 className="slide-enter-50">{post.frontmatter.title}</h1>
+        <h1 className="slide-enter-50 text-gray-800">{post.frontmatter.title}</h1>
 
-        <div className="slide-enter-50 opacity-50 -mt-4 flex items-center">
+        <div className="slide-enter-50 opacity-50 -mt-2 flex items-center">
           <time className="inline-flex items-center">
             <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
             {post.frontmatter?.date}
