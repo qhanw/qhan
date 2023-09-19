@@ -62,6 +62,9 @@ export default () => (
                 key={item.name}
                 href={item.href}
                 className="text-base font-medium inline-flex items-center text-gray-500 hover:text-gray-900"
+                {...(/^http(s?):\/\//.test(item.href)
+                  ? { target: "_blank" }
+                  : {})}
               >
                 <item.icon
                   className="flex-shrink-0 h-4 w-4 mr-3 text-brand"
@@ -115,6 +118,9 @@ export default () => (
                     key={item.name}
                     href={item.href}
                     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                    {...(/^http(s?):\/\//.test(item.href)
+                      ? { target: "_blank" }
+                      : {})}
                   >
                     <item.icon
                       className="flex-shrink-0 h-6 w-6 text-brand"
