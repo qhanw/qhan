@@ -17,9 +17,12 @@
     "react": "18.2.0",
     "react-content-loader": "^6.2.1",
     "react-dom": "18.2.0",
-    "remark": "^14.0.3",
-    "remark-gfm": "^3.0.1",
-    "remark-html": "^15.0.2"
+    "rehype-pretty-code": "^0.10.1",
+    "rehype-stringify": "^10.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-rehype": "^11.0.0",
+    "shiki": "^0.14.4"
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.1.12",
@@ -32,7 +35,6 @@
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "postcss": "8.4.29",
-    "remark-shiki-plugin": "^0.0.6",
     "sass": "^1.66.1",
     "typescript": "5.2.2",
     "unocss": "^0.55.7"

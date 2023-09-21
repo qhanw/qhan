@@ -2,9 +2,11 @@ import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 import { remark } from "remark";
-import html from "remark-html";
 import remarkGfm from "remark-gfm";
-import ShikiRemarkPlugin from "remark-shiki-plugin";
+import remarkRehype from "remark-rehype";
+
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeStringify from "rehype-stringify";
 
 import PostLabel from "@/app/components/PostLabel";
 
@@ -20,19 +22,13 @@ type Props = {
 async function getPost(params: Props["params"]) {
   const post = getPostBySlug(params.slug);
   const markdown = await remark()
-    .use(html, { sanitize: false })
+    .use(remarkRehype)
     .use(remarkGfm)
-    .use(ShikiRemarkPlugin, {
-      theme: "nord",
-      themes: ["nord", "nord"],
-      generateMultiCode: true,
-    })
+    .use(rehypePrettyCode, { theme: "nord" })
+    .use(rehypeStringify)
     .process(post.content || "");
 
-  //
-
   const posts = getAllPosts();
-
   const idx = posts.findIndex((c) => c.slug === params.slug);
 
   const next = posts[idx + 1];
@@ -75,7 +71,9 @@ export default async ({ params }: Props) => {
   return (
     <>
       <header className="mb-8">
-        <h1 className="slide-enter-50 text-gray-800">{post.frontmatter.title}</h1>
+        <h1 className="slide-enter-50 text-gray-800">
+          {post.frontmatter.title}
+        </h1>
 
         <div className="slide-enter-50 opacity-50 -mt-2 flex items-center">
           <time className="inline-flex items-center">
