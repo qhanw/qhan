@@ -10,7 +10,6 @@
     "clean": "rm -rf .next && rm -rf out"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.9",
     "gray-matter": "^4.0.3",
