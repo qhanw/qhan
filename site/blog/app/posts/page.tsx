@@ -9,7 +9,7 @@ import seo from "@/app/utils/seo";
 import { getAllPosts } from "@/lib/posts";
 
 export async function generateMetadata() {
-  return seo({ title: "Stories" });
+  return seo({ title: "Blog" });
 }
 
 export default async function Posts() {

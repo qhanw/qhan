@@ -4,17 +4,11 @@ import Footer from "@/app/components/Footer";
 import Social from "@/app/components/Social";
 import Bizk from "@/app/components/Bizk";
 
-// import AdmLink from "./Home/AdmLink";
-// import ProjWrapper from "./Home/ProjWrapper";
-
 import seo from "@/app/utils/seo";
-
-// import projects from "./projects/constant/projects";
-
 import QrCode from "@/app/assets/qr_code.png";
 
 export async function generateMetadata() {
-  return seo({ title: "主页" });
+  return seo({});
 }
 
 export default function Home() {

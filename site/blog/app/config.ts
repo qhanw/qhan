@@ -1,11 +1,11 @@
 const siteMetadata = {
-  title: "Qhan",
+  title: "Qhan W",
   fullTitle: "Qhan W",
-  subtitle: "麒丶沐之涵",
-  siteTitle: "麒丶沐之涵",
+  subtitle: "Qhan W",
+  siteTitle: "Qhan W",
   siteUrl: `http://qhan.wang`,
-  author: { name: "Qhan w", summary: "who loves Next.js." },
-  description: "A personal website of Qhan W",
+  author: { name: "Qhan W", summary: "一个专注于前端的全栈开发工程师" },
+  description: "Qhan W 的个人博客网站",
   social: { twitter: "@whenhan" },
 };
 

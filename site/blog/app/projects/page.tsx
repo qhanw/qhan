@@ -7,10 +7,10 @@ import ProjWrapper from "./components/ProjWrapper";
 import projects from "./constant/projects";
 
 export async function generateMetadata() {
-  return seo({ title: "主页" });
+  return seo({ title: "Projects" });
 }
 
-export default function Home() {
+export default function Projects() {
   return (
     <>
       {/* text-transparent text-stroke-2 text-stroke-hex-aaa */}

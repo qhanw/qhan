@@ -17,7 +17,21 @@ export default function seo({ description, title }: SeoProps): Metadata {
     icons: {
       icon: "/favicon.png",
     },
-
+    keywords: [
+      "软件开发",
+      "前端开发",
+      "全栈开发",
+      "blog",
+      "博客",
+      "nextjs",
+      "reactjs",
+      "next",
+      "react",
+      "javascript",
+      "web3",
+      "Qhan",
+      "Qhan W",
+    ],
     openGraph: {
       type: "website",
       title: title,
@@ -25,7 +39,7 @@ export default function seo({ description, title }: SeoProps): Metadata {
       siteName: siteMetadata.siteTitle,
       images: `https://og-image.vercel.app/${encodeURI(
         siteMetadata.siteTitle
-      )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`,
+      )}.png?theme=light&md=0&fontSize=75px`,
     },
     twitter: {
       card: "summary",
