@@ -30,7 +30,7 @@ const kits = [
 
 export default function Bizk() {
   return (
-    <div className="flex flex-wrap gap-3 mt-24">
+    <div className="flex flex-wrap gap-x-3 mt-24">
       {kits.map((c) => (
         <Link
           key={c.href}

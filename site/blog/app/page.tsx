@@ -18,7 +18,7 @@ export default function Home() {
         <a className="i-ri:quill-pen-line" />
       </div>
       <div className="text-gray-600 tracking-tight max-w-5xl">
-        我是一名软件工程师，参与工作距今已经有十多年，有着丰富的2B系统开发及架构经验。早年从事UI设计工作，因此对用户体验及交互上具有一定的把控。目前主要以前端开发为主，对服务端技术如：nodejs、next、nest也具备一定的掌握。擅长以React为核心的各类技术栈进行软件开发，喜欢工程化方面领域，喜欢交互设计。
+        专注于前端的全栈工程师，参与工作距今已经有十多年，有着丰富的2B系统开发及架构经验。早年从事UI设计工作，因此对用户体验及交互上具有一定的把控。目前主要以前端开发为主，对服务端技术如：nodejs、next、nest也具备一定的掌握。擅长以React为核心的各类技术栈进行软件开发，喜欢工程化方面领域，喜欢交互设计。
       </div>
       <ul className="mt-4 text-gray-400 font-light">
         <li>
