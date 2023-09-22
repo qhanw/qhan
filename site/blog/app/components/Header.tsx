@@ -41,7 +41,7 @@ const nav = [
 
 export default () => (
   <Fragment>
-    <div className="px-4 sm:px-6 sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60 ">
+    <header className="px-4 sm:px-6 sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60 ">
       <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
         <div className="flex justify-start md:w-0 md:flex-1">
           <Link href="/" className="inline-flex items-center">
@@ -72,7 +72,7 @@ export default () => (
           ))}
         </nav>
       </div>
-    </div>
+    </header>
     <div className="header-line-shadow" />
   </Fragment>
 );
