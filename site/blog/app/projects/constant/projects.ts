@@ -50,7 +50,7 @@ export default [
     key: "3",
     name: "基础权限平台",
     labels: ["react", "antd", "qiankun"],
-    icons: ["i-logos:react", "i-logos:antd", "i-logos:qiankun"],
+    icons: ["i-logos:react", "i-logos:antd", "i-logos:antv"],
     desc: "微前端架构，内部中台系统、三方应用、员工部门及权限相关管理系统。",
   },
   {
