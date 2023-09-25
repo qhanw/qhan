@@ -49,6 +49,7 @@
 // #impress root element. When the presentation is viewed on a larger or smaller screen, impress.js
 // will automatically scale the steps to fit the screen.
 .slide {
+
   display: block;
 
   width: 900px;
@@ -65,18 +66,11 @@
 
   font-size: 30px;
   line-height: 36px;
-  letter-spacing: -1px;
 
-  q {
-    display: block;
-    font-size: 50px;
-    line-height: 72px;
-
-    margin-top: 100px;
-
-    strong {
-      white-space: nowrap;
-    }
+  > div {
+    margin-top: -50px;
+    margin-left: 16px;
+    color: #fff;
   }
 }
 
