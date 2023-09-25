@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { siteMetadata } from "@/app/config";
+import { siteMetadata } from "./config";
 
 type SeoProps = {
   title?: string;

@@ -1,4 +1,4 @@
-import seo from "@/app/utils/seo";
+import seo from "@/utils/seo";
 import PageContent from "./PageContent";
 
 export async function generateMetadata() {

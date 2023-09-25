@@ -10,7 +10,7 @@ import rehypeStringify from "rehype-stringify";
 
 import PostLabel from "@/app/components/PostLabel";
 
-import seo from "@/app/utils/seo";
+import seo from "@/utils/seo";
 
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 

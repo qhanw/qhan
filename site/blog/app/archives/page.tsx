@@ -1,4 +1,4 @@
-import seo from "@/app/utils/seo";
+import seo from "@/utils/seo";
 
 export async function generateMetadata() {
   return seo({ title: "归档" });

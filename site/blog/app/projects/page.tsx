@@ -1,5 +1,5 @@
 import Footer from "@/app/components/Footer";
-import seo from "@/app/utils/seo";
+import seo from "@/utils/seo";
 
 import AdmLink from "./components/AdmLink";
 import ProjWrapper from "./components/ProjWrapper";

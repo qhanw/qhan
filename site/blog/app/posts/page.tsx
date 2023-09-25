@@ -4,7 +4,7 @@ import Link from "next/link";
 // import html from "remark-html";
 
 import PostLabel from "@/app/components/PostLabel";
-import seo from "@/app/utils/seo";
+import seo from "@/utils/seo";
 
 import { getAllPosts } from "@/lib/posts";
 
