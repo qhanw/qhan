@@ -12,7 +12,7 @@ export default function seo({ description, title }: SeoProps): Metadata {
   const metaDescription = description || siteMetadata.description;
 
   return {
-    title: title ? `${title} | ${siteMetadata?.title}` : siteMetadata?.title,
+    title: title ? `${title} - ${siteMetadata?.title}` : siteMetadata?.title,
     description: metaDescription,
     icons: {
       icon: "/favicon.png",
