@@ -4,11 +4,10 @@ import Link from "next/link";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
+import remarkReadTime from "remark-reading-time";
 
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
-
-import PostLabel from "@/app/components/PostLabel";
 
 import seo from "@/utils/seo";
 
@@ -19,10 +18,20 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+type ReadingTime = {
+  text: string;
+  minutes: number;
+  time: number;
+  words: number;
+};
+
+type Meta = { readingTime: ReadingTime; [propName: string]: any };
+
 async function getPost(params: Props["params"]) {
   const post = getPostBySlug(params.slug);
   const markdown = await remark()
     .use(remarkRehype)
+    .use(remarkReadTime, {})
     .use(remarkGfm)
     .use(rehypePrettyCode, { theme: "nord" })
     .use(rehypeStringify)
@@ -35,7 +44,7 @@ async function getPost(params: Props["params"]) {
   const prev = posts[idx - 1];
 
   return {
-    post: { ...post, html: markdown.toString() },
+    post: { ...post, meta: markdown.data as Meta, html: markdown.toString() },
     prev: prev ? { title: prev.frontmatter.title, slug: prev.slug } : null,
     next: next ? { title: next.frontmatter.title, slug: next.slug } : null,
   };
@@ -70,24 +79,25 @@ export default async ({ params }: Props) => {
 
   return (
     <>
-      <header className="mb-8">
-        <h1 className="slide-enter-50 text-gray-800">
-          {post.frontmatter.title}
-        </h1>
+      <header className="mb-8 prose prose-gray">
+        <h1 className="slide-enter-50">{post.frontmatter.title}</h1>
 
         <div className="slide-enter-50 opacity-50 -mt-2 flex items-center">
           <time className="inline-flex items-center">
             <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
             {post.frontmatter?.date}
           </time>
-          <span className="mx-2 w-0.5 h-0.5 bg-gray-500" />
-          {post.frontmatter?.tags.map((tag: string) => (
-            <PostLabel title={tag} key={tag} />
-          ))}
+          {/* <span className="mx-2 w-0.5 h-0.5 bg-gray-500" /> */}
+          <time className="inline-flex items-center ml-2">
+            <span className="i-heroicons:clock mr-1 w-4 h-4 text-brand" />
+            阅读
+            {Math.round(post.meta?.readingTime?.minutes!)}
+            分钟
+          </time>
         </div>
       </header>
       <article
-        className="fade-in-up-content"
+        className="fade-in-up-content prose prose-gray"
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
       <div className="flex justify-between my-12 text-sm">

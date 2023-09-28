@@ -21,9 +21,14 @@ export default defineConfig({
     }),
     presetTypography({
       cssExtend: {
-        code: { color: "#8b5cf6" },
-        a: { color: "var(--vp-c-brand)" },
-        // "a:hover": { color: "#f43f5e" },
+        // code: { color: "#8b5cf6" },
+        a: {
+          color: "var(--vp-c-brand)",
+          opacity: 0.8,
+          transition: ".3s ease-in-out",
+        },
+
+        "a:hover": { opacity: 1 },
         // "a:visited": { color: "#14b8a6" },
       },
     }),

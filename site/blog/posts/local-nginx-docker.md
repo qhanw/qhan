@@ -93,7 +93,7 @@ server {
 #### MongoDB
 1.编写`docker-compose.yaml`
 
-```
+```yaml
 # Use root/example as user/password credentials
 version: '3.1'
 

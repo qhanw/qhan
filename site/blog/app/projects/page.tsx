@@ -21,7 +21,7 @@ export default function Projects() {
         {projects.map((proj) => (
           <ProjWrapper
             key={proj.key}
-            className="flex relative rounded-xl p-6 text-sm leading-6 transition bg-gray-50 overflow-hidden ease-in duration-300"
+            className="flex relative rounded-xl p-6 text-sm leading-6 transition bg-gray-50 overflow-hidden ease-in duration-300 fade-in-up"
             href={proj.href}
           >
             <div className="flex flex-col -space-y-1.5 text-gray-400 pr-6 pt-1 group-hover:text-brand group-hover/show:text-brand">

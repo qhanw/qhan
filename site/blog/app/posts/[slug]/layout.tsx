@@ -3,5 +3,5 @@ export default function PostLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="prose mx-auto">{children}</div>;
+  return <div className="max-w-prose mx-auto">{children}</div>;
 }
