@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
@@ -82,10 +83,11 @@ export default async ({ params }: Props) => {
       <header className="mb-8 prose prose-gray">
         <h1 className="slide-enter-50">{post.frontmatter.title}</h1>
 
-        <div className="slide-enter-50 opacity-50 -mt-2 flex items-center">
+        <div className="slide-enter-50 opacity-50 -mt-2 flex items-center text-sm">
           <time className="inline-flex items-center">
             <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
-            {post.frontmatter?.date}
+
+            {dayjs(post.frontmatter?.date).format("YYYY-MM-DD")}
           </time>
           {/* <span className="mx-2 w-0.5 h-0.5 bg-gray-500" /> */}
           <time className="inline-flex items-center ml-2">
@@ -100,6 +102,10 @@ export default async ({ params }: Props) => {
         className="fade-in-up-content prose prose-gray"
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
+      <div className="text-sm text-right text-gray-600">
+        最近修改时间：
+        {dayjs(post.frontmatter.lastModified).format("YYYY-MM-DD HH:mm:ss")}
+      </div>
       <div className="flex justify-between my-12 text-sm">
         <span>
           {prev && (
