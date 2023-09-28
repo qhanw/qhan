@@ -14,24 +14,8 @@ export default function seo({ description, title }: SeoProps): Metadata {
   return {
     title: title ? `${title} - ${siteMetadata?.title}` : siteMetadata?.title,
     description: metaDescription,
-    icons: {
-      icon: "/favicon.png",
-    },
-    keywords: [
-      "软件开发",
-      "前端开发",
-      "全栈开发",
-      "blog",
-      "博客",
-      "nextjs",
-      "reactjs",
-      "next",
-      "react",
-      "javascript",
-      "web3",
-      "Qhan",
-      "Qhan W",
-    ],
+    icons: { icon: "/favicon.png" },
+
     openGraph: {
       type: "website",
       title: title,
