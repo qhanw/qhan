@@ -1,11 +1,8 @@
 ---
 title: 使用Docker快速实现Nginx服务
 date: 2023-07-07 18:55:00
-tags:
-- js
-- nginx
-- docker
 category: docker
+tags: [js, nginx, docker]
 ---
 
 该文章旨在为不熟练`Docker`，但又不太想在本地物理机上安装各种复杂的开发环境的同学，提供一个简单便利的操作。其目的为解决以下几种情况：

@@ -1,10 +1,8 @@
 ---
 title: 基于dnd-kit实现Antd Table组件拖拽排序
 date: 2022-11-05 10:58:55
-tags: 
-- react
-- antd
 category: js
+tags: [react, antd]
 ---
 
 ### 背景

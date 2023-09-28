@@ -1,11 +1,8 @@
 ---
 title: E2E测试之Playwright身份验证
 date: 2022-03-30 09:55:00
-tags:
-- js
-- playwright
-- test
 category: test
+tags: [test, playwright, js]
 ---
 
 > 以下测试用例，均基于`ant design pro`编写。  

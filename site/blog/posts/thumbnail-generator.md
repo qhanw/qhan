@@ -1,10 +1,8 @@
 ---
-title: "利用CANVAS生成缩略图"
-date: "2018-05-10"
-category: js
-tags:
-- js
-- canvas
+title: 利用CANVAS生成缩略图
+date: 2018-05-10 20:08:56
+category: canvas
+tags: [canvas, js]
 ---
 利用CANVAS生成缩略图方法总结
 ---
