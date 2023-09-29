@@ -10,8 +10,9 @@ import remarkReadTime from "remark-reading-time";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 
-import seo from "@/utils/seo";
+import DateFormat from "@/app/components/DateFormat";
 
+import seo from "@/utils/seo";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 
 type Props = {
@@ -104,7 +105,11 @@ export default async ({ params }: Props) => {
       />
       <div className="text-sm text-right text-gray-600">
         最近修改时间：
-        {dayjs(post.frontmatter.lastModified).format("YYYY-MM-DD HH:mm:ss")}
+        {/* {dayjs(post.frontmatter.lastModified).format('YYYY-MM-DD HH:mm:ss')} */}
+        <DateFormat
+          value={post.frontmatter.lastModified}
+          format="YYYY-MM-DD HH:mm:ss"
+        />
       </div>
       <div className="flex justify-between my-12 text-sm">
         <span>
