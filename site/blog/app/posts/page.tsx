@@ -1,6 +1,6 @@
-import dayjs from "dayjs";
 import Link from "next/link";
 
+import DateFormat from "@/app/components/DateFormat";
 import PostLabel from "@/app/components/PostLabel";
 import seo from "@/utils/seo";
 
@@ -31,7 +31,7 @@ export default async function Posts() {
             <div className="text-gray-400 text-sm leading-none flex items-center">
               <time className="my-3 inline-flex items-center">
                 <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
-                {dayjs(node.frontmatter?.date).format("YYYY-MM-DD")}
+                <DateFormat value={node.frontmatter?.date} short />
               </time>
               <span className="mx-2 w-0.5 h-0.5 bg-gray-400" />
               {/* {node.frontmatter.category} */}
