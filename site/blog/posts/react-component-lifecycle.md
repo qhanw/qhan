@@ -1,6 +1,6 @@
 ---
 title: React 组件生命周期
-date: 2018-07-12 17:28:32
+date: 2018-07-12T17:28:32+08:00
 category: react
 tags: [react, js]
 ---

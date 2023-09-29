@@ -1,6 +1,6 @@
 ---
 title: 利用CANVAS生成缩略图
-date: 2018-05-10 20:08:56
+date: 2018-05-10T20:08:56+08:00
 category: canvas
 tags: [canvas, js]
 ---

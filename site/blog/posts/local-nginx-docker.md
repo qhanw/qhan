@@ -1,6 +1,6 @@
 ---
 title: 使用Docker快速实现Nginx服务
-date: 2023-07-07 18:55:00
+date: 2023-07-07T18:55:00+08:00
 category: docker
 tags: [js, nginx, docker]
 ---

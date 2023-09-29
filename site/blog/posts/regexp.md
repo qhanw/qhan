@@ -1,6 +1,6 @@
 ---
 title: 正则表达式
-date: 2015-05-05 10:50:58
+date: 2015-05-05T10:50:58+08:00
 category: regexp
 tags: [regexp, js]
 ---
