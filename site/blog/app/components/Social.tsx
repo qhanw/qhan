@@ -16,12 +16,12 @@ export default function Social() {
       {social.map((c) => (
         <Link
           key={c.href}
-          className="opacity-50 hover:opacity-80 font-normal"
+          className="opacity-50 hover:opacity-80 font-normal text-brand"
           href={c.href}
           title={c.name}
           target="_blank"
         >
-          <span className={`${c.icon} w-4 h-4 text-brand mr-1`} />
+          <span className={`${c.icon} w-4 h-4 mr-1`} />
           {c.name}
         </Link>
       ))}

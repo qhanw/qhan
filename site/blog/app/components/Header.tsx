@@ -44,9 +44,9 @@ export default () => (
     <header className="px-4 sm:px-6 sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60 ">
       <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
         <div className="flex justify-start md:w-0 md:flex-1">
-          <Link href="/" className="inline-flex items-center">
+          <Link href="/" className="inline-flex items-center text-brand">
             <span className="sr-only">Workflow</span>
-            <span className="i-logos-sakura w-6 h-6 logo-rotate text-brand" />
+            <span className="i-logos-sakura w-6 h-6 logo-rotate" />
             <span className="text-lg ml-2 font-medium text-gray-900">
               Qhan W
             </span>
@@ -58,16 +58,16 @@ export default () => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-base font-medium inline-flex items-center space-x-2 text-gray-500 hover:text-gray-900"
+              className="text-base font-medium inline-flex items-center space-x-2 text-brand"
               {...(/^http(s?):\/\//.test(item.href)
                 ? { target: "_blank" }
                 : {})}
             >
               <item.icon
-                className="flex-shrink-0 h-4 w-4 text-brand"
+                className="flex-shrink-0 h-4 w-4 "
                 aria-hidden="true"
               />
-              <span className="hidden md:flex">{item.name}</span>
+              <span className="hidden md:flex text-gray-500 hover:text-gray-900">{item.name}</span>
             </Link>
           ))}
         </nav>

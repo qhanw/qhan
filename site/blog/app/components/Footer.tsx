@@ -13,8 +13,8 @@ export default ({ className }: FooterProps) => (
       className
     )}
   >
-    <Link href="/">
-      <span className="i-logos-sakura w-4 h-4 logo-rotate text-brand" />
+    <Link className="text-brand" href="/">
+      <span className="i-logos-sakura w-4 h-4 logo-rotate" />
     </Link>
 
     <div className="text-sm opacity-50 ml-1">
