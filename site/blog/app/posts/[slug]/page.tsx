@@ -2,10 +2,13 @@ import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 import { remark } from "remark";
+
+import remarkToc from "remark-toc";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import remarkReadTime from "remark-reading-time";
 
+import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 
@@ -13,6 +16,8 @@ import DateFormat from "@/app/components/DateFormat";
 
 import seo from "@/utils/seo";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
+
+import "./styles.scss";
 
 type Props = {
   params: { slug: string };
@@ -31,10 +36,13 @@ type Meta = { readingTime: ReadingTime; [propName: string]: any };
 async function getPost(params: Props["params"]) {
   const post = getPostBySlug(params.slug);
   const markdown = await remark()
-    .use(remarkRehype)
+    .use(remarkToc, { maxDepth: 4 })
     .use(remarkReadTime, {})
     .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeSlug)
     .use(rehypePrettyCode, { theme: "nord" })
+
     .use(rehypeStringify)
     .process(post.content || "");
 

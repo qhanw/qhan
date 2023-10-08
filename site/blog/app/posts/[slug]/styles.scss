@@ -1,0 +1,39 @@
+#toc {
+  display: none;
+}
+
+#toc + ul {
+  display: none;
+  position: fixed;
+  right: 16px;
+  top: 115px;
+  margin: 0;
+  padding: 0;
+  max-width: 160px;
+
+  &::before {
+    display: table;
+    content: "Table of Contents";
+    color: rgba(42, 46, 54, 0.45);
+    font-weight: bold;
+  }
+}
+
+#toc + ul,
+#toc + ul ul {
+  list-style-type: none;
+  font-size: 14px;
+  margin: 0;
+
+  > li > a {
+    text-decoration: none;
+    color: rgb(55, 65, 81);
+    font-weight: normal;
+  }
+}
+
+@media (min-width: 1024px) {
+  #toc + ul {
+    display: block!important;
+  }
+}
