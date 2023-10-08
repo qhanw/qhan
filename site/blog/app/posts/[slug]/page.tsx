@@ -113,31 +113,27 @@ export default async ({ params }: Props) => {
         最近修改时间：
         <DateFormat value={post.frontmatter.lastModified} />
       </div>
-      <div className="flex justify-between my-12 text-sm">
-        <span>
+      <div className="flex my-12 text-sm gap-4">
+        <span className="w-1/2 overflow-hidden flex">
           {prev && (
             <Link
               href={prev.slug}
-              className="inline-flex items-center min-w-0 no-underline"
+              className="inline-flex items-center min-w-0 no-underline text-gray-600 hover:text-gray-800 ease-out"
             >
-              <span className="i-heroicons:chevron-left mr-1 h-4 w-4 group-hover:text-gray-500" />
-              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                {prev.title}
-              </span>
+              <span className="i-heroicons:chevron-left mr-1 h-4 w-4" />
+              <span className="truncate flex-1">{prev.title}</span>
             </Link>
           )}
         </span>
-        <span>
+        <span className="w-1/2 overflow-hidden flex justify-end">
           {next && (
             <Link
               href={next.slug}
-              className="inline-flex items-center min-w-0 no-underline"
+              className="inline-flex items-center min-w-0 no-underline text-gray-600 hover:text-gray-800 ease-out"
             >
-              <span className="break-all whitespace-nowrap overflow-hidden overflow-ellipsis">
-                {next.title}
-              </span>
+              <span className="truncate flex-1">{next.title}</span>
 
-              <span className="i-heroicons:chevron-right ml-1 h-4 w-4 group-hover:text-gray-500" />
+              <span className="i-heroicons:chevron-right ml-1 h-4 w-4" />
             </Link>
           )}
         </span>

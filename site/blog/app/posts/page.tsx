@@ -22,10 +22,10 @@ export default async function Posts() {
         {posts?.map((node: any) => (
           <Link
             href={`/posts/${node.slug}`}
-            className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up"
+            className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up "
             key={node.slug}
           >
-            <div className="text-xl text-gray-600 group-hover:text-brand break-all whitespace-nowrap overflow-hidden overflow-ellipsis ease-in duration-300">
+            <div className="text-xl text-gray-600 group-hover:text-brand truncate ease-in duration-300">
               {node.frontmatter?.title}
             </div>
             <div className="text-gray-400 text-sm leading-none flex items-center">
