@@ -9,6 +9,7 @@ import remarkRehype from "remark-rehype";
 import remarkReadTime from "remark-reading-time";
 
 import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 
@@ -41,8 +42,8 @@ async function getPost(params: Props["params"]) {
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings)
     .use(rehypePrettyCode, { theme: "nord" })
-
     .use(rehypeStringify)
     .process(post.content || "");
 
