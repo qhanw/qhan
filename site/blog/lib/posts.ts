@@ -32,7 +32,10 @@ export function getPostBySlug(slug: string) {
 
 export function getAllPosts() {
   const slugs = fs.readdirSync(postsDir);
-  const posts = slugs.map((slug) => getPostBySlug(slug));
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug))
+    // 排除草稿文件
+    .filter((c) => !/\.draft$/.test(c.slug));
 
   return posts.sort((a, b) =>
     a.frontmatter.date < b.frontmatter.date ? 1 : -1
