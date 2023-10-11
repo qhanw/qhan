@@ -35,7 +35,7 @@ export default async function Posts() {
               </time>
               <span className="mx-2 w-0.5 h-0.5 bg-gray-400" />
               {/* {post.meta.category} */}
-              {post.meta?.tags.map((tag: string) => (
+              {post.meta?.tags.slice(0, 3).map((tag: string) => (
                 <PostLabel title={tag} key={tag} />
               ))}
             </div>
