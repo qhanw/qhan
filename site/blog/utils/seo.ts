@@ -22,9 +22,10 @@ export default function seo({ description, title }: SeoProps): Metadata {
       title: title,
       description: metaDescription,
       siteName: siteMetadata.siteTitle,
-      images: `https://og-image.vercel.app/${encodeURI(
-        siteMetadata.siteTitle
-      )}.png?theme=light&md=0&fontSize=75px`,
+      // images: `https://og-image.vercel.app/${encodeURI(
+      //   siteMetadata.siteTitle
+      // )}.png?theme=light&md=0&fontSize=75px`,
+      images: "/favicon.png",
     },
     twitter: {
       card: "summary",
