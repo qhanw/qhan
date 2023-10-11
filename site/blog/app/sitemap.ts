@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 转换为博客的 sitemap
   const maps: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `https://qhan.wang/posts/${post.slug}`,
-    lastModified: post.frontmatter.lastModified,
+    lastModified: post.meta.lastModified,
     changeFrequency: "weekly",
     priority: 0.6,
   }));

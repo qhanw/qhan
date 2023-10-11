@@ -19,28 +19,28 @@ export default async function Posts() {
         Total {posts?.length} Posts
       </div>
       <div className="prose grid gap-9 m-auto">
-        {posts?.map((node: any) => (
+        {posts?.map((post: any) => (
           <Link
-            href={`/posts/${node.slug}`}
+            href={`/posts/${post.slug}`}
             className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up "
-            key={node.slug}
+            key={post.slug}
           >
             <div className="text-xl text-gray-600 group-hover:text-brand truncate ease-in duration-300">
-              {node.frontmatter?.title}
+              {post.meta?.title}
             </div>
             <div className="text-gray-400 text-sm leading-none flex items-center">
               <time className="my-3 inline-flex items-center">
                 <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
-                <DateFormat value={node.frontmatter?.date} short />
+                <DateFormat value={post.meta?.date} short />
               </time>
               <span className="mx-2 w-0.5 h-0.5 bg-gray-400" />
-              {/* {node.frontmatter.category} */}
-              {node.frontmatter?.tags.map((tag: string) => (
+              {/* {post.meta.category} */}
+              {post.meta?.tags.map((tag: string) => (
                 <PostLabel title={tag} key={tag} />
               ))}
             </div>
 
-            <div className="text-gray-500 line-clamp-3">{node.excerpt}</div>
+            <div className="text-gray-500 line-clamp-3">{post.excerpt}</div>
           </Link>
         ))}
       </div>

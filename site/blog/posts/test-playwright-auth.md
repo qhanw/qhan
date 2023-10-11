@@ -208,4 +208,4 @@ export default config;
 
 ## 参考：
 
-<https://playwright.dev/docs/auth>
+- https://playwright.dev/docs/auth
