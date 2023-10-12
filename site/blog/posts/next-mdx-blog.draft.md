@@ -51,6 +51,5 @@ I **love** using [Next.js](https://nextjs.org/)
 
 ### 参考
 
-- https://medium.com/frontendweb/how-to-install-contentlayer-in-nextjs-4a08fb37c87d
-
-- https://devpress.csdn.net/react/62eda913c6770329307f2a85.html
+- [How to install Contentlayer in nextjs](https://medium.com/frontendweb/how-to-install-contentlayer-in-nextjs-4a08fb37c87d)
+- [使用 Contentlayer 和 Next 构建基于 MDX 的博客](https://devpress.csdn.net/react/62eda913c6770329307f2a85.html)
