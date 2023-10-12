@@ -8,8 +8,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 
 // mdx components
-import Button from "@/posts-assets/mdx/next-mdx/button";
-import CssGradientBtn from "@/posts-assets/mdx/css-gradient/GradientBtn";
+import Button from "@/posts-mdx/next-mdx/button";
+import CssGradientBtn from "@/posts-mdx/css-gradient/GradientBtn";
 
 const options: MDXRemoteProps["options"] = {
   mdxOptions: {
