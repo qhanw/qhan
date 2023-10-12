@@ -29,17 +29,37 @@ I **love** using [Next.js](https://nextjs.org/)
 
 #### MDX
 
-[MDX](https://mdxjs.com/)是 Markdown 的超集，可让您编写[JSX](https://react.dev/learn/writing-markup-with-jsx)直接在您的 Markdown 文件中。这是在内容中添加动态交互性和嵌入 React 组件的强大方法。
+[MDX](https://mdxjs.com/)是 Markdown 的超集，允许您在 Markdown 内容中使用 [JSX](https://react.dev/learn/writing-markup-with-jsx)。这是在内容中添加动态交互性和嵌入 React 组件的强大方法。
 
 ---
 
 ### 开始搭建
 
-在这里，我们将分别介绍三种搭建MDX博客网站应用的方法，他们有各自的优缺点，可以根据自身情况选择使用那一种方式。当然，我更推荐使用`Contentlayer`的方式，因为他更轻量、更简单、高性能等优点。  
+在这里，我们将分别介绍三种搭建MDX博客网站应用的方法，分别是`@next/mdx`、`next-mdx-remote`、`contentlayer`他们有各自的优缺点，可以根据自身情况选择使用那一种方式。当然，我更推荐使用`Contentlayer`的方式，因为他更轻量、更简单、高性能等优点。  
 
-好了，让我们开始真正的博客搭建之旅吧！
+| 名称                                | 差异描述                                                                                                                                                                |
+| :---------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [@next/mdx](#@next/mdx)             | nextjs官方提供的markdown 和 MDX解决方案，它从本地文件获取数据.mdx，允许您直接在您的`/pages`或`/app`目录中创建带有扩展名`.mdx`的页面。对于简单内容页面来说相对实用。     |
+| [next-mdx-remote](#next-mdx-remote) | 不处理从源加载内容，无论是本地还是远程，因此需要我们自己编写代码实现，但也因此相对灵活，在处理过程中需要配合相关插件来实现内容转换处理，如：`gray-matter`等。           |
+| [contentlayer](#contentlayer)       | 具有重量轻，易于使用、 出色的开发体验以及快速的构建能力和高性能页面的优点的。它从源文件加载内容，并自动生成 TypeScript 类型定义，以确保正在处理的内容符合您期望的形状。 |
+
+
+
+
+好了，让我们开始真正的博客搭建之旅吧！首先确保您已经使用`create-next-app`创建了一个博客应用，若没有请运行如下代码创建项目应用：
+
+```
+pnpm dlx create-next-app@latest
+```
 
 #### @next/mdx
+
+安装渲染MDX所需的软件包
+
+```bash
+pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+```
+
 
 #### Next mdx remote
 
