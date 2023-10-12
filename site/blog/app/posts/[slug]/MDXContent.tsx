@@ -9,6 +9,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 // mdx components
 import Button from "@/posts-assets/mdx/next-mdx/button";
+import CssGradientBtn from "@/posts-assets/mdx/css-gradient/GradientBtn";
 
 const options: MDXRemoteProps["options"] = {
   mdxOptions: {
@@ -28,7 +29,7 @@ export default function MDXContent(props: Pick<MDXRemoteProps, "source">) {
     <article className="fade-in-up-content prose prose-gray">
       <MDXRemote
         source={props.source}
-        components={{ Button }}
+        components={{ Button, CssGradientBtn }}
         options={options}
       />
     </article>

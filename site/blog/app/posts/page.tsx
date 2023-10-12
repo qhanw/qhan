@@ -40,7 +40,9 @@ export default async function Posts() {
               ))}
             </div>
 
-            <div className="text-gray-500 line-clamp-3">{post.excerpt}</div>
+            <div className="text-gray-500 line-clamp-3">
+              {post.meta.description || post.excerpt}
+            </div>
           </Link>
         ))}
       </div>
