@@ -84,6 +84,11 @@ export default async ({ params }: Props) => {
         <h1 className="slide-enter-50">{post.meta.title}</h1>
 
         <div className="slide-enter-50 opacity-50 -mt-2 flex items-center text-sm">
+          {post.meta.draft ? (
+            <span className="border border-orange-300 bg-orange-200 text-orange-600 rounded-sm px-1 mr-2">
+              Draft
+            </span>
+          ) : null}
           <time className="inline-flex items-center">
             <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
             <DateFormat value={post.meta?.date} />

@@ -3,7 +3,7 @@ title: NextJS 13 中创建 MDX 博客
 date: 2023-10-10T18:28:32+08:00
 category: nextjs
 tags: [nextjs, markdown, mdx, contentlayer, next-mdx-remote]
-# draft: true
+draft: true
 description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中创建 MDX 博客。
 ---
 

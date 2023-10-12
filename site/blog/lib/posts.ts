@@ -51,7 +51,9 @@ export function getAllPosts() {
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // 排除草稿文件
-    .filter((c) => !c.meta.draft);
+    .filter((c) => !/\.draft$/.test(c.slug));
+
+  // .filter((c) => !c.meta.draft);
 
   return posts.sort((a, b) => +b.meta.date - +a.meta.date);
 }
