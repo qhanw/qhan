@@ -22,10 +22,13 @@ export default function seo({ description, title }: SeoProps): Metadata {
       title: title,
       description: metaDescription,
       siteName: siteMetadata.siteTitle,
+
+      // 仅文章列表配置该属性，使用 opengraph-image 自动生成
+      // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx
       // images: `https://og-image.vercel.app/${encodeURI(
       //   siteMetadata.siteTitle
       // )}.png?theme=light&md=0&fontSize=75px`,
-      images: "/favicon.png",
+      // images: "/favicon.png",
     },
     twitter: {
       card: "summary",
