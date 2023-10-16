@@ -19,12 +19,12 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 
 输入：
 ```markdown
-I **love** using [Next.js](https://nextjs.org/)
+这是**我**的个人[网站](https://qhan.wang/)。
 ```
 
 输出：
 ```html
-<p>I <strong>love</strong> using <a href="https://nextjs.org/">Next.js</a></p>
+<p>这是<strong>我</strong>的个人<a href="https://qhan.wang/">网站</a>。</p>
 ```
 
 #### MDX
@@ -33,7 +33,7 @@ I **love** using [Next.js](https://nextjs.org/)
 
 ---
 
-### 开始搭建
+### 开始
 
 在这里，我们将分别介绍三种搭建MDX博客网站应用的方法，分别是[@next/mdx][2]、[next-mdx-remote][3]、[contentlayer][4]他们有各自的优缺点，可以根据自身情况选择使用那一种方式。
 
@@ -122,20 +122,128 @@ Checkout my React component:
 
 #### Next mdx remote
 
-允许您在其它地方动态加载`markdown`或`MDX`内容文件，并在客户端上正确渲染的轻型实用程序。
+[next-mdx-remote][3]允许您在其它地方动态加载`markdown`或`MDX`内容文件，并在客户端上正确渲染的轻型实用程序。
 
-[![next-mdx-remote](/images/posts/next-mdx-remote.png)][3]
+![next-mdx-remote](/images/posts/next-mdx-remote.png)
 
-当前插件官方介绍基于`nextjs`的`Pages Router`模式，但请不要担忧，目前它同样适用于`App Router`模式，只是获取数据资源方式不同，详细请参考：[App Router Data fetching](https://nextjs.org/docs/app/building-your-application/data-fetching)。在接下来的示例中，我们也将使用`App Router`的模式来搭建渲染blog内容。
+> 当前插件官方介绍基于`nextjs`的`Pages Router`模式，但请不要担忧，目前它同样适用于`App Router`模式，只是获取数据资源方式不同，详细请参考：[App Router Data fetching](https://nextjs.org/docs/app/building-your-application/data-fetching)。在接下来的示例中，我们也将使用`App Router`的模式来搭建渲染blog内容。
+
+
+首先，在`posts`目录中创建几个markdown文件，并向这些文件添加一些内容。
+
+这是一个`posts/post-01.md`示例：
+```markdown
+---
+title: My First Post
+date: 2022-02-22T22:22:22+0800
+---
+
+Ullamco et nostrud magna commodo nostrud ...
+````
+在此结构中有三个帖子示例：
+```
+posts/
+├── post-01.md
+├── post-02.md
+└── post-03.md
+```
+
+然后，创建 posts 资源获取`/lib/posts.ts`文件：
+在这里我们需要使用[gray-matter](https://github.com/jonschlinkert/gray-matter)插件来解析 markdown 内容。
+```ts
+import fs from "fs";
+import { join } from "path";
+
+import matter from "gray-matter";
+const postsDir = join(process.cwd(), "posts");
+
+type MetaData = {
+  title: string;
+  date: Date;
+  category: string;
+  tags?: string[];
+  description?: string;
+  draft?: boolean;
+};
+
+// 根据文件名读取 markdown 文档内容
+export function getPostBySlug(slug: string) {
+  const realSlug = slug.replace(/\.md$/, "");
+
+  const fullPath = join(postsDir, `${realSlug}.md`);
+
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+
+  // 解析 markdown 元数据
+  const { data, content, excerpt } = matter(fileContents, {
+    excerpt: true,
+  });
+
+  // 配置文章元数据
+  const meta = { ...data } as MetaData;
+
+  return { slug: realSlug, meta, content, excerpt };
+}
+
+// 获取 /posts文件夹下所用markdown文档
+export function getAllPosts() {
+  const slugs = fs.readdirSync(postsDir);
+
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug))
+    // 排除草稿文件
+    .filter((c) => !/\.draft$/.test(c.slug));
+    // .filter((c) => !c.meta.draft);
+  return posts.sort((a, b) => +b.meta.date - +a.meta.date);
+}
+
+```
+
+
+
+安装所需的软件包
+
+```bash
+pnpm add next-mdx-remote
+```
+
+创建文章呈现页面`/app/posts/[slug]/page.tsx`
+```tsx
+```
+
+创建一个`/app/posts/[slug]/mdx/Button.tsx`MDX使用的组件。
+```tsx
+"use client";
+
+import { useState } from "react";
+
+export default function Button({ text }: { text: string }) {
+  const [toggle, setToggle] = useState(false);
+
+  return (
+    <button
+      className="bg-slate-700 text-white rounded-md px-4 py-2"
+      onClick={() => setToggle(!toggle)}
+    >
+      {toggle ? text : "Click Me"}
+    </button>
+  );
+}
+```
+> 注意：在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
+
+
 
 
 #### Contentlayer  
 
 [Contentlayer][4] 是一个内容 SDK，可验证您的内容并将其转换为类型安全的 JSON 数据，您可以轻松地import将其添加到应用程序的页面中。
 
-[![Video Thumbnail](https://i.imgur.com/y3p4hDN.png)](https://www.youtube.com/watch?v=58Pj4a4Us7A)
+> **⚠️ Contentlayer 目前处于测试阶段。在即将发布的 1.0 版本之前，可能仍会发生重大更改。**
 
-**⚠️ Contentlayer 目前处于测试阶段。在即将发布的 1.0 版本之前，可能仍会发生重大更改。**
+![next-mdx-contentlayer](/images/posts/next-mdx-contentlayer.webp)
+
+
 
 
 <Button text="my button"/>
