@@ -1,6 +1,6 @@
-import { Fragment } from "react";
 import Link from "next/link";
 import clsx from "clsx";
+import ScrollTop from "./ScrollTop";
 
 const nav = [
   {
@@ -40,7 +40,8 @@ const nav = [
 ];
 
 export default () => (
-  <Fragment>
+  <>
+    <ScrollTop />
     <header className="px-4 sm:px-6 sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60 ">
       <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
         <div className="flex justify-start md:w-0 md:flex-1">
@@ -67,12 +68,14 @@ export default () => (
                 className="flex-shrink-0 h-4 w-4 "
                 aria-hidden="true"
               />
-              <span className="hidden md:flex text-gray-500 hover:text-gray-900">{item.name}</span>
+              <span className="hidden md:flex text-gray-500 hover:text-gray-900">
+                {item.name}
+              </span>
             </Link>
           ))}
         </nav>
       </div>
     </header>
     <div className="header-line-shadow" />
-  </Fragment>
+  </>
 );

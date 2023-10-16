@@ -102,13 +102,11 @@ export default async ({ params }: Props) => {
           </time>
         </div>
       </header>
-
       {/* <article
         className="fade-in-up-content prose prose-gray"
         dangerouslySetInnerHTML={{ __html: post.html }}
       /> */}
       <MDXContent source={post.content} />
-
       <div className="text-sm text-right text-gray-600">
         最近修改时间：
         <DateFormat value={post.meta.lastModified} />
