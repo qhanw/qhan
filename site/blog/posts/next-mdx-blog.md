@@ -90,12 +90,12 @@ module.exports = withMDX(nextConfig)
 ```
 
 然后，在您项目的`/app`目录下创建一个MDX页面：
-```plain
-  your-project
-  ├── app
-  │   └── my-mdx-page
-  │       └── page.mdx
-  └── package.json
+```html
+your-project
+├── app
+│   └── my-mdx-page
+│       └── page.mdx
+└── package.json
 ```
 现在你可以直接在MDX页面中使用markdown和导入React组件
 ```markdown
@@ -125,8 +125,6 @@ Checkout my React component:
 [next-mdx-remote][3]允许您在其它地方动态加载`markdown`或`MDX`内容文件，并在客户端上正确渲染的轻型实用程序。
 
 ![next-mdx-remote](/images/posts/next-mdx-remote.png)
-
-> 当前插件官方介绍基于`nextjs`的`Pages Router`模式，但请不要担忧，目前它同样适用于`App Router`模式，只是获取数据资源方式不同，详细请参考：[App Router Data fetching](https://nextjs.org/docs/app/building-your-application/data-fetching)。在接下来的示例中，我们也将使用`App Router`的模式来搭建渲染blog内容。
 
 
 首先，在`posts`目录中创建几个markdown文件，并向这些文件添加一些内容。

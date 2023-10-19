@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
+import rehypeShikiji from "rehype-shikiji";
 
 // mdx components
 import Button from "@/posts-mdx/next-mdx/button";
@@ -19,7 +19,7 @@ const options: MDXRemoteProps["options"] = {
       rehypeAutolinkHeadings,
 
       // @ts-ignore
-      [rehypePrettyCode, { theme: "nord" }],
+      [rehypeShikiji, { theme: "nord" }],
     ],
   },
 };
