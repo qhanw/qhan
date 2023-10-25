@@ -6,39 +6,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 远程获取博客列表
   const posts = await getAllPosts();
 
+  const domain = `https://qhan.wang`;
+
   // 转换为博客的 sitemap
-  const maps: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `https://qhan.wang/posts/${post.slug}`,
-    lastModified: post.meta.lastModified,
-    changeFrequency: "weekly",
-    priority: 0.6,
+  const posts_maps: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${domain}/posts/${post.slug}`,
+    lastModified: post.meta.lastModified?.toISOString(),
+    changeFrequency: "daily",
+    priority: +(0.8 * 0.8).toFixed(2),
   }));
 
-  // // 加入本地的其他路由页面
-  // const routes = ["", "/about", "/blog"].map((route) => ({
-  //   url: `https://xxx.com${route}`,
-  //   lastModified: new Date().toISOString(),
-  // }));
+  // 加入本地的其他路由页面
+  const route_maps: MetadataRoute.Sitemap = ["/", "/posts", "/projects"].map(
+    (route) => ({
+      url: domain + route,
+      lastModified: new Date().toISOString(),
+      changeFrequency: "weekly",
+      priority: route ? 0.8 : 1,
+    })
+  );
 
-  return [
-    {
-      url: "https://qhan.wang",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: "https://qhan.wang/posts",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://qhan.wang.com/projects",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    ...maps,
-  ];
+  return [...route_maps, ...posts_maps];
 }

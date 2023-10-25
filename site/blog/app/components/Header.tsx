@@ -13,6 +13,16 @@ const nav = [
       />
     ),
   },
+  // {
+  //   name: "Notes",
+  //   href: "/notes",
+  //   icon: (props: any) => (
+  //     <span
+  //       {...props}
+  //       className={clsx("i-heroicons:pencil-square", props.className)}
+  //     />
+  //   ),
+  // },
   {
     name: "Projects",
     href: "/projects",
