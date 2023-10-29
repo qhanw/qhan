@@ -13,17 +13,15 @@ export default function ProjWrapper({
   href?: string;
 }) {
   if (href) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        {...props}
-        className={clsx(
-          props.className,
-          "block border border-transparent hover:border-brand group no-underline font-normal"
-        )}
-      />
+    const cls = clsx(
+      props.className,
+      "block border border-transparent hover:border-brand group no-underline font-normal"
     );
+    if (/^http(s?):\/\//.test(href)) {
+      return <a href={href} target="_blank" {...props} className={cls} />;
+    }
+
+    return <Link href={href} {...props} className={cls} />;
   }
   return <div {...props} className={clsx(props.className, "group/show")} />;
 }

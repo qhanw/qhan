@@ -23,6 +23,9 @@ dependencies:
   nextjs-toploader:
     specifier: ^1.5.3
     version: 1.5.3(next@13.5.6)(react-dom@18.2.0)(react@18.2.0)
+  photoswipe:
+    specifier: ^5.4.2
+    version: 5.4.2
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -3959,6 +3962,11 @@ packages:
       '@types/estree': 1.0.3
       estree-walker: 3.0.3
       is-reference: 3.0.2
+    dev: false
+
+  /photoswipe@5.4.2:
+    resolution: {integrity: sha512-z5hr36nAIPOZbHJPbCJ/mQ3+ZlizttF9za5gKXKH/us1k4KNHaRbC63K1Px5sVVKUtGb/2+ixHpKqtwl0WAwvA==}
+    engines: {node: '>= 0.12.0'}
     dev: false
 
   /picocolors@1.0.0:

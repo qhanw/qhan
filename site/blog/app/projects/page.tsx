@@ -71,7 +71,7 @@ export default function Projects() {
 
                 {proj.href ? (
                   <span className="inline-flex items-center">
-                    Preview
+                    {/^http(s?):\/\//.test(proj.href) ? "Preview" : "Details"}
                     <span className="i-heroicons:arrow-right ml-1" />
                   </span>
                 ) : null}

@@ -9,11 +9,13 @@ export default [
     date: "202306",
   },
   {
-    key: "202204",
+    key: "ism-analysis",
     name: "智能制度解析",
     labels: ["react", "antd", "antv"],
     icons: ["i-logos:react", "i-logos:antd", "i-logos:antv"],
     desc: "关注于银行金融方面规章制度的自动解析与分析，便于相关人员快速掌握规章制度。提供对制度的导入、解析、分词、标注、核对、图谱生成、对比等方面的支持。",
+    href: "projects/ism-analysis",
+    date: "202204",
   },
   {
     key: "202210",
