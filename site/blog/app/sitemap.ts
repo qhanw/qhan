@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: domain + route,
       lastModified: new Date().toISOString(),
       changeFrequency: "weekly",
-      priority: route ? 0.8 : 1,
+      priority: route || route === "/" ? 0.8 : 1,
     })
   );
 
