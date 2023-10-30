@@ -1,5 +1,7 @@
 "use client";
 import { useEffect } from "react";
+import Image from "next/image";
+
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
 
@@ -36,8 +38,9 @@ export default function PicGallery(props: PicGalleryProps) {
           key={props.id + "-" + index}
           target="_blank"
           rel="noreferrer"
+          className="relative aspect-[1/0.618]"
         >
-          <img src={image.thumbnail} alt="" />
+          <Image className="rounded" fill src={image.thumbnail} alt={props.id + "-" + index} />
         </a>
       ))}
     </div>

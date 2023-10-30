@@ -18,11 +18,13 @@ export default [
     date: "202204",
   },
   {
-    key: "202210",
+    key: "kupo-monitor",
     name: "事中监控平台",
     labels: ["react", "antd", "antv"],
     icons: ["i-logos:react", "i-logos:antd", "i-logos:antv"],
     desc: "针对金融机构提供对各类金融活动产生的的事件进行监控管理降低业务风险。提供针对事件的预警管理、案件管理，以及黑白名单、规则引挚、策略包、数据看盘等方面功能。",
+    href: "projects/kupo-monitor",
+    date: "202210",
   },
   {
     key: "health-questionnaire",
