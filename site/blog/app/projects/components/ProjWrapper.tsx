@@ -21,7 +21,7 @@ export default function ProjWrapper({
       return <a href={href} target="_blank" {...props} className={cls} />;
     }
 
-    return <Link href={href} {...props} className={cls} />;
+    return <Link href={`/projects/${href}`}  {...props} className={cls} />;
   }
   return <div {...props} className={clsx(props.className, "group/show")} />;
 }

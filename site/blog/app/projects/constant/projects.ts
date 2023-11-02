@@ -14,7 +14,7 @@ export default [
     labels: ["react", "antd", "antv"],
     icons: ["i-logos:react", "i-logos:antd", "i-logos:antv"],
     desc: "关注于银行金融方面规章制度的自动解析与分析，便于相关人员快速掌握规章制度。提供对制度的导入、解析、分词、标注、核对、图谱生成、对比等方面的支持。",
-    href: "projects/ism-analysis",
+    href: "ism-analysis",
     date: "202204",
   },
   {
@@ -23,7 +23,7 @@ export default [
     labels: ["react", "antd", "antv"],
     icons: ["i-logos:react", "i-logos:antd", "i-logos:antv"],
     desc: "针对金融机构提供对各类金融活动产生的的事件进行监控管理降低业务风险。提供针对事件的预警管理、案件管理，以及黑白名单、规则引挚、策略包、数据看盘等方面功能。",
-    href: "projects/kupo-monitor",
+    href: "kupo-monitor",
     date: "202210",
   },
   {
