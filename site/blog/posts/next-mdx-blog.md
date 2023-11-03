@@ -7,13 +7,13 @@ draft: true
 description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中创建 MDX 博客。
 ---
 
-### TOC
+## TOC
 
 
-### 基本概念
+## 基本概念
 
 在正式使用nextjs搭建mdx博客网站应用前，我们先来了解一些基本的概念，这样有助于我们后续对内容的创作，以及对文章内容渲染有一个预期的结果。
-#### Markdown
+### Markdown
 
 [Markdown](https://daringfireball.net/projects/markdown/syntax)是一种用于格式化文本的轻量级标记语言。它允许您使用纯文本语法进行编写并将其转换为结构有效的 HTML。它通常用于在网站和博客上编写内容。
 
@@ -27,13 +27,13 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 <p>这是<strong>我</strong>的个人<a href="https://qhan.wang/">网站</a>。</p>
 ```
 
-#### MDX
+### MDX
 
 [MDX][1]是 Markdown 的超集，允许您在 Markdown 内容中使用 [JSX](https://react.dev/learn/writing-markup-with-jsx)。这是在内容中添加动态交互性和嵌入 React 组件的强大方法。
 
 ---
 
-### 开始
+## 开始
 
 在这里，我们将分别介绍三种搭建MDX博客网站应用的方法，分别是[@next/mdx][2]、[next-mdx-remote][3]、[contentlayer][4]他们有各自的优缺点，可以根据自身情况选择使用那一种方式。
 
@@ -50,13 +50,13 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 
 好了，让我们开始真正的博客搭建之旅吧！首先确保您已经使用`create-next-app`创建了一个博客应用，若没有请运行如下代码创建项目应用：
 
-```
+``` bash
 pnpm dlx create-next-app@latest
 ```
 
 > 详细的安装教程请查看 nextjs 文档：[自动安装](https://nextjs.org/docs/getting-started/installation)
 
-#### @next/mdx
+### @next/mdx
 
 安装渲染MDX所需的软件包
 
@@ -64,7 +64,7 @@ pnpm dlx create-next-app@latest
 pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
 ```
 
-创建一个`mdx-components.tsx`文件，在您应用的根目录下(`/app`或者`/src`目录下面)：   
+创建一个`mdx-components.tsx`文件，在您应用的根目录下(`/app`或`/src`目录的父级目录)：   
 > 注意：没有这个文件在`App Router`模式下将无法正常运行。如果使用`Pages Router`则可忽略这一步。
 ```ts
 import type { MDXComponents } from 'mdx/types'
@@ -90,14 +90,14 @@ module.exports = withMDX(nextConfig)
 ```
 
 然后，在您项目的`/app`目录下创建一个MDX页面：
-```html
+```plaintext
 your-project
 ├── app
 │   └── my-mdx-page
 │       └── page.mdx
 └── package.json
 ```
-现在你可以直接在MDX页面中使用markdown和导入React组件
+现在，在其它地方创建一个react组件`my-components.tsx`，然后就可以直接在`my-mdx-page/page.mdx`文件中直接使用markdown和导入创建的react组件
 ```markdown
 import { MyComponent } from 'my-components'
  
@@ -116,11 +116,15 @@ Checkout my React component:
 <MyComponent />
 ```
 
-导航到`/my-mdx-page`路由，将显示您渲染的MDX。
+导航到`/my-mdx-page`路由，将看到您所创建的MDX页面了。
 
-以上即为`@next/mdx`实现方式，有没有很简单。但相对也有一定局限情，因为他只处理本地的MDX页面，如果我们的MDX在其它地方呢，接下来两种方式专门解决这类问题。
 
-#### Next mdx remote
+
+以上即为[@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx#nextmdx)官方实现方式，非常简单。但相对也有一定局限情，因为它只处理本地的MDX页面，我们需要编写对应的元素数组件来承载这些内容，如果我们的MDX内容在其它地方呢，接下来两种方式专门解决这类问题。
+
+---
+
+### Next mdx remote
 
 [next-mdx-remote][3]允许您在其它地方动态加载`markdown`或`MDX`内容文件，并在客户端上正确渲染的轻型实用程序。
 
@@ -139,7 +143,7 @@ date: 2022-02-22T22:22:22+0800
 Ullamco et nostrud magna commodo nostrud ...
 ````
 在此结构中有三个帖子示例：
-```
+```plaintext
 posts/
 ├── post-01.md
 ├── post-02.md
@@ -198,7 +202,6 @@ export function getAllPosts() {
 ```
 
 
-
 安装所需的软件包
 
 ```bash
@@ -230,10 +233,9 @@ export default function Button({ text }: { text: string }) {
 ```
 > 注意：在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
 
+---
 
-
-
-#### Contentlayer  
+### Contentlayer  
 
 [Contentlayer][4] 是一个内容 SDK，可验证您的内容并将其转换为类型安全的 JSON 数据，您可以轻松地import将其添加到应用程序的页面中。
 
@@ -247,42 +249,151 @@ export default function Button({ text }: { text: string }) {
 <Button text="my button"/>
 
 
-### 内容优化&异常处理
+## 扩展&异常处理
 
 在解决MDX内容呈现后，我们可能还需要对MDX文档内容的`frontmatter`数据提取、表格、目录、阅读时间、字数统计以及代码内容美化等操作。此时，我们需要用到[remark][5]、[rehype][6]生态中的一些插件，使用方式也很简单。参见如下配置：
 
-#### @next/mdx
-```ts
-// next.config.js
-const withMDX = require('@next/mdx')({
+### @next/mdx
+
+#### Remark and Rehype Plugins
+
+在`@next/mdx`可以通过`remark`插件`rehype`来转换 MDX 内容。例如，使用`remark-gfm`来实现 GitHub Flavored Markdown 来支持。
+
+注意：由于remark和rehype生态系统仅是 ESM，因此，需要将配置文件`next.config.js`改为`next.config.mjs`。插件配置如下：
+
+```js
+// next.config.mjs
+import remarkGfm from 'remark-gfm'
+import createMDX from '@next/mdx'
+ 
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Configure `pageExtensions`` to include MDX files
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  // Optionally, add any other Next.js config below
+}
+ 
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
   },
 })
-module.exports = withMDX()
+ 
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig)
 ```
 
-#### next-mdx-remote
+#### 布局
 
-#### contentlayer
+在`@next/mdx`中处理MDX页面布局与常规`next`页面[布局](https://nextjs.org/docs/app/api-reference/file-conventions/layout)一样，在当前页面目录下（或其父目录下）创建一个`layout.tsx`文件，然后编写布局代码即可。
 
-#### 代码高亮
+#### 元数据
+在`@next/mdx`中处理页面元数据时，我们需要自己创建一个相对应的元数据处理组件例如：
+```tsx
+type FrontmatterProps = {
+  date: string;
+  author: string;
+  // 其它元数据，如分类、标签、来源、阅读时长等
+};
 
-#### Table of Content
+export default function Frontmatter({ date, author }: FrontmatterProps) {
+  return (
+    <div className="frontmatter">
+      date: <time>{date}</time>
+      author: {author}
+    </div>
+  );
+}
+
+```
+
+然后，在`page.mdx`页面中合适的位置放入该组件，并配置上元数据即可。例如：
+
+```diff
+import MyComponent from './my-components'
++ import Frontmatter from './frontmatter'
+
+# Welcome to my MDX page!
+
++ <Frontmatter date="2023-12-12 12:12:12" author="Qhan W"/>
+ 
+This is some **bold** and _italics_ text.
+ 
+This is a list in markdown:
+...
+```
+
+> 官方元数据处理：[frontmatter](https://nextjs.org/docs/app/building-your-application/configuring/mdx#frontmatter)
 
 
-#### 时间格式化
-因为我们使用nextjs来搭建博客，并采用服务端渲染方式，因此，在文章内容的发布时间与编辑时间上，需要带上时区信息。否则，在渲染时会出现服务器与客户端时区不一致，导致时间错误问题。对于时间的格式化处理，我们统一采用**客户端渲染**方式。具体请查看[SSR Timezone](https://qhan.wang/posts/ssr-timezone)。
+### next-mdx-remote
 
-#### 插件异常
+### contentlayer
 
-主要为`remark-gfm`插件错误。
+### 代码高亮
 
-撰写本示例时，正值`remarkjs`相关插件升级中，因些，在使用`next-mdx-remote`、`contentlayer`时出现渲染错误，此时，我们只需回退`remark-gfm`到上一个大版本即可。
+### Table of Content
+
+在本文介绍的三个方法中，我们可以通[remark-toc](https://www.npmjs.com/package/remark-toc)插件得到文章的目录。但目录的位置在文章中配置的地方显示，这可能不符合我们预期，在此情况下，可通过样式将目录放置合适合的位置，如：
+> 该样式将目录放在文章右侧，并在小屏幕中隐藏。
+```css
+#toc {
+  display: none;
+}
+
+#toc + ul {
+  display: none;
+  position: fixed;
+  right: 16px;
+  top: 115px;
+  margin: 0;
+  padding: 0;
+  max-width: 160px;
+
+  &::before {
+    display: table;
+    content: "Table of Contents";
+    color: rgba(42, 46, 54, 0.45);
+    font-weight: bold;
+  }
+}
+
+#toc + ul,
+#toc + ul ul {
+  list-style-type: none;
+  font-size: 14px;
+  margin: 0;
+
+  > li > a {
+    text-decoration: none;
+    color: rgb(55, 65, 81);
+    font-weight: normal;
+  }
+}
+
+@media (min-width: 1024px) {
+  #toc + ul {
+    display: block !important;
+  }
+}
+
+```
 
 
-### 相关链接
+### 时间格式化
+因为我们使用nextjs来搭建博客，并采用服务端渲染方式，因此，在文章内容的发布时间与编辑时间上，需要带上时区信息。否则，在渲染时会出现服务器与客户端时区不一致，导致时间错误问题。对于时间的格式化处理，此处统一采用**客户端渲染**方式。具体请查看[SSR Timezone](https://qhan.wang/posts/ssr-timezone)。
+
+### 插件异常
+
+主要为`remark-gfm`插件错误。撰写本示例时，正值`remarkjs`相关插件升级中，因些，在使用`next-mdx-remote`、`contentlayer`时出现渲染错误，此时，我们只需回退`remark-gfm`到上一个大版本即可。
+
+### VS Code TS错误
+表现为`@next/mdx`下，`page.mdx`出现ts检查错误，重启编辑器即可。
+
+
+## 相关链接
 
 - [MDX][1]
 - [@next/mdx][2]
@@ -292,7 +403,7 @@ module.exports = withMDX()
 - [rehype][6]
 
 
-### 参考
+## 参考
 
 - [How to install Contentlayer in nextjs](https://medium.com/frontendweb/how-to-install-contentlayer-in-nextjs-4a08fb37c87d)
 - [使用 Contentlayer 和 Next 构建基于 MDX 的博客](https://devpress.csdn.net/react/62eda913c6770329307f2a85.html)

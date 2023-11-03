@@ -42,8 +42,8 @@ dependencies:
     specifier: ^7.0.0
     version: 7.0.0
   rehype-shikiji:
-    specifier: ^0.6.10
-    version: 0.6.10
+    specifier: ^0.6.12
+    version: 0.6.12
   rehype-slug:
     specifier: ^6.0.0
     version: 6.0.0
@@ -4129,12 +4129,12 @@ packages:
       unist-util-visit: 5.0.0
     dev: false
 
-  /rehype-shikiji@0.6.10:
-    resolution: {integrity: sha512-ezSKqk+llCTyrr72efEU8xzAfEreqt2vHS3dyMESlPExfWRe89PReFA6KQMHyMUJb3Id0BGVQvRCV1zierldvw==}
+  /rehype-shikiji@0.6.12:
+    resolution: {integrity: sha512-65miQKHFhvCwq+D7C975pV8IYsfyUQjNOv9h7hMvFAh8HhEiL8qKuT0KbzxdtJoDLMJJYzxRVox0oL44N8HrYw==}
     dependencies:
       '@types/hast': 3.0.2
       hast-util-to-string: 3.0.0
-      shikiji: 0.6.10
+      shikiji: 0.6.12
       unified: 11.0.4
       unist-util-visit: 5.0.0
     dev: false
@@ -4412,8 +4412,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shikiji@0.6.10:
-    resolution: {integrity: sha512-WE+A5Y2ntM5hL3iJQujk97qr5Uj7PSIRXpQfrZ6h+JWPXZ8KBEDhFXc4lqNriaRq1WGOVPUT83XMOzmHiH3W8A==}
+  /shikiji@0.6.12:
+    resolution: {integrity: sha512-sm7Wg8P4w6T3quDAZQxvk0P02o2hheIFEdbaEuGOhGnqLDjVsP28GDUVPdgbacOIc1auapNVNCVEykhPploLyg==}
     dependencies:
       hast-util-to-html: 9.0.0
     dev: false
