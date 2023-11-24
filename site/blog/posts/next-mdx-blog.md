@@ -1,5 +1,5 @@
 ---
-title: NextJS 13 中创建 MDX 博客
+title: NextJS 中创建 MDX 博客
 date: 2023-10-10T18:28:32+08:00
 category: nextjs
 tags: [nextjs, markdown, mdx, contentlayer, next-mdx-remote]
@@ -9,31 +9,7 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 
 ## TOC
 
-
-## 基本概念
-
-在正式使用nextjs搭建mdx博客网站应用前，我们先来了解一些基本的概念，这样有助于我们后续对内容的创作，以及对文章内容渲染有一个预期的结果。
-### Markdown
-
-[Markdown](https://daringfireball.net/projects/markdown/syntax)是一种用于格式化文本的轻量级标记语言。它允许您使用纯文本语法进行编写并将其转换为结构有效的 HTML。它通常用于在网站和博客上编写内容。
-
-输入：
-```markdown
-这是**我**的个人[网站](https://qhan.wang/)。
-```
-
-输出：
-```html
-<p>这是<strong>我</strong>的个人<a href="https://qhan.wang/">网站</a>。</p>
-```
-
-### MDX
-
-[MDX][1]是 Markdown 的超集，允许您在 Markdown 内容中使用 [JSX](https://react.dev/learn/writing-markup-with-jsx)。这是在内容中添加动态交互性和嵌入 React 组件的强大方法。
-
----
-
-## 开始
+## 前言
 
 在这里，我们将分别介绍三种搭建MDX博客网站应用的方法，分别是[@next/mdx][2]、[next-mdx-remote][3]、[contentlayer][4]他们有各自的优缺点，可以根据自身情况选择使用那一种方式。
 
@@ -46,19 +22,17 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 | [contentlayer](#contentlayer)       | 具有重量轻，易于使用、 出色的开发体验以及快速的构建能力和高性能页面的优点的。它从源文件加载内容，并自动生成 TypeScript 类型定义，以确保正在处理的内容符合您期望的形状。 |
 
 
+好了，让我们开始真正的博客搭建之旅吧！
 
+## @next/mdx
 
-好了，让我们开始真正的博客搭建之旅吧！首先确保您已经使用`create-next-app`创建了一个博客应用，若没有请运行如下代码创建项目应用：
+首先，确保您已经使用[create-next-app](https://nextjs.org/docs/getting-started/installation)创建了一个博客应用，若没有请运行如下代码创建项目应用：
 
 ``` bash
 pnpm dlx create-next-app@latest
 ```
 
-> 详细的安装教程请查看 nextjs 文档：[自动安装](https://nextjs.org/docs/getting-started/installation)
-
-### @next/mdx
-
-安装渲染MDX所需的软件包
+然后，安装渲染MDX所需的软件包
 
 ```bash
 pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
@@ -124,14 +98,19 @@ Checkout my React component:
 
 ---
 
-### Next mdx remote
+## Next mdx remote
 
 [next-mdx-remote][3]允许您在其它地方动态加载`markdown`或`MDX`内容文件，并在客户端上正确渲染的轻型实用程序。
 
 ![next-mdx-remote](/images/posts/next-mdx-remote.png)
 
+首先，确保您已经使用[create-next-app](https://nextjs.org/docs/getting-started/installation)创建了一个博客应用，若没有请运行如下代码创建项目应用：
 
-首先，在`posts`目录中创建几个markdown文件，并向这些文件添加一些内容。
+``` bash
+pnpm dlx create-next-app@latest
+```
+
+然后，在`/posts`目录中创建几个markdown文件，并向这些文件添加一些内容。
 
 这是一个`posts/post-01.md`示例：
 ```markdown
@@ -140,7 +119,7 @@ title: My First Post
 date: 2022-02-22T22:22:22+0800
 ---
 
-Ullamco et nostrud magna commodo nostrud ...
+This is my first post ...
 ````
 在此结构中有三个帖子示例：
 ```plaintext
@@ -150,7 +129,13 @@ posts/
 └── post-03.md
 ```
 
-然后，创建 posts 资源获取`/lib/posts.ts`文件：
+安装`MDX`解析所需的软件包
+
+```bash
+pnpm add next-mdx-remote gray-matter
+```
+
+创建 posts 资源获取`/lib/posts.ts`文件：
 在这里我们需要使用[gray-matter](https://github.com/jonschlinkert/gray-matter)插件来解析 markdown 内容。
 ```ts
 import fs from "fs";
@@ -201,18 +186,45 @@ export function getAllPosts() {
 
 ```
 
-
-安装所需的软件包
-
-```bash
-pnpm add next-mdx-remote
-```
-
 创建文章呈现页面`/app/posts/[slug]/page.tsx`
 ```tsx
+import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
+
+import { getPostBySlug, getAllPosts } from "@/lib/posts";
+
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+async function getPost(params: Props["params"]) {
+  const post = getPostBySlug(params.slug);
+  return { post };
+}
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
+export default async ({ params }: Props) => {
+  const { post } = await getPost(params);
+
+  return (
+    <>
+      <h1>{post.meta.title}</h1>
+      <time>{post.meta?.date.toString()}</time>
+      <MDXRemote source={post.content} components={{}} options={{}} />
+    </>
+  );
+};
+
 ```
 
-创建一个`/app/posts/[slug]/mdx/Button.tsx`MDX使用的组件。
+创建一个`MDX`使用的组件`/app/posts/[slug]/mdx/Button.tsx`。
 ```tsx
 "use client";
 
@@ -222,10 +234,7 @@ export default function Button({ text }: { text: string }) {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <button
-      className="bg-slate-700 text-white rounded-md px-4 py-2"
-      onClick={() => setToggle(!toggle)}
-    >
+    <button onClick={() => setToggle(!toggle)}>
       {toggle ? text : "Click Me"}
     </button>
   );
@@ -233,9 +242,46 @@ export default function Button({ text }: { text: string }) {
 ```
 > 注意：在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
 
+在文章呈现页面`/app/posts/[slug]/page.tsx`中引入创建的组件
+```diff
+import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
+
+import { getPostBySlug, getAllPosts } from "@/lib/posts";
+
++ import Button from "./mdx/Button";
+
+...
+
+export default async ({ params }: Props) => {
+  const { post } = await getPost(params);
+
+  return (
+    <>
+      ...
++     <MDXRemote source={post.content} components={{Button}} options={{}} />
+    </>
+  );
+};
+
+```
+
+然后，在`post`文章中使用定义的`Button`组件
+```diff
+---
+title: My First Post
+date: 2022-02-22T22:22:22+0800
 ---
 
-### Contentlayer  
+This is my first post ...
+
++ <Button text="Button" />
+```
+
+现在，导航到`/posts/post-01`，将看到一个带有一个按钮的可交互的Markdown文档。🎉🎉🎉🎉🎉
+
+---
+
+## Contentlayer  
 
 [Contentlayer][4] 是一个内容 SDK，可验证您的内容并将其转换为类型安全的 JSON 数据，您可以轻松地import将其添加到应用程序的页面中。
 

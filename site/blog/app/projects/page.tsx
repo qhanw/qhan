@@ -11,6 +11,7 @@ export async function generateMetadata() {
 }
 
 export default function Projects() {
+
   return (
     <>
       {/* text-transparent text-stroke-2 text-stroke-hex-aaa */}
