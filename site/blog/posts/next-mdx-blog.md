@@ -289,11 +289,271 @@ This is my first post ...
 
 ![next-mdx-contentlayer](/images/posts/next-mdx-contentlayer.webp)
 
+### 开始
+
+安装 Contentlayer 和 Next.js 插件
+```bash
+pnpm add contentlayer next-contentlayer
+```
+
+使用`withContentlayer`方法包裹Next.js配置，以便将`ContentLayer`钩子挂接到`next dev`和`next build`过程中。
+
+```js
+// next.config.js
+const { withContentlayer } = require('next-contentlayer')
+
+/** @type {import('next').NextConfig} */
+const nextConfig = { reactStrictMode: true, swcMinify: true }
+
+module.exports = withContentlayer(nextConfig)
+```
+
+然后，添加下面行中的代码到`tsconfig.json`或`jsconfig.json`文件中。
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    //  ^^^^^^^^^^^
+    "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"]
+      // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".contentlayer/generated"
+    // ^^^^^^^^^^^^^^^^^^^^^^
+  ]
+}
+```
+这些配置将使告诉Next.js构建过程和你的编辑器在哪里寻找生成的文件，并让它们在你的代码更容易导入。
+
+### 忽略构建输出
+
+将`.contentlayer`目录添加到你的`.gitignore`文件中，以确保你的应用程序的每个构建都有最新生成的数据，并且你不会遇到Git问题。
+```plaintext
+# .gitignore
+
+# ...
+
+# contentlayer
+.contentlayer
+```
+
+### 定义内容模式
+现在定义内容模式并向站点添加一些内容
+
+#### 添加 Contentlayer 配置
+
+在项目的根部创建文件`contentlayer.config.ts`，然后添加以下内容。
+```ts
+// contentlayer.config.ts
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+
+// 文档类型
+export const Post = defineDocumentType(() => ({
+  name: 'Post',
+  filePathPattern: `**/*.md`,
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+  },
+  computedFields: {
+    url: { type: 'string', resolve: (post) => `/posts/${post._raw.flattenedPath}` },
+  },
+}))
+
+export default makeSource({ contentDirPath: 'posts', documentTypes: [Post] })
+```
+该配置指定了一个名为`Post`的文档类型。这些文档是位于项目中的`posts`目录中的Markdown文件。
+
+从这些文件生成的任何数据对象都将包含上面指定的字段，以及包含文件的原始内容和HTML内容的正文字段。`url`字段是一个特殊的计算字段，它会根据源文件中的元属性自动添加到所有发布文档中。
 
 
+#### 添加博客内容
 
-<Button text="my button"/>
+在`/posts`目录中创建几个markdown文件，并向这些文件添加一些内容。
 
+这是一个`/posts/post-01.md`示例：
+```markdown
+---
+title: My First Post
+date: 2022-02-22T22:22:22+0800
+---
+
+This is my first post ...
+````
+在此结构中有三个帖子示例：
+
+```plaintext
+posts/
+├── post-01.md
+├── post-02.md
+└── post-03.md
+```
+
+#### 添加网站代码
+
+创建`/app/posts/page.tsx`用于展示所有Post文章列表。请注意，在尝试从`contentlayer/regenerated`导入时会出现错误，这是正常的，稍后将通过运行开发服务器来修复它。
+```tsx
+// app/page.tsx
+import Link from "next/link";
+import { compareDesc, format, parseISO } from "date-fns";
+import { allPosts, Post } from "contentlayer/generated";
+
+function PostCard(post: Post) {
+  return (
+    <div className="mb-8">
+      <h2 className="mb-1 text-xl">
+        <Link
+          href={post.url}
+          className="text-blue-700 hover:text-blue-900 dark:text-blue-400"
+        >
+          {post.title}
+        </Link>
+      </h2>
+      <time dateTime={post.date} className="mb-2 block text-xs text-gray-600">
+        {format(parseISO(post.date), "LLLL d, yyyy")}
+      </time>
+      <div
+        className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0"
+        dangerouslySetInnerHTML={{ __html: post.body.html }}
+      />
+    </div>
+  );
+}
+
+export default function Home() {
+  const posts = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
+
+  return (
+    <div className="mx-auto max-w-xl py-8">
+      {posts.map((post, idx) => (<PostCard key={idx} {...post} />))}
+    </div>
+  );
+}
+
+```
+
+运行Next.js开发服务，并访问localhost:3000查看文章列表。
+```bash
+pnpm dev
+```
+
+#### 添加Post布局
+
+现在创建`app/posts/[slug]/page.tsx`页面，并添加以下代码
+```tsx
+// app/posts/[slug]/page.tsx
+import { format, parseISO } from 'date-fns'
+import { allPosts } from 'contentlayer/generated'
+
+export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
+
+export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
+  if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
+  return { title: post.title }
+}
+
+const PostLayout = ({ params }: { params: { slug: string } }) => {
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
+  if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
+
+  return (
+    <article className="mx-auto max-w-xl py-8">
+      <div className="mb-8 text-center">
+        <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
+          {format(parseISO(post.date), 'LLLL d, yyyy')}
+        </time>
+        <h1 className="text-3xl font-bold">{post.title}</h1>
+      </div>
+      <div className="[&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: post.body.html }} />
+    </article>
+  )
+}
+
+export default PostLayout
+
+```
+
+现在，点击文章列表上的链接，将进入一文章阅读页面。
+
+#### 开启MDX
+
+在`Contentlayer`中使用MDX只需在配置文件`contentlayer.config.ts`中添加如下代码即可
+
+```diff
+...
+export const Post = defineDocumentType(() => ({
+...
++ contentType: 'mdx',
+...
+}));
+...
+```
+
+创建一个`MDX`使用的组件`/app/posts/[slug]/mdx/Button.tsx`。
+```tsx
+"use client";
+
+import { useState } from "react";
+
+export default function Button({ text }: { text: string }) {
+  const [toggle, setToggle] = useState(false);
+
+  return (
+    <button onClick={() => setToggle(!toggle)}>
+      {toggle ? text : "Click Me"}
+    </button>
+  );
+}
+```
+> 注意：在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
+
+
+然后，在`app/posts/[slug]/page.tsx`文件中作如下调整
+
+```diff
+...
++ import Button from "./mdx/Button";
+...
+const PostLayout = ({ params }: { params: { slug: string } }) => {
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+
++  const MDXContent = useMDXComponent(post.body.code);
+
+  return (
+    <article className="mx-auto max-w-xl py-8">
+ ...
+-     <div className="[&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: post.body.html }} />
+
++     <div className="[&>*]:mb-3 [&>*:last-child]:mb-0">
++       <MDXContent components={{ Button }} />
++     </div>
+    </article>
+  );
+};
+
+...
+```
+
+最后删除`/app/posts/page.tsx`文件中如下代码
+```diff
+- <div
+-   className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0"
+-   dangerouslySetInnerHTML={{ __html: post.body.html }}
+-  />
+```
+此时，带交互功能的文件文章配置就完成啦。
 
 ## 扩展&异常处理
 
