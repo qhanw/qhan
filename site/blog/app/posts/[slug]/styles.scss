@@ -10,6 +10,8 @@
   margin: 0;
   padding: 0;
   max-width: 160px;
+  max-height: 480px;
+  overflow: auto;
 
   &::before {
     display: table;

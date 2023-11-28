@@ -1,5 +1,5 @@
 ---
-title: NextJS 中创建 MDX 博客
+title: NextJS 中创建 MDX 应用
 date: 2023-10-10T18:28:32+08:00
 category: nextjs
 tags: [nextjs, markdown, mdx, contentlayer, next-mdx-remote]
@@ -9,11 +9,11 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 
 ## TOC
 
-## 前言
+## 简介
 
-在这里，我们将分别介绍三种搭建MDX博客网站应用的方法，分别是[@next/mdx][2]、[next-mdx-remote][3]、[contentlayer][4]他们有各自的优缺点，可以根据自身情况选择使用那一种方式。
+在本文中，我们将分别介绍三种搭建MDX网站应用的方法，分别是[@next/mdx][2]、[next-mdx-remote][3]、[contentlayer][4]他们有各自的优缺点，可以根据自身情况选择使用那一种方式。
 
-当然，我更推荐使用 **Contentlayer** 的方式，因为他更轻量、更简单、高性能等优点。以下为三种方式差异，可以根据自身情况，自由选择，接下来我们也将分别介绍三种方式的搭建流程。
+当然，在这里更推荐使用 **Contentlayer** 的方式，因为他更轻量、更简单、高性能等优点。以下为三种方式差异，可以根据自身情况，自由选择，接下来我们也将分别介绍三种方式的搭建流程。
 
 | 名称                                | 差异描述                                                                                                                                                                |
 | :---------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22,23 +22,40 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 | [contentlayer](#contentlayer)       | 具有重量轻，易于使用、 出色的开发体验以及快速的构建能力和高性能页面的优点的。它从源文件加载内容，并自动生成 TypeScript 类型定义，以确保正在处理的内容符合您期望的形状。 |
 
 
-好了，让我们开始真正的博客搭建之旅吧！
+好了，让我们开始真正的MDX应用搭建之旅吧！
 
-## @next/mdx
+## 准备
 
-首先，确保您已经使用[create-next-app](https://nextjs.org/docs/getting-started/installation)创建了一个博客应用，若没有请运行如下代码创建项目应用：
+确保已经使用[create-next-app](https://nextjs.org/docs/getting-started/installation)创建了一个基础应用（该基础应用将用于搭建MDX网站应用三种方法的基本结构），若没有，请先运行以下代码进行创建：
 
 ``` bash
 pnpm dlx create-next-app@latest
 ```
 
-然后，安装渲染MDX所需的软件包
+根据命令行提示，选择您喜欢的配置，在本示例流程中我们选择如下：
+```plaintext
+What is your project named? next-mdx-app
+Would you like to use TypeScript? No / Yes√
+Would you like to use ESLint? No / Yes√
+Would you like to use Tailwind CSS? No / Yes√
+Would you like to use `src/` directory? No√ / Yes
+Would you like to use App Router? (recommended) No / Yes√
+Would you like to customize the default import alias (@/*)? No / Yes√
+What import alias would you like configured? @/*
+```
+选择[Tailwind CSS](https://tailwindcss.com/)是为了方便后续页面排版，当然也可以根据您的喜好不选择。
+
+快捷浏览：[Next mdx](#next-mdx)、[Next mdx remote](#next-mdx-remote)、[Contentlayer](#contentlayer)
+
+## Next mdx
+
+安装渲染MDX所需的软件包
 
 ```bash
 pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
 ```
 
-创建一个`mdx-components.tsx`文件，在您应用的根目录下(`/app`或`/src`目录的父级目录)：   
+在您应用的根目录下(`/app`或`/src`目录的父级目录)，创建一个`mdx-components.tsx`文件：   
 > 注意：没有这个文件在`App Router`模式下将无法正常运行。如果使用`Pages Router`则可忽略这一步。
 ```ts
 import type { MDXComponents } from 'mdx/types'
@@ -48,7 +65,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 ```
 
-更新项目根目录下的next.config.js文件，将其配置为使用MDX
+更新项目根目录下的`next.config.js`文件，将其配置为使用MDX
 
 ```ts
 const withMDX = require('@next/mdx')()
@@ -94,9 +111,8 @@ Checkout my React component:
 
 
 
-以上即为[@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx#nextmdx)官方实现方式，非常简单。但相对也有一定局限情，因为它只处理本地的MDX页面，我们需要编写对应的元素数组件来承载这些内容，如果我们的MDX内容在其它地方呢，接下来两种方式专门解决这类问题。
+以上即为[@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx#nextmdx)官方实现方式，非常简单。但相对也有一定局限情，因为它只处理本地的MDX页面，需要以Nextjs路由的方式来管理MDX文章内容。
 
----
 
 ## Next mdx remote
 
@@ -104,15 +120,11 @@ Checkout my React component:
 
 ![next-mdx-remote](/images/posts/next-mdx-remote.png)
 
-首先，确保您已经使用[create-next-app](https://nextjs.org/docs/getting-started/installation)创建了一个博客应用，若没有请运行如下代码创建项目应用：
 
-``` bash
-pnpm dlx create-next-app@latest
-```
+### 添加文章内容
 
-然后，在`/posts`目录中创建几个markdown文件，并向这些文件添加一些内容。
+在`/posts`目录中创建几个markdown文件，并向这些文件添加一些内容。如下是一个`/posts/post-01.md`示例：
 
-这是一个`posts/post-01.md`示例：
 ```markdown
 ---
 title: My First Post
@@ -120,14 +132,17 @@ date: 2022-02-22T22:22:22+0800
 ---
 
 This is my first post ...
-````
-在此结构中有三个帖子示例：
+```
+
+在此目录中将有三个帖子示例：
 ```plaintext
 posts/
 ├── post-01.md
 ├── post-02.md
 └── post-03.md
 ```
+
+### 解析内容
 
 安装`MDX`解析所需的软件包
 
@@ -185,7 +200,10 @@ export function getAllPosts() {
 }
 
 ```
+### 添加网站代码
 
+
+### 添加Post布局
 创建文章呈现页面`/app/posts/[slug]/page.tsx`
 ```tsx
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
@@ -224,6 +242,7 @@ export default async ({ params }: Props) => {
 
 ```
 
+### 引用组件
 创建一个`MDX`使用的组件`/app/posts/[slug]/mdx/Button.tsx`。
 ```tsx
 "use client";
@@ -265,7 +284,7 @@ export default async ({ params }: Props) => {
 
 ```
 
-然后，在`post`文章中使用定义的`Button`组件
+然后，在`/posts`文件夹中的文章中使用定义的`Button`组件
 ```diff
 ---
 title: My First Post
@@ -279,7 +298,6 @@ This is my first post ...
 
 现在，导航到`/posts/post-01`，将看到一个带有一个按钮的可交互的Markdown文档。🎉🎉🎉🎉🎉
 
----
 
 ## Contentlayer  
 
@@ -345,10 +363,7 @@ module.exports = withContentlayer(nextConfig)
 .contentlayer
 ```
 
-### 定义内容模式
-现在定义内容模式并向站点添加一些内容
-
-#### 添加 Contentlayer 配置
+### 添加配置
 
 在项目的根部创建文件`contentlayer.config.ts`，然后添加以下内容。
 ```ts
@@ -375,11 +390,10 @@ export default makeSource({ contentDirPath: 'posts', documentTypes: [Post] })
 从这些文件生成的任何数据对象都将包含上面指定的字段，以及包含文件的原始内容和HTML内容的正文字段。`url`字段是一个特殊的计算字段，它会根据源文件中的元属性自动添加到所有发布文档中。
 
 
-#### 添加博客内容
+### 添加文章内容
 
-在`/posts`目录中创建几个markdown文件，并向这些文件添加一些内容。
+在`/posts`目录中创建几个markdown文件，并向这些文件添加一些内容。如下是一个`/posts/post-01.md`示例：
 
-这是一个`/posts/post-01.md`示例：
 ```markdown
 ---
 title: My First Post
@@ -387,9 +401,9 @@ date: 2022-02-22T22:22:22+0800
 ---
 
 This is my first post ...
-````
-在此结构中有三个帖子示例：
+```
 
+在此目录中将有三个帖子示例：
 ```plaintext
 posts/
 ├── post-01.md
@@ -397,7 +411,7 @@ posts/
 └── post-03.md
 ```
 
-#### 添加网站代码
+### 添加网站代码
 
 创建`/app/posts/page.tsx`用于展示所有Post文章列表。请注意，在尝试从`contentlayer/regenerated`导入时会出现错误，这是正常的，稍后将通过运行开发服务器来修复它。
 ```tsx
@@ -447,7 +461,7 @@ export default function Home() {
 pnpm dev
 ```
 
-#### 添加Post布局
+### 添加Post布局
 
 现在创建`app/posts/[slug]/page.tsx`页面，并添加以下代码
 ```tsx
@@ -486,7 +500,7 @@ export default PostLayout
 
 现在，点击文章列表上的链接，将进入一文章阅读页面。
 
-#### 开启MDX
+### 开启MDX
 
 在`Contentlayer`中使用MDX只需在配置文件`contentlayer.config.ts`中添加如下代码即可
 
@@ -523,6 +537,7 @@ export default function Button({ text }: { text: string }) {
 
 ```diff
 ...
++ import { useMDXComponent } from "next-contentlayer/hooks"；
 + import Button from "./mdx/Button";
 ...
 const PostLayout = ({ params }: { params: { slug: string } }) => {
@@ -555,11 +570,11 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 ```
 此时，带交互功能的文件文章配置就完成啦。
 
-## 扩展&异常处理
+## 扩展
 
 在解决MDX内容呈现后，我们可能还需要对MDX文档内容的`frontmatter`数据提取、表格、目录、阅读时间、字数统计以及代码内容美化等操作。此时，我们需要用到[remark][5]、[rehype][6]生态中的一些插件，使用方式也很简单。参见如下配置：
 
-### @next/mdx
+### Next mdx
 
 #### Remark and Rehype Plugins
 
@@ -634,11 +649,10 @@ This is a list in markdown:
 > 官方元数据处理：[frontmatter](https://nextjs.org/docs/app/building-your-application/configuring/mdx#frontmatter)
 
 
-### next-mdx-remote
-
-### contentlayer
 
 ### 代码高亮
+
+### 阅读时间
 
 ### Table of Content
 
@@ -687,13 +701,14 @@ This is a list in markdown:
 
 ```
 
+## 异常处理
 
 ### 时间格式化
 因为我们使用nextjs来搭建博客，并采用服务端渲染方式，因此，在文章内容的发布时间与编辑时间上，需要带上时区信息。否则，在渲染时会出现服务器与客户端时区不一致，导致时间错误问题。对于时间的格式化处理，此处统一采用**客户端渲染**方式。具体请查看[SSR Timezone](https://qhan.wang/posts/ssr-timezone)。
 
 ### 插件异常
 
-主要为`remark-gfm`插件错误。撰写本示例时，正值`remarkjs`相关插件升级中，因些，在使用`next-mdx-remote`、`contentlayer`时出现渲染错误，此时，我们只需回退`remark-gfm`到上一个大版本即可。
+主要为`remark-gfm`插件错误。撰写本示例时，正值`remarkjs`相关插件升级中，因些，在使用`next-mdx-remote`、`contentlayer`时出现渲染错误，此时，我们只需回退`remark-gfm`到上一个大版本即可，即: v3.x。
 
 ### VS Code TS错误
 表现为`@next/mdx`下，`page.mdx`出现ts检查错误，重启编辑器即可。
@@ -707,12 +722,6 @@ This is a list in markdown:
 - [contentlayer][4]
 - [remark][5]
 - [rehype][6]
-
-
-## 参考
-
-- [How to install Contentlayer in nextjs](https://medium.com/frontendweb/how-to-install-contentlayer-in-nextjs-4a08fb37c87d)
-- [使用 Contentlayer 和 Next 构建基于 MDX 的博客](https://devpress.csdn.net/react/62eda913c6770329307f2a85.html)
 
 
 [1]: https://mdxjs.com/
