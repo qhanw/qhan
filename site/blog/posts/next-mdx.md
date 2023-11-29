@@ -1,5 +1,5 @@
 ---
-title: NextJS 中创建 MDX 应用
+title: NextJS 中创建 MDX 博客
 date: 2023-10-10T18:28:32+08:00
 category: nextjs
 tags: [nextjs, markdown, mdx, contentlayer, next-mdx-remote]
@@ -11,13 +11,13 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 
 ## 简介
 
-在本文中，我们将分别介绍三种搭建MDX网站应用的方法，分别是[@next/mdx][2]、[next-mdx-remote][3]、[contentlayer][4]他们有各自的优缺点，可以根据自身情况选择使用那一种方式。
+在本文中，我们将基于Next.js(v13+)分别介绍三种搭建MDX博客应用的方法，分别是[@next/mdx][2]、[next-mdx-remote][3]、[contentlayer][4]他们有各自的优缺点，可以根据自身情况选择使用那一种方式。
 
 当然，在这里更推荐使用 **Contentlayer** 的方式，因为他更轻量、更简单、高性能等优点。以下为三种方式差异，可以根据自身情况，自由选择，接下来我们也将分别介绍三种方式的搭建流程。
 
 | 名称                                | 差异描述                                                                                                                                                                |
 | :---------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [@next/mdx](#@next/mdx)             | nextjs官方提供的markdown 和 MDX解决方案，它从本地文件获取数据，允许您直接在`/pages`或`/app`目录中创建带有扩展名`.mdx`的页面。对于简单内容页面来说相对实用。             |
+| [@next/mdx](#@next/mdx)             | Next.js官方提供的markdown 和 MDX解决方案，它从本地文件获取数据，允许您直接在`/pages`或`/app`目录中创建带有扩展名`.mdx`的页面。对于简单内容页面来说相对实用。             |
 | [next-mdx-remote](#next-mdx-remote) | 不处理从源加载内容，无论是本地还是远程，因此需要我们自己编写代码实现，但也因此相对灵活，在处理过程中需要配合相关插件来实现内容转换处理，如：`gray-matter`等。           |
 | [contentlayer](#contentlayer)       | 具有重量轻，易于使用、 出色的开发体验以及快速的构建能力和高性能页面的优点的。它从源文件加载内容，并自动生成 TypeScript 类型定义，以确保正在处理的内容符合您期望的形状。 |
 
@@ -26,7 +26,7 @@ description: 使用 @next/mdx、next-mdx-remote、contentlayer 在 NextJS 13 中
 
 ## 准备
 
-确保已经使用[create-next-app](https://nextjs.org/docs/getting-started/installation)创建了一个基础应用（该基础应用将用于搭建MDX网站应用三种方法的基本结构），若没有，请先运行以下代码进行创建：
+确保已经使用[create-next-app](https://nextjs.org/docs/getting-started/installation)创建了一个基础应用（该基础应用将用于搭建MDX博客应用三种方法的基本结构），若没有，请先运行以下代码进行创建：
 
 ``` bash
 pnpm dlx create-next-app@latest
@@ -111,7 +111,7 @@ Checkout my React component:
 
 
 
-以上即为[@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx#nextmdx)官方实现方式，非常简单。但相对也有一定局限情，因为它只处理本地的MDX页面，需要以Nextjs路由的方式来管理MDX文章内容。
+以上即为[@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx#nextmdx)官方实现方式，非常简单。但相对也有一定局限情，因为它只处理本地的MDX页面，需要以Next.js路由的方式来管理MDX文章内容。
 
 
 ## Next mdx remote
@@ -201,12 +201,44 @@ export function getAllPosts() {
 
 ```
 ### 添加网站代码
+创建`/app/posts/page.tsx`用于展示所有Post文章列表。
+```tsx
+import Link from "next/link";
 
+import { getAllPosts } from "@/lib/posts";
+
+export default async function Posts() {
+  const posts = await getAllPosts();
+
+  return (
+    <div className="prose grid gap-9 m-auto">
+      {posts?.map((post: any) => (
+        <Link
+          href={`/posts/${post.slug}`}
+          className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up "
+          key={post.slug}
+        >
+          <div className="text-xl text-gray-600 group-hover:text-brand truncate ease-in duration-300">
+            {post.meta?.title}
+          </div>
+          <time className="text-gray-400 text-sm leading-none flex items-center">
+            {post.meta?.date?.toString()}
+          </time>
+        </Link>
+      ))}
+    </div>
+  );
+}
+```
+运行Next.js开发服务，并访问localhost:3000/posts查看文章列表。
+```bash
+pnpm dev
+```
 
 ### 添加Post布局
 创建文章呈现页面`/app/posts/[slug]/page.tsx`
 ```tsx
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 
@@ -228,17 +260,17 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export default async ({ params }: Props) => {
+export default async function Post({ params }: Props) {
   const { post } = await getPost(params);
 
   return (
     <>
-      <h1>{post.meta.title}</h1>
-      <time>{post.meta?.date.toString()}</time>
+      <h1 className="text-2xl">{post.meta.title}</h1>
+      <time className="text-gray-600">{post.meta?.date.toString()}</time>
       <MDXRemote source={post.content} components={{}} options={{}} />
     </>
   );
-};
+}
 
 ```
 
@@ -281,7 +313,6 @@ export default async ({ params }: Props) => {
     </>
   );
 };
-
 ```
 
 然后，在`/posts`文件夹中的文章中使用定义的`Button`组件
@@ -453,10 +484,9 @@ export default function Home() {
     </div>
   );
 }
-
 ```
 
-运行Next.js开发服务，并访问localhost:3000查看文章列表。
+运行Next.js开发服务，并访问localhost:3000/posts查看文章列表。
 ```bash
 pnpm dev
 ```
@@ -494,8 +524,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   )
 }
 
-export default PostLayout
-
+export default PostLayout;
 ```
 
 现在，点击文章列表上的链接，将进入一文章阅读页面。
@@ -576,11 +605,55 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
 ### Next mdx
 
-#### Remark and Rehype Plugins
+#### 布局
 
-在`@next/mdx`可以通过`remark`插件`rehype`来转换 MDX 内容。例如，使用`remark-gfm`来实现 GitHub Flavored Markdown 来支持。
+在`@next/mdx`中处理MDX页面布局与常规Next.js页面[布局](https://nextjs.org/docs/app/api-reference/file-conventions/layout)一样，在当前页面目录下（或其父目录下）创建一个`layout.tsx`文件，然后编写布局代码即可。
 
-注意：由于remark和rehype生态系统仅是 ESM，因此，需要将配置文件`next.config.js`改为`next.config.mjs`。插件配置如下：
+#### 元数据
+在`@next/mdx`中处理页面元数据时，我们需要自己创建一个相对应的元数据处理组件例如：
+```tsx
+type FrontmatterProps = {
+  date: string;
+  author: string;
+  // 其它元数据，如分类、标签、来源、阅读时长等
+};
+
+export default function Frontmatter({ date, author }: FrontmatterProps) {
+  return (
+    <div className="frontmatter">
+      date: <time>{date}</time>
+      author: {author}
+    </div>
+  );
+}
+```
+
+然后，在`page.mdx`页面中合适的位置放入该组件，并配置上元数据即可。例如：
+
+```diff
+import MyComponent from './my-components'
++ import Frontmatter from './frontmatter'
+
+# Welcome to my MDX page!
+
++ <Frontmatter date="2023-12-12 12:12:12" author="Qhan W"/>
+ 
+This is some **bold** and _italics_ text.
+ 
+This is a list in markdown:
+...
+```
+
+> 官方元数据处理：[frontmatter](https://nextjs.org/docs/app/building-your-application/configuring/mdx#frontmatter)
+
+
+
+### MDX插件配置
+
+在`@next/mdx`、`next-mdx-remote`、`contentlayer`中都可以通过`remark`插件`rehype`来转换 MDX 内容。例如，使用`remark-gfm`来实现 GitHub Flavored Markdown 来支持。
+
+#### @next/mdx
+> 注意：由于remark和rehype生态系统仅是 ESM，因此，需要将配置文件`next.config.js`改为`next.config.mjs`。插件配置如下：
 
 ```js
 // next.config.mjs
@@ -606,53 +679,105 @@ const withMDX = createMDX({
 export default withMDX(nextConfig)
 ```
 
-#### 布局
+#### next-mdx-remote
 
-在`@next/mdx`中处理MDX页面布局与常规`next`页面[布局](https://nextjs.org/docs/app/api-reference/file-conventions/layout)一样，在当前页面目录下（或其父目录下）创建一个`layout.tsx`文件，然后编写布局代码即可。
+```ts
+import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 
-#### 元数据
-在`@next/mdx`中处理页面元数据时，我们需要自己创建一个相对应的元数据处理组件例如：
-```tsx
-type FrontmatterProps = {
-  date: string;
-  author: string;
-  // 其它元数据，如分类、标签、来源、阅读时长等
+import remarkToc from "remark-toc";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+
+const options: MDXRemoteProps["options"] = {
+  mdxOptions: {
+    remarkPlugins: [[remarkToc, { maxDepth: 4 }], remarkGfm],
+    rehypePlugins: [rehypeSlug],
+  },
 };
 
-export default function Frontmatter({ date, author }: FrontmatterProps) {
+export default function MDXContent(props: Pick<MDXRemoteProps, "source">) {
   return (
-    <div className="frontmatter">
-      date: <time>{date}</time>
-      author: {author}
-    </div>
+    <article className="fade-in-up-content prose prose-gray">
+      <MDXRemote source={props.source} options={options} />
+    </article>
   );
 }
-
 ```
 
-然后，在`page.mdx`页面中合适的位置放入该组件，并配置上元数据即可。例如：
+#### contentlayer
+```ts
+// contentlayer.config.ts
+import { makeSource } from '@contentlayer/source-files'
+import highlight from 'rehype-highlight'
+import remarkGfm from 'remark-gfm'
 
+export default makeSource({
+  // ...
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [highlight],
+  },
+})
+```
+
+### 代码高亮
+在作为技术开发为主的博客中，常常会用到代码示例，这里推荐使用`Anthony Fu`的`rehype-shikiji`插件，按[插件配置](#mdx插件配置)配置即可。其它优秀的代码高亮插件如下：
+- [rehype-shikiji](https://github.com/antfu/shikiji/tree/main/packages/rehype-shikiji)
+- [rehype-highlight](https://github.com/rehypejs/rehype-highlight)
+- [rehype-pretty-code](https://github.com/atomiks/rehype-pretty-code)
+
+### 阅读时间
+
+通过[reading-time](https://github.com/ngryman/reading-time)可以为我们的文章添加阅读时间、文章字数元数据。
+
+在配置文件`contentlayer.config.ts`中添加以下代码可为`contentlayer`添加文章阅读时长
 ```diff
-import MyComponent from './my-components'
-+ import Frontmatter from './frontmatter'
+...
++ import readingTime from "reading-time";
 
-# Welcome to my MDX page!
-
-+ <Frontmatter date="2023-12-12 12:12:12" author="Qhan W"/>
- 
-This is some **bold** and _italics_ text.
- 
-This is a list in markdown:
+// 文档类型
+export const Post = defineDocumentType(() => ({
+...
+  computedFields: {
+    ...
++   readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
+  },
+}));
 ...
 ```
 
-> 官方元数据处理：[frontmatter](https://nextjs.org/docs/app/building-your-application/configuring/mdx#frontmatter)
+同样在`/lib/posts.ts`文件中作如下修改也可为`next-mdx-remote`添加文章阅读时长
+```diff
+...
++ import readingTime from "reading-time";
 
+const postsDir = join(process.cwd(), "posts");
 
++ type ReadingTime = {
++  text: string;
++  minutes: number;
++  time: number;
++  words: number;
++ };
 
-### 代码高亮
+type MetaData = {
+...
++  readingTime?: ReadingTime;
+};
 
-### 阅读时间
+export function getPostBySlug(slug: string) {
+...
+  const { data, content, excerpt } = matter(fileContents, {
+    excerpt: true,
+  });
+
++ const readTime = readingTime(content);
++ const meta = { ...data, readingTime: readTime } as MetaData;
+  ...
+}
+
+...
+```
 
 ### Table of Content
 
@@ -671,6 +796,8 @@ This is a list in markdown:
   margin: 0;
   padding: 0;
   max-width: 160px;
+  max-height: 480px;
+  overflow: auto;
 
   &::before {
     display: table;
@@ -699,12 +826,23 @@ This is a list in markdown:
   }
 }
 
+.prose .shiki {
+  font-family: DM Mono, Input Mono, Fira Code, monospace;
+  font-size: 0.92em;
+  line-height: 1.4;
+  // margin: 0.5em 0;
+}
+
+// TODO: shikiji 未对纯文本样式做适配
+.prose .shiki.nord[lang=plaintext] :where(code) {
+  color: #d8dee9ff;
+}
 ```
 
 ## 异常处理
 
 ### 时间格式化
-因为我们使用nextjs来搭建博客，并采用服务端渲染方式，因此，在文章内容的发布时间与编辑时间上，需要带上时区信息。否则，在渲染时会出现服务器与客户端时区不一致，导致时间错误问题。对于时间的格式化处理，此处统一采用**客户端渲染**方式。具体请查看[SSR Timezone](https://qhan.wang/posts/ssr-timezone)。
+因为我们使用Next.js来搭建博客，并采用服务端渲染方式，因此，在文章内容的发布时间与编辑时间上，需要带上时区信息。否则，在渲染时会出现服务器与客户端时区不一致，导致时间错误问题。对于时间的格式化处理，此处统一采用**客户端渲染**方式。具体请查看[SSR Timezone](https://qhan.wang/posts/ssr-timezone)。
 
 ### 插件异常
 
