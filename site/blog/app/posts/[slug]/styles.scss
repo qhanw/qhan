@@ -48,6 +48,6 @@
 }
 
 // TODO: shikiji 未对纯文本样式做适配
-.prose .shiki.nord[lang=plaintext] :where(code) {
+.prose .shiki.nord :where(code) {
   color: #d8dee9ff;
 }
