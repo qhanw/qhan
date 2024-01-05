@@ -4,9 +4,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      // allow: "/",
+      allow: "/",
       //  disallow: "/private/",
     },
-    sitemap: "https://qhan.wang/sitemap.xml",
+    sitemap: "https://qhan.wang/sitemap.xml/",
   };
 }
