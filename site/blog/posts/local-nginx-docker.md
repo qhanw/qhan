@@ -3,6 +3,7 @@ title: 使用Docker快速实现Nginx服务
 date: 2023-07-07T18:55:00+08:00
 category: docker
 tags: [js, nginx, docker]
+description: 使用docker-compose为不熟练Docker，但又不太想在本地物理机上安装各种复杂的开发环境的同学，提供一个简单便利的基于docker的Nginx环境配置流程。
 ---
 
 该文章旨在为不熟练`Docker`，但又不太想在本地物理机上安装各种复杂的开发环境的同学，提供一个简单便利的操作。其目的为解决以下几种情况：

@@ -3,6 +3,7 @@ title: CSS选择器之nth-child
 date: 2016-05-05T10:58:55+08:00
 category: css
 tags: [css]
+description: 通过几个简单示例介绍CSS3新的子选择器nth-child，实现一些比较惊艳的效果。
 ---
 
 在我们对一组相同元素作不同表现形式的操作时，在还没有选择器`:nth-child`与`:nth-of-type`时，我们常用到的方法可能是利用 JS 来控制表现形式，或者采用 CSS 选择器类处理这类问题。

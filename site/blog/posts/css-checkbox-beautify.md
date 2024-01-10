@@ -1,13 +1,12 @@
 ---
-title: 表单元素复选框与单选框视觉优化
+title: CSS自定义表单元素复选框与单选框样式
 date: 2018-03-05T10:58:55+08:00
 category: css
-tags: [css, js]
+tags: [css]
+description: 借助该CSS3伪类:checked实现表单元素复选框与单选框的样式自定义，依照UI设计稿高度还原表单元素于HTML中，解决默认表单元素复选框与单选框在不同操作系统、不同浏览器中的表现差异，提升视觉效果与用户体验。
 ---
 
 谈起表单元素在各浏览器上的表现形式，相信各位前端开发者与 UI 设计师都比较头疼，尤其是 checkBox、radio 以及 select 这三种表单元素展现各异。有时候我们为了效率不得不牺牲 UI 效果，那么有什么方法可以在保障效率的情况下，实现功能并达到与 UI 原稿同样的效果呢？相信大家也都或听过，或用过以下两种方法。
-
----
 
 ### 利用 CSS3 伪类:checked
 
@@ -101,70 +100,9 @@ input[type="checkbox"]:active + label {
 }
 ```
 
-#### iCheck 插件
+### 低版本浏览器兼容
 
-在现如今，各浏览器对 CSS3 的支持已达到相对完美的情况下，使用 JS 插件来处理复选框这类的表单元素场景也越来越少，基本是为了作低版本浏览器兼容对会考虑。在此处也简单介绍下。插件特点：
+在现如今，各浏览器对 CSS3 的支持已达到相对完美的情况下，使用 JS 插件来处理复选框这类的表单元素场景也越来越少，基本是为了作低版本浏览器兼容对会考虑。
 
-* 在不同浏览器和设备上都有相同的表现 — 包括 桌面和移动设备
-* 支持触摸设备 — iOS、Android、BlackBerry、Windows Phone
-* 支持键盘导航 — Tab、Spacebar、Arrow up/down 和其它快捷键
-* 方便定制 — 用 HTML 和 CSS 即可为其设置样式 (试试 6 套针对 Retina 屏幕的皮肤吧)
-* 支持 jQuery 和 Zepto JavaScript 工具库
-* 体积小巧 — gzip 压缩后只有 1 kb
-* 32 种参数 用来定制复选框（checkbox）和单选按钮（radio button）
-* 11 个回调事件 用来监听输入框的状态
-* 9 个方法 用来通过编程方式控制输入框的状态
-* 能够将输入框的状态变化同步回原始输入框中， 支持所有选择器
-
-下载地址：[iCheck](http://icheck.fronteed.com/)  
-适用场景：IE8+  
-使用方式：
-
-HTML:
-
-```html
-<label>
-  <input type="checkbox" name="quux[1]" disabled>
-  Foo
-</label>
-
-<label for="baz[1]">Bar</label>
-<input type="radio" name="quux[2]" id="baz[1]" checked>
-
-<label for="baz[2]">Bar</label>
-<input type="radio" name="quux[2]" id="baz[2]">
-```
-
-JS:
-
-```js
-// customize all inputs (will search for checkboxes and radio buttons)
-$("input").iCheck();
-
-// handle inputs only inside $('.block')
-$(".block input").iCheck();
-
-// handle only checkboxes inside $('.test')
-$(".test input").iCheck({
-  handle: "checkbox"
-});
-
-// handle .vote class elements (will search inside the element, if it's not an input)
-$(".vote").iCheck();
-
-// you can also change options after inputs are customized
-$("input.some").iCheck({
-  // different options
-});
-```
-
-更多详细配置请查看[官方文档](http://icheck.fronteed.com/)
-
-该插件提供了 6 套样式，一般来说能满足大多场景，若需要个性化，需要自行制图，并调整相关样式，或自定义一套样式文件。
-
-### 开关式按钮钮插件
-
-关于开关式按钮插件有两个个人喜欢的，感兴趣的朋友可以查看下。
-
+* [ickeck](https://github.com/drgullin/icheck)
 * [Switchery](http://abpetkov.github.io/switchery/)
-* [bootstrap-switch](http://bootstrapswitch.com/)

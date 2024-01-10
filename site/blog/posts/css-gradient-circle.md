@@ -3,7 +3,6 @@ title: CSS实现渐变圆角边框
 date: 2023-08-25T20:22:22+08:00
 category: css
 tags: [css, gradient]
-# draft: true
 description: 利用 css 的属性 mask、mask-composite，实现带有圆角、渐变、且内容背景透明的边框。解决高度个性化网站应用中大量使用图片问题，减少图片请求提升网站整体性能。
 ---
 

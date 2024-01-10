@@ -2,14 +2,16 @@
 title: 文本域光标定位
 date: 2018-06-10T22:29:20+08:00
 category: js
-tags: [js]
+tags: 
+ - js
+description: 解决工作中对文本域输入操作，添加元素时的光标在文本域光中的定位。
 ---
 
 在应用中某些场景下，我们会涉及到对表单元素`input`与`textarea`或者是带有属性`contenteditable="true"`的元素，设置自动获取焦点。在这些元素没有内容的情况下那么设置焦点非常容易，然而现实情况往往总是与众不同。那么在遇到这些需求我们该如何做呢？
 
----
 
 ### Input&TextArea
+...
 
 
 ### Contenteditable

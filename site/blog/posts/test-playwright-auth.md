@@ -3,6 +3,7 @@ title: E2E测试之Playwright身份验证
 date: 2022-03-30T09:55:00+08:00
 category: test
 tags: [test, playwright, js]
+description: E2E测试中，使用Playwright测试工具测试网页时对具有需要鉴权的页面进行身份验证，在此过程中所产生的问题以及对应的解决方案介绍。
 ---
 
 ### TOC
