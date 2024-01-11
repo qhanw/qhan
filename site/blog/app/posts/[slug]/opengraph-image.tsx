@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { default as ImageIcon } from "next/image";
 
 import { getPostBySlug } from "@/lib/posts";
 
@@ -24,10 +25,14 @@ export default async function Image({ params }: { params: { slug: string } }) {
           padding: 120,
         }}
       >
-        <img
+        <ImageIcon
+          sizes="100vw"
+          style={{ borderRadius: 64, width: 72, height: "auto" }}
+          width={72}
+          height={72}
           alt="avatar"
           src={`https://qhan.wang/favicon.png`}
-          style={{ borderRadius: 64, width: 72 }}
+          //style={{ borderRadius: 64, width: 72 }}
         />
         <div
           style={{ display: "flex", marginLeft: 60, flexDirection: "column" }}

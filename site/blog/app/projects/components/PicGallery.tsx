@@ -27,7 +27,7 @@ export default function PicGallery({ id, images }: PicGalleryProps) {
       // @ts-ignore
       lightbox = null;
     };
-  }, []);
+  }, [id]);
 
   return (
     <div className="pswp-gallery grid grid-cols-2 md:grid-cols-3 gap-4" id={id}>

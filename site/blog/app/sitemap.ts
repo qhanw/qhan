@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // 加入本地的其他路由页面
-  const route_maps: MetadataRoute.Sitemap = ["/", "/posts", "/projects"].map(
+  const route_maps: MetadataRoute.Sitemap = ["", "/posts", "/projects"].map(
     (route) => ({
       url: domain + route,
       lastModified: new Date().toISOString(),

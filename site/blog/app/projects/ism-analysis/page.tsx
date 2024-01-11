@@ -29,8 +29,12 @@ export default function Preview() {
         <ul>
           <li>制度库：管理监管、金融机构相关制度。</li>
           <li>制度检索：用于查询相关制度，实现方式为模糊查询匹配。</li>
-          <li>制度分析：用于两两制度对比、分析差异，找出问题所在，并出具项目分析报告。同时涵盖人工评价</li>
-          <li>图谱管理：监管、金融机构制度图谱管理，提供制度的导入、解析、分词、标注、核对、图谱生成、对比等功能，并包括图谱升级等功能。</li>
+          <li>
+            制度分析：用于两两制度对比、分析差异，找出问题所在，并出具项目分析报告。同时涵盖人工评价
+          </li>
+          <li>
+            图谱管理：监管、金融机构制度图谱管理，提供制度的导入、解析、分词、标注、核对、图谱生成、对比等功能，并包括图谱升级等功能。
+          </li>
           <li>系统管理：应用基本配置设置，如权限等基础功能。</li>
         </ul>
         <h4>所用技术</h4>
@@ -45,11 +49,23 @@ export default function Preview() {
         <PicGallery id="ism-analysis" images={pics} />
 
         <h4>前端架构</h4>
-        <div className="relative aspect-auto">
-          <img src="/images/projects/kupo-ism-analysis/architecture-diagram.jpeg" />
-        </div>
+        <Image
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }}
+          width={500}
+          height={300}
+          alt=""
+          src="/images/projects/kupo-ism-analysis/architecture-diagram.jpeg"
+        />
         <h4>核心流程-图谱管理</h4>
-        <img src="/images/projects/kupo-ism-analysis/graph-management-flowchart.jpeg" />
+        <Image
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }}
+          width={500}
+          height={300}
+          alt=""
+          src="/images/projects/kupo-ism-analysis/graph-management-flowchart.jpeg"
+        />
       </div>
       <Footer className="prose mx-auto" />
     </>
