@@ -23,15 +23,15 @@ const pic_url11 = "/images/projects/kupo-monitor/rule-04.png";
 export default function Preview() {
   return (
     <>
-      <div className="prose mx-auto">
-        <h3>事中监控平台</h3>
+      <div className="prose prose-gray mx-auto">
+        <h2>事中监控平台</h2>
         <p>
           针对金融机构提供对各类金融活动产生的的事件进行监控管理降低业务风险。提供针对事件的预警管理、案件管理，以及黑白名单、规则引挚、策略包、数据看盘等方面功能。
         </p>
         <h4>所用技术</h4>
-        <div>
+        <p>
           react@^18、antd@^4、@ant-design/pro-components@^2、@antv/g6@^v4、@antv/g2@^4、@antv/l7@^4、umi@^4、less、qiankun
-        </div>
+        </p>
 
         <h4>项目展示</h4>
         <PicGallery

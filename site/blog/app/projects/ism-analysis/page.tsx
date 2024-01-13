@@ -20,8 +20,9 @@ const pics = new Array(15).fill("").map((_, idx) => {
 export default function Preview() {
   return (
     <>
-      <div className="prose mx-auto">
-        <h3>智能制度解析</h3>
+      <div className="prose prose-gray mx-auto">
+        <h2>智能制度解析</h2>
+
         <p>
           关注于银行金融方面规章制度的自动解析与分析，便于相关人员快速掌握规章制度。提供对制度的导入、解析、分词、标注、核对、图谱生成、对比等方面的支持。
         </p>
@@ -38,12 +39,12 @@ export default function Preview() {
           <li>系统管理：应用基本配置设置，如权限等基础功能。</li>
         </ul>
         <h4>所用技术</h4>
-        <div>
+        <p>
           react@^18、antd@^4、@ant-design/pro-components@^2、@antv/g6@^v4、@antv/g2@^4、umi@^4、less、
           <a href="https://github.com/nlplab/brat" target="_blank">
             brat
           </a>
-        </div>
+        </p>
 
         <h4>项目展示</h4>
         <PicGallery id="ism-analysis" images={pics} />
