@@ -37,11 +37,13 @@ export default [
     sub_href: "https://health.qhan.wang/adm",
   },
   {
-    key: "1",
+    key: "luban",
     name: "鲁班系统",
     labels: ["react", "electron", "nodejs"],
     icons: ["i-logos:react", "i-logos:electron", "i-logos:nodejs"],
     desc: "包含桌面端与WEB端，定位于关注精细化运营、高效运营支撑。主要支撑课程顾问、班主任老师对客户转化、社群运营的诉求，协助一线老师完成销售、运营目标。",
+    href: "luban",
+    date: "202102",
   },
   {
     key: "2",
