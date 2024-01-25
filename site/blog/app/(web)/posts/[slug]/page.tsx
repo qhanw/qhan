@@ -11,10 +11,10 @@ import Link from "next/link";
 // import rehypePrettyCode from "rehype-pretty-code";
 // import rehypeStringify from "rehype-stringify";
 
-import DateFormat from "@/app/components/DateFormat";
+import DateFormat from "@/app/(web)/components/DateFormat";
 
 import seo from "@/utils/seo";
-import { getPostBySlug, getAllPosts } from "@/lib/posts";
+import { getPostBySlug, getAllPosts } from "@/app/(web)/lib/posts";
 
 import MDXContent from "./MDXContent";
 

@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import Footer from "@/app/components/Footer";
-import Social from "@/app/components/Social";
-import Bizk from "@/app/components/Bizk";
+import Footer from "@/app/(web)/components/Footer";
+import Social from "@/app/(web)/components/Social";
+import Bizk from "@/app/(web)/components/Bizk";
+import QrCode from "@/app/(web)/assets/qr_code.png";
 
 import seo from "@/utils/seo";
-import QrCode from "@/app/assets/qr_code.png";
 
 export async function generateMetadata() {
   return seo({});

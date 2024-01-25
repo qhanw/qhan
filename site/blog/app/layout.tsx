@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import NextTopLoader from "nextjs-toploader";
-import Header from "./components/Header";
 
 import "./styles/globals.scss";
 
@@ -27,8 +26,7 @@ export default function RootLayout({
           showSpinner={false}
           shadow={false}
         />
-        <Header />
-        <main className="container mx-auto px-4 pt-10">{children}</main>
+        {children}
         <Analytics />
       </body>
     </html>

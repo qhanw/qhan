@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import DateFormat from "@/app/components/DateFormat";
-import PostLabel from "@/app/components/PostLabel";
+import DateFormat from "@/app/(web)/components/DateFormat";
+import PostLabel from "@/app/(web)/components/PostLabel";
 import seo from "@/utils/seo";
 
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts } from "@/app/(web)/lib/posts";
 
 export async function generateMetadata() {
   return seo({ title: "Blog" });
@@ -29,6 +29,11 @@ export default async function Posts() {
               {post.meta?.title}
             </div>
             <div className="text-gray-400 text-sm leading-none flex items-center">
+              {post.meta.draft ? (
+                <span className="opacity-50 text-sm border border-orange-300 bg-orange-200 text-orange-600 rounded-sm px-1 mr-2">
+                  Draft
+                </span>
+              ) : null}
               <time className="my-3 inline-flex items-center">
                 <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
                 <DateFormat value={post.meta?.date} short />

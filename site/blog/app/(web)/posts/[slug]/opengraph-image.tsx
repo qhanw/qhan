@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { default as ImageIcon } from "next/image";
 
-import { getPostBySlug } from "@/lib/posts";
+import { getPostBySlug } from "@/app/(web)/lib/posts";
 
 // export const runtime = "edge";
 

@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts } from "@/app/(web)/lib/posts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 远程获取博客列表
