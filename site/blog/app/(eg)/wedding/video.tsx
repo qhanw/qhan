@@ -24,20 +24,25 @@ export default function Video({ src }: VideoProps) {
   }, []);
   return (
     <video
+      className="w-full aspect-video"
       id="player"
-      play-inline="true"
+      // play-inline="true"
       controls
+      loop
+      muted
+      autoPlay
+      preload="auto"
       data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"
     >
       <source src={src} type="video/mp4" />
       {/* <source src="/path/to/video.webm" type="video/webm" /> */}
-      <track
+      {/* <track
         kind="captions"
         label="English captions"
         src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt"
         src-lang="en"
         default
-      />
+      /> */}
     </video>
   );
 }
