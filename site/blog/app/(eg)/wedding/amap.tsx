@@ -1,8 +1,20 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import AMapLoader from "@amap/amap-jsapi-loader";
 
+function isEnv() {
+  const ua = window.navigator.userAgent;
+
+  return {
+    ios: !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+    wx: !!/micromessenger/.test(ua.toLowerCase()),
+  };
+}
+
+type Env = { ios: boolean; wx: boolean };
+
 export default function MapContainer() {
+  const [env, setEnv] = useState<Env>();
   useEffect(() => {
     let map: any;
     // issue: https://github.com/vercel/next.js/issues/60862
@@ -18,11 +30,11 @@ export default function MapContainer() {
             // 设置地图容器id
             viewMode: "3D", // 是否为3D地图模式
             zoom: 17, // 初始化地图级别
-            center: [105.651751, 32.378013], // 初始化地图中心点位置
+            center: [105.65175, 32.377996], // 初始化地图中心点位置
           });
 
           const marker = new AMap.Marker({
-            position: new AMap.LngLat(105.651751, 32.378013), // 经纬度对象，也可以是经纬度构成的一维数组[119.920486,30.245285]
+            position: new AMap.LngLat(105.65175, 32.377996), // 经纬度对象，也可以是经纬度构成的一维数组[119.920486,30.245285]
             title: "锦宴",
           });
 
@@ -39,7 +51,7 @@ export default function MapContainer() {
               //   <div>点击此处使用高德地图导航</div>
               //   </div>
               //   `,
-              content: `四川省广元市利州区宝轮镇清江大道东段118号`,
+              content: `广元市利州区宝轮镇清江大道东段118号`,
               //使用默认信息窗体框样式，显示信息内容
             });
 
@@ -51,10 +63,31 @@ export default function MapContainer() {
         });
     })();
 
+    // 环境判断
+    setEnv(isEnv());
+
     return () => {
       map?.destroy();
     };
   }, []);
 
-  return <div id="container" className="w-full aspect-video rounded-sm" />;
+  return (
+    <div className="relative" onClick={() => console.log(3)}>
+      <a
+        className="block absolute top-0 left-0 h-full w-full z-10"
+        href={`${
+          env?.ios ? "iosamap" : "androidamap"
+        }://navi?sourceApplication=qhan_wedding&poiname=锦宴&poiid=B0JR1RTFUJ&lon=105.65175&lat=32.377996&dev=1&style=2`}
+        {...(env?.wx
+          ? {
+              onClick: () =>
+                alert(
+                  "点击微信右上角，在浏览器里打开当前页面，然后点击地图可进行导航！"
+                ),
+            }
+          : {})}
+      />
+      <div id="container" className="w-full aspect-video rounded-sm" />
+    </div>
+  );
 }

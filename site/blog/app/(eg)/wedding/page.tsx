@@ -44,7 +44,7 @@ export default function Wedding() {
         </div>
         <div className="my-4">
           <div className="text-xl">锦宴</div>
-          <div>四川省广元市利州区宝轮镇清江大道东段118号</div>
+          <div>广元市利州区宝轮镇清江大道东段118号</div>
         </div>
 
         <div className="my-4">2024/02/13｜甲辰年正月初四｜星期二</div>
