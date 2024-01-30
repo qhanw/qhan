@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 // import AMapLoader from "@amap/amap-jsapi-loader";
 
+// reference: https://blog.csdn.net/TanHao8/article/details/132019181
 function isEnv() {
   const ua = window.navigator.userAgent;
 
