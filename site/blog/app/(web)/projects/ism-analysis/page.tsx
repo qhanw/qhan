@@ -5,7 +5,11 @@ import Image from "next/image";
 import PicGallery from "../components/PicGallery";
 
 export async function generateMetadata() {
-  return seo({ title: "Projects" });
+  return seo({
+    title: "智能制度解析",
+    description:
+      "关注于银行金融方面规章制度的自动解析与分析，便于相关人员快速掌握规章制度。提供对制度的导入、解析、分词、标注、核对、图谱生成、对比等方面的支持。",
+  });
 }
 
 const pics = new Array(15).fill("").map((_, idx) => {

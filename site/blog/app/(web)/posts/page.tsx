@@ -7,7 +7,10 @@ import seo from "@/utils/seo";
 import { getAllPosts } from "@/app/(web)/lib/posts";
 
 export async function generateMetadata() {
-  return seo({ title: "Blog" });
+  return seo({
+    title: "Blog",
+    description: "工作中的一些项目经验总结以及一些学习感悟和技巧分享",
+  });
 }
 
 export default async function Posts() {

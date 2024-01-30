@@ -7,7 +7,11 @@ import PicGallery from "../components/PicGallery";
 import pics from "./images";
 
 export async function generateMetadata() {
-  return seo({ title: "Projects" });
+  return seo({
+    title: "鲁班系统",
+    description:
+      "微信客户端逆向工具，用于支撑课程顾问、班主任老师对客户转化、社群运营的诉求，协助一线老师完成销售、运营目标。",
+  });
 }
 
 export default function Preview() {

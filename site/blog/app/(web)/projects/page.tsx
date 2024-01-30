@@ -7,11 +7,13 @@ import ProjWrapper from "./components/ProjWrapper";
 import projects from "./constant/projects";
 
 export async function generateMetadata() {
-  return seo({ title: "Projects" });
+  return seo({
+    title: "Projects",
+    description: "工作中一些值得展示的项目成果",
+  });
 }
 
 export default function Projects() {
-
   return (
     <>
       {/* text-transparent text-stroke-2 text-stroke-hex-aaa */}
