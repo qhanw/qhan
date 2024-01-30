@@ -78,6 +78,14 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://gatsby.qhan.wang",
+        sitemap: "https://gatsby.qhan.wang/sitemap.xml",
+        policy: [{ userAgent: "*", disallow: "/" }],
+      },
+    },
   ],
 };
 
