@@ -1,21 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // import AMapLoader from "@amap/amap-jsapi-loader";
+import { navToMap, navigationWx, isWx, jsSdkConfig } from "./utils";
 
-// reference: https://blog.csdn.net/TanHao8/article/details/132019181
-function isEnv() {
-  const ua = window.navigator.userAgent;
-
-  return {
-    ios: !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
-    wx: !!/micromessenger/.test(ua.toLowerCase()),
-  };
-}
-
-type Env = { ios: boolean; wx: boolean };
+const loc = {
+  lat: 32.377996,
+  lng: 105.65175,
+  name: "锦宴",
+  address: "广元市利州区宝轮镇清江大道东段118号",
+};
 
 export default function MapContainer() {
-  const [env, setEnv] = useState<Env>();
+  // const [env, setEnv] = useState<Env>();
   useEffect(() => {
     let map: any;
     // issue: https://github.com/vercel/next.js/issues/60862
@@ -64,29 +60,39 @@ export default function MapContainer() {
         });
     })();
 
-    // 环境判断
-    setEnv(isEnv());
+    const url = "https://qhan.wang/wedding"; //location.href
+
+    fetch(`/wedding/api?&url=${url}`, { next: { revalidate: 7200 } })
+      .then((res) => res.json())
+      .then((d) => {
+        jsSdkConfig(d);
+      });
 
     return () => {
       map?.destroy();
     };
   }, []);
 
+  const onNav = () => {
+    isWx().then((res) => {
+      if (res !== "no-wx") {
+        navigationWx(loc);
+      } else {
+        // 地图选择弹窗
+        onSelectedNav(0);
+      }
+    });
+  };
+
+  const onSelectedNav = (id: number) => {
+    navToMap(loc, id);
+  };
+
   return (
-    <div className="relative" onClick={() => console.log(3)}>
+    <div className="relative">
       <a
         className="block absolute top-0 left-0 h-full w-full z-10"
-        href={`${
-          env?.ios ? "iosamap" : "androidamap"
-        }://navi?sourceApplication=qhan_wedding&poiname=锦宴&poiid=B0JR1RTFUJ&lon=105.65175&lat=32.377996&dev=1&style=2`}
-        {...(env?.wx
-          ? {
-              onClick: () =>
-                alert(
-                  "点击微信右上角，在浏览器里打开当前页面，然后点击地图可进行导航！"
-                ),
-            }
-          : {})}
+        onClick={() => onNav()}
       />
       <div id="container" className="w-full aspect-video rounded-sm" />
     </div>

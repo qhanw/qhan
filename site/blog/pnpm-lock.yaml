@@ -68,6 +68,9 @@ dependencies:
   remark-toc:
     specifier: ^9.0.0
     version: 9.0.0
+  weixin-js-sdk:
+    specifier: ^1.6.5
+    version: 1.6.5
 
 devDependencies:
   '@iconify-json/heroicons':
@@ -5681,6 +5684,10 @@ packages:
 
   /web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
+    dev: false
+
+  /weixin-js-sdk@1.6.5:
+    resolution: {integrity: sha512-Gph1WAWB2YN/lMOFB/ymb+hbU/wYazzJgu6PMMktCy9cSCeW5wA6Zwt0dpahJbJ+RJEwtTv2x9iIu0U4enuVSQ==}
     dev: false
 
   /which-boxed-primitive@1.0.2:
