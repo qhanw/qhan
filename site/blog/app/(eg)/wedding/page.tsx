@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function Wedding() {
   return (
-    <>
+    <div className="max-w-screen-sm m-auto">
       <Video
         // src={
         //   "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4"
@@ -60,6 +60,6 @@ export default function Wedding() {
           </div>
         </footer>
       </div>
-    </>
+    </div>
   );
 }

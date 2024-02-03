@@ -76,9 +76,15 @@ export default function MapContainer() {
     <div className="relative" onClick={() => console.log(3)}>
       <a
         className="block absolute top-0 left-0 h-full w-full z-10"
+        // href={`${
+        //   env?.ios ? "iosamap" : "androidamap"
+        // }://navi?sourceApplication=qhan_wedding&poiname=锦宴&poiid=B0JR1RTFUJ&lon=105.65175&lat=32.377996&dev=1&style=2`}
+
         href={`${
-          env?.ios ? "iosamap" : "androidamap"
-        }://navi?sourceApplication=qhan_wedding&poiname=锦宴&poiid=B0JR1RTFUJ&lon=105.65175&lat=32.377996&dev=1&style=2`}
+          env?.ios
+            ? "iosamap://path?sourceApplication=qhan&"
+            : "amapuri://route/plan/?"
+        }sid=&slat=&slon=&sname=&did=B0JR1RTFUJ&dlat=32.377996&dlon=105.65175&dname=锦宴&dev=0&t=0`}
         {...(env?.wx
           ? {
               onClick: () =>
