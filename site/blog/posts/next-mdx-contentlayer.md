@@ -14,9 +14,11 @@ description: Next.js(v13+) 使用 contentlayer 创建 MDX 博客应用，Content
 
 [Contentlayer][1] 是一个内容 SDK，可验证您的内容并将其转换为类型安全的 JSON 数据，您可以轻松地import将其添加到应用程序的页面中。
 
+>[!IMPORTANT]
 > **⚠️ Contentlayer 目前处于测试阶段。在即将发布的 1.0 版本之前，可能仍会发生重大更改。**  
-> **⚠️ 同时由于某些原因该项目已长时间未维护，请慎重考虑后再使用**
-> 项目状态：https://github.com/contentlayerdev/contentlayer/issues/429
+
+> [!CAUTION]
+> **⚠️ 同时由于某些原因该项目已长时间未维护，请慎重考虑后再使用** **[详情](https://github.com/contentlayerdev/contentlayer/issues/429)**
 
 ![next-mdx-contentlayer](/images/posts/next-mdx-contentlayer.webp)
 
@@ -262,7 +264,8 @@ export default function Button({ text }: { text: string }) {
   );
 }
 ```
-> 注意：在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
+> [!NOTE]
+> 在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
 
 
 然后，在`app/posts/[slug]/page.tsx`文件中作如下调整

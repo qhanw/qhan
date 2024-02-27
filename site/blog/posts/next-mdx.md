@@ -51,8 +51,11 @@ What import alias would you like configured? @/*
 pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
 ```
 
-在您应用的根目录下(`/app`或`/src`目录的父级目录)，创建一个`mdx-components.tsx`文件：   
-> 注意：没有这个文件在`App Router`模式下将无法正常运行。如果使用`Pages Router`则可忽略这一步。
+在您应用的根目录下(`/app`或`/src`目录的父级目录)，创建一个`mdx-components.tsx`文件：  
+
+> [!NOTE]
+> 没有这个文件在`App Router`模式下将无法正常运行。如果使用`Pages Router`则可忽略这一步。
+
 ```ts
 import type { MDXComponents } from 'mdx/types'
  
@@ -287,7 +290,8 @@ export default function Button({ text }: { text: string }) {
   );
 }
 ```
-> 注意：在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
+> [!NOTE]
+> 在[App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router)中，需对客户端渲染组件添加`use client`;
 
 在文章呈现页面`/app/posts/[slug]/page.tsx`中引入创建的组件
 ```diff
@@ -379,7 +383,8 @@ This is a list in markdown:
 在`@next/mdx`、`next-mdx-remote`中都可以通过`remark`插件`rehype`来转换 MDX 内容。例如，使用`remark-gfm`来实现 GitHub Flavored Markdown 来支持。
 
 #### @next/mdx
-> 注意：由于remark和rehype生态系统仅是 ESM，因此，需要将配置文件`next.config.js`改为`next.config.mjs`。插件配置如下：
+> [!NOTE]
+> 由于remark和rehype生态系统仅是 ESM，因此，需要将配置文件`next.config.js`改为`next.config.mjs`。插件配置如下：
 
 ```js
 // next.config.mjs
@@ -431,8 +436,8 @@ export default function MDXContent(props: Pick<MDXRemoteProps, "source">) {
 ```
 
 ### 代码高亮
-在作为技术开发为主的博客中，常常会用到代码示例，这里推荐使用`Anthony Fu`的`rehype-shikiji`插件，按[插件配置](#mdx插件配置)配置即可。其它优秀的代码高亮插件如下：
-- [rehype-shikiji](https://github.com/antfu/shikiji/tree/main/packages/rehype-shikiji)
+在作为技术开发为主的博客中，常常会用到代码示例，这里推荐使用`Anthony Fu`的`@shikijs/rehype`插件，按[插件配置](#mdx插件配置)配置即可。其它优秀的代码高亮插件如下：
+- [@shikijs/rehype](https://github.com/shikijs/shiki/tree/main/packages/rehype)
 - [rehype-highlight](https://github.com/rehypejs/rehype-highlight)
 - [rehype-pretty-code](https://github.com/atomiks/rehype-pretty-code)
 
