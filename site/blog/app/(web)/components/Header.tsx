@@ -37,7 +37,7 @@ const nav = [
   },
   {
     name: "Bizk",
-    href: "http://bizk.qhan.wang/",
+    href: "https://bizk.qhan.wang",
     icon: (props: any) => (
       <span
         {...props}
@@ -73,6 +73,7 @@ export default () => (
               {...(/^http(s?):\/\//.test(item.href)
                 ? { target: "_blank" }
                 : {})}
+              aria-label={item.name}
             >
               <item.icon
                 className="flex-shrink-0 h-4 w-4 "

@@ -3,27 +3,27 @@ import Link from "next/link";
 const kits = [
   {
     name: "Components",
-    href: "http://bizk.qhan.wang/components",
+    href: "https://bizk.qhan.wang/components",
     icon: "i-ri:shapes-line",
   },
   {
     name: "Hooks",
-    href: "http://bizk.qhan.wang/hooks",
+    href: "https://bizk.qhan.wang/hooks",
     icon: "i-ri:circle-line",
   },
   {
     name: "utils",
-    href: "http://bizk.qhan.wang/utils",
+    href: "https://bizk.qhan.wang/utils",
     icon: "i-ri:tools-line",
   },
   {
     name: "Store",
-    href: "http://bizk.qhan.wang/store",
+    href: "https://bizk.qhan.wang/store",
     icon: "i-ri:store-line",
   },
   {
     name: "Regexps",
-    href: "http://bizk.qhan.wang/regexps",
+    href: "https://bizk.qhan.wang/regexps",
     icon: "i-ri:magic-line",
   },
 ];

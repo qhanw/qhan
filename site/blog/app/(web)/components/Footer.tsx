@@ -13,7 +13,7 @@ export default ({ className }: FooterProps) => (
       className
     )}
   >
-    <Link className="text-brand" href="/">
+    <Link className="text-brand" href="/"  aria-label="Qhan W">
       <span className="i-logos-sakura w-4 h-4 logo-rotate" />
     </Link>
 
