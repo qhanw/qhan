@@ -23,13 +23,13 @@ export default function Home() {
       <ul className="mt-4 text-gray-400 font-light">
         <li>
           🎉
-          技术栈包括:react、nextjs、nodejs、typescript、electron、sass、unocss、tailwind
-          css等。
+          技术栈包括：react、nextjs、nodejs、typescript、electron、sass、unocss、tailwindcss等。
         </li>
         <li>🌱 目前正在学习Rust、以及项目管理方面知识。</li>
         <li>
           💬 如何联系我：微信搜索
-          <span className="text-brand no-underline font-normal">AsQhan</span> 或邮箱：
+          <span className="text-brand no-underline font-normal">AsQhan</span>
+          或邮箱：
           <a
             className="text-brand no-underline font-normal"
             href="mailto:whenhan@foxmail.com"

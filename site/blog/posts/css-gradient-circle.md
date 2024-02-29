@@ -54,7 +54,8 @@ description: 利用 css 的属性 mask、mask-composite，实现带有圆角、�
 - 4: 我们从底部一层中排除顶层，以便仅显示边框区域
 - -webkit-: 有些浏览器仍然不支持该属性，所以我们使用带前缀的版本
 
-> 注意：在某些情况下，你可能还需对伪元素增加`z-index:-1`属性。那么此时你面要对当前元素添加值大于等于0的`z-index`属性。
+> [!IMPORTANT]
+> 在某些情况下，你可能还需对伪元素增加`z-index:-1`属性。那么此时你面要对当前元素添加值大于等于0的`z-index`属性。
 
 ### 其它渐变边框解决方案
 
@@ -74,7 +75,8 @@ description: 利用 css 的属性 mask、mask-composite，实现带有圆角、�
   border-image-slice: 1;
 }
 ```
-> 注意：该方法不支持设置 border-radius，因此只能适用于直角矩形边框。
+> [!IMPORTANT]
+> 该方法不支持设置 border-radius，因此只能适用于直角矩形边框。
 
 #### 伪元素 background-image clip
 使用一个单独的元素作为渐变色背景放在最下层，上层设置一个透明的 border 和纯色的背景（需要设置 background-clip: padding-box 以避免盖住下层元素的 border）, 上下两层设置相同的 border-radius。

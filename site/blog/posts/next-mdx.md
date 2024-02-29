@@ -2,7 +2,7 @@
 title: Next.js(v13+) 创建 MDX 博客
 date: 2023-10-10T18:28:32+08:00
 category: nextjs
-tags: [nextjs, next-mdx-remote, markdown, mdx]
+tags: [nextjs, markdown, mdx, next-mdx-remote]
 description: Next.js(v13+) 使用 @next/mdx、next-mdx-remote 创建 MDX 博客应用。本文中主要描述使用 next-mdx-remote 加载远端 markdown 文章内容的处理过程，以及过程中的一些优化及异常处理。
 ---
 

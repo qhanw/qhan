@@ -2,7 +2,7 @@
 title: Next.js(v13+) 使用 Contentlayer 创建 MDX 博客
 date: 2023-10-22T22:36:58+08:00
 category: nextjs
-tags: [nextjs, contentlayer, markdown, mdx]
+tags: [nextjs, markdown, mdx, contentlayer]
 description: Next.js(v13+) 使用 contentlayer 创建 MDX 博客应用，Contentlayer 是一个内容SDK，可验证您的内容并将其转换为类型安全的 JSON 数据，您可以轻松地import将其添加到应用程序的页面中，其具有重量轻，易于使用、 出色的开发体验以及快速的构建能力和高性能页面的优点的。
 ---
 

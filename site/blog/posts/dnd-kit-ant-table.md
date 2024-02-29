@@ -18,6 +18,7 @@ description: 拖拽组件库dnd-kit介绍，及其在ant-design中与Table集成
 ![dnd-kit.gif](https://s2.loli.net/2023/09/19/RSNthKPCmHif5bD.webp)
 
 ### 开始
+> [!TIP]
 > dnd-kit 预置了专用于排序操作的sortable组件，因此接下来我们也仅针对antd table组件排序方面的流程做 详细说明。在这里我们也认为你当前环境已经基于antd的开发环境
 
 首先，我们需要先安装**dnd-kit**相关依赖

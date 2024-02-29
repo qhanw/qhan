@@ -23,8 +23,7 @@ description: 通过几个简单示例介绍CSS3新的子选择器nth-child，实
 ```
 
 ```css
-.example {
-}
+.example {}
 .example-red {
   color: red;
 }
@@ -44,8 +43,6 @@ description: 通过几个简单示例介绍CSS3新的子选择器nth-child，实
 
 从上面例子我们已经看出，html 与 css 相对已经变得复杂。所幸现在我们可以用 CSS3 子选择器:nth-child 与:nth-of-type 来实现这类需求。
 
----
-
 ### CSS3 选择器 :nth-child
 
 **解释**
@@ -61,7 +58,6 @@ description: 通过几个简单示例介绍CSS3新的子选择器nth-child，实
 **解释**
 
 还记得高中我们所学的数列知识吗？此处 an+b 就是我们高中所学数列公式，可以是等比、等差、差比等，不过此处 a、b 为整数常量，n 为自增倍数，通过组合不同 an+b 可以达到不同的子元素的筛选。
-
 
 ### 常用方式简介
 
@@ -125,8 +121,6 @@ li:nth-child(5n) {
 
 * :nth-child(odd)：匹配序号为奇数的元素，等同于(2n+1)。
 * :nth-child(even)：匹配序号为偶数的元素，等同于(2n+0)及(2n)。
-
----
 
 ### 技巧示例
 
