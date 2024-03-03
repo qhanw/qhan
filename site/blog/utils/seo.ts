@@ -33,7 +33,7 @@ export default function seo({ description, title }: SeoProps): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      // site: siteMetadata.siteTitle,
+      site: siteMetadata.siteTitle,
       creator: siteMetadata?.social?.twitter,
       title: title,
       description: metaDescription,
