@@ -2,9 +2,9 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
-type FooterProps = {
-  className?: string;
-};
+import Copyright from "./Copyright";
+
+type FooterProps = { className?: string };
 
 export default ({ className }: FooterProps) => (
   <footer
@@ -13,12 +13,9 @@ export default ({ className }: FooterProps) => (
       className
     )}
   >
-    <Link className="text-brand" href="/"  aria-label="Qhan W">
+    <Link className="text-brand" href="/" aria-label="Qhan W">
       <span className="i-logos-sakura w-4 h-4 logo-rotate" />
     </Link>
-
-    <div className="text-sm opacity-50 ml-1">
-      ©2022-2023 Qhan W. All Rights Reserved.
-    </div>
+    <Copyright />
   </footer>
 );

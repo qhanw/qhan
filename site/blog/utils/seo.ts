@@ -29,11 +29,13 @@ export default function seo({ description, title }: SeoProps): Metadata {
       //   siteMetadata.siteTitle
       // )}.png?theme=light&md=0&fontSize=75px`,
       // images: "/favicon.png",
+      // images: "https://qhan.wang/images/wedding/poster.jpg",
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
+      // site: siteMetadata.siteTitle,
       creator: siteMetadata?.social?.twitter,
-      title: siteMetadata?.title,
+      title: title,
       description: metaDescription,
     },
   };
