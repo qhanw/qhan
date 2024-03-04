@@ -1,20 +1,35 @@
 import { ImageResponse } from "next/og";
 
-import { getPostBySlug } from "@/app/(web)/lib/posts";
-
-// export const runtime = "edge"; // default: nodejs
+export const runtime = "edge"; // default: nodejs
 
 export const alt = "Qhan W";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug);
+  // Notice:
+  // 为保障使用 fetch 加载字体文件，此文件中 runtime 应设置为 edge
+  // 同时获取文章标题方式更改为 API 形式，即在当前目录下添加 api 接口
+  // const post = await getPostBySlug(params.slug);
+  const isDev = process.env.NODE_ENV === "development";
+  const domain = isDev ? `http://localhost:3000` : `https://qhan.wang`;
+
+  const post = await fetch(`${domain}/posts/api?slug=${params.slug}`).then(
+    (res) => res.json()
+  );
 
   // Font
-  // const sacramentoRegular = fetch(
-  //   new URL("./Sacramento-Regular.ttf", import.meta.url)
-  // ).then((res) => res.arrayBuffer());
+  const sacra = fetch(
+    new URL("./fonts/Sacramento-Regular.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
+
+  const inter = fetch(
+    new URL("./fonts/Inter-Regular.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
+
+  // const monoton = fetch(new URL("./fonts/Monoton-Regular.ttf", import.meta.url)).then(
+  //   (res) => res.arrayBuffer()
+  // );
 
   return new ImageResponse(
     (
@@ -35,8 +50,6 @@ export default async function Image({ params }: { params: { slug: string } }) {
         <div
           style={{
             display: "flex",
-            //  // width: 128,
-            //   height: (128 * 62) / 64,
             flex: "1 1 20%",
             justifyContent: "flex-end",
           }}
@@ -66,10 +79,9 @@ export default async function Image({ params }: { params: { slug: string } }) {
         >
           <div
             style={{
-              fontSize: 40,
-              fontWeight: "bold",
-              // color: "rgba(156,163,175)",
-              marginBottom: 16,
+              fontFamily: "Sacramento",
+              fontSize: 80,
+              fontWeight: 400,
               color: "#fff",
             }}
           >
@@ -83,21 +95,18 @@ export default async function Image({ params }: { params: { slug: string } }) {
               color: "#fff",
             }}
           >
-            {post.meta.title}
+            {post.data}
           </div>
         </div>
       </div>
     ),
     {
       ...size,
-      // fonts: [
-      //   {
-      //     name: "Sacramento",
-      //     data: await sacramentoRegular,
-      //     style: "normal",
-      //     weight: 400,
-      //   },
-      // ],
+      fonts: [
+        { name: "Inter", data: await inter, style: "normal", weight: 200 },
+        { name: "Sacramento", data: await sacra, style: "normal", weight: 400 },
+        // { name: "Monoton", data: await monoton, style: "normal", weight: 400 },
+      ],
     }
   );
 }
