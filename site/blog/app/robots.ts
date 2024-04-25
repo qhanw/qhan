@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      //  disallow: "/private/",
+      disallow: "/projects",
     },
     sitemap: "https://qhan.wang/sitemap.xml",
   };
