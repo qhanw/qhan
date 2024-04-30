@@ -6,7 +6,7 @@ import readingTime from "reading-time";
 
 import { getGitLastUpdatedTimeStamp } from "./utils";
 
-const postsDir = join(process.cwd(), "posts");
+const postsDir = join(process.cwd(), "md/posts");
 
 type ReadingTime = {
   text: string;

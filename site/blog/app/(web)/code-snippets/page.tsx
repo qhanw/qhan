@@ -3,8 +3,8 @@ import seo from "@/utils/seo";
 
 export async function generateMetadata() {
   return seo({
-    title: "Projects",
-    description: "工作中一些值得展示的项目成果",
+    title: "Code Snippets",
+    description: "常用的代码及算法代码片段。",
   });
 }
 

@@ -9,8 +9,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeShiki from "@shikijs/rehype";
 
 // mdx components
-import Button from "@/posts-mdx/next-mdx/button";
-import CssGradientBtn from "@/posts-mdx/css-gradient/GradientBtn";
+import Button from "@/md/posts-mdx/next-mdx/button";
+import CssGradientBtn from "@/md/posts-mdx/css-gradient/GradientBtn";
 
 import "remark-gh-alerts/styles/github-base.css";
 import "remark-gh-alerts/styles/github-colors-light.css";
