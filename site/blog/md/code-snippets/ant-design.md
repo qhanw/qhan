@@ -1,6 +1,6 @@
 ---
 title: Ant Design 弹窗简化代码示例
-date: 2024-04-10T20:08:56+08:00
+date: 2024-04-30T20:08:56+08:00
 category: antd
 tags: [antd]
 ---
