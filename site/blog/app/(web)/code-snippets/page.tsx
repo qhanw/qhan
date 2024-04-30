@@ -1,5 +1,7 @@
-import Footer from "@/app/(web)/components/Footer";
+import Link from "next/link";
 import seo from "@/utils/seo";
+
+import { getAllPosts } from "@/app/(web)/lib/code-snippets";
 
 export async function generateMetadata() {
   return seo({
@@ -8,15 +10,27 @@ export async function generateMetadata() {
   });
 }
 
-export default function Projects() {
+export default async function Projects() {
+  const posts = await getAllPosts();
+
   return (
     <>
-      {/* text-transparent text-stroke-2 text-stroke-hex-aaa */}
-      <div className="text-3xl text-center font-semibold opacity-30 mb-8 mx-auto">
-        Code Snippets
+      <div className="prose grid gap-2 m-auto">
+        <div className="uppercase py-1 mb-8 -mt-8 text-sm font-medium tracking-widest text-gray-400">
+          Total {posts?.length} Code Snippets
+        </div>
+        {posts?.map((post: any) => (
+          <Link
+            href={`/code-snippets/${post.slug}`}
+            className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up "
+            key={post.slug}
+          >
+            <div className=" text-gray-600 group-hover:text-brand truncate ease-in duration-300">
+              {post.meta?.title}
+            </div>
+          </Link>
+        ))}
       </div>
-      <div className="grid gap-4 prose mx-auto">该部分为常用代码片段收集</div>
-      <Footer className="prose mx-auto" />
     </>
   );
 }
