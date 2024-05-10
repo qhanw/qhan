@@ -1,3 +1,9 @@
-.prose .shiki.vitesse-light {
+.prose pre.shiki.vitesse-light {
+  font-family: DM Mono, Input Mono, Fira Code, monospace;
+  font-size: 0.92em;
+  line-height: 1.4;
+  // margin: 0.5em 0;
+
   background-color: #f9f9f9 !important;
 }
+
