@@ -27,7 +27,7 @@ const options: MDXRemoteProps["options"] = {
       rehypeSlug,
       rehypeAutolinkHeadings,
       // @ts-ignore
-      [rehypeShiki, { theme: "nord" }],
+      [rehypeShiki, { theme: "vitesse-light" }],
     ],
   },
 };
