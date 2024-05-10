@@ -5,7 +5,43 @@ category: react
 tags: [react, javascript]
 ---
 
-- 示例一
+- 示例一 最基本配置
+```tsx
+import { useContext, createContext, useState } from 'react';
+
+type LandsContextState = {
+  drawData?: number[][];
+  setDrawData?: (v: number[][]) => void;
+};
+
+function useProvideLands() {
+  // 设置状态 drawData 值
+  const [drawData, setInnerDrawData] = useState<number[][]>();
+  const setDrawData = (v: number[][]) => setInnerDrawData(v);
+
+  // 添加其它状态值维护
+  // .....
+
+  // 暴露数据对象
+  return { drawData, setDrawData };
+}
+
+const LandsContext = createContext<LandsContextState>({});
+
+function ProviderLands({ children }: { children: React.ReactNode }) {
+  const lands = useProvideLands();
+  return <LandsContext.Provider value={lands}>{children}</LandsContext.Provider>;
+}
+
+// 添加自定义 hooks 包裹 LandsContext 简化使用方式
+function useLandsContext() {
+  return useContext(LandsContext);
+}
+
+export { ProviderLands, useLandsContext };
+```
+
+- 示例二
 ```tsx
 // 源码来自鲁班系统
 import React, { useContext, createContext, useState } from 'react';
@@ -50,7 +86,8 @@ function useWsInstance() {
 
 export { ProvideWsInstance, useWsInstance };
 ```
-- 示例二
+
+- 示例三 使用 `useReducer` 实现多状态管理
 ```tsx
 import React, { createContext, useContext, useReducer } from 'react';
 
