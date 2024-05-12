@@ -14,7 +14,7 @@ import Link from "next/link";
 import DateFormat from "@/app/(web)/components/DateFormat";
 
 import seo from "@/utils/seo";
-import { getPostBySlug, getAllPosts } from "@/app/(web)/lib/posts";
+import { getPost, getAllPosts } from "@/app/(web)/lib/service";
 
 import MDXContent from "./MDXContent";
 
@@ -25,8 +25,8 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function getPost(params: Props["params"]) {
-  const post = getPostBySlug(params.slug);
+async function fetchPost(params: Props["params"]) {
+  const post = getPost(params.slug);
   // const markdown = await remark()
   //   .use(remarkToc, { maxDepth: 4 })
   //   .use(remarkGfm)
@@ -63,7 +63,7 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { post } = await getPost(params);
+  const { post } = await fetchPost(params);
   return seo({
     title: post?.meta?.title || "",
     description: post?.meta?.description || post?.excerpt || "",
@@ -71,7 +71,7 @@ export async function generateMetadata(
 }
 
 export default async ({ params }: Props) => {
-  const { post, prev, next } = await getPost(params);
+  const { post, prev, next } = await fetchPost(params);
 
   // const message = await new Promise<string>((resolve) => {
   //   console.log("in executing sleep!");

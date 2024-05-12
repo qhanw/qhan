@@ -1,7 +1,7 @@
 import Link from "next/link";
 import seo from "@/utils/seo";
 
-import { getAllPosts } from "@/app/(web)/lib/code-snippets";
+import { getAllCodeSnippets } from "@/app/(web)/lib/service";
 
 export async function generateMetadata() {
   return seo({
@@ -11,7 +11,7 @@ export async function generateMetadata() {
 }
 
 export default async function Projects() {
-  const posts = await getAllPosts();
+  const posts = await getAllCodeSnippets();
 
   return (
     <>

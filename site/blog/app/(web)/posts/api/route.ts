@@ -1,12 +1,9 @@
 import { NextResponse, NextRequest } from "next/server";
 
-import { getPostBySlug } from "@/app/(web)/lib/posts";
+import { getPost } from "@/app/(web)/lib/service";
 
 export async function GET(request: NextRequest) {
   const slug = request.nextUrl.searchParams.get("slug")!;
 
-  return NextResponse.json({
-    data: getPostBySlug(slug)!.meta.title,
-    slug,
-  });
+  return NextResponse.json({ data: getPost(slug)!.meta.title, slug });
 }

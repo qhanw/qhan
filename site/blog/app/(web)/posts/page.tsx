@@ -4,7 +4,7 @@ import DateFormat from "@/app/(web)/components/DateFormat";
 import PostLabel from "@/app/(web)/components/PostLabel";
 import seo from "@/utils/seo";
 
-import { getAllPosts } from "@/app/(web)/lib/posts";
+import { getAllPosts } from "@/app/(web)/lib/service";
 
 export async function generateMetadata() {
   return seo({

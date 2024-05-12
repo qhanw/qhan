@@ -1,5 +1,5 @@
-import { spawnSync } from "child_process";
-import path from "path";
+import { spawnSync } from "node:child_process";
+import path from "node:path";
 
 export function getGitLastUpdatedTimeStamp(filePath: string) {
   let lastUpdated;

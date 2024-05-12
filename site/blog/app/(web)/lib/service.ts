@@ -1,12 +1,10 @@
-import fs from "fs";
-import { join } from "path";
+import fs from "node:fs";
+import { join } from "node:path";
 
 import matter from "gray-matter";
 import readingTime from "reading-time";
 
 import { getGitLastUpdatedTimeStamp } from "./utils";
-
-const postsDir = join(process.cwd(), "md/code-snippets");
 
 type ReadingTime = {
   text: string;
@@ -26,16 +24,16 @@ type MetaData = {
   draft?: boolean;
 };
 
-export function getPostBySlug(slug: string) {
+const getFullPath = (dir: string) => join(process.cwd(), `md/${dir}`);
+
+function getArticle(dir: string, slug: string) {
   const realSlug = slug.replace(/\.md$/, "");
 
-  const fullPath = join(postsDir, `${realSlug}.md`);
+  const fullPath = join(getFullPath(dir), `${realSlug}.md`);
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
-  const { data, content, excerpt } = matter(fileContents, {
-    excerpt: true,
-  });
+  const { data, content, excerpt } = matter(fileContents, { excerpt: true });
 
   const lastModified = getGitLastUpdatedTimeStamp(fullPath);
   const readTime = readingTime(content);
@@ -45,11 +43,11 @@ export function getPostBySlug(slug: string) {
   return { slug: realSlug, meta, content, excerpt };
 }
 
-export function getAllPosts() {
-  const slugs = fs.readdirSync(postsDir);
+function getAllArticles(dir: string) {
+  const slugs = fs.readdirSync(getFullPath(dir));
 
   const posts = slugs
-    .map((slug) => getPostBySlug(slug))
+    .map((slug) => getArticle(dir, slug))
     // 排除草稿文件
     .filter((c) => !/\.draft$/.test(c.slug));
 
@@ -57,3 +55,12 @@ export function getAllPosts() {
 
   return posts.sort((a, b) => +b.meta.date - +a.meta.date);
 }
+
+//
+const dir_ps = "posts";
+export const getAllPosts = () => getAllArticles(dir_ps);
+export const getPost = (slug: string) => getArticle(dir_ps, slug);
+
+const dir_cs = "code-snippets";
+export const getAllCodeSnippets = () => getAllArticles(dir_cs);
+export const getCodeSnippet = (slug: string) => getArticle(dir_cs, slug);
