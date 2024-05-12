@@ -1,37 +1,35 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { FloatButton, Button, Card, Input } from 'antd';
+import { useEffect, useRef } from "react";
+import { FloatButton, Button, Card, Input } from "antd";
 
-import type { ICanvas } from 'pixi.js';
+import type { ICanvas } from "pixi.js";
 
-import Legend from './compponents/Legend';
+import Legend from "./components/Legend";
 
-import bootstrap, { Map, ToolsType } from './map/bootstrap';
-import { AREA, SELECTED } from './data';
+import Editor, { ToolsType } from "./map/editor";
+import { AREA, SELECTED } from "./data";
 
 export default function Lands() {
   const ref = useRef<ICanvas>(null);
-
-  const [app, setApp] = useState<Map>();
-
-  const init = useCallback(async () => {
-    if (ref.current) {
-      const res = await bootstrap(ref.current, { area: AREA, selected: SELECTED });
-      setApp(res);
-    }
-  }, [ref]);
+  const refEditor = useRef<Editor>();
 
   useEffect(() => {
-    init();
-  }, [init]);
+    if (ref.current && !refEditor.current) {
+      refEditor.current = new Editor(ref.current, {
+        area: AREA,
+        divided: SELECTED,
+      });
+    }
+  }, []);
 
   const onGetLands = () => {
-    const poly = app?.getDrawData();
+    const poly = refEditor.current?.getDrawData();
 
     console.log(poly);
   };
 
   const onOptions = (type: ToolsType) => {
-    app?.updateOptions(type);
+    console.log(refEditor.current);
+    refEditor.current?.updateOptions(type);
   };
 
   return (
@@ -52,7 +50,7 @@ export default function Lands() {
         </Button>
       </div>
 
-      <div className="relative" style={{ height: 'calc(100vh - 216px)' }}>
+      <div className="relative" style={{ height: "calc(100vh - 216px)" }}>
         <canvas ref={ref as any} />
         <FloatButton.Group
           shape="square"
@@ -60,17 +58,20 @@ export default function Lands() {
         >
           <FloatButton
             icon={<span className="i-land:zoom-in" />}
-            onClick={() => onOptions('zoomIn')}
+            onClick={() => onOptions("zoomIn")}
           />
           <FloatButton
             icon={<span className="i-land:zoom-out" />}
-            onClick={() => onOptions('zoomOut')}
+            onClick={() => onOptions("zoomOut")}
           />
           <FloatButton
             icon={<span className="i-land:select" />}
-            onClick={() => onOptions('select')}
+            onClick={() => onOptions("select")}
           />
-          <FloatButton icon={<span className="i-land:move" />} onClick={() => onOptions('move')} />
+          <FloatButton
+            icon={<span className="i-land:move" />}
+            onClick={() => onOptions("move")}
+          />
           {/* <FloatButton
             icon={<span className="i-land:shape" />}
             onClick={() => onOptions('shape')}

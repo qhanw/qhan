@@ -1,1 +1,1 @@
-export type Options = { area: number[][][]; selected: number[][][] };
+export type Options = { area: number[][][]; divided: number[][][] };

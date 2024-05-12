@@ -1,6 +1,6 @@
-import { Container, Graphics } from 'pixi.js';
-import type { FillStyleInputs, FederatedPointerEvent } from 'pixi.js';
-import { OFFSET_X, OFFSET_Y } from './options';
+import { Container, Graphics } from "pixi.js";
+import type { FillStyleInputs, FederatedPointerEvent } from "pixi.js";
+import { OFFSET_X, OFFSET_Y } from "./options";
 
 export class DrawGraphics {
   view: Container;
@@ -9,7 +9,7 @@ export class DrawGraphics {
     this.view = new Container();
 
     // TODO: 用遮罩方式解决事件在不可操作层获取可交互事件问题
-    this.view.eventMode = 'static';
+    this.view.eventMode = "static";
 
     this.#draw(options.points, options.style);
   }
@@ -33,7 +33,11 @@ export class DrawLimit extends DrawGraphics {
   // 绘制图层容器
   box: Container;
   #underlay: Container;
-  constructor(options: { points: number[][][]; style: FillStyleInputs; underlay: Container }) {
+  constructor(options: {
+    points: number[][][];
+    style: FillStyleInputs;
+    underlay: Container;
+  }) {
     super(options);
     this.box = new Container();
     this.#underlay = options.underlay;
@@ -41,22 +45,26 @@ export class DrawLimit extends DrawGraphics {
 
   set clickSelect(bool: boolean) {
     if (bool) {
-      this.view.eventMode = 'static';
+      this.view.eventMode = "static";
       this.view
-        .on('pointerdown', this.#create.bind(this))
-        .on('pointermove', this.#updateCursor.bind(this));
+        .on("pointerdown", this.#create.bind(this))
+        .on("pointermove", this.#updateCursor.bind(this));
 
       // 添加绘制图形区域图形操作
-      this.box.eventMode = 'static';
+      this.box.eventMode = "static";
       this.box
-        .on('pointerdown', this.#remove.bind(this))
-        .on('pointermove', this.#updateCursor.bind(this));
+        .on("pointerdown", this.#remove.bind(this))
+        .on("pointermove", this.#updateCursor.bind(this));
     } else {
-      this.view.eventMode = 'auto';
-      this.view.off('pointerdown', this.#create).off('pointermove', this.#updateCursor);
+      this.view.eventMode = "auto";
+      this.view
+        .off("pointerdown", this.#create)
+        .off("pointermove", this.#updateCursor);
 
-      this.box.eventMode = 'auto';
-      this.box.off('pointerdown', this.#remove).off('pointermove', this.#updateCursor);
+      this.box.eventMode = "auto";
+      this.box
+        .off("pointerdown", this.#remove)
+        .off("pointermove", this.#updateCursor);
     }
   }
 
@@ -65,14 +73,14 @@ export class DrawLimit extends DrawGraphics {
 
     const { x, y } = this.box.toLocal(event.global);
 
-    const g = new Graphics().rect(0, 0, 1, 1).fill('#4096ff');
+    const g = new Graphics().rect(0, 0, 1, 1).fill("#4096ff");
     g.position.set(Math.round(x), Math.round(y));
-    g.eventMode = 'static';
+    g.eventMode = "static";
 
     // 添加到可选择区域
     // 先判断当前区域相同位置是否存在已选择数据，如果的则不加入
     const isExist = this.box.children.some(
-      (c) => c.position.x === Math.round(x) && c.position.y === Math.round(y),
+      (c) => c.position.x === Math.round(x) && c.position.y === Math.round(y)
     );
 
     if (!isExist) this.box.addChild(g);
