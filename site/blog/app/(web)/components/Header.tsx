@@ -24,6 +24,16 @@ const nav = [
   //   ),
   // },
   {
+    name: "Code Snippets",
+    href: "/code-snippets",
+    icon: (props: any) => (
+      <span
+        {...props}
+        className={clsx("i-heroicons:code-bracket", props.className)}
+      />
+    ),
+  },
+  {
     name: "Projects",
     href: "/projects",
     // icon: (props: any) => <Icon {...props} icon="ant-design:project-outlined" />,
@@ -45,6 +55,7 @@ const nav = [
       />
     ),
   },
+
   // { name: "Archives", href: "/archives", icon: ArchiveBoxIcon },
   // { name: "Statistics", href: "/statistics", icon: ChartBarSquareIcon },
 ];
