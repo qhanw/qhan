@@ -23,7 +23,7 @@ export default function Home() {
       <ul className="mt-4 text-gray-400 font-light">
         <li>
           🎉
-          技术栈包括：React、Next.js、Node.js、TypeScript、Electron、Sass、UnoCSS、Tailwind CSS等。
+          技术栈包括：React、Next.js、Node.js、Wagmi、Viem、Electron、TypeScript、Sass、UnoCSS、Tailwind CSS等。
         </li>
         <li>🌱 目前正在学习Rust、PixiJS以及项目管理方面知识。</li>
         <li>
