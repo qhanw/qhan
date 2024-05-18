@@ -5,6 +5,8 @@ import seo from "@/utils/seo";
 
 import { getAllPosts } from "@/app/(web)/lib/service";
 
+import Footer from "../components/Footer";
+
 import list from "./set";
 
 export async function generateMetadata() {
@@ -20,7 +22,7 @@ export default async function Tools() {
       {list.map((item) => (
         <>
           <h3 className="text-2xl">{item.name}</h3>
-          <ul className="grid grid-cols-4 gap-8 mt-4 mb-6">
+          <ul className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8 mt-4 mb-6">
             {item.list.map((c) => (
               <Link
                 href={c.href}
@@ -48,6 +50,7 @@ export default async function Tools() {
           </ul>
         </>
       ))}
+      <Footer className="mt-6 pt-6" />
     </>
   );
 }
