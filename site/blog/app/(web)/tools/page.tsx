@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -20,7 +21,7 @@ export default async function Tools() {
   return (
     <>
       {list.map((item) => (
-        <>
+        <Fragment key={item.name}>
           <h3 className="text-2xl">{item.name}</h3>
           <ul className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8 mt-4 mb-6">
             {item.list.map((c) => (
@@ -48,7 +49,7 @@ export default async function Tools() {
               </Link>
             ))}
           </ul>
-        </>
+        </Fragment>
       ))}
       <Footer className="mt-6 pt-6" />
     </>
