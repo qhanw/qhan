@@ -20,13 +20,11 @@ const options: MDXRemoteProps["options"] = {
     remarkPlugins: [
       [remarkToc, { maxDepth: 4 }],
       remarkGfm,
-      // @ts-ignore
       remarkGithubAlerts,
     ],
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings,
-      // @ts-ignore
       [rehypeShiki, { theme: "vitesse-light" }],
     ],
   },
