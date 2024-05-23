@@ -1,5 +1,6 @@
-import fs from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { env } from "node:process";
 
 import matter from "gray-matter";
 import readingTime from "reading-time";
@@ -31,7 +32,7 @@ function getArticle(dir: string, slug: string) {
 
   const fullPath = join(getFullPath(dir), `${realSlug}.md`);
 
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const fileContents = readFileSync(fullPath, "utf8");
 
   const { data, content, excerpt } = matter(fileContents, { excerpt: true });
 
@@ -44,14 +45,14 @@ function getArticle(dir: string, slug: string) {
 }
 
 function getAllArticles(dir: string) {
-  const slugs = fs.readdirSync(getFullPath(dir));
+  const slugs = readdirSync(getFullPath(dir));
+
+  const isProd = env.NODE_ENV === "production";
 
   const posts = slugs
     .map((slug) => getArticle(dir, slug))
     // 排除草稿文件
-    .filter((c) => !/\.draft$/.test(c.slug));
-
-  // .filter((c) => !c.meta.draft);
+    .filter((c) => !(isProd && (c.meta.draft || /\.draft$/.test(c.slug))));
 
   return posts.sort((a, b) => +b.meta.date - +a.meta.date);
 }
