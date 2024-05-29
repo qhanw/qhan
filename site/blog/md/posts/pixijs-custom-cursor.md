@@ -1,9 +1,9 @@
 ---
 title: PixiJS定义鼠标样式
-date: 2024-05-24T20:08:56+08:00
+date: 2024-05-20T20:22:38+08:00
 category: canvas
 tags: [canvas, PixiJS]
-draft: true
+description: 定义以PixiJS开发的游戏、图形编辑器等应用中的鼠标样式，实现鼠标样式个性化，增强人机交互的直观性、趣味性，提升游戏、编辑器中鼠标交互操作的用户体验。
 ---
 
 在`PixiJS`开发中，处理鼠标样式的方式非常简单，其本质上仍然是采用`CSS`的`cursor`属性的配置方式。因此，只需熟悉`cursor`属性便可很好的在`PixiJS`处理样式。
@@ -38,12 +38,12 @@ cursor: [
     alias | copy | move | no-drop | not-allowed | grab | grabbing |
     e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize |
     sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize |
-    col-resize | row-resize | all-scroll | zoom-in | zoom-out
+    col-resize | row-resize | all-scroll | zoom-in | zoom-out |
   ]
 ]
 ```
 
-**综上，我们可以使用`cursor`属性值，在`PixiJS`中使用`url(...)`资源进行全部替换。**
+**综上，`CSS`的`cursor`属性值即为PixiJS的鼠标样式，我们也可以对`cursor`属性值，在`PixiJS`中使用`url(...)`资源进行全部重写。**
 
 
 
@@ -78,7 +78,17 @@ import { Application, Sprite, Texture } from 'pixi.js';
     app.stage.addChild(button);
 })();
 ```
-上面例子中
+在上面例子中`cursorStyles`可单个属性配置，也可一次性批量配置，如下：
+```ts
+// 一次情配置多种鼠标自定义样式
+app.renderer.events.cursorStyles = {
+  default: defaultIcon,
+  hover: hoverIcon,
+  myPointer: myPointerIcon
+}
+```
+
+>  cursorStyles[mode]还可设成一个自定义函数，这样就可以在函数里边设置canvas的style，来实现自定义光标。
 
 
 ### 局部配置
@@ -93,14 +103,15 @@ button.cursor = 'url(\'https://pixijs.com/assets/bunny.png\'),auto';
 
 ### 通过修改`canvas`元素样式
 
+该方式是直接找到根节点`canvas`元素，通过原生js的能力来实现鼠标样式自定义，值的方式与上面配置方式一样，其本质就是`CSS`的`cursor`。
+```ts
+app.canvas.style.cursor = 'url(\'https://pixijs.com/assets/bunny.png\'),auto';
+```
 
 
 
-第一种方式，我们可以直接设置元件的cursor值为url形式。
 
-第二种方式，我们可以配置cursorStyles，把cursorStyles[mode]设置成一个自定义函数，这样就可以在函数里边设置canvas的style，来实现自定义光标了。
 
-第三种方式，我们可以配置cursorStyles，把cursorStyles[mode]设置成一个url字符串形式。同理设置成object，object的style属性为url字符串。
 
 
 
