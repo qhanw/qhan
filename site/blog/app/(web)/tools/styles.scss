@@ -1,0 +1,46 @@
+.back {
+  transform-style: preserve-3d;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  overflow: hidden;
+}
+
+.back:hover::before {
+  position: absolute;
+  display: block;
+  content: "";
+
+  width: 120px;
+  height: 500%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--vp-c-brand),
+    transparent
+  );
+  animation: rotation 5000ms infinite linear;
+}
+
+.back:hover::after {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  content: "";
+  left: 1px;
+  top: 1px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}

@@ -2,6 +2,12 @@ import Link from "next/link";
 
 const kits = [
   {
+    name: "Tools",
+    href: "/tools",
+    icon: "i-ri:navigation-line",
+    target: false,
+  },
+  {
     name: "Components",
     href: "https://bizk.qhan.wang/components",
     icon: "i-ri:shapes-line",
@@ -37,7 +43,7 @@ export default function Bizk() {
           className="opacity-50 hover:opacity-80 font-normal text-brand"
           href={c.href}
           title={c.name}
-          target="_blank"
+          {...(c.target === false ? {} : { target: "_blank" })}
         >
           <span className={`${c.icon} w-4 h-4 mr-1`} />
           {c.name}
