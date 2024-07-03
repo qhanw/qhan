@@ -75,27 +75,27 @@ Boolean use_deprecated
 
 **用法：**
 ```js
-const use_xyz = true; 
-const use_lines = true; 
+const use_xyz = true;
+const use_lines = true;
 const use_deprecated = true;
 ```
 
 **另请参阅**：[Clipper.ZFillFunction](#clipperlibclipperzfillfunction), [IntPoint](#clipperlibintpoint)
 
 
-
 ### ClipperBase
-ClipperBase 是Clipper的抽象基类。ClipperBase 对象不应直接实例化。
+ClipperBase 是[Clipper](#clipper)的抽象基类。ClipperBase 对象不应直接实例化。
+
 
 #### ClipperBase.AddPath()
-```plaintext
-Boolean AddPath(Path pg, PolyType polyType, Boolean closed);
-```
+
+> Boolean AddPath([Path](#clipperlibpath) pg, [PolyType](#clipperlibpolytype) polyType, Boolean closed);
+
 可以将任意数量的主题和剪辑路径添加到剪辑任务中，可以通过 AddPath() 方法单独添加，也可以通过 AddPaths() 方法作为组添加，甚至可以同时使用这两种方法。
 
 “主体”路径可以是开放的（线）或封闭的（多边形），甚至可以是两者的混合，但“剪切”路径必须始终是封闭的。Clipper 允许多边形剪切线和其他多边形，但不允许线剪切线或多边形。
 
-对于封闭路径，方向应符合通过 Clipper 的Execute方法传递的填充规则。
+对于封闭路径，[方向](#clipperlibclipperorientation)应符合通过 Clipper 的[Execute](#clipperlibclipperexecute)方法传递的[填充规则](#clipperlibpolyfilltype)。
 
 **路径坐标范围**：路径坐标必须在 ± 4503599627370495 (sqrt(2^106 -1)/2) 之间，否则在尝试将路径添加到 Clipper 对象时会抛出范围错误。如果坐标可以保持在 ± 47453132 (sqrt(2^53 -1)/2) 之间，则可以通过避免大整数数学运算来实现更大范围内的性能提升（约 40-50%）。
 
@@ -111,14 +111,14 @@ const cpr = new ClipperLib.Clipper();
 const path = [{"X":10,"Y":10},{"X":110,"Y":10},{"X":110,"Y":110},{"X":10,"Y":110}];
 cpr.AddPath(path, ClipperLib.PolyType.ptSubject, true);
 ```
+**另请参阅：** [Example](#example), [Clipper.Execute](#clipperlibclipperexecute), [AddPaths](#clipperbaseaddpaths), [Orientation](#clipperlibclipperorientation), [Defines](#preprocessor-defines), [Path](#clipperlibpath), [PolyFillType](#clipperlibpolyfilltype), [PolyType](#clipperlibpolytype)
 
-**其它**: Example, Clipper.Execute, AddPaths, Orientation, Defines, Path, PolyFillType, PolyType
 
 #### ClipperBase.AddPaths()
-```plaintext
-Boolean AddPaths(Paths ppg, PolyType polyType, Boolean closed);
-```
-功能与AddPath()相同，但参数是Paths。
+
+> Boolean AddPaths([Paths](#clipperlibpaths) ppg, [PolyType](#clipperlibpolytype) polyType, Boolean closed);
+
+功能与[AddPath()](#clipperbaseaddpath)相同，但参数是[Paths](#clipperlibpaths)。
 
 **用法：**
 ```js
@@ -129,7 +129,9 @@ const paths = [
 ];
 cpr.AddPaths(paths, ClipperLib.PolyType.ptSubject, true);
 ```
-**其它**: Example, Clipper.Execute, AddPath, Orientation, Defines, Paths, PolyFillType, PolyType
+
+**另请参阅：** [Example](#example), [Clipper.Execute](#clipperlibclipperexecute), [AddPath](#clipperbaseaddpath), [Orientation](#clipperlibclipperorientation), [Defines](#preprocessor-defines), [Paths](#clipperlibpaths), [PolyFillType](#clipperlibpolyfilltype), [PolyType](#clipperlibpolytype)
+
 
 #### ClipperBase.Clear()
 ```plaintext
@@ -140,22 +142,23 @@ Clear 方法会删除任何现有的主题和剪辑多边形，从而允许 Clip
 
 **用法：**
 ```js
-const cpr = new ClipperLib.Clipper();
 cpr.Clear();
 ```
+---
 
 ### Clipper
 
-Clipper 类封装了对多边形的布尔运算（交、并、差、异或），又称多边形裁剪。
+Clipper 类封装了对多边形的[布尔运算]((#clipperlibcliptype))（交、并、差、异或），又称[多边形裁剪](#terminology)。
 
-输入多边形（主体集和裁剪集）通过其AddPath和AddPaths方法传递给 Clipper 对象，并通过调用其Execute方法执行裁剪操作。通过重复调用 Execute，可以对相同的输入多边形集执行多个布尔操作。
+输入多边形（主体集和裁剪集）通过其[AddPath](#clipperbaseaddpath)和[AddPaths](#clipperbaseaddpaths)方法传递给 Clipper 对象，并通过调用其[Execute](#clipperlibclipperexecute)方法执行裁剪操作。通过重复调用 Execute，可以对相同的输入多边形集执行多个布尔操作。
+
+**另请参阅：** [Overview](#overview), [ClipType](#clipperlibcliptype)
 
 
 #### ClipperLib.Clipper()
-```plaintext
-Clipper Clipper(InitOptions initOptions = 0);
-````
-Clipper 构造函数创建 Clipper 类的一个实例。可以传递一个或多个InitOptions作为参数来设置相应的属性。（构造后仍可设置或重置这些属性。）
+> Clipper Clipper [InitOptions](#initoptions) initOptions = 0);
+
+Clipper 构造函数创建 Clipper 类的一个实例。可以传递一个或多个[InitOptions](#initoptions)作为参数来设置相应的属性。（构造后仍可设置或重置这些属性。）
 
 **用法：**
 ```js
@@ -165,31 +168,31 @@ const cpr = new ClipperLib.Clipper(ClipperLib.Clipper.ioStrictlySimple | Clipper
 // or
 const cpr = new ClipperLib.Clipper(2 | 4);
 ```
-**另请参阅：** PreserveCollinear、ReverseSolution、StrictlySimple、InitOptions
+**另请参阅：** [PreserveCollinear](#clipperlibclipperpreservecollinear), [ReverseSolution](#clipperlibclipperreversesolution), [StrictlySimple](#clipperlibclipperstrictlysimple), [InitOptions](#initoptions)
 
 
 #### ClipperLib.Clipper.Area()
-```plaintext
-Number Area(Path poly)
-```
 
-此函数返回所提供多边形的面积。（假设路径是闭合的。）根据方向，此值可能是正数或负数。如果方向为真，则面积为正数，反之，如果方向为假，则面积为负数。
+> Number Area([Path](#clipperlibpath) poly)
+
+此函数返回所提供多边形的面积。（假设路径是闭合的。）根据[方向](#clipperlibclipperorientation)，此值可能是正数或负数。如果方向为真，则面积为正数，反之，如果方向为假，则面积为负数。
 
 **用法：**
 ```js
 const area = ClipperLib.Clipper.Area(polygon);
 ```
-**另请参阅：** Orientation, Path
 
+**另请参阅：** [Orientation](#clipperlibclipperorientation), [Path](#clipperlibpath)
 
 
 #### ClipperLib.Clipper.CleanPolygon()
-```plaintext
-Path CleanPolygon(Path path, Number distance)
-```
+
+> [Path](#clipperlibpath) CleanPolygon([Path](#clipperlibpath) path, Number distance)
+
 需要此功能以防止由于顶点太近和/或微自相交而引起的扭曲。
 
 删除顶点：
+
 - 连接共线边，或连接几乎共线的边（这样，如果顶点移动的距离不超过指定的距离，边将是共线的）
 - 位于相邻顶点指定距离内的
 - 在半相邻顶点及其外围顶点的指定距离范围内
@@ -200,190 +203,28 @@ Path CleanPolygon(Path path, Number distance)
 
 Timo：根据测试，偏移前去除伪影的最合适的距离值是 0.1 * scale。
 
-<span>![CleanPolygon01](/images/posts/clipper/01.png)</span><span>![CleanPolygon02](/images/posts/clipper/02.png)</span>
+![CleanPolygon01](/images/posts/clipper/01.png)
+![CleanPolygon02](/images/posts/clipper/02.png)
 
 **用法：**
 ```js
-const path = [{"X":10,"Y":10},{"X":11,"Y":11},{"X":110,"Y":10},{"X":110,"Y":110},
-{"X":10,"Y":110}];
-const cleaned_path = ClipperLib.Clipper.CleanPolygon(path, 1.1);
+const  path = [{"X":10,"Y":10},{"X":11,"Y":11},{"X":110,"Y":10},{"X":110,"Y":110},{"X":10,"Y":110}];
+var cleaned_path = ClipperLib.Clipper.CleanPolygon(path, 1.1);
 // point {"X":11,"Y":11} is now removed
 ```
-**另请参阅：** CleanPolygons, SimplifyPolygon, Path
-
-
+**另请参阅：** [CleanPolygons](#clipperlibclippercleanpolygons), [SimplifyPolygon](#clipperlibclippersimplifypolygon), [Path](#clipperlibpath)
 
 #### ClipperLib.Clipper.CleanPolygons()
-```plaintext
-Paths CleanPolygons(Paths polys, Number distance)
-```
+
+> [Paths](#clipperlibpaths) CleanPolygons([Paths](#clipperlibpaths) polys, Number distance)
+
 功能与 CleanPolygon 相同，但参数为 Paths 类型。
 
 经过测试，偏移前去除伪影最合适的距离值为 0.1 * scale
 
-在CleanPolygon中了解更多内容。
+在[CleanPolygon](#clipperlibclippercleanpolygon)中了解更多内容。
 
 **用法：**
-```js
-const paths = [[{X:10,Y:10},{X:11,Y:11},{X:110,Y:10},{X:110,Y:110},{X:10,Y:110}],
-             [{X:20,Y:20},{X:20,Y:100},{X:100,Y:100},{X:100,Y:20}]];
-const cleaned_paths = ClipperLib.Clipper.CleanPolygons(paths, 1.1);
-// point {"X":11,"Y":11} is removed
-```
-**另请参阅：**  CleanPolygon, SimplifyPolygons
-
----
-
-
-## ClipperBase
-
-ClipperBase is an abstract base class for [Clipper](#clipper). A ClipperBase object should not be instantiated directly.
-
-### --- ClipperBase methods ---
-
-### ClipperBase.AddPath()
-
-> Boolean AddPath([Path](#clipperlibpath) pg, [PolyType](#clipperlibpolytype) polyType, Boolean closed);
-
-Any number of subject and clip paths can be added to a clipping task, either individually via the AddPath() method, or as groups via the AddPaths() method, or even using both methods.
-
-'Subject' paths may be either open (lines) or closed (polygons) or even a mixture of both, but 'clipping' paths must always be closed. Clipper allows polygons to clip both lines and other polygons, but doesn't allow lines to clip either lines or polygons.
-
-With closed paths, [orientation](#clipperlibclipperorientation) should conform with the [filling rule](#clipperlibpolyfilltype) that will be passed via Clipper's [Execute](#clipperlibclipperexecute) method.
-
-Path Coordinate range:
-Path coordinates must be between ± 4503599627370495 (sqrt(2^106 -1)/2), otherwise a range error will be thrown when attempting to add the path to the Clipper object. If coordinates can be kept between ± 47453132 (sqrt(2^53 -1)/2), an increase in performance (approx. 40-50%) over the larger range can be achieved by avoiding large integer math.
-
-Return Value:
-The function will return false if the path is empty or almost empty. A path is almost empty when:
-
-* it has less than 2 vertices.
-* it has 2 vertices but is not an open path
-* the vertices are all co-linear and it is not an open path
-
-**Usage:**
-```js
-const cpr = new ClipperLib.Clipper();
-const path = [{"X":10,"Y":10},{"X":110,"Y":10},{"X":110,"Y":110},{"X":10,"Y":110}];
-cpr.AddPath(path, ClipperLib.PolyType.ptSubject, true);
-```
-**See also:** [Example](#example), [Clipper.Execute](#clipperlibclipperexecute), [AddPaths](#clipperbaseaddpaths), [Orientation](#clipperlibclipperorientation), [Defines](#preprocessor-defines), [Path](#clipperlibpath), [PolyFillType](#clipperlibpolyfilltype), [PolyType](#clipperlibpolytype)
-
-
-
-### ClipperBase.AddPaths()
-
-> Boolean AddPaths([Paths](#clipperlibpaths) ppg, [PolyType](#clipperlibpolytype) polyType, Boolean closed);
-
-Same functionality as in [AddPath()](#clipperbaseaddpath), but the parameter is [Paths](#clipperlibpaths).
-
-**Usage:**
-```js
-const cpr = new ClipperLib.Clipper();
-const paths = [
-  [{X:10,Y:10},{X:110,Y:10},{X:110,Y:110},{X:10,Y:110}],
-  [{X:20,Y:20},{X:20,Y:100},{X:100,Y:100},{X:100,Y:20}]
-];
-cpr.AddPaths(paths, ClipperLib.PolyType.ptSubject, true);
-```
-
-**See also:** [Example](#example), [Clipper.Execute](#clipperlibclipperexecute), [AddPath](#clipperbaseaddpath), [Orientation](#clipperlibclipperorientation), [Defines](#preprocessor-defines), [Paths](#clipperlibpaths), [PolyFillType](#clipperlibpolyfilltype), [PolyType](#clipperlibpolytype)
-
-### ClipperBase.Clear()
-
-```plaintext
-void Clear();
-```
-The Clear method removes any existing subject and clip polygons allowing the Clipper object to be reused for clipping operations on different polygon sets.
-
-**Usage:**
-```js
-cpr.Clear();
-```
-
-## Clipper
-
-The Clipper class encapsulates [boolean operations](#clipperlibcliptype) on polygons (intersection, union, difference and XOR), which is also called [polygon clipping](#terminology).
-
-Input polygons, both subject and clip sets, are passed to a Clipper object by its [AddPath](#clipperbaseaddpath) and [AddPaths](#clipperbaseaddpaths) methods, and the clipping operation is performed by calling its [Execute](#clipperlibclipperexecute) method. Multiple boolean operations can be performed on the same input polygon sets by repeat calls to Execute.
-
-**See also:** [Overview](#overview), [ClipType](#clipperlibcliptype)
-
-### Methods
-
-### ClipperLib.Clipper()
-> Clipper Clipper [InitOptions](#initoptions) initOptions = 0);
-
-The Clipper constructor creates an instance of the Clipper class. One or more [InitOptions](#initoptions) may be passed as a parameter to set the corresponding properties. (These properties can still be set or reset after construction.)
-
-**Usage:**
-```js
-const cpr = new ClipperLib.Clipper();
-// or
-const cpr = new ClipperLib.Clipper(ClipperLib.Clipper.ioStrictlySimple | ClipperLib.Clipper.ioPreserveCollinear);
-// or
-const cpr = new ClipperLib.Clipper(2 | 4);
-```
-**See also:** [PreserveCollinear](#clipperlibclipperpreservecollinear), [ReverseSolution](#clipperlibclipperreversesolution), [StrictlySimple](#clipperlibclipperstrictlysimple), [InitOptions](#initoptions)
-
-
-
-### ClipperLib.Clipper.Area()
-
-> Number Area([Path](#clipperlibpath) poly)
-
-This function returns the area of the supplied polygon. (It's assumed that the path will be closed.) Depending on [orientation](#clipperlibclipperorientation), this value may be positive or negative. If Orientation is true, then the area will be positive and conversely, if Orientation is false, then the area will be negative.
-
-**Usage:**
-```js
-const area = ClipperLib.Clipper.Area(polygon);
-```
-
-**See also:** [Orientation](#clipperlibclipperorientation), [Path](#clipperlibpath)
-
-### ClipperLib.Clipper.CleanPolygon()
-
-> [Path](#clipperlibpath) CleanPolygon([Path](#clipperlibpath) path, Number distance)
-
-This function is needed to prevent distortion that is caused by too near vertices and/or micro-self-interserctions.
-
-Removes vertices:
-
-* that join co-linear edges, or join edges that are almost co-linear (such that if the vertex was moved no more than the specified distance the edges would be co-linear)
-
-* that are within the specified distance of an adjacent vertex
-
-* that are within the specified distance of a semi-adjacent vertex together with their out-lying vertices
-
-Vertices are semi-adjacent when they are separated by a single (out-lying) vertex.
-
-The distance parameter's default value is approximately √2 so that a vertex will be removed when adjacent or semi-adjacent vertices having their corresponding X and Y coordinates differing by no more than 1 unit. (If the egdes are semi-adjacent the out-lying vertex will be removed too.)
-
-Timo: According to tests, the most proper distance value to remove artifacts before offsetting is 0.1 * scale.
-
-![clean1](https://sourceforge.net/p/jsclipper/wiki/_discuss/thread/f3a2fc70/6d6f/attachment/clean1.png)
-![clean2](https://sourceforge.net/p/jsclipper/wiki/_discuss/thread/f3a2fc70/6d6f/attachment/clean2.png)
-
-**Usage:**
-```js
-const  path = [{"X":10,"Y":10},{"X":11,"Y":11},{"X":110,"Y":10},{"X":110,"Y":110},
-{"X":10,"Y":110}];
-var cleaned_path = ClipperLib.Clipper.CleanPolygon(path, 1.1);
-// point {"X":11,"Y":11} is now removed
-```
-**See also:** [CleanPolygons](#clipperlibclippercleanpolygons), [SimplifyPolygon](#clipperlibclippersimplifypolygon), [Path](#clipperlibpath)
-
-### ClipperLib.Clipper.CleanPolygons()
-
-> [Paths](#clipperlibpaths) CleanPolygons([Paths](#clipperlibpaths) polys, Number distance)
-
-Same functionality as in CleanPolygon, but the parameter is of type Paths.
-
-According to tests, the most proper distance value to remove artifacts before offsetting is 0.1 * scale
-
-Read more in [CleanPolygon](#clipperlibclippercleanpolygon).
-
-**Usage:**
 ```js
 const paths = [
   [{X:10,Y:10},{X:11,Y:11},{X:110,Y:10},{X:110,Y:110},{X:10,Y:110}],
@@ -392,10 +233,11 @@ const paths = [
 const cleaned_paths = ClipperLib.Clipper.CleanPolygons(paths, 1.1);
 // point {"X":11,"Y":11} is removed
 ```
-**See also:**
-[CleanPolygon](#clipperlibclippercleanpolygon), [SimplifyPolygons](#clipperlibclippersimplifypolygons)
+**另请参阅：** [CleanPolygon](#clipperlibclippercleanpolygon), [SimplifyPolygons](#clipperlibclippersimplifypolygons)
 
-### ClipperLib.Clipper.ClosedPathsFromPolyTree()
+---
+
+#### ClipperLib.Clipper.ClosedPathsFromPolyTree()
 
 > [Paths](#clipperlibpaths) ClosedPathsFromPolyTree([PolyTree](#clipperlibpolytree) polytree)
 
@@ -1075,7 +917,7 @@ const polytype = ClipperLib.PolyType.ptClip;
 ### ClipperLib.Clipper.ZFillCallback()
 
 > void ZFillCallback([IntPoint](#clipperlibintpoint) Z1, [IntPoint](#clipperlibintpoint) Z2, [IntPoint](#clipperlibintpoint) pt);
-> 
+>
 **See also:** [Clipper.ZFillFunction](#clipperlibclipperzfillfunction)
 
 ## PolyTree
@@ -1089,7 +931,7 @@ A PolyTree object is a container for any number of [PolyNode](#polynode) childre
 PolyTrees can also contain open paths. Open paths will always be represented by top level PolyNodes. Two functions are provided to quickly separate out open and closed paths from a polytree - [ClosedPathsFromPolyTree](#clipperlibclipperclosedpathsfrompolytree) and [OpenPathsFromPolyTree](#clipperlibclipperopenpathsfrompolytree).
 
 
-![polytree](https://sourceforge.net/p/jsclipper/wiki/_discuss/thread/f3a2fc70/6d6f/attachment/polytree.png) 
+![polytree](https://sourceforge.net/p/jsclipper/wiki/_discuss/thread/f3a2fc70/6d6f/attachment/polytree.png)
 
 ```plaintext
 <b>polytree:</b>
@@ -1266,7 +1108,7 @@ The IsHole property of a [PolyTree](#clipperlibpolytree) object is undefined but
 **Usage:**
 ```js
 const ishole = polynode.IsHole();
-``` 
+```
 **See also:** [Contour](#clipperlibpolynodecontour), [PolyTree](#clipperlibpolytree)
 
 ### ClipperLib.PolyNode.Parent()
