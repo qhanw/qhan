@@ -1,0 +1,14 @@
+/public
+/dist
+/coverage
+
+**/*.svg
+*.png
+
+.DS_Store
+.eslintignore
+.eslintcache
+
+.editorconfig
+.gitignore
+.prettierignore

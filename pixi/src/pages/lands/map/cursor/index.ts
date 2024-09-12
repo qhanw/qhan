@@ -1,0 +1,38 @@
+import type Editor from '../editor';
+
+export type ICursor = 'default' | 'move' | 'pointer' | 'crosshair' | 'eraser' | 'clickSelect';
+
+type IconType = Partial<Record<ICursor, string>>;
+
+const icons: IconType = {
+  default:
+    'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANbSURBVHgB7VZNSxtRFJ3J93eaNGk0jRKsO3HlqtiFK6GuulFK3fgPlLaLLgSlKwkUXXVV0C4EG+syC+nCuii0a4luBMEGxS8kftSkSWZ6zus8CEPaYhy7yoXHG97Me/e8e869cxWlznRdV5X/bOrfAKiqyjXOunKbAAwnKueRkRHb0dGRWI/H48JxNpvVJEaCshwAZ+l8c3PTXiwW7ZqmiXd7e3vawMBAlWCWl5d1mthgUVTqr2Pr6+uzT0xMxAYHB590d3dnxaLNpjmdzqrH46kmEolqV1eX1tPTo09NTelWUqQODw/bMXvuwKrV6m6lUvm+tbX1fHZ29iHW20OhUBRzCMOL4eL309PTNkM3N+eFh6VSKS8dgYIPc3Nz+sLCggj58fHxx0wm0+/z+dqDwWAsEomEk8mkj0AwHNyr/KbxRkAEADi4m8/nX8zPzzOsejqdFkB2dnb0w8PDldXV1ader/d+IBCI430YtPgxu0Gf04hic0B4C/DuZgQQ9n46JID6MTY2JoBcXFx83djYeIm1DgmkPiLN0CI38IAwRqpWqxV5ezMICWRtbU0vl8sFRgvUJMPhcITRgEBdMhLKdYyokW4OPAb9fn8beF+ho0YA5MD3gh4K9uTkJJPL5XpJI6OgNCNM0mBwGt/e3n4tdfAvEIwGI3Z5efkWINqMizQHAJOHOlhcXBxqpAMOZKqOeiEcl0ql/P7+/pvJyckHsVgsSB3hm+tTYJhKDjGHofQO3orOzM4J7Ozs7Btu+wzfpSjEaDTKGuHBcJLOpjLB2ORA2Q0w509PTz+ZdYAM0QuFwntUxjS0ksDaHZmKDD0F2HQ9YFk1FMyUukcdsCBJ5+Pj40Jwo6OjvSxIBIpM8UjHigXFSADgoXiMLi0tPZY6YEqSkpmZmUdG7gdIl6kcW1OSeTDLLSuerAcEwuLDsFNs+NSJIUqwYqXJesDw8qZXV1df6Bw9wjvqgsCo9BtxXWc28wJ/rfz3o7JVXC5X+fz8PNfZ2bmLtVdut/sHIvATxaaGJqVmxW/Y1miRjQed4MaVg4ODz+vr60NYLgFUGRlQQYQ0qzqjhqcwtLI1wxAgkXY6lM/iUxMbLeqIHH96wT6QtwTXOjug+ne32aSazdw1Ky1rWctaZrX9AlYw33XoyEJlAAAAAElFTkSuQmCC") 5 5, auto',
+  move: 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANUSURBVHgB7VY7TxtBEN47mxjf2Q7YRiYIEAWKAhQg8Qfo8gv4EaRNKkAyUUBCRBQUFKmgc0FJlwaKJE4B4hGBFBqUpOBpy7F9fpwfl/kuu87JxrGFHxISI61ub2ZnZ3Ye3y5jj/SASaIhT09P2/i8fWQYhjQ5OdkRDodH9vb2XhCrg3isnWRfX18fKBQKP/L5/M/l5eXBqakpOxxjrSYY8nq9Hl3Xvy0sLBgYmUzmE4k8kLFWpQOnQ779fr87Fot92NzcRMzNgXkikQhBRv921gqik8qBQECNRCIrBwcHRldXV8kBzMG7ublZoX8Va1kzCRsODw87Li8v587Pz42hoaGScTHAg+z6+nq2v7/fSbzGneBFJdPmnVdXVzNGGVHOzVFOFxcXM6TXScPGGiAz5wg7ToWNVVUNeDweL8l6k8nkV+EA5iTrJb4Pa7AWOtCtVZhytZOTom1nZ0c5PT0Napq2BD59c/F4XKNi02RZLpY2obnT6dTGxsYSNpstx9cuQffk5EREor7u4GG3d3d3P6WThVBcyK/xF2kCvNJ9ZCAsIoC52+32Ed+tKMozrIUOdNEx4GPPmjghjK+trQ2it9FeotpBMJRKpb7gSyD0WziAuZAhHdxZUxd7ADMAXEDP8kiUeyQfHx8/Hx0d/bi4uDhA1V8SkKEKhw8PD83vxMREhWx3d7c0xz7z8/O/jo6OXm5vb3+n/3/psyphYS6Xk3g0WLMIe0mSVNeG5iWzuro6gLBtbGxUpECMainA15oC7IF0IgXE62C18IF3gIn3KCBrEaLFUIRE/ruKEDK0o7UIUcgWiK4owgrc5qHKEwZodILXBK9xasc35mK7XSeeHo1GpfKQOhwO/fb2ViecwCkZ6TCav3e5XO/oN4097zpw1XBsbW0VoDg+Ph6kU82BR1fvEwIYNZvNKtaWwpyMK2RQpXSYDlBEZn0+31s6SKqa8boI9wCH4lf1QjFgGzqsGfeBcAIXDOC1nsuoqcatTvT19Sn/u44ho3+16cYF4XLq6elxobLRXsIBzDnkuvgjtXUkWjSdTn8OBoMGBjCDRG5+87WWgDE4Je4LPEox8CjlON82MhETT/L9/f2RRozfO1/06ilSUUbPzs4ioVCoyB7podIfhkqg+BNNERwAAAAASUVORK5CYII=") 16 16, auto',
+  crosshair:
+    'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGeSURBVHgB7ZbPasJAEMZndyOlCdRGECEUT948iS/gS/g+vo/P4tGT54IHwUORtlp3O186KTHYhGwlXvKDIZtdNzt/Pichamlp8cA5p2A81IvFQs/nc8NjRU0hh3fYol6v95QkSTidTjuNOYGocbjLMRgMIp7TVJPaG8B6vVZxHAcYK/UT9Ol0MtQg+plB5JRWxDnc87i2E14ZuCWVDmRqF0OEhgVnZP4Xa63meS36SK+w4u+KVKkW64YF9nA8HoP9fo/aO77qMAwfD4fDKzSASvD9yzvDlbA8h9JQEATn4XD4uVqtvhAL1QXe4y/mSiDRwF9gP5VkurQEHIniyI2Mr1rVWrbfywGw2+2sZOOqVa0ZYyxrgbyQh6Qdj2vfhfG4y8R8TfIlYA0kMt/NDM1pNpsFZWeULkoaIaAzBJjNj0YjvdlsLgTMgvuYTCZv/X4/9Xq5XLrtdutyz7kdePkgG/kMSHaaa0T5jMg9+eDlwHg8dvwWtHQvpLtFhX4QSRdsxgGoGyrH9wAOl++B2g78R56KLvc78mm3LS0t9+Yb/DIRnjFPXtgAAAAASUVORK5CYII=") 15 15, auto',
+  eraser: `url("data:image/svg+xml;utf8,%3Csvg width='16px' height='16px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M8.58564 8.85449L3.63589 13.8042L8.83021 18.9985L9.99985 18.9978V18.9966H11.1714L14.9496 15.2184L8.58564 8.85449ZM9.99985 7.44027L16.3638 13.8042L19.1922 10.9758L12.8283 4.61185L9.99985 7.44027ZM13.9999 18.9966H20.9999V20.9966H11.9999L8.00229 20.9991L1.51457 14.5113C1.12405 14.1208 1.12405 13.4877 1.51457 13.0971L12.1212 2.49053C12.5117 2.1 13.1449 2.1 13.5354 2.49053L21.3136 10.2687C21.7041 10.6592 21.7041 11.2924 21.3136 11.6829L13.9999 18.9966Z'%3E%3C/path%3E%3C/svg%3E") 0 8, auto`,
+  clickSelect: `url("data:image/svg+xml;utf8,%3Csvg width='16px' height='16px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14Z'%3E%3C/path%3E%3C/svg%3E") 8 8, auto`,
+};
+
+export class Cursor {
+  private readonly canvas: HTMLCanvasElement;
+  constructor(private editor: Editor) {
+    this.canvas = this.editor.canvas;
+
+    this.editor.renderer.events.cursorStyles = {
+      default: icons['default']!,
+      crosshair: icons['crosshair']!,
+      eraser: icons['eraser']!,
+    };
+  }
+
+  setCursor(cursor: ICursor) {
+    const newCursor = icons[cursor];
+
+    const curCursor = this.canvas.style.cursor;
+
+    if (newCursor && newCursor === curCursor) return;
+
+    this.canvas.style.cursor = newCursor || icons['default']!;
+  }
+}

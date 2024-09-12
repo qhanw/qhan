@@ -1,0 +1,22 @@
+.lands-tools {
+  :global {
+    .active {
+      .ant-float-btn-body {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .disabled {
+      background-color: #eaeaea;
+      cursor: not-allowed;
+
+      .ant-float-btn-body {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+}
+
+.lands-map canvas {
+  width: 100% !important;
+}
