@@ -1,5 +1,4 @@
 "use client";
-import clsx from "clsx";
 import { useTheme } from "next-themes";
 
 export default function Theme() {
@@ -12,9 +11,7 @@ export default function Theme() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="text-slate-800 dark:text-white cursor-pointer"
     >
-      <i
-        className={clsx({ "i-ri:sun-fill": !isDark, "i-ri:moon-fill": isDark })}
-      />
+      <i className={isDark ? "i-ri:sun-fill" : "i-ri:moon-fill"} />
     </a>
   );
 }
