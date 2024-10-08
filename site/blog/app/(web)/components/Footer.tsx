@@ -9,7 +9,7 @@ type FooterProps = { className?: string };
 export default ({ className }: FooterProps) => (
   <footer
     className={clsx(
-      "flex items-center pt-12 pb-12 mt-24 border-t-2 border-gray-100",
+      "flex items-center pt-12 pb-12 mt-24 border-t-2 border-slate-100 dark:border-slate-700",
       className
     )}
   >

@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 export default () => (
-  <div className="text-sm opacity-50 ml-1">
+  <div className="text-sm opacity-50 ml-1 dark:text-slate-400">
     ©2022-{new Date().getFullYear()} Qhan W. All Rights Reserved.
     <Link
       className="text-brand ml-2"

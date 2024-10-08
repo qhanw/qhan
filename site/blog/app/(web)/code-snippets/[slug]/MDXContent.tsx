@@ -14,27 +14,29 @@ import CssGradientBtn from "@/md/posts-mdx/css-gradient/GradientBtn";
 
 import "remark-gh-alerts/styles/github-base.css";
 import "remark-gh-alerts/styles/github-colors-light.css";
+import "remark-gh-alerts/styles/github-colors-dark-class.css";
 
 const options: MDXRemoteProps["options"] = {
   mdxOptions: {
     remarkPlugins: [
       [remarkToc, { maxDepth: 4 }],
       remarkGfm,
-      // @ts-ignore
       remarkGithubAlerts,
     ],
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings,
-      // @ts-ignore
-      [rehypeShiki, { theme: "vitesse-light" }],
+      [
+        rehypeShiki,
+        { themes: { light: "vitesse-light", dark: "vitesse-dark" } },
+      ],
     ],
   },
 };
 
 export default function MDXContent(props: Pick<MDXRemoteProps, "source">) {
   return (
-    <article className="fade-in-up-content prose prose-gray">
+    <article className="fade-in-up-content prose prose-slate dark:prose-invert">
       <MDXRemote
         source={props.source}
         components={{ Button, CssGradientBtn }}

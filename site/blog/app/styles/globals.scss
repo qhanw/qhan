@@ -777,13 +777,28 @@
 
 .header-line-shadow {
   @apply relative z-10;
+
+  &::before {
+    @apply fixed content-[''] w-full;
+    box-shadow: 0 0 4px 1px #ddd;
+  }
+
+  &::after {
+    // @apply absolute content-[''] w-full h-1 bg-gradient-to-b from-white to-white;
+
+    @apply absolute content-[''] w-full h-1 bg-white;
+  }
 }
-.header-line-shadow::before {
-  @apply fixed content-[''] w-full;
-  box-shadow: 0 0 4px 1px #ddd;
-}
-.header-line-shadow::after {
-  @apply absolute content-[''] w-full h-1 bg-gradient-to-b from-white to-white;
+
+.dark {
+  .header-line-shadow {
+    &::before {
+      box-shadow: 0 0 4px 1px rgb(0 0 0 / 35%);
+    }
+    &::after {
+      @apply bg-slate-800;
+    }
+  }
 }
 
 @keyframes fadeInUp {

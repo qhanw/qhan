@@ -1,6 +1,8 @@
 import Link from "next/link";
 import clsx from "clsx";
+
 import ScrollTop from "./ScrollTop";
+import Theme from "./Theme";
 
 const nav = [
   {
@@ -63,13 +65,16 @@ const nav = [
 export default () => (
   <>
     <ScrollTop />
-    <header className="px-4 sm:px-6 sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60 ">
+    <header
+      className="px-4 sm:px-6 sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 bg-white/95 supports-backdrop-blur:bg-white/60
+    dark:bg-slate-800"
+    >
       <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
         <div className="flex justify-start md:w-0 md:flex-1">
           <Link href="/" className="inline-flex items-center text-brand">
             <span className="sr-only">Workflow</span>
             <span className="i-logos-sakura w-6 h-6 logo-rotate" />
-            <span className="text-lg ml-2 font-medium text-gray-900">
+            <span className="text-lg ml-2 font-medium text-slate-900 dark:text-slate-300">
               Qhan W
             </span>
           </Link>
@@ -96,6 +101,7 @@ export default () => (
             </Link>
           ))}
         </nav>
+        <Theme />
       </div>
     </header>
     <div className="header-line-shadow" />

@@ -17,6 +17,7 @@
     "gray-matter": "^4.0.3",
     "next": "14.2.13",
     "next-mdx-remote": "^5.0.0",
+    "next-themes": "^0.3.0",
     "nextjs-toploader": "^3.6.15",
     "photoswipe": "^5.4.4",
     "plyr": "^3.7.8",
