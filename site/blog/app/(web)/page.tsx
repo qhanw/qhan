@@ -17,10 +17,10 @@ export default function Home() {
       <div className="text-3xl mb-2">
         <span className="i-ri:quill-pen-line text-brand" />
       </div>
-      <div className="text-gray-600 tracking-tight max-w-5xl">
+      <div className="text-slate-600 tracking-tight max-w-5xl dark:text-slate-300">
         专注于前端的全栈工程师，参与工作距今已经有十多年，有着丰富的2B系统开发及架构经验。早年从事UI设计工作，因此对用户体验及交互上具有一定的把控。目前主要以前端开发为主，对服务端技术如：Node.js、Next.js、NestJS也具备一定的掌握。擅长以React为核心的各类技术栈进行软件开发，喜欢工程化方面领域，喜欢交互设计。
       </div>
-      <ul className="mt-4 text-gray-400 font-light">
+      <ul className="mt-4 text-slate-400 font-light">
         <li>
           🎉
           技术栈包括：React、Next.js、Node.js、Wagmi、Viem、Electron、TypeScript、Sass、UnoCSS、Tailwind CSS等。
@@ -41,7 +41,7 @@ export default function Home() {
             width={120}
             height={120}
             alt="qr code"
-            className="opacity-60 grayscale mt-1"
+            className="opacity-75 mt-1 dark:invert"
           />
         </li>
       </ul>

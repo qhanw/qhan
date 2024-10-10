@@ -16,7 +16,7 @@ export default async function Projects() {
   return (
     <>
       <div className="prose grid gap-2 m-auto">
-        <div className="uppercase py-1 mb-8 -mt-8 text-sm font-medium tracking-widest text-gray-400">
+        <div className="uppercase py-1 mb-8 -mt-8 text-sm font-medium tracking-widest text-slate-400">
           Total {posts?.length} Code Snippets
         </div>
         {posts?.map((post: any) => (
@@ -25,7 +25,7 @@ export default async function Projects() {
             className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up "
             key={post.slug}
           >
-            <div className=" text-gray-600 group-hover:text-brand truncate ease-in duration-300">
+            <div className=" text-slate-600 dark:text-slate-400 group-hover:text-brand truncate ease-in duration-300">
               {post.meta?.title}
             </div>
           </Link>

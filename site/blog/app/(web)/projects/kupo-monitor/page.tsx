@@ -27,7 +27,7 @@ const pic_url11 = "/images/projects/kupo-monitor/rule-04.png";
 export default function Preview() {
   return (
     <>
-      <div className="prose prose-gray mx-auto">
+      <div className="prose prose-slate dark:prose-invert mx-auto">
         <h2>事中监控平台</h2>
         <p>
           针对金融机构提供对各类金融活动产生的的事件进行监控管理降低业务风险。提供针对事件的预警管理、案件管理，以及黑白名单、规则引挚、策略包、数据看盘等方面功能。

@@ -24,7 +24,7 @@ const pics = new Array(15).fill("").map((_, idx) => {
 export default function Preview() {
   return (
     <>
-      <div className="prose prose-gray mx-auto">
+      <div className="prose prose-slate dark:prose-invert mx-auto">
         <h2>智能制度解析</h2>
 
         <p>

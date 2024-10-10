@@ -17,7 +17,7 @@ export async function generateMetadata() {
 export default function Preview() {
   return (
     <>
-      <div className="prose prose-gray mx-auto">
+      <div className="prose prose-slate dark:prose-invert mx-auto">
         <h2>鲁班系统</h2>
         <p>
           包含桌面端与WEB端，定位于关注精细化运营、高效运营支撑。主要支撑课程顾问、班主任老师对客户转化、社群运营的诉求，协助一线老师完成销售、运营目标。

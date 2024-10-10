@@ -17,21 +17,21 @@ export default function Projects() {
   return (
     <>
       {/* text-transparent text-stroke-2 text-stroke-hex-aaa */}
-      <div className="text-3xl text-center font-semibold opacity-30 mb-8 mx-auto">
+      <div className="text-3xl text-center font-semibold opacity-30 mb-8 mx-auto text-slate-800 dark:text-slate-100">
         Projects
       </div>
       <div className="grid gap-4 prose mx-auto">
         {projects.map((proj) => (
           <ProjWrapper
             key={proj.key}
-            className="flex relative rounded-xl p-6 text-sm leading-6 transition bg-gray-50 overflow-hidden ease-in duration-300 fade-in-up"
+            className="flex relative rounded-xl p-6 text-sm leading-6 transition bg-slate-50 dark:bg-slate-700 overflow-hidden ease-in duration-300 fade-in-up"
             href={proj.href}
           >
-            <div className="flex flex-col -space-y-1.5 text-gray-400 pr-6 pt-1 group-hover:text-brand group-hover/show:text-brand">
+            <div className="flex flex-col -space-y-1.5 text-slate-400 pr-6 pt-1 group-hover:text-brand group-hover/show:text-brand">
               {proj.icons?.map((c, i) => (
                 <span
                   key={c + i}
-                  className="w-7 h-7 rounded-full bg-gray-100 ring-2 ring-white inline-flex items-center justify-center"
+                  className="w-7 h-7 rounded-full bg-slate-100 ring-2 ring-white inline-flex items-center justify-center dark:bg-slate-800 dark:ring-slate-600"
                 >
                   <span
                     className={`${c} ease-in duration-300`}
@@ -48,10 +48,10 @@ export default function Projects() {
             <div className="flex-1">
               <button className="flex gap-2 transition items-center">
                 <span className="absolute inset-0 rounded-xl"></span>
-                <span className="text-lg text-gray-600 group-hover:text-brand ease-in duration-300">
+                <span className="text-lg text-slate-600 dark:text-slate-400 group-hover:text-brand ease-in duration-300">
                   {proj.name}
                 </span>
-                {/* <span className="text-gray-400 flex gap-1 items-center grayscale group-hover:grayscale-0 group-hover/show:grayscale-0">
+                {/* <span className="text-slate-400 flex gap-1 items-center grayscale group-hover:grayscale-0 group-hover/show:grayscale-0">
                   {proj.icons?.map((c, i) => (
                     <span
                       key={c + i}
@@ -68,7 +68,7 @@ export default function Projects() {
                 </span> */}
               </button>
 
-              <p className="mt-1 text-gray-500">{proj.desc}</p>
+              <p className="mt-1 text-slate-500">{proj.desc}</p>
               <div className="flex items-center mt-2 text-brand font-semibold">
                 {proj.sub_href ? <AdmLink href={proj.sub_href} /> : null}
 

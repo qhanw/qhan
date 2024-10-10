@@ -746,18 +746,30 @@
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
-  background-color: #eee;
 }
 
 /*定义滚动条轨道 */
 ::-webkit-scrollbar-track {
   background-color: #eee;
+  border-radius: 4px;
 }
 
 /*定义滑块 */
 ::-webkit-scrollbar-thumb {
   background-color: #ddd;
   border-radius: 4px;
+}
+
+.dark {
+  /*定义滚动条轨道 */
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-600;
+  }
+
+  /*定义滑块 */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700;
+  }
 }
 
 /*  */

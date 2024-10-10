@@ -95,7 +95,7 @@ export default () => (
                 className="flex-shrink-0 h-4 w-4 "
                 aria-hidden="true"
               />
-              <span className="hidden md:flex text-gray-500 hover:text-gray-900">
+              <span className="hidden md:flex text-slate-500 hover:text-slate-900 dark:hover:text-slate-200">
                 {item.name}
               </span>
             </Link>

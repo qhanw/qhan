@@ -80,7 +80,7 @@ export default async ({ params }: Props) => {
 
   return (
     <>
-      <header className="mb-8 prose prose-gray">
+      <header className="mb-8 prose prose-slate dark:prose-invert">
         <h1 className="slide-enter-50">{post.meta.title}</h1>
 
         <div className="slide-enter-50 opacity-50 -mt-2 flex items-center text-sm">
@@ -93,7 +93,7 @@ export default async ({ params }: Props) => {
             <span className="i-heroicons:calendar mr-1 w-4 h-4 text-brand" />
             <DateFormat value={post.meta?.date} />
           </time>
-          {/* <span className="mx-2 w-0.5 h-0.5 bg-gray-500" /> */}
+          {/* <span className="mx-2 w-0.5 h-0.5 bg-slate-500" /> */}
           <time className="inline-flex items-center ml-2">
             <span className="i-heroicons:clock mr-1 w-4 h-4 text-brand" />
             阅读
@@ -103,11 +103,11 @@ export default async ({ params }: Props) => {
         </div>
       </header>
       {/* <article
-        className="fade-in-up-content prose prose-gray"
+        className="fade-in-up-content prose prose-slate"
         dangerouslySetInnerHTML={{ __html: post.html }}
       /> */}
       <MDXContent source={post.content} />
-      <div className="text-sm text-right text-gray-600">
+      <div className="text-sm text-right text-slate-600">
         最近修改时间：
         <DateFormat value={post.meta.lastModified} />
       </div>
@@ -116,7 +116,7 @@ export default async ({ params }: Props) => {
           {prev && (
             <Link
               href={prev.slug}
-              className="inline-flex items-center min-w-0 no-underline text-gray-600 hover:text-gray-800 ease-out"
+              className="inline-flex items-center min-w-0 no-underline text-slate-600 hover:text-slate-800 dark:hover:text-slate-300 ease-out"
             >
               <span className="i-heroicons:chevron-left mr-1 h-4 w-4" />
               <span className="truncate flex-1">{prev.title}</span>
@@ -127,7 +127,7 @@ export default async ({ params }: Props) => {
           {next && (
             <Link
               href={next.slug}
-              className="inline-flex items-center min-w-0 no-underline text-gray-600 hover:text-gray-800 ease-out"
+              className="inline-flex items-center min-w-0 no-underline text-slate-600 hover:text-slate-800 dark:hover:text-slate-300 ease-out"
             >
               <span className="truncate flex-1">{next.title}</span>
 
