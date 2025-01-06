@@ -1,6 +1,5 @@
 import Footer from "@/app/(web)/components/Footer";
 import seo from "@/utils/seo";
-import Image from "next/image";
 
 import PicGallery from "../components/PicGallery";
 

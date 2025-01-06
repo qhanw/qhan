@@ -1,6 +1,7 @@
-module.exports = {
+/** @type {import('postcss-load-config').Config} */
+const config = {
   plugins: {
-    '@unocss/postcss': {
+    "@unocss/postcss": {
       content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +9,6 @@ module.exports = {
       ],
     },
   },
-}
+};
 
-
+export default config;

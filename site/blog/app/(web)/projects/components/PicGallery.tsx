@@ -14,7 +14,7 @@ type PicGalleryProps = {
 
 export default function PicGallery({ id, images }: PicGalleryProps) {
   useEffect(() => {
-    let lightbox = new PhotoSwipeLightbox({
+    let lightbox: PhotoSwipeLightbox | null = new PhotoSwipeLightbox({
       gallery: "#" + id,
       children: "a",
       pswpModule: () => import("photoswipe"),
@@ -22,9 +22,8 @@ export default function PicGallery({ id, images }: PicGalleryProps) {
     lightbox.init();
 
     return () => {
-      lightbox.destroy();
+      lightbox?.destroy();
 
-      // @ts-ignore
       lightbox = null;
     };
   }, [id]);

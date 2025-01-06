@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata /* ResolvingMetadata */ } from "next";
 import Link from "next/link";
 
 // import { remark } from "remark";
@@ -21,12 +21,13 @@ import MDXContent from "./MDXContent";
 import "./styles.scss";
 
 type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 async function fetchPost(params: Props["params"]) {
-  const post = getPost(params.slug);
+  const slug = (await params).slug;
+  const post = getPost(slug);
   // const markdown = await remark()
   //   .use(remarkToc, { maxDepth: 4 })
   //   .use(remarkGfm)
@@ -38,7 +39,7 @@ async function fetchPost(params: Props["params"]) {
   //   .process(post.content || "");
 
   const posts = getAllPosts();
-  const idx = posts.findIndex((c) => c.slug === params.slug);
+  const idx = posts.findIndex((c) => c.slug === slug);
 
   const next = posts[idx + 1];
   const prev = posts[idx - 1];
@@ -60,18 +61,18 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
+  props: Props
+  // parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { post } = await fetchPost(params);
+  const { post } = await fetchPost(props.params);
   return seo({
     title: post?.meta?.title || "",
     description: post?.meta?.description || post?.excerpt || "",
   });
 }
 
-export default async ({ params }: Props) => {
-  const { post, prev, next } = await fetchPost(params);
+export default async (props: Props) => {
+  const { post, prev, next } = await fetchPost(props.params);
 
   // const message = await new Promise<string>((resolve) => {
   //   console.log("in executing sleep!");
@@ -97,7 +98,7 @@ export default async ({ params }: Props) => {
           <time className="inline-flex items-center ml-2">
             <span className="i-heroicons:clock mr-1 w-4 h-4 text-brand" />
             阅读
-            {Math.ceil(post.meta?.readingTime?.minutes!)}
+            {Math.ceil(post.meta?.readingTime?.minutes ?? 0)}
             分钟
           </time>
         </div>

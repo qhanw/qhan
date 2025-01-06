@@ -11,7 +11,7 @@ export function getGitLastUpdatedTimeStamp(filePath: string) {
     ).stdout.toString("utf-8");
 
     lastUpdated = timestamp ? new Date(parseInt(timestamp) * 1000) : new Date();
-  } catch (e) {
+  } catch {
     /* do not handle for now */
   }
   return lastUpdated;
