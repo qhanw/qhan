@@ -1,7 +1,7 @@
 import {
   defineConfig,
   presetAttributify,
-  presetUno,
+  presetWind3,
   presetIcons,
   presetTypography,
 } from "unocss";
@@ -11,7 +11,7 @@ import icons from "./uno.config.icons";
 export default defineConfig({
   presets: [
     presetAttributify(),
-    presetUno(),
+    presetWind3(),
     presetIcons({
       extraProperties: {
         display: "inline-block",
