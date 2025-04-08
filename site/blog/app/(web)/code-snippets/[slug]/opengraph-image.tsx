@@ -1,4 +1,7 @@
 import { ImageResponse } from "next/og";
+import { headers } from "next/headers";
+// import { readFile } from "node:fs/promises";
+// import { join } from "node:path";
 
 export const runtime = "edge"; // default: nodejs
 
@@ -7,29 +10,30 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  // Notice:
-  // 为保障使用 fetch 加载字体文件，此文件中 runtime 应设置为 edge
-  // 同时获取文章标题方式更改为 API 形式，即在当前目录下添加 api 接口
-  // const post = await getPostBySlug(params.slug);
-  const isDev = process.env.NODE_ENV === "development";
-  const domain = isDev ? `http://localhost:3000` : `https://qhan.wang`;
+  const header = await headers();
+  const host = header.get("host");
+  const protocol = header.get("x-forwarded-proto") || "https"; // 默认 https
+  const domain = `${protocol}://${host}`;
 
   const post = await fetch(`${domain}/posts/api?slug=${params.slug}`).then(
     (res) => res.json()
   );
 
+  // const cwd = process.cwd();
+
   // Font
-  const sacra = fetch(
-    new URL("./fonts/Sacramento-Regular.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
-  const inter = fetch(
-    new URL("./fonts/Inter-Regular.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
-  // const monoton = fetch(new URL("./fonts/Monoton-Regular.ttf", import.meta.url)).then(
-  //   (res) => res.arrayBuffer()
+  // const sacra = await readFile(
+  //   join(cwd, "public/assets/Sacramento-Regular.ttf")
   // );
+  // const inter = await readFile(join(cwd, "public/assets/Inter-Regular.ttf"));
+
+  const sacra = await fetch(
+    new URL("/public/assets/Sacramento-Regular.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
+
+  const inter = await fetch(
+    new URL("/public/assets/Inter-Regular.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
@@ -103,9 +107,8 @@ export default async function Image({ params }: { params: { slug: string } }) {
     {
       ...size,
       fonts: [
-        { name: "Inter", data: await inter, style: "normal", weight: 200 },
-        { name: "Sacramento", data: await sacra, style: "normal", weight: 400 },
-        // { name: "Monoton", data: await monoton, style: "normal", weight: 400 },
+        { name: "Inter", data: inter, style: "normal", weight: 200 },
+        { name: "Sacramento", data: sacra, style: "normal", weight: 400 },
       ],
     }
   );

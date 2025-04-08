@@ -12,7 +12,8 @@ export default function seo({ description, title }: SeoProps): Metadata {
   const metaDescription = description || siteMetadata.description;
 
   return {
-    metadataBase: new URL("https://qhan.wang"),
+    // metadataBase: new URL("https://qhan.wang"),
+    // metadataBase: "/",
     title: title ? `${title} - ${siteMetadata?.title}` : siteMetadata?.title,
     description: metaDescription,
     icons: { icon: "/favicon.png" },
