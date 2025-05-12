@@ -37,4 +37,4 @@ Thumbs.db
 # Folders to ignore
 
 # rust
-/target
+target
