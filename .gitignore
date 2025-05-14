@@ -38,3 +38,7 @@ Thumbs.db
 
 # rust
 target
+
+# solana
+
+test-ledger
