@@ -1,0 +1,10 @@
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - blake-hash
+  - bufferutil
+  - protobufjs
+  - sharp
+  - tiny-secp256k1
+  - unrs-resolver
+  - usb
+  - utf-8-validate
