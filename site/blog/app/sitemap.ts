@@ -1,8 +1,10 @@
 import { MetadataRoute } from "next";
+import { connection } from "next/server";
 
 import { getAllPosts } from "@/app/(web)/lib/service";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  await connection();
   // 远程获取博客列表
   const posts = await getAllPosts();
 
