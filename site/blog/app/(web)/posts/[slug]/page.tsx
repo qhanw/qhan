@@ -27,7 +27,7 @@ type Props = {
 
 async function fetchPost(params: Props["params"]) {
   const slug = (await params).slug;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   // const markdown = await remark()
   //   .use(remarkToc, { maxDepth: 4 })
   //   .use(remarkGfm)
@@ -38,7 +38,7 @@ async function fetchPost(params: Props["params"]) {
   //   .use(rehypeStringify)
   //   .process(post.content || "");
 
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   const idx = posts.findIndex((c) => c.slug === slug);
 
   const next = posts[idx + 1];
@@ -55,7 +55,7 @@ async function fetchPost(params: Props["params"]) {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   return posts.map((post) => ({ slug: post.slug }));
 }

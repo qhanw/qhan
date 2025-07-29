@@ -22,7 +22,7 @@ export default async function Posts() {
         Total {posts?.length} Posts
       </div>
       <div className="prose grid gap-9 m-auto">
-        {posts?.map((post: any) => (
+        {posts?.map((post) => (
           <Link
             href={`/posts/${post.slug}`}
             className="group font-normal overflow-hidden cursor-pointer no-underline transition fade-in-up "
@@ -43,7 +43,7 @@ export default async function Posts() {
               </time>
               <span className="mx-2 w-0.5 h-0.5 bg-slate-400" />
               {/* {post.meta.category} */}
-              {post.meta?.tags.slice(0, 3).map((tag: string) => (
+              {post.meta?.tags?.slice(0, 3).map((tag: string) => (
                 <PostLabel title={tag} key={tag} />
               ))}
             </div>

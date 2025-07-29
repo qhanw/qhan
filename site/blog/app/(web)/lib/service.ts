@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from "node:fs";
+import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { env } from "node:process";
 
@@ -27,12 +27,12 @@ type MetaData = {
 
 const getFullPath = (dir: string) => join(process.cwd(), `md/${dir}`);
 
-function getArticle(dir: string, slug: string) {
+async function getArticle(dir: string, slug: string) {
   const realSlug = slug.replace(/\.md$/, "");
 
   const fullPath = join(getFullPath(dir), `${realSlug}.md`);
 
-  const fileContents = readFileSync(fullPath, "utf8");
+  const fileContents = await readFile(fullPath, { encoding: "utf8" });
 
   const { data, content, excerpt } = matter(fileContents, { excerpt: true });
 
@@ -44,15 +44,21 @@ function getArticle(dir: string, slug: string) {
   return { slug: realSlug, meta, content, excerpt };
 }
 
-function getAllArticles(dir: string) {
-  const slugs = readdirSync(getFullPath(dir));
+async function getAllArticles(dir: string) {
+  const slugs = await readdir(getFullPath(dir));
 
   const isProd = env.NODE_ENV === "production";
 
-  const posts = slugs
-    .map((slug) => getArticle(dir, slug))
+  const postsList = slugs.map((slug) => getArticle(dir, slug));
+
+  const posts = [];
+
+  for await (const p of postsList) {
     // 排除草稿文件
-    .filter((c) => !(isProd && (c.meta.draft || /\.draft$/.test(c.slug))));
+    if (!(isProd && (p.meta.draft || /\.draft$/.test(p.slug)))) {
+      posts.push(p);
+    }
+  }
 
   return posts.sort((a, b) => +b.meta.date - +a.meta.date);
 }

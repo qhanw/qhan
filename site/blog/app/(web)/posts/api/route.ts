@@ -4,6 +4,7 @@ import { getPost } from "@/app/(web)/lib/service";
 
 export async function GET(request: NextRequest) {
   const slug = request.nextUrl.searchParams.get("slug")!;
+  const data = (await getPost(slug))!.meta?.title;
 
-  return NextResponse.json({ data: getPost(slug)!.meta.title, slug });
+  return NextResponse.json({ data, slug });
 }
